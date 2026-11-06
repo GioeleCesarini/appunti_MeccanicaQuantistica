@@ -1,0 +1,282 @@
+\chapter{La Crisi della Fisica Classica}
+
+	In questo capitolo andiamo ad analizzare, brevemente, i motivi per cui ad un certo punto è stato necessario costruire una nuova teoria fisica, del tutto diversa e controintuitiva rispetto alla precedente.
+	
+\section{Il Modello Atomico agli Inizi del 1900}
+
+\begin{itemize}
+	\item \textbf{Il modello di Thomson:}
+		
+		Fu Thomson, che all'inizio del XX secolo, a suggerire la struttura classica dell'atomo che tenne banco per una decina di anni. Thomson suggerì che l'atomo dovesse essere costituito da una sfera di carica positiva uniformemente distribuita entro cui si dovevano trovare gli elettroni (piccoli oggetti corpuscolari) in quantità tale da rendere gli atomi complessivamente neutri. Quando il sistema è in equilibrio i singoli elettroni occuperebbero una posizione in cui la forza attrattiva verso il centro che subiscono gli elettroni è bilanciata dalla forza repulsiva che c'è tra di essi. 
+		
+	\item \textbf{Il modello di Rutherford:}
+	
+		Un modello più sofisticato fu presentato da Rutherford nel 1911, il quale permetteva di comprendere teoricamente un gran numero di fatti sperimentali. Tale modello suggeriva che la carica fosse concentrata in un "nocciolo" o \textit{nucleo}, di dimensioni molto piccole rispetto a quelle degli atomi. Il nucleo avrebbe una carica uguale in grandezza, ma di segno opposto, alla somma delle cariche di tutti gli elettroni ed una massa praticamente uguale all'intera massa dell'atomo. Secondo questo modello gli elettroni orbiterebbero attorno al nucleo. In sostanza l'atomo viene visto come un piccolo modello planetario con delle differenze nei termini delle forze e del loro carattere (in proporzionale il sole fa molta più forza sui pianeti di quanto i pianeti non ne facciano tra di loro, mentre nel modello atomico le forze si equivalgono, inoltre le forze tra gli elettroni sono repulsive, carattere che la forza gravità non ammette).
+	
+\end{itemize}	
+
+\section{Il Problema delle Dimensioni Atomiche}
+ 	
+	Tramite esperimenti, come sappiamo, già dai tempi del modello di Thomson, era noto che tutti gli atomi dovessero avere dimensioni dell'ordine di $10^{\, -8} cm = 1Å$. Tali dimensioni ricavate, appunto, sperimentalmente erano problematiche da un punto di vista teorico, infatti nonostante la nuova teorica di Rutherford, un problema persisteva; quello legato alla \textit{stabilità delle dimensioni degli atomi} (c'è da dire in realtà che il modello di Thomson fu costruito proprio per ovviare a questo problema, la verità però è che era troppo fallace da altri punti di vista e si ritenne quello di Rutherford più accettabile).  Infatti da un punto di vista meramente classico sappiamo che le dimensioni dell'orbita di un elettrone (nel caso dell'atomo di idrogeno, che è anche il caso più semplice poiché ha un solo protone ed un solo elettrone) dipendo dall'energia. Che motivo hanno gli atomi di idrogeno, ottenuti nei modi più disparati ed in condizioni diverse, ad avere la stessa energia? (le dimensioni degli atomi infatti rimangono stabili, sempre le stesse). È evidente allora che dovrebbe esistere una grandezza fondamentale con le dimensioni di una lunghezza e le dimensioni di circa $1Å$.
+	\\
+	\\
+	 Da un punto di vista formale, nelle equazioni che regolano il moto degli elettroni attorno al nucleo entrano in gioco come parametri solo la carica dell'elettrone $e$ e la massa $m_e$, pertanto le soluzioni dovranno essere soltanto funzioni di questi due parametri. È chiaro però che solo da loro sia impossibile ricavare una grandezza che abbia le dimensioni di una lunghezza (quello che ci servirebbe). Se però facciamo entrare in gioco anche la correzione relativistica allora appare il fattore $c$ della velocità della luce, a partire da questo riusciamo a ricavare la grandezza di cui abbiamo bisogno che chiameremo \textbf{raggio classico dell'elettrone}:
+	 \\
+	 \\
+	  Classicamente dunque possiamo pensare all'atomo come ad una sfera di raggio $r_e$ che ha energia elettrostatica uguale all'energia a riposo. Allora:
+	
+\begin{itemize}
+	\item \textbf{Energia a riposo:}
+	
+		Dalla teoria della relatività ristretta so che l'energia a riposo di un elettrone vale:
+		
+	\begin{align*}
+		\textcolor{blue}{E_0} = m_e \, c^2
+	\end{align*}
+	
+	\item \textbf{Energia elettrostatica:}
+	
+		Ricordiamo invece che l'energia elettrostatica di un elettrone vale:
+	
+	\begin{align*}
+		\textcolor{Bittersweet}{E_{el}} = \frac{1}{4\pi\varepsilon_0} \, \frac{e^2}{r_e}
+	\end{align*}
+	
+\end{itemize}
+	
+	allora si può scrivere che:
+	
+\begin{align*}
+	\textcolor{blue}{E_0} = \textcolor{Bittersweet}{E_{el}} \, \Rightarrow \, m_e \, c^2 = \frac{1}{4\pi\varepsilon_0} \, \frac{e^2}{r_e}
+\end{align*}
+
+	da cui possiamo ricavare la definizione di \textbf{raggio classico dell'elettrone:}
+
+\begin{mydef}
+\begin{align*}
+	\textcolor{red}{r_e} = \frac{e^2}{4\pi\varepsilon_0 m_e c^2} \simeq 2.8 \cdot 10^{\,-13} cm
+\end{align*}
+\end{mydef}
+
+	c'è dunque un problema piuttosto evidente, tale risultato è $5$ ordini di grandezza ($100$mila volte) minore rispetto ad i risultati sperimentali che già si erano ottenuto all'epoca. Di certo non è un errore trascurabile. Già questo indizio ci porta sulla strada di un possibile cambiamento.
+	
+\section{Il Problema del Collasso per Irraggiamento}
+
+	Vediamo ora un altro problema, quello del collasso per irraggiamento. Secondo l'elettrodinamica classica una carica accelerata emette onde elettromagnetiche come sappiamo. La carica emettendo onde perde inevitabilmente energia poiché ne irradia una parte. Inoltre sappiamo, nella teoria classica di Rutherford, che gli elettroni orbitano attorno al nucleo composto da protoni e neutroni. Non ci sfugge il fatto che, sempre dalla teoria di carica accelerata, una carica in moto circolare uniforme irraggia, poiché subisce un'accelerazione centripeta. Ne segue che l'elettrone, nel modello di Rutherford, irraggia energia. Allora gli elettroni dovrebbero perdere energia fino, prima o poi, a fermarsi; siccome però, nell'atomo di Rutherford, l'unica configurazione di equilibrio è quella in cui tutti gli elettroni sono appiccicati al nucleo, ne segue che gli elettroni dovrebbero, in un certo tempo, collassare sul nucleo. 
+	\\
+	\\
+	Se ipotizzassimo che tale tempo sia \textit{molto} lungo (per esempio milioni/miliardi di anni) non sarebbe un problema, cerchiamo quindi di stimare il tempo di collasso nel caso dell’atomo di \textit{idrogeno} (si fa l'esempio dell'atomo di idrogeno, come già detto, poiché è composto da un solo protone e un solo elettrone. Questa struttura minimale permette di analizzare il problema senza dover gestire complicazioni aggiuntive come l'interazione tra più elettroni, rendendo l'analisi teorica molto più trasparente). 
+	\\
+	\\
+	Partiamo da due ipotesi semplificative:
+	
+\begin{enumerate}
+	\item Le condizioni iniziali sono tali per cui l'elettrone in assenza di irraggiamento descriverebbe un'orbita circolare (anziché ellittica).
+	\item A causa dell'irraggiamento l'elettrone descrive una spirale, affinché il calcolo non sia troppo complesso, noi confonderemo in ogni punto la spirale con un cerchio che passa per quel punto. (Si noti che questa seconda approssimazione è lecita se l'energia persa dall'elettrone in un giro è molto minore dell'energia che l'elettrone possiede)
+\end{enumerate}
+
+	 \textcolor{blue}{\textit{Il tempo di collasso lo si può stimare come il rapporto tra l'energia totale disponibile e la potenza persa.}} 
+
+\begin{itemize} 
+	\item \textbf{Energia totale:}
+		
+		Partiamo appunto dall'energia dell'orbita:
+\\
+\\
+	 Per un elettrone in orbita circolare, la condizione di equilibrio tra forza centripeta e forza elettrica è:
+	
+\begin{align*}
+	m_e \, \frac{v^2}{r} = \frac{1}{4\pi\varepsilon_0} \, \frac{e^2}{r^2}
+\end{align*}
+
+	da cui possiamo ricavare la velocità:
+	
+\begin{align*}
+	v^2 = \frac{1}{4\pi\varepsilon_0} \, \frac{e^2}{m_e r}
+\end{align*}
+
+	allora l'energia totale sarà data da:
+	
+\begin{align*}
+	E = K + U = \frac{1}{2} \, m_e \, v^2 - \frac{1}{4\pi\varepsilon_0} \, \frac{e^2}{r}
+\end{align*}
+
+	utilizzando allora la relazione trovata per la velocità si ottiene:
+	
+\begin{align*}
+	|\, E \, | = \frac{e^2}{8\pi\varepsilon_0 r}
+\end{align*}
+
+	\item \textbf{Potenza irraggiata:}
+
+	Essendo che secondo la teoria classica, una carica in accelerazione emette radiazioni. La potenza $P$ irradiata dall'elettrone (in SI) è data dalla formula di Larmor (si guardi il corso di Fisica Generale 3 per sapere da dove esce):
+	
+\begin{align*}
+	P = \frac{e^2 \, a}{6\pi\varepsilon_0 c^3}
+\end{align*}
+
+	dove $a$ è l'accelerazione, in questo caso, supponendo l'orbita circolare, si tratta dell'accelerazione centripeta ovvero:
+	
+\begin{align*}
+	a = \frac{v^2}{r}
+\end{align*}
+
+	dove $v$ è la velocità della carica mentre $r$ è il raggio dell'orbita circolare. Al punto precedente abbiamo ricavato un certo valore di $v$ che ora sostituendo in $a$ che poi sostituiamo in $P$, si ottiene:
+
+\begin{align*}
+	P = \frac{e^6}{96\pi^3\varepsilon_0^3 c^3 m_e^2 r^4}
+\end{align*}
+
+\end{itemize}
+
+	Infine allora stimiamo il tempo di collasso che sarà dato da:
+	
+\begin{align*}
+	\tau = \frac{|\, E \,|}{P} 
+\end{align*}
+
+	sostituendo si ottiene:
+
+\begin{align*}
+	\tau = \frac{12\pi^2\varepsilon_0^2 c^3 m_e^2 r^3}{e^4}
+\end{align*}
+
+	e prendendo $r$ equivalente al raggio sperimentalmente ottenuto, per dare un'idea numerica, si ottiene che:
+
+\begin{nb}
+\begin{align*}
+	\textcolor{red}{\tau} = \frac{12\pi^2\varepsilon_0^2 c^3 m_e^2 r^3}{e^4} \simeq \frac{1}{4}\frac{ c^3 m_e^2 r^3}{e^4} = 10^{-10} s \quad ; \quad \text{con \, \,} r \simeq 10^{-8}m
+\end{align*}
+\end{nb}
+
+	Il calcolo mostra che, secondo la fisica classica, un elettrone in un'orbita circolare (come quello ipotizzato per l'atomo di idrogeno) dovrebbe perdere la propria energia in un tempo estremamente breve (circa $10^{-10}s$) a causa dell'irraggiamento, portandolo infine a collassare nel nucleo. Questo risultato, in netto contrasto con la stabilità osservata degli atomi anche nella quotidianità, fu uno dei principali motivi per cui fu necessario sviluppare la meccanica quantistica, in cui l'elettrone occupa stati stazionari in cui non avviene l'irraggiamento continuo.
+	\\
+	\\
+	Una nota curiosa riguarda quanta energia dovrebbe allora irraggiare ogni atomo in questo lasso brevissimo di tempo, circa $1MeV$! Si pensi che, in un'esplosione nucleare, l'energia cinetica delle particelle cariche generate è dello stesso ordine. È evidente però che non viviamo, nel quotidiano, decine di miliardi di volte al secondo effetti simili a quelli di un'esplosione nucleare!
+	
+\section{Il Problema delle Righe Spettrali}
+
+	Il problema delle righe spettrali riguarda il fatto che, mentre gli esperimenti mostrano che gli atomi emettono luce in corrispondenza di frequenze discrete (cioè, si osservano \textbf{righe spettrali} ben definite), la fisica classica, basandosi sull'elettrodinamica, ci porterebbe ad aspettarci un'emissione con uno spettro continuo o comunque molto ricco.
+
+\subsection{Previsione Classica dell'Emissione}
+
+		Secondo l'elettromagnetismo classico, un atomo eccitato può essere considerato come un sistema in cui le cariche (per esempio, l'elettrone) oscillano attorno a una posizione di equilibrio. Un sistema oscillante ideale (come un oscillatore armonico) emette radiazione elettromagnetica alla sua frequenza naturale. È per esempio il caso del \textit{dipolo oscillante}. Per emettere radiazione ad una data frequenza allora, il sistema deve avere un momento di dipolo che varia nel tempo con una legge armonica (in modo da oscillare). Lo \textbf{spettro} del dipolo oscillante è molto ricco, ovvero che contiene un numero possibilmente infinto di numero di \textit{righe spettrali.}
+
+\subsection{La Discrepanza con l'Osservazione Sperimentale}
+
+		Al contrario, quando si eccitano gli atomi (ad esempio, in un gas) si osserva che l'emissione avviene a frequenze ben definite. Ogni atomo emette luce solo a determinati valori (spettri a linee), e tali valori sono caratteristici del tipo di atomo. 
+	\\
+	\\
+	È qui che nasce la necessità di un nuovo approccio, infatti questo fatto sperimentale ci suggerisce che l'energia degli atomi non può assumere valori arbitrari, ma deve essere quantizzata.
+	
+\section{L'Effetto Fotoelettrico}
+
+\subsection{Cos'è ed Effetti Sperimentali}
+	
+	Tra i numerosi altri effetti che non trovano spiegazioni convincenti nella fisica classica vi è anche il noto \textbf{effetto fotoelettrico}. Fu grazie ad Einstein, proprio durante lo studio di questo effetto, che si iniziò a vedere quali profonde modifiche occorra apportare alla teoria classica per poter superare le difficoltà in cui si imbatteva.
+	\\
+	\\
+	In cosa consiste l'\textit{effetto fotoelettrico}?
+
+\begin{myth}
+	Si supponga di far incidere su di una superficie (ad esempio metallica) un fascio di luce di breve lunghezza d'onda, si osserverà allora l'\textit{espulsione} di elettroni dalla superficie.
+\end{myth}
+
+	Cosa ci aspettiamo in genere? Che il sistema fisico dipenda dalla frequenza dei fotoni incidenti $\nu$ e dall'intensità del fascio, infatti secondo la fisica classica l’energia associata ad un’onda monocromatica è proporzionale all'intensità, : 
+	
+\begin{align*}
+	I \propto |E^2|
+\end{align*}
+	
+	dunque da quello che sappiamo in fisica classica l'energia cinetica degli elettroni uscenti dovrebbe dipendere dall'intensità del fascio incidente, più il fascio incidente è intenso, più l'energia dei fotoni uscenti dovrebbe essere alta.
+	\\
+	\\
+	 Si possono invece evincere, dagli esperimenti, le seguenti $3$ leggi:
+	
+\vspace{1em}
+%%%%%%%%%%%%%%%
+\begin{minipage}{0.6\textwidth}
+
+\begin{enumerate}[label=\arabic*)]
+
+	\item Per ogni sostanza esiste una frequenza minima $\nu_0$, chiamata \textbf{soglia fotoelettrica}, tale che l'effetto si osserva solo con una radiazione di frequenza maggiore di tale soglia minima, dunque per: $\nu > \nu_0$
+	
+	\item L'energia cinetica massima $T_{\text{max}}$ degli elettroni estratti è indipendente dall'intensità della radiazione incidente, ma dipende invece in modo lineare dalla frequenza $\nu$ secondo la seguente legge:
+	\begin{align*}
+		T_{\text{max}} = h \, \qty(\nu - \nu_0) \quad ; \quad \text{con :\,  } h > 0
+	\end{align*}
+
+\end{enumerate}
+	
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+
+\begin{tikzpicture}
+
+	%\draw[step=1cm, very thin, gray] (0,0) grid (4,4);
+	
+	% Disegna assi
+    	\draw[thick, ->] (0,0) -- (0,4) node[left] {$T_{\text{max}}$}; 
+	\draw[thick, ->] (0,0)--(4,0) node[right] {$\nu$};
+	\filldraw (0,0) circle (2pt) node[below left] {$0$}; 
+	
+	%T
+	\draw[thick, blue] (1.5,0) -- (3.5,3.5);
+	\draw[thick, blue, dashed] (3.5,3.5) -- (3.8,4);
+	\filldraw[blue] (1.5, 0) circle (2pt) node[below] {$\nu_0$};
+    
+\end{tikzpicture}
+
+\end{minipage}
+%%%%%%%%%%%%%%%
+\vspace{1em}
+
+\begin{enumerate}[label=\arabic*), start = 3]
+    \item Fissata la frequenza $\nu$, il numero di elettroni emessi nell'unità di tempo è proporzionale all'intensità della radiazione incidente.
+\end{enumerate}
+
+	Dunque $h$ è la pendenza di questa retta, tale pendenza viene identificata tramite esperimenti. Queste leggi sperimentali ci permettono di capire che: dato l'elettrone in una fossa di energia potenziale da cui non può uscire (situazione in cui è nel metallo) quando arriva la radiazione elettromagnetica esso riceve una certa energia, determinata dalla \textit{legge di Planck.} L'energia cinetica massima è infatti data dalla somma:
+
+\begin{align*}
+	h \nu - V_0 = T_{\text{max}}
+\end{align*}
+	
+	con $V_0$ l'energia di cui l'elettrone ha bisogno per saltare la buca. Identifichiamo allora:
+	
+\begin{align*}
+	V_0 = h \nu_0
+\end{align*}
+
+	in quanto alcuni elettroni saranno in fosse più basse e altri in fosse più alte. Da qui otteniamo allora la formula sperimentale, di fatto questa è l'idea generale che ci sta dietro. La formula di Planck ci permette dunque di dire che l'energia che possiamo cedere agli elettroni è pari ad una quantità: $h\nu$. Il fotone cede energia venendo assorbito dall'elettrone.
+
+\subsection{Perché la Fisica Classica non ci Aiuta}
+
+	È il momento ora di capire come mai le precedenti leggi non sono spiegabili da un modello di fisica classica. Consideriamo il caso di un metallo. Sappiamo che in un metallo gli ioni positivi sono in posizioni pressoché fisse, al contrario, in tale reticolo, si muovono quasi liberamente gli elettroni di conduzione. È noto, sempre per via degli esperimenti, che per estrarre un elettrone dal metallo è necessario fornirgli una certa energia dell'ordine dell'$eV$ a seconda del metallo in questione. Chiaramente se ci riferiamo all'effetto fotoelettrico, tale energia è fornita dalla radiazione incidente. Quello che ci aspettiamo è che, a frequenza fissata, aumentando l'intensità, aumenti anche l'energia degli elettroni, poiché si pensa che più energia totale impattata porti ad elettroni più energetici. Ovvero sia che:
+\begin{itemize}
+	\item L'energia cinetica degli elettroni dovrebbe essere una funzione lineare dell'intensità incidente.
+	\item Non c'è motivo per cui dovrebbe esserci una certa soglia in frequenza, al più di intensità minima per l'estrazione
+\end{itemize}
+	Allora è chiaro che, la fisica classica porta a conclusioni in aperta contraddizione con l'esperienza.
+
+\subsection{Conclusioni e Necessità di una Nuova Fisica}
+
+	Si è ottenuto allora dagli esperimenti che si, il numero di elettroni espulsi aumenta con l'aumentare dell'intensità ma no, non aumenta l'energia cinetica massima di tali elettroni, che invece rimane invariata all'aumentare dell'intensità e varia solo se varia la frequenza dei fotoni che incidono.
+	\\
+	\\
+	Einstein allora capì che ciò può essere spiegabile se pensiamo alla luce come un flusso di particelle (fotoni) la cui energia è direttamente proporzionale alla frequenza della sorgente, dando inizio al dualismo onda-particella.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,935 @@
+\section{Relazione tra Rappresentazione delle Coordinate e degli
+Impulsi}
+
+	Le due rappresentazioni, RS ed RI, sono perfettamente equivalenti. Infatti si hanno semplicemente li stessi vettori descritti in basi diverse. Ci chiediamo allora come si passi da una rappresentazione all'altra.
+	\\
+	\\
+	Usando la \textit{relazione di completezza}:
+	
+\begin{align*}
+	\mathbb{I} = \int_{-\infty}^{\, +\infty} \dd p \ketbra{p}
+\end{align*}
+
+	allora riscrivo $\ket{v}$ come:
+	
+\begin{align*}
+	\ket{v} = \int_{-\infty}^{\, +\infty} \dd p \ket{p} \braket{p}{v}
+\end{align*}
+
+	posso allora scrivere il rappresentativo di $\ket{v}$ nella base ortonormale $\ket{x}$, proiettando $\ket{v}$ su $\ket{x}$ e facendo delle considerazione per arrivare a confrontare i rappresentativi nelle due basi, allora:
+	
+\begin{align*}
+	\braket{x}{v} = \braket{x}{\qty(\int_{-\infty}^{\, +\infty} \dd p \ket{p} \braket{p}{v})} = \int_{-\infty}^{\, +\infty} \dd p \braket{x}{p} \braket{p}{v} = \int_{-\infty}^{\, +\infty} \dd p \braket{x}{p} \tilde{v}(p)
+\end{align*}
+
+	notiamo ora che $\braket{x}{p}$ è il prodotto scalare tra due \textit{stati impropri}. Possiamo vedere questo prodotto scalare come una funzione d'onda dell'autostato di $p$ nella RS. In particolare possiamo scrivere:
+	
+\begin{align*}
+	\hat{p}\braket{x}{p} = p \braket{x}{p}
+\end{align*}
+
+	allora sostituendo con il noto:
+	
+\begin{align*}
+	\hat{p} = -i\hbar \, \dv{x}
+\end{align*}
+
+	si trova:
+	
+\begin{align*}
+	\braket{x}{p} = C_p e^{ipx/\hbar}
+\end{align*}
+
+	in pratica stiamo dicendo che vediamo $\ket{p}$ come uno stato con impulso esattamente definito e allora ne segue che: $\braket{x}{p}$ rappresenta come appare tale stato se lo osserviamo nello spazio delle posizioni, cioè qual è il suo andamento spaziale. Inoltre ricordiamo che per definizione vale:
+	
+\begin{align*}
+	\braket{x}{v} \, \equiv \, v(x)
+\end{align*}
+
+	possiamo allora sostituire il tutto e scrivere:
+	
+\begin{align*}
+	\textcolor{Magenta}{\braket{x}{v} }= \int_{-\infty}^{\, +\infty} \dd p \, \textcolor{blue}{\braket{x}{p}} \tilde{v}(p) \, \Rightarrow \, \textcolor{Magenta}{v(x)} = \int_{-\infty}^{\, +\infty} \dd p  \, \textcolor{blue}{C_p e^{ipx/\hbar} }\, \tilde{v}(p)
+\end{align*}
+
+	Viceversa posso scrivere anche:
+	
+\begin{align*}
+	\tilde{v}(p) = \int_{-\infty}^{\, +\infty} \dd x \braket{p}{x} v(x)
+\end{align*}
+	
+	mi chiedo allora chi sia $\braket{p}{x}$. Nella rappresentazione RI applico l'operatore $\hat{x}$ ed ottengo:
+	
+\begin{align*}
+	\hat{x} \braket{p}{x} = x \braket{p}{x} \, \Rightarrow \, i\hbar \, \dv{p} \braket{p}{x} = x \braket{p}{x}
+\end{align*}
+
+	e allora risolvendo l'equazione soprastante si ottiene che:
+	
+\begin{align*}
+	\braket{p}{x} = \tilde{C}_x \, e^{\, -i px / \hbar}
+\end{align*}
+
+	poiché sono prodotti scalari vale inoltre che:
+	
+\begin{align*}
+	\braket{x}{p} = \braket{p}{x} ^* \, \Rightarrow \, C_p = \tilde{C}_x^*
+\end{align*}
+
+	significa allora che $C$ e $\tilde{C}$ sono indipendenti da $x$ e $p$. Allora possiamo dire che vale:
+
+\begin{nb}
+\begin{align*}
+	& v(x) = C \int_{-\infty}^{\, +\infty} \dd p  \, e^{ipx/\hbar} \, \tilde{v}(p) \\
+	& \tilde{v}(x) = C^* \int_{-\infty}^{\, +\infty} \dd x  \, e^{\, -ipx/\hbar} \, v(x)
+\end{align*}
+\end{nb}
+
+\begin{mydef}
+	Dalla teoria delle trasformate di Fourier allora si trova che, \textit{in un grado di libertà}, la \textbf{costante} vale: 
+	
+\begin{align*}
+	C = C^* = \frac{1}{\sqrt{2\pi\hbar}}
+\end{align*}
+\end{mydef}
+
+\begin{myprf}
+	La scelta della costante di normalizzazione $C$ si deduce partendo dalla condizione che la trasformata di Fourier sia unitaria, ossia che valga il teorema di Parseval (conservazione della norma). Mostriamolo in dettaglio passo per passo:
+\begin{enumerate}[label=\arabic*)]
+	\item \textit{Scrittura iniziale della trasformata:}
+	
+		Si parte dalle definizioni generali della trasformata di Fourier e della sua inversa, applicate nel caso quantistico a una funzione d'onda $v(x)$:
+	
+	\begin{align*}
+	& v(x) = C \int_{-\infty}^{\, +\infty} \dd p  \, e^{ipx/\hbar} \, \tilde{v}(p) \\
+	& \tilde{v}(x) = C^* \int_{-\infty}^{\, +\infty} \dd x  \, e^{\, -ipx/\hbar} \, v(x)
+\end{align*}
+	
+	\item \textit{Teorema di Parseval:}
+	
+		La fisica quantistica richiede che le due rappresentazioni (posizione e impulso) conservino la norma della funzione d'onda, cioè:
+	
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} |v(x)|^2 \, \dd x = \int_{-\infty}^{\, +\infty} |\tilde{v}(p)|^2 \, \dd p
+	\end{align*}
+	
+		e sostituisco nella parte a sinistra l'espressione per $v(x)$:
+		
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} |v(x)|^2 \, \dd x = \int_{-\infty}^{\, +\infty} \, \dd x \, \textcolor{orange}{\abs{C \int_{-\infty}^{\, +\infty} \dd p  \, e^{ipx/\hbar} \, \tilde{v}(p) }^2}
+	\end{align*}
+		
+		allora calcolo il quadrato:
+		
+	\begin{align*}
+		\abs{C \int_{-\infty}^{\, +\infty} \dd p  \, e^{ipx/\hbar} \, \tilde{v}(p) }^2 &= |v(x)|^2 = v(x) \, v^*(x) \\
+	&= \qty(C \int_{-\infty}^{\, +\infty} \dd p  \, e^{ipx/\hbar} \, \tilde{v}(p)) \, \qty(C \int_{-\infty}^{\, +\infty} \dd p'  \, e^{ip'x/\hbar} \, \tilde{v}(p'))^{\textcolor{blue}{*}} \\
+	&= \textcolor{orange}{\qty(C \int_{-\infty}^{\, +\infty} \dd p  \, e^{ipx/\hbar} \, \tilde{v}(p)) \, \qty(C^{\textcolor{blue}{*}} \int_{-\infty}^{\, +\infty} \dd p'  \, e^{\, \textcolor{blue}{-}ip'x/\hbar} \, \tilde{v}^{\textcolor{blue}{*}}(p')) } \\
+	& =  |C|^2 \int_{-\infty}^{\, +\infty}  \dd p \int_{-\infty}^{\, +\infty} \dd p'  e^{i\qty(p-p')x/\hbar} \tilde{v}(p)\tilde{v}^*(p')
+	\end{align*}
+	
+		allora posso scrivere l'espansione:
+		
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} |v(x)|^2 \, \dd x  = |C|^2 \int_{-\infty}^{\, +\infty} \dd x \int_{-\infty}^{\, +\infty} \dd p \int_{-\infty}^{\, +\infty} \dd p'  e^{i\qty(p-p')x/\hbar} \tilde{v}(p)\tilde{v}^*(p')
+	\end{align*}
+		
+	\item \textit{Utilizzo dell'identità della delta di Dirac:}
+	
+		La variabile $x$ appare solo nell'esponenziale, quindi possiamo eseguire l'integrale su $x$ usando l'identità integrale della delta di Dirac:
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} \dd x \, e^{i\qty(p-p')x/\hbar}  = 2\pi \hbar \, \delta\qty(p - p')
+	\end{align*}
+	
+		allora la applico ed ottengo:
+		
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} |v(x)|^2 \, \dd x  &= |C|^2 \textcolor{ForestGreen}{\int_{-\infty}^{\, +\infty} \dd x} \int_{-\infty}^{\, +\infty} \dd p \int_{-\infty}^{\, +\infty} \dd p'  \textcolor{ForestGreen}{e^{i\qty(p-p')x/\hbar}} \tilde{v}(p)\tilde{v}^*(p') \\
+		&= |C|^2 \int_{-\infty}^{\, +\infty} \dd p \int_{-\infty}^{\, +\infty} \dd p'  \, \textcolor{ForestGreen}{ 2\pi \hbar \, \delta\qty(p - p')} \tilde{v}(p)\tilde{v}^*(p')
+	\end{align*}
+	
+		grazie alla delta di Dirac, l'integrale su $\dd p'$ collassa:
+	
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} \dd p'  \, \delta\qty(p - p') \tilde{v}^*(p') = \tilde{v}^*(p)
+	\end{align*}
+	
+	ricordo infatti che vale in generale la definizione:
+	
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} \dd x \, \delta\qty(x - x_0) \, f(x) = f(x_0)
+	\end{align*}
+		
+		allora posso scrivere che:
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} |v(x)|^2 \, \dd x = 2\pi \hbar \, |C|^2 \int_{-\infty}^{\, +\infty} |\tilde{v}(p)|^2 \, \dd p
+	\end{align*}
+		
+	\item \textit{Imporre la condizione di unitarietà:}
+	
+		Affinché valga la condizione di Parseval, cioè la norma sia preservata nelle due rappresentazioni, l'ultimo risultato deve essere uguale a:
+		
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} |v(x)|^2 \, \dd x =  \int_{-\infty}^{\, +\infty} |\tilde{v}(p)|^2 \, \dd p
+	\end{align*}
+	
+		per cui deve valere che la costante deve essere:
+	
+	\begin{align*}
+		2\pi \hbar \, |C|^2 = 1
+	\end{align*}
+	
+	\item \textit{Determinazione finale della costante:}
+	
+	\begin{align*}
+		2\pi \hbar \, |C|^2 = 1 \, \Rightarrow \, |C|^2 = \frac{1}{2\pi \hbar}
+	\end{align*}
+	
+	e quindi ho infine trovato che:
+	\begin{align*}
+		C = \frac{1}{\sqrt{2\pi \hbar}}
+	\end{align*}
+		e per costruzione vale che:
+	\begin{align*}
+		C = C^*
+	\end{align*}
+		Questo risultato assicura che la trasformata di Fourier nella rappresentazione quantistica sia unitaria, ossia preservi la norma della funzione d’onda nel passaggio fra spazio delle posizioni e spazio degli impulsi.
+\end{enumerate}
+\end{myprf}
+
+	Per cui in definitiva possiamo scrivere:
+	
+\begin{mydef}
+\begin{align*}
+	& v(x) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\, +\infty} \dd p  \, e^{ipx/\hbar} \, \tilde{v}(p) \qquad (\text{RI} \to \text{RS}) \\
+	& \tilde{v}(x) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\, +\infty} \dd x  \, e^{\, -ipx/\hbar} \, v(x) \qquad (\text{RS} \to \text{RI})
+\end{align*}
+	riassumendo in forma esplicita, abbiamo dunque trovato che \textbf{le due funzioni d'onda sono legate da una coppia di trasformate di Fourier reciproche}, con costanti di normalizzazione uguali a:
+\begin{align*}
+	 \frac{1}{\sqrt{2\pi\hbar}}
+\end{align*}
+\end{mydef}
+
+	abbiamo quindi i due seguenti risultati:
+	
+\begin{enumerate}[label=\arabic*)]
+	\item In RS le autofunzioni dell'impulso sono del tipo:
+	\begin{align*}
+		e^{ipx/\hbar}
+	\end{align*}
+		così le autofunzioni dell'impulso di una particella a tre gradi di libertà sono:
+	\begin{align*}
+		e^{i\qty(\va{p} \vdot \va{x})/\hbar}
+	\end{align*}
+		ovvero delle onde piane con lunghezza pari a:
+	\begin{align*}
+		\lambda = \frac{2\pi \hbar}{p} = \frac{h}{p}
+	\end{align*}
+		che è proprio la \textit{lunghezza d’onda di De Broglie} per una particella di impulso $p$. \textbf{Dunque le onde di De Broglie associate ad una particella sono le funzioni d’oda della particella stessa.}
+		
+	\item Le funzioni d'onda nella RS e nella RI corrispondenti ad uno stesso stato sono la trasformata di Fourier l'una dell'altra.
+\end{enumerate}
+	
+\section{Pacchetti Gaussiani}
+
+	Dalle considerazione che abbiamo visto in precedenza, consideriamo il caso in cui $v(x)$ sia una gaussiana centrata in $0$ con deviazione standard, ovvero una cosa del tipo:
+	
+\begin{align*}
+	v(x) = N \, e^{\, - x^2 / 2\sigma^2}
+\end{align*}
+
+	in questo caso allora, se calcolo l'integrale sulla retta reale della densità di probabilità trovo una cosa del tipo:
+	
+\begin{align*}
+	\int_{-\infty}^{\, + \infty} |v(x)|^2 \, \dd x = \int_{-\infty}^{\, + \infty} \abs{N \, e^{\, - x^2 / 2\sigma^2}}^2 \, \dd x = |N|^2 \int_{-\infty}^{\, + \infty} e^{\, - x^2 / \sigma^2} \, \dd x
+\end{align*}
+
+\begin{myapprf}
+	
+	Quanto vale in generale un integrale gaussiano?
+	\\
+	\\
+	Nel caso generale ho che vale:
+	
+\begin{align*}
+	& I(\alpha) = \int_{-\infty}^{\, + \infty} e^{\, - \alpha x^2} \dd x \\
+	& \Rightarrow \, I^2(\alpha) = \int_{-\infty}^{\, + \infty} e^{\, - \alpha x^2} \dd x \int_{-\infty}^{\, + \infty} e^{\, - \alpha y^2} \dd y = \int_{-\infty}^{\, + \infty} \dd x \int_{-\infty}^{\, + \infty} \dd y \, e^{\, - \alpha\qty(x^2+y^2)}
+\end{align*}
+	
+	che può essere scritto in coordinate polari come:
+	
+\begin{align*}
+	I^2(\alpha) = \int_{-\infty}^{\, + \infty} \dd x \int_{-\infty}^{\, + \infty} \dd y \, e^{\, - \alpha\qty(x^2+y^2)} = \int_{0}^{2\pi} \dd \theta \int_{0}^{\, + \infty} \dd r \, r \, e^{\, - \alpha r^2} = \pi \int_0^{\, +\infty} \dd r \, 2r \, e^{\, - \alpha r^2} 
+\end{align*}
+
+	per continuare, faccio la seguente sostituzione: $\zeta = r^2$, allora ottengo:
+	
+\begin{align*}
+	I^2(\alpha) = \pi \int_0^{\, +\infty} \dd \zeta \, e^{\, -\alpha \zeta} = \pi/\alpha \, \Rightarrow \, I(\alpha) = \sqrt{\frac{\pi}{\alpha}} \quad ; \quad \alpha > 0
+\end{align*}
+
+\end{myapprf}
+	
+	Ora procedo a scegliere $N$ in modo tale che l'integrale 
+
+\begin{align*}
+	\int_{-\infty}^{\, + \infty}  |v(x)|^2 \, \dd x = |N|^2 \int_{-\infty}^{\, + \infty} e^{\, - x^2 / \sigma^2} \, \dd x
+\end{align*}
+
+	sia normalizzato, ovvero, impongo:
+	
+\begin{align*}
+	|N|^2 \int_{-\infty}^{\, + \infty} e^{\, - x^2 / \sigma^2} \, \dd x = 1
+\end{align*}
+
+	essendo che so che vale:
+	
+\begin{align*}
+	\int_{-\infty}^{\, + \infty} e^{\, - \alpha x^2} \dd x = \sqrt{\frac{\pi}{\alpha}}
+\end{align*}
+
+	per trovare il risultato del mio integrale mi pasta porre:
+	
+\begin{align*}
+	\alpha \, \equiv \, \frac{1}{\sigma^2}
+\end{align*}
+
+	e allora:
+
+\begin{align*}
+	|N|^2 \int_{-\infty}^{\, + \infty} e^{\, - x^2 / \sigma^2} \, \dd x = |N|^2 \, \sqrt{\frac{\pi}{1/\sigma^2}} = |N|^2 \, \sigma \, \sqrt{\pi} = 1
+\end{align*}
+
+	e allora:
+	
+\begin{align*}
+	|N|^2 \, \sigma \, \sqrt{\pi} = 1 \, \Rightarrow \, |N|^2 = \frac{1}{\sigma \, \sqrt{\pi}} \, \Rightarrow \, N = \frac{1}{\sigma^{1/2} \, \pi^{1/4}}
+\end{align*}
+
+	quindi abbiamo detto che vale:
+	
+\begin{align*}
+	\int_{-\infty}^{\, + \infty}  |v(x)|^2 \, \dd x = |N|^2 \int_{-\infty}^{\, + \infty} e^{\, - x^2 / \sigma^2} \, \dd x
+\end{align*}
+
+	e sostituendo con il vettore di $N$, ottenuto si ha:
+
+\begin{align*}
+	\int_{-\infty}^{\, + \infty}  |v(x)|^2 \, \dd x & = |N|^2 \int_{-\infty}^{\, + \infty} e^{\, - x^2 / \sigma^2} \, \dd x = \frac{1}{\sigma \, \sqrt{\pi}} \int_{-\infty}^{\, + \infty} e^{\, - x^2 / \sigma^2} \, \dd x =  \int_{-\infty}^{\, + \infty}  \frac{1}{\sigma \, \sqrt{\pi}} \, e^{\, - x^2 / \sigma^2} \, \dd x 
+\end{align*}
+
+	allora possiamo dire che:
+
+\begin{align*}
+	|v(x)|^2 =  \frac{1}{\sigma \, \sqrt{\pi}} \, e^{\, - x^2 / \sigma^2}
+\end{align*}
+
+	ovvero:
+	
+\begin{align*}
+	v(x) = \frac{1}{\sigma^{1/2} \, \pi^{1/4}} \, e^{\, - x^2 / 2\sigma^2}
+\end{align*}
+
+	definisco allora tale quantità:
+	
+\begin{nb}
+	Definisco la \textit{funzione d'onda} allora come il seguente \textit{pacchetto gaussiano}:
+\begin{align*}
+	v(x) = \frac{1}{\sigma^{1/2} \, \pi^{1/4}} \, e^{\, - x^2 / 2\sigma^2}
+\end{align*}
+\end{nb}
+
+	Di conseguenza, possiamo trasformare con Fourier $v(x)$ e possiamo ricavare $\tilde{v}{p}$ (la definizione che ne avevamo dato è attraverso le trasformate di Fourier). Sia allora:
+	
+\begin{align*}
+	k \, \equiv \, \frac{p}{\hbar}
+\end{align*} 
+
+	dunque:
+	
+\begin{align*}
+	\tilde{v}(p) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\, + \infty} \dd x \, e^{\, - ikx} \, \textcolor{blue}{v(x)} & = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\, + \infty} \dd x \, e^{\, - ikx} \, \textcolor{blue}{\frac{1}{\sigma^{1/2} \, \pi^{1/4}} \, e^{\, - x^2 / 2\sigma^2}} \\
+	& = \frac{1}{\sqrt{2\pi\hbar}}  \, \frac{1}{\sigma^{1/2} \, \pi^{1/4}}\int_{-\infty}^{\, + \infty} \dd x \, e^{\, - ikx} \, e^{\, - x^2 / 2\sigma^2} \\
+	& = \textcolor{orange}{\frac{1}{\sqrt{2\pi\hbar}}  \, \frac{1}{\sigma^{1/2} \, \pi^{1/4}}\int_{-\infty}^{\, + \infty} \dd x \, e^{\, - ikx \, - x^2 / 2\sigma^2}}
+\end{align*}
+	
+	e se mi ricordo ora che un integrale del seguente tipo vale:
+
+\begin{align*}
+	I(\alpha, \beta) = \int_{-\infty}^{\, + \infty} \dd x \, e^{\, - \alpha x^2 + \beta{x}} = \sqrt{\frac{\pi}{\alpha}} \, e^{\,\beta^2/4\alpha}
+\end{align*}
+	
+	allora definisco come:
+	
+\begin{itemize}
+	\item $\alpha = 1/2\sigma^2$
+	\item $\beta = - \,i \,k$
+\end{itemize}
+	
+\begin{align*}
+	\frac{1}{\sqrt{2\pi\hbar}}  \, \frac{1}{\sigma^{1/2} \, \pi^{1/4}}\int_{-\infty}^{\, + \infty} \dd x \, e^{\, - ikx \, - x^2 / 2\sigma^2} = \textcolor{orange}{ \sqrt{\frac{\pi}{1/2\sigma^2}} \, e^{\, - \sigma^2 \, k^2/2   }} = \sigma \sqrt{2\pi} \,  e^{\, - \sigma^2 \, \textcolor{red}{k}^2/2}
+\end{align*}
+
+	essendo che abbiamo detto che $k \, \equiv \, p/\hbar$, sostituiamo ed otteniamo il risultato finale:
+	
+\begin{align*}
+	\tilde{v}(p) = \frac{1}{\pi^{1/4} \, \sqrt{\hbar}} \, \sigma^{1/2} \, e^{\, - p^2 \sigma^2/2\hbar^{2}}
+\end{align*}
+	
+	ovvero sia una gaussiana di larghezza: $\hbar/\sigma$. Possiamo allora fare un confronto scrivendo le due equazioni insieme e facendo un piccolo disegno:
+	
+\begin{mydef}
+\begin{align*}
+	& v(x) = \frac{1}{\sigma^{1/2} \, \pi^{1/4}} \, e^{\, - x^2 / 2\sigma^2} \qquad \text{(larga $\sigma$)} \\
+	& \tilde{v}(p) = \frac{1}{\pi^{1/4} \, \sqrt{\hbar}} \, \sigma^{1/2} \, e^{\, - p^2 \sigma^2/2\hbar^{2}} \qquad \text{(larga $\hbar/\sigma$)}
+\end{align*}
+\end{mydef}
+
+%%%%%%%%
+\vspace{1em}
+%%%%%%%%
+
+\begin{minipage}{0.5\textwidth}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        enlargelimits,
+        ylabel = {$v(x)$},
+        domain = -4:4,
+        samples = 200,
+        smooth,
+        xtick=\empty,
+        ytick=\empty
+    ]
+     \addplot[color=blue, thick]{1/(sqrt(2*pi)*\sigmaA)*exp(-x^2/(2*\sigmaA^2))};
+    \end{axis}
+\end{tikzpicture}
+
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        enlargelimits,
+        ylabel = {$\tilde{v}(p)$},
+        domain = -2:2,
+        samples = 200,
+        smooth,
+        xtick=\empty,
+        ytick=\empty
+    ]
+  \addplot[color=red, thick]{1/(sqrt(2*pi)*(\hbarA/\sigmaA))*exp(-x^2/(2*(\hbarA/\sigmaA)^2))};
+    \end{axis}
+\end{tikzpicture}
+
+\end{minipage}
+
+%%%%%%%%
+\vspace{1em}
+%%%%%%%%
+
+	Ne segue che quanto più è larga la funzione d'onda $v(x)$ nello spazio delle posizioni, tanto più risulterà stretta la funzione d'onda $\tilde{v}(p)$ nello spazio degli impulsi, e viceversa. Poiché la larghezza di ciascuna gaussiana è direttamente legata all'indeterminazione nella rispettiva variabile, questo comportamento riflette direttamente il \textit{principio di indeterminazione} di Heisenberg.
+	
+\subsection{Trasformazioni Unitarie, Pacchetti Gaussiani e Trasformate di Fourier}
+	
+	Possiamo dunque rivedere in questo senso le \textit{trasformazioni unitarie}. Possiamo infatti dire che:
+	
+\begin{nb}
+	Esiste un operatore lineare:
+\begin{align*}
+	&\hat{U} : v(x) \to \tilde{v}(p) \\
+	&\hat{U}^{\dagger} : \tilde{v}(p) \to v(x)
+\end{align*}
+	tale che vale:
+\begin{align*}
+	\hat{U}\hat{U}^{\dagger} = \mathbb{I} = \hat{U}^{\dagger}\hat{U} \, \Rightarrow \, \hat{U}^{\dagger} = \hat{U}^{-1}
+\end{align*}
+	pertanto, \textit{la trasformata di Fourier è una trasformazione unitaria}.
+\end{nb}
+
+	In generale possiamo schematizzare come:
+	
+%%%%%%%%
+\vspace{1em}
+%%%%%%%%
+
+\begin{minipage}{0.52\textwidth}
+
+\begin{tikzpicture}
+
+	%\draw[step=1cm, very thin, gray] (0,0) grid (5,5);
+
+	\node at (5,5) {$\tilde{v}(p)$};
+	\node at (0,5) {$v(x)$};
+	\node at (0,0) {$x\,v(x)$};
+	\node at (5,0) {$i\hbar \, \dv{p} \tilde{v}(p)$};
+	
+	\draw[thick, ->] (1,5) -- (4,5)  node[midway, above, blue] {$U$}; 
+	\draw[thick, ->] (5,4) -- (5,1)  node[midway, right, blue] {$\hat{x}_{RI}$}; 
+	\draw[thick, ->] (0,4) -- (0,1)  node[midway, left, blue] {$\hat{x}_{RS}$}; 
+	\draw[thick, ->] (1,0) -- (4,0)  node[midway, below, blue] {$U$}; 
+
+\end{tikzpicture}
+
+\end{minipage}
+\hfill
+\begin{minipage}{0.46\textwidth}
+	e quindi possiamo dire che, basandoci sullo schemino qui a sinistra:
+	
+\begin{align*}
+	\hat{x}_{RI} \, \hat{U} v(x) = \hat{U} \, \hat{x}_{RS} v(x)
+\end{align*}
+
+	da cui possiamo ricavare che:
+	
+\begin{align*}
+	& \hat{x}_{RI} = \hat{U} \hat{x}_{RS} \hat{U}^{-1}\\
+	& \hat{p}_{RI} = \hat{U} \hat{p}_{RS} \hat{U}^{-1}
+\end{align*}
+
+\end{minipage}
+%%%%%%%%
+\vspace{1em}
+%%%%%%%%
+	
+	e posso ottenere gli stessi identici risultati di prima.
+	
+\section{La Delta di Dirac}
+
+	In generale, sappiamo che nel caso di spettro discreto, il rappresentativo di un vettore $\ket{v}$ nella base $\ket{\lambda_i}$ è dato da:
+
+\begin{align*}
+	\braket{\lambda_i}{v} = \sum_j \braket{\lambda_i}{\lambda_j} \braket{\lambda_j}{v}
+\end{align*}
+
+	dove $\braket{\lambda_i}{\lambda_j} = \delta_{ij}$ è una base ortonormale. La stessa cosa, scritta nel caso di uno spettro continuo è:
+	
+\begin{align*}
+	v(x) = \braket{x}{v} = \int \dd x' \braket{x}{x'} \braket{x'}{v} = \int \dd x' \textcolor{blue}{\braket{x}}{x'} v(x')
+\end{align*}
+
+	Come si interpreta $\textcolor{blue}{\braket{x}{x'}}$?
+	\\
+	\\
+	Teoricamente:
+	
+\begin{align*}
+	\braket{x}{x'} = 0 \quad \forall x \neq x'
+\end{align*}
+
+	ma essendo una funzione, ne seguirebbe che l'integrale sarebbe sempre nullo. Pertanto, $\braket{x}{x'}$ non posso considerarla esattamente come una funzione. Si tratta, più propriamente di una \textit{distribuzione}, ovvero un funzionale lineare continuo. Definiamo allora:
+	
+\begin{mydef}
+	$\braket{x}{x'}$ è una \textbf{distribuzione} tale che vale:
+\begin{align*}
+	v(x) = \int \dd x' \textcolor{blue}{\braket{x}{x'}} v(x') \, \equiv \, \int \dd x' \,\textcolor{blue}{g(x, x')} \, v(x')
+\end{align*}
+	Questa relazione ci dice che la funzione $g(x, x')$ agisce come un "kernel integrale" che trasforma una funzione $v(x)$ nella stessa funzione $v(x)$. Ciò significa che $g(x, x')$ è un kernel di riproduzione, ossia deve essere tale da restituire esattamente la funzione originale.
+\end{mydef}
+
+\begin{myapprf}
+\begin{enumerate}[label=\arabic*)]
+	\item \textbf{Che differenza c'è tra una funzione ed una distribuzione?}
+	
+		Una distribuzione è un concetto più generale rispetto alla funzione ordinaria. Essa è definita come un \textit{funzionale lineare continuo}, cioè qualcosa che prende come "input" una funzione test sufficientemente regolare (ad esempio infinitamente derivabile e con supporto limitato, chiamata spesso "funzione test" $\varphi(x)$, e restituisce un numero reale. Una distribuzione non deve necessariamente assumere valori numerici precisi in ogni punto (anzi, in generale, non ha senso valutare una distribuzione in un singolo punto). Un esempio fondamentale: la distribuzione delta di Dirac, che ha la proprietà per cui, per ogni funzione test $f(x)$, vale:
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} \delta(x-x') \, f(x') \, \dd x' = f(x)
+	\end{align*}
+		Tuttavia, $\delta(x-x')$, è nulla ovunque tranne in un punto, dove "vale infinito", quindi non può essere una funzione ordinaria nel senso stretto.
+	\item \textbf{Perché se considero $\braket{x}{x'}$ una funzione ottengo un integrale nullo?}
+	
+		Se tu provassi a rappresentare questa relazione con una normale funzione, che vale zero ovunque tranne in un singolo punto, il suo integrale sarebbe sempre nullo, perché l’integrale classico di una funzione puntuale (come una funzione che vale zero ovunque tranne in un unico punto) dà sempre zero (immagina infatti, un integrale standard, esso rappresenta l'area sottesa da una curva, ma se abbiamo solo un punto non nullo, la larghezza dell'intervallo è 0 e allora l'area "sotto al punto" è zero). Entra qui in gioco il concetto di \textit{distribuzione}. La distribuzione delta di Dirac è definita esattamente per assegnare un significato rigoroso all’integrale di una "funzione infinitamente concentrata" in un solo punto. Essa assegna correttamente un valore non nullo all’integrale (come abbiamo visto sopra), rendendo possibile la trattazione matematica rigorosa.
+		
+\end{enumerate}
+\end{myapprf}
+
+	Nell'approfondimento appena passato abbiamo fatto un piccolo spoiler di chi vorremo come $g(x, x')$. Per ora facciamo finta di niente e pensiamo a che forma deve avere la nostra distribuzione. $g(x, x')$ deve essere tale da soddisfare l'integrale per ogni $v(x)$. Si osserva che è soddisfatto se sostituiamo a $g(x, x')$ il termine $g(x+a, x' +a)$ con $a \in \mathbb{R}$, ovvero, eseguiamo una traslazione:
+	
+\begin{align*}
+	g(x, x') \mapsto g(x+a, x' +a) \quad  ; \quad a \in \mathbb{R}
+\end{align*}
+
+	allora posto: $\tilde{v}(x' + a) = v(x')$ vale che:
+
+\begin{align*}
+	\int g(x+a, x' +a) \, \textcolor{orange}{v(x')} \, \dd x' = \int g(x+a, x' +a) \, \textcolor{orange}{\tilde{v}(x' + a)} \, \dd x' = \int  g(x+a, y) \, \tilde{v}(y) \, \dd y = v(x)
+\end{align*}
+
+	ma, per definizione, se cambio solo sistema di riferimento, l'equazione deve restare valida, cioè il kernel deve rappresentare esattamente la stessa operazione di prima.
+	
+\begin{align*}
+	g(x, x') = \delta(x-x')
+\end{align*} 
+
+	allora notiamo che:
+
+\begin{nb}
+\begin{align*}
+	&v(x) = \int \dd x' \, g(x, x') \, v(x')	\qquad \text{(prima della transizione)} \\
+	&v(x) = \int \dd y \,  g(x+a, y) \, \tilde{v}(y) \qquad \text{(dopo la transizione)}
+\end{align*}
+\end{nb}
+	
+	che condizioni abbiamo affinché questo sia sempre vero?
+	\\
+	\\
+	Per poter valere per ogni funzione $v(x)$ (e per ogni traslazione possibile $a$), il kernel deve essere indipendente dalla posizione assoluta, cioè deve dipendere solo dalla differenza delle sue variabili. In altre parole, l'unico modo per cui valgano le equazioni cui sopra:
+
+\begin{align*}
+	g(x, x') = g(x-x')
+\end{align*}
+
+	matematicamente significa che il kernel deve dipendere solo dalla differenza tra i punti. La funzione che più di tutte soddisfa le condizioni che stiamo imponendo è la famosa \textit{delta di Dirac:}
+
+\begin{mydef}
+	
+	Si definisce allora, come kernel dell'equazione soprastante, la \textbf{delta di Dirac}:
+
+\begin{align*}
+	\delta(x-x')
+\end{align*}
+	
+	allora $v(x)$ diventa:
+
+\begin{align*}
+	v(x) = \int \dd x' \,\textcolor{red}{ \delta(x-x')} \, v(x')
+\end{align*}
+
+\end{mydef}
+	
+\subsection{Proprietà della Delta di Dirac}
+	
+	Non andremo a dimostrare direttamente le proprietà della delta ma andremo ad elencarle e le commenteremo in breve:
+	
+\begin{itemize}
+
+	\item \textbf{Rappresentazione grafica della delta:}
+	
+		Nell'espressione:
+		
+	\begin{align*}
+		\delta(x-x')
+	\end{align*}
+		
+		il posizionamento della "punta" è a discrezione del valore di $x'$. Per esempio:
+	\begin{itemize}
+		\item Se $x' = 0 \, \Rightarrow \, $ la delta è centrata in $0$. 
+		\item Se $x' = 1 \, \Rightarrow \, $ la delta è centrata in $1$, etc.
+	\end{itemize}
+		
+		in generale il suo valore come distribuzione è:	
+	\begin{align*}
+	\delta(x-x') = \begin{cases}
+		&+\infty \quad \text{se} \quad x = x' \\
+		&0 \quad \text{se} \quad x \neq x'
+		\end{cases}
+	\end{align*}
+
+	\item \textbf{Kernel uguale a 1:}
+		
+		Pensando a $\delta$ come ad un funzionale lineare, essa trasforma la funzione $f(x)$ nel \textit{numero} $f(x')$, ovvero sia:
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} f(x) \, \delta(x-x') \, \dd x = f(x') \quad ; \quad \int_{-\infty}^{\, +\infty} f(kx) \, \delta(x-x') \, \dd x = f(kx') 
+	\end{align*}
+	
+		in particolare per $f(x) = 1$ e $x' = 0$ vale che:
+		
+	\begin{align*}
+		\int_{-\infty}^{\, +\infty} \delta(x) \, \dd x = 1
+	\end{align*}
+	
+\end{itemize}
+
+\subsection{Duale e Delta di Dirac}
+
+	Abbiamo quindi detto che, data $v(x')$, facendo la distribuzione ottengo un numero. Sia $L$ una funzione che chiamiamo di \textit{test}.
+	
+\begin{align*}
+	L : \mathcal{H}_{\mathbb{C}} \to \mathbb{C}
+\end{align*}
+
+	essa è lineare e definisce il \textbf{duale}:
+	
+\begin{mydef}
+	Dato $V_{\mathbb{C}}$ si definisce il suo \textbf{duale} come:
+\begin{align*}
+	V_{\mathbb{C}}^* = \qty{L : \mathcal{H}_{\mathbb{C}} \to \mathbb{C} \,\,\, \text{t.c è lineare}}
+\end{align*}
+\end{mydef}
+	
+	Le distribuzioni possono essere considerate come componenti del duale, ovvero sia sottoinsiemi di $L_2(\mathbb{R})$. 
+
+\begin{nb}
+	In dimensione finita $V_{\mathbb{C}}$ e $V^*_{\mathbb{C}}$ \textit{sono isomorfi}, cioè che per ogni $L$ posso scrivere $L$ in funzione di $v \in V_{\mathbb{C}}$, ossia:
+
+\begin{align*}
+	\forall L \in V^*_{\mathbb{C}}\,,\,\, \exists v \in V^*_{\mathbb{C}} : L(\omega) = \mean{v, \omega}
+\end{align*}
+\end{nb}
+	
+	Inoltre, come già sappiamo, i \textit{bra} sono funzionali, ovvero sia elementi dello spazio duale: tutte le funzioni test dunque sono elementi del duale, ma non tutti gli elementi del duale sono delle funzioni test. In generale vale che:
+	
+\begin{align*}
+	\braket{x}{x'} = \int_{-\infty}^{\, +\infty} \braket{x}{p} \braket{p}{x'} \dd p = \frac{1}{2\pi\hbar} \int_{-\infty}^{\, +\infty} \dd p e^{\, i\, (x-x') p/\hbar}
+\end{align*}
+
+	diamo allora la seguente conclusione tramite una definizione:
+	
+\begin{mydef}
+	Sia $p/\hbar = k$, allora: $\dd p /\hbar = \dd k$, allora la \textbf{delta di Dirac} può essere scritta come:
+\begin{align*}
+	\delta(x-x') = \frac{1}{2\pi} \int_{-\infty}^{\, +\infty} \dd k \, e^{\, ik \, \qty(x-x')} 
+\end{align*}
+\end{mydef}
+
+	Non si tratta di una buona definizione di integrale se $\delta$ fosse una funzione, ma lo è invece per $\delta$ distribuzione.
+	
+\section{Rappresentazione  Olomorfa}
+	
+	Vediamo ora una terza rappresentazione che va ad affiancarsi alla RS ed RI viste in precedenza. Questa rappresentazione vogliamo vada, questa volta, da $\mathbb{C}$ a $\mathbb{C}$. Chiaramente sappiamo che $\hat{x}$ ed $\hat{p}$ sono due operatori che non commutano, la nostra idea è quella di metterli insieme in un nuovo operatore.
+	\\
+	\\
+	La prima idea che potrebbe balenarci in mente è quella di scrivere il nuovo operatore come:
+
+\begin{align*}
+	\hat{p} + i \hat{x}
+\end{align*}
+	
+	purtroppo questa dicitura non ha senso, infatti $\hat{x}$ ed $\hat{p}$ hanno dimensioni diverse e non possono essere fisicamente sommate!
+	\\
+	\\
+	Affinché le dimensioni tornino, moltiplichiamo $\hat{x}$ per un fattore $m\omega$. Inoltre moltiplichiamo il tutto per un certo $N$ di dimensioni tali che, il nuovo operatore, sia \textit{adimensionato.} Diciamo allora:
+	
+\begin{mydef}
+	Definisco il nuovo operatore adimensionato da $\mathbb{C}$ a $\mathbb{C}$ come:
+	
+\begin{align*}
+	\hat{a} = N \, \qty(\hat{p} - i\, m\omega \, \hat{x}) \qquad ; \qquad \hat{a}^{\dagger} = N \, \qty(\hat{p} + i\, m\omega \, \hat{x})
+\end{align*}
+
+	$\hat{x}$ ed $\hat{p}$ sono infatti operatori autoaggiunti tali che:
+
+\begin{align*}
+	\hat{x} = \hat{x}^{\dagger} \qquad ; \qquad \hat{p} = \hat{p}^{\dagger} 
+\end{align*}
+\end{mydef}
+
+	Sappiamo che un algebra è uno spazio vettoriale, allora, presi più elementi dell'algebra, come due operatori, e messi insieme tramite prodotto (facendo il commutatore), si ottiene ancora un elemento dell'algebra. Facciamo una piccola osservazione: 
+	
+\begin{myapprf}
+	Un'algebra, nel contesto matematico, è un insieme dotato di due operazioni: una struttura di spazio vettoriale e un'operazione di moltiplicazione.
+	Nel contesto della meccanica quantistica, gli osservabili (come la posizione, l'impulso, l'energia, ecc.) sono rappresentati da operatori che agiscono su uno spazio di Hilbert. Questi operatori formano un'algebra, spesso chiamata \textit{algebra degli operatori}. In questo contesto, l'algebra degli operatori ci permette di combinare operatori in modo consistente e studiare le loro relazioni (come i commutatori) per dedurre proprietà fisiche, come le possibili misurazioni e le incertezze associate alle osservabili. La struttura algebrica è, dunque, un elemento essenziale nella formulazione matematica della meccanica quantistica, su cui noi però non faremo un grande approfondimento in quanto generalmente sono supercazzole matematiche.
+\end{myapprf}
+	
+	Ci chiediamo ora quanto valga il commutatore: $\qty[\hat{a}, \hat{a}^{\dagger}]$.
+	
+\begin{align*}
+	\qty[\hat{a}, \hat{a}^{\dagger}] & = N^2 \, \qty\big[ \hat{p} - i\, m\omega \, \hat{x}, \, \hat{p} + i\, m\omega \, \hat{x}  ] = N^2 \, \qty\Big(   \qty(\hat{p} - i\, m\omega \, \hat{x}) \, \qty(\hat{p} + i\, m\omega \, \hat{x})  -    \qty(\hat{p} + i\, m\omega \, \hat{x})     \, \qty(\hat{p} - i\, m\omega \, \hat{x})        ) \\
+	& = N^2 \, \qty\Big( \textcolor{red}{ \hat{p}^2} + i\,m\omega \, \hat{p}\hat{x} - i\,m\omega \, \hat{x}\hat{p} + \textcolor{red}{ m\omega \, \hat{x}^2  } - \textcolor{red}{ \hat{p}^2} - i\,m\omega \, \hat{x}\hat{p} + i\,m\omega \, \hat{p}\hat{x}  - \textcolor{red}{ m\omega \, \hat{x}^2  }  ) \\
+	& = N^2 \, \qty\Big( -2i \, m\omega \qty(\hat{x}\hat{p} - \hat{p} \hat{x})  ) = - 2N^2i \, m\omega \qty[\hat{x}, \hat{p}] = - 2N^2i \, m\omega \qty( i \hbar \mathbb{I}) = 2N^2 \, m\omega \hbar
+\end{align*}
+
+	ho allora ottenuto che il commutatore tra $\hat{a}$ ed il suo aggiunto vale:
+	
+\begin{align*}
+	\qty[\hat{a}, \hat{a}^{\dagger}] = 2N^2 \, m\omega \hbar 
+\end{align*}
+
+	come abbiamo già detto, $N$, ha il compito di rendere l'operatore olomorfo adimensionato, ovvero allora che vogliamo che valga, per un certo $N$ che cerchiamo:
+
+\begin{align*}
+	\qty[\hat{a}, \hat{a}^{\dagger}] = \mathbb{I}
+\end{align*}
+
+	allora sulla base dei risultati ottenuti prima, sappiamo che:
+
+\begin{align*}
+	\qty[\hat{a}, \hat{a}^{\dagger}] = \mathbb{I} \, \Rightarrow \, 2N^2 \, m\omega \hbar  = \mathbb{I}
+\end{align*}
+
+	e allora infine $N$ deve valere:
+	
+\begin{align*}
+	N = \frac{1}{\sqrt{2m\omega\hbar}}
+\end{align*}
+
+	in tal modo:
+	
+\begin{align*}
+	\qty[\hat{a}, \hat{a}^{\dagger}] = \mathbb{I}
+\end{align*}
+
+\subsection{Scelta della Rappresentazione}
+	
+	Nelle rappresentazioni RS ed RI usavamo due operatori distinti. Nella rappresentazione olomorfa invece usiamo un solo operatore \textit{non hermitiano} (poiché $\hat{a} \neq \hat{a}^{\dagger}$), i cui \textit{autovalori} non sono più reali, bensì \textit{complessi.} Ci chiediamo ora come agisca il nuovo operatore su $\mathbb{C}$. Diamo una definizione:
+	
+\begin{mydef}
+	La \textbf{scelta di rappresentazione} che faccio per la rappresentazione olomorfa è:
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& \hat{a}^{\dagger} : v(z) \to z v(z) \\
+	&  \hat{a} : v(z) \to \dv{z} v(z)
+\end{empheq}
+\end{mydef} 
+
+	è una rappresentazione nello spazio di $v(z)$ e valgono:
+
+\vspace{1em}
+\begin{minipage}{0.5\textwidth}
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& \hat{a} \, \hat{a}^{\dagger} v(z) =  \hat{a}\qty\Big(zv(z)) = v(z) + z v'(z)\\
+	& \hat{a}^{\dagger} \, \hat{a}v(z) = \hat{a}^{\dagger} \qty\Big(v'(z)) = z \, v'(z) \\
+	& \qty[\hat{a}, \hat{a}^{\dagger}] v(z) = v(z)
+\end{empheq}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& \qty[\hat{a}_i, \hat{a}_j^{\dagger}] = \delta_{ij} \, \mathbb{I}  \\
+	& \qty\Big[\hat{a}_i, \hat{a}_j] = 0 \\
+	& \qty[\hat{a}^{\dagger}_i, \hat{a}^{\dagger}_j] = 0 
+\end{empheq}
+\end{minipage}
+\vspace{1em}
+	
+\subsection{Prodotto Scalare}
+	
+	Voglio definire un prodotto scalare tale che $\hat{a}^{\dagger}$ sia l'aggiunta di $\hat{a}$. La proposta allora è:
+
+\begin{nb}
+\begin{align*}
+	\braket{w}{v} = \int_{\mathbb{C}} \dd^2 z \, k(z, \overline{z}) \, w^*(\overline{z}) \, v(z) 
+\end{align*}
+\end{nb}
+	
+	come segnato, l'integrazione avviene sul piano complesso. Chi è $k(z, \overline{z})$?
+	\\
+	\\
+	$k(z, \overline{z})$ è una funzione di $z$ e del suo coniugato complesso $\overline{z}$. Il nostro scopo ora, dopo aver ipotizzato una proposta per il prodotto scalare è quella di trovare questa funzione $k(z, \overline{z})$ in modo tale da far valere:
+	
+\begin{align*}
+	\braket{w}{\hat{a}^{\dagger}v} = \braket{\hat{a}w}{v}
+\end{align*}
+	
+	inoltre, diciamo che $w^*(\overline{z})$ è una funzione di $\overline{z}$ ed il prodotto scalare deve essere antilineare in $w$ e lineare in $v$. Partiamo dunque da:
+	
+\begin{align*}
+	\textcolor{blue}{\braket{w}{\hat{a}^{\dagger}v}} = \textcolor{ForestGreen}{\braket{\hat{a}w}{v}}
+\end{align*}
+	
+	e facciamo allora delle considerazioni: 
+	
+\begin{itemize}
+	\item a sinistra abbiamo, utilizzando la "proposta" di prodotto scalare:
+	
+	\begin{align*}
+		\braket{w}{\hat{a}^{\dagger}v} = \int_{\mathbb{C}} \dd^2 z \, k(z, \overline{z}) \, w^*(z) \, \hat{a}^{\dagger}v(z) = \textcolor{blue}{   \int_{\mathbb{C}} \dd^2 z \, k(z, \overline{z}) \, w^*(\overline{z}) \, zv(z)  }
+	\end{align*}
+	
+	\item mentre a destra abbiamo:
+	\begin{align*}
+		\braket{\hat{a}w}{v} &= \int_{\mathbb{C}} \dd^2 z \, k(z, \overline{z}) \,  \hat{a}w^*(z) \,v(z) = \int_{\mathbb{C}} \dd^2 z  \, k(z, \overline{z}) \, v(z)\,  w'^*(\overline{z}) =  \int_{\mathbb{C}} \dd^2 z  \, k(z, \overline{z}) \, v(z)\,  \dv{\overline{z}} w^*(\overline{z}) \\
+		& = \textcolor{ForestGreen}{ -\int_{\mathbb{C}} \dd^2 z \,v(z)  \,  w^*(\overline{z}) \, \dv{\overline{z}} k(z, \overline{z})}
+	\end{align*}
+
+\begin{myapprf}
+	L'ultimo passaggio è stato ottenuto \textit{integrando per parti}, vediamo il passaggio esplicitato, partiamo da:
+\begin{align*}
+	\int_{\mathbb{C}} \dd^2 z  \, k(z, \overline{z}) \, v(z)\,  \dv{\overline{z}} w^*(\overline{z})
+\end{align*}
+	
+	L’analogia con l’integrazione per parti in una variabile reale ci porta alla formula:
+
+\begin{align*}
+	\int_{\mathbb{C}} \dd^2 z  \,\pdv{\overline{z}}\qty\Big( k(z, \overline{z}) \, v(z)\,  w^*(\overline{z})) = 0
+\end{align*}
+
+	se si assume che il termine al bordo (il contributo della frontiera del dominio) scompaia (condizione tipica quando le funzioni decrescono abbastanza rapidamente all’infinito) ed utilizzando la linearità della derivata:
+	
+\begin{align*}
+	\pdv{\overline{z}}\qty\Big( k w^* z) = w^* z \, \pdv{\overline{z}} k + k z \, \pdv{\overline{z}} w^*
+\end{align*}
+
+	e quindi, integrando e assumendo che il contributo al bordo sia nullo, otteniamo:
+
+\begin{align*}	
+	&\int_{\mathbb{C}} \dd^2 z  \,\pdv{\overline{z}}\qty\Big( k(z, \overline{z}) \, v(z)\,  w^*(\overline{z})) = 0 \\
+	&= \int_{\mathbb{C}} \dd^2 z\, k(z, \overline{z}) \, v(z) \,\pdv{\overline{z}}\qty\Big( w^*(\overline{z})) + \int_{\mathbb{C}} \dd^2 z \, v(z) \,w^*(\overline{z})\pdv{\overline{z}}\qty\Big( k(z, \overline{z}) ) 
+\end{align*}	
+	e allora ne segue che possiamo sostituire:
+\begin{align*}	
+	\int_{\mathbb{C}} \dd^2 z  \, k(z, \overline{z}) \, v(z)\,  \dv{\overline{z}} w^*(\overline{z}) 
+\end{align*}
+	con:
+\begin{align*}	
+	-\int_{\mathbb{C}} \dd^2 z \,v(z)  \,  w^*(\overline{z}) \, \dv{\overline{z}} k(z, \overline{z})
+\end{align*}
+\end{myapprf}
+\end{itemize}
+	
+	Per avere l'uguaglianza ora rimettiamo insieme le cose ed otteniamo:
+	
+\begin{align*}
+	\textcolor{blue}{   \int_{\mathbb{C}} \dd^2 z \, k(z, \overline{z}) \, w^*(z) \, zv(z)  } = \textcolor{ForestGreen}{ -\int_{\mathbb{C}} \dd^2 z \,v(z)  \,  w^*(z) \, \dv{\overline{z}} k(z, \overline{z})}
+\end{align*}
+	
+	dunque notiamo che, i due integrali sono uguali se:
+	
+\begin{align*}
+	-\dv{\overline{z}} k\qty(z, \overline{z}) = z \, k(z, \overline{z})
+\end{align*}
+
+	allora risolvo:
+
+\begin{align*}
+	\frac{\dd k(z, \overline{z})}{k(z, \overline{z})} = - z \, \dd \overline{z}
+\end{align*}
+
+	allora integro:
+
+\begin{align*}
+	\log k(z, \overline{z})= - z \, \overline{z} + N(z) \, \Rightarrow \, k(z, \overline{z}) = N(z) \, e^{ - \, z \overline{z}}
+\end{align*}
+	
+	abbiamo quindi ottenuto:
+
+\begin{align*}
+	k(z, \overline{z}) = N(z) \, e^{\, -z \, \overline{z}}
+\end{align*}
+
+	così facendo abbiamo ottenuto una metà importante del risultato! Nessuno ci vieta infatti di partire da:
+	
+\begin{align*}
+	\braket{\hat{a}^{\dagger}w}{v} = \braket{w}{\hat{a}v}
+\end{align*}
+
+	invece che da:
+
+\begin{align*}
+	\braket{w}{\hat{a}^{\dagger}v} = \braket{\hat{a}w}{v}
+\end{align*}
+
+	allora facendo i calcoli anche con l'altra partenza otteniamo che:
+	
+\begin{align*}
+	k(z, \overline{z}) = N(\overline{z}) \, e^{\, -z \, \overline{z}}
+\end{align*}
+
+	essendo che il risultato deve essere uguale, allora sicuramente $N(z) = N(\overline{z}) = \text{cost}$, ovvero che $N$ deve essere indipendente da $z$, quindi costante: 
+
+\begin{nb}
+\begin{align*}
+	k(z, \overline{z}) = N \, e^{\, -z \, \overline{z}}
+\end{align*}
+\end{nb}
+
+	in questo modo $\hat{a}$ e $\hat{a}^{\dagger}$ sono uno l'aggiunto dell'altro. 
+
+\begin{mydef}
+	Pertanto, con $N$ dipendente dalla normalizzazione, il \textbf{prodotto scalare} nella rappresentazione olomorfa è dato da:
+\begin{align*}
+	\braket{w}{v} = \int_{\mathbb{C}} \dd^2 z \, N \, e^{\, -z\overline{z}} \, w^*(\overline{z}) \, v(z)
+\end{align*}
+\end{mydef}

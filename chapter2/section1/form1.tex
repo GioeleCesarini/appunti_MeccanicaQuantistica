@@ -1,0 +1,2136 @@
+\chapter{Il Formalismo della Meccanica Quantistica}
+
+	Con Heisenberg e Schrodinger si inizia la nuova teoria che risolve le approssimazioni della vecchia teoria quantistica introdotta da Bohr e gli altri. In particolare Heisenberg e Schrodinger useranno due approcci equivalenti ma diversi per la descrizione della nuova teoria:
+	
+\begin{itemize}
+	\item Heisenberg $\, \Rightarrow \,$ utilizzerà l'algebra lineare. 
+	\item Schrodinger $\, \Rightarrow \,$ utilizzerà l'analisi matematica.
+\end{itemize}
+	
+	Durante questo capitolo andremo a formalizzare i concetti che grossomodo sono già stati affrontati nei paragrafi precedenti. Faremo buon uso degli esempi già introdotti approdando agli aspetti formali della teoria.
+
+\section{Dalle Onde alla Rappresentazione Vettoriale}
+
+	Ispirandoci quindi all'esperimento di Feynman chiamiamo le due fenditure $A$ e $B$. In particolare segneremo qualsivoglia quantità, come $*_{A}$ se solo $A$ è aperta mentre $B$ chiusa, $*_B$ il contrario, mentre $*_{AB}$ quando entrambe le fenditure sono aperte.
+	\\
+	\\
+	Fissiamo allora:
+	
+\begin{itemize}
+	\item $ | \psi_A |^2 = I_A \, \Rightarrow \, $ ossia, il: \textit{flusso di energia incidente quando la fenditura $A$ è aperta.}
+	\item $ | \psi_B |^2 = I_B \, \Rightarrow \, $ ossia, il: \textit{flusso di energia incidente quando la fenditura $B$ è aperta.}
+\end{itemize} 
+
+	in particolare denotiamo con:
+	
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& \psi_A = |\psi_A| \, e^{ \, i \delta_A } \\
+	& \psi_B = |\psi_B| \, e^{ \, i \delta_B }
+\end{empheq}
+
+	le onde monocromatiche che incidono sulla parete con le fenditure, dove $| \psi |$ in generale è l'ampiezza mentre $\delta$ è la fase. Allora se abbiamo sia $A$ che $B$ aperti possiamo scrivere:
+
+\begin{itemize}
+	\item $I_{AB} = | \psi_{AB} |^2$
+	\item con: $\psi_{AB} = \psi_A + \psi_B $ 
+\end{itemize} 
+
+\begin{myapprf}
+
+	Sia $z = a + ib$ un numero complesso, allora si noti che c'è una profonda differenza tra:
+	
+\begin{itemize}
+	\item $ z^2 = \qty(a + ib)^2 = \ldots = \qty(a^2 - b^2) + 2abi $
+	\item $|z| = \sqrt{a^2 + b^2}  \, \Rightarrow \, |z|^2 = a^2 + b^2$ 
+\end{itemize} 
+
+	allora vale che: $z^2 \neq |z|^2$
+
+\end{myapprf}
+
+	Riscriviamoci $I_{AB}$, ossia:
+	
+\begin{align*}
+	I_{AB} & = |\psi_{AB}|^2 = \qty(\psi_A + \psi_B) \, \qty(\bar{\psi}_A + \bar{\psi}_B) = \psi_A \bar{\psi}_A + \psi_B \bar{\psi}_{B} + \psi_A \bar{\psi}_{B} + \psi_B \bar{\psi}_A \\
+	& = |\psi_A|^2 + |\psi_B|^2 + \psi_A \bar{\psi}_B + \psi_B \bar{\psi}_A = I_A + I_B + |\psi_A| \, e^{ \, i \delta_A } \, |\psi_B| \, e^{ \, - i \delta_B } + |\psi_B| \, e^{ \, i \delta_B } \, |\psi_A| \, e^{ \, - i \delta_A }
+\end{align*}
+
+	poiché:
+
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& |\psi_*|^2 = I_* \\
+	& \psi_* = |\psi_*| \, e^{ \, i \delta_* } \\
+	& \bar{\psi}_* = |\psi_*| \, e^{ \, - i \delta_* }
+\end{empheq}
+
+	allora:
+	
+\begin{align*}
+	I_{AB} = I_A + I_B + |\psi_A| |\psi_B| \, \qty(  e^{ \, i \qty( \delta_A - \delta_B )} + e^{ \, i \qty( \delta_B - \delta_A )})
+\end{align*}
+
+	allora notando che:
+
+\begin{align*}
+	e^{ \, i \qty( \delta_A - \delta_B )} + e^{ \, i \qty( \delta_B - \delta_A )} = 2 \cos\qty(\delta_A - \delta_B)
+\end{align*}
+
+	ed allora infine:
+
+\begin{align*}
+	I_{AB} = I_A + I_B + 2 \, \sqrt{I_A I_B} \, \cos\qty(\delta_A - \delta_B)
+\end{align*}
+
+	questa cosa ci sta quindi dicendo che quando è aperto $AB$, ossia entrambe le fenditure, l'intensità risultante ha a che fare con $A$ e con $B$, ma non né $A$ né $B$. Possiamo notare che sotto c'è qualcosa di lineare nel principio fisico che genera l'intensità della formula risultante. Infatti il tutto deriva da:
+
+\begin{align*}
+	\psi_{AB} = \psi_A + \psi_B
+\end{align*}
+
+	questa è appunto un'operazione di somma lineare. Ti sta dicendo che l'ampiezza d'onda totale ($\psi_{AB}$) in un punto è semplicemente la somma (vettoriale, trattandosi di numeri complessi) delle ampiezze d'onda che proverrebbero da ciascuna singola fenditura. Questo è il comportamento tipico delle onde. 
+
+\section{Dallo Spazio delle Fasi ad un Nuovo Spazio}
+	
+	\textit{Lo stato fisico di un sistema fisico "classico" è descritto dalla sua traiettoria.}
+\\
+\\
+	Classicamente infatti abbiamo che un sistema fisico è totalmente descritto dalla sua dinamica, ossia da un sistema di equazioni differenziali al secondo ordine (2 condizioni iniziali per ogni equazione). Spesso si usano $\qty(q, p)$, oppure: $\qty(x, v)$. In meccanica classica sappiamo infatti che: \textit{lo stato fisico è un punto $P$ nello spazio delle fasi.}
+	\\
+	\\
+	In generale uno stato nello spazio delle fasi non ha una struttura lineare che mi permetta di sommare per esempio la traiettoria che passa per $A$ con quella che passa per $B$, si possono creare altre strutture, come per esempio lo stato simplettico che mi permette di comporre due stati nello spazio delle fasi ma di certo non posso farlo linearmente.
+	\\
+	\\
+	\textit{In Meccanica Quantistica lo "stato" di un sistema fisico è un punto in uno spazio: $V_{\mathbb{C}}$ lineare.} Useremo come sinonimi: spazio vettoriale e spazio lineare.
+	\\
+	\\
+	Cosa implica che $V_{\mathbb{C}}$ sia uno spazio lineare? In questo modo possiamo descrivere la situazione fisica in cui $A$ è aperto con un vettore e lo stesso vale per la situazione in cui $B$ è invece aperto, legittimamente allora due vettori possono essere sommati, il che ci permette di sommare i vettori rappresentati due stati fisici, cosa che classicamente non abbiamo la necessità di fare.
+	\\
+	\\
+	Sia allora:
+
+\begin{itemize}
+	\item $ v_A \in V_{\mathbb{C}} $
+	\item $v_B \in V_{\mathbb{C}} $ 
+\end{itemize} 
+
+	e quindi possiamo scrivere:
+	
+\begin{align*}
+	v_{AB} = v_A + v_B
+\end{align*}
+
+	ha quindi senso abbandonare lo spazio delle fasi in favore di un nuovo \textbf{spazio lineare} (spazio vettoriale).
+	\\
+	\\
+	È interessante notare che in meccanica quantistica non esiste il concetto di traiettoria poiché, come poi vedremo, non possiamo conoscere contemporaneamente $x$ e $v$ che descrivono il moto di una particella nello spazio delle fasi. (Questa informazione la possiamo tirare fuori dal cappello della divulgazione come un \textit{proto} principio di indeterminazione letto nei libri o vagamente visto alle superiori).
+
+\section{Il Principio di Sovrapposizione nella Nuova Scrittura}
+
+	Iniziamo dunque dal formalizzare matematicamente quanto visto nel capitolo precedente. 
+	
+\begin{myth}
+	Il principio fondamentale alla base della Meccanica Quantistica è il \textbf{principio di sovrapposizione}. Secondo tale principio gli stati di un sistema sono rappresentati dagli elementi, i \textbf{vettori}, di uno spazio vettoriale $\mathcal{H}$ sul corpo complesso. 
+	\\
+	\\
+	Tale principio aggiunge che, vettori proporzionali (con un fattore complesso) rappresentano lo stesso stato se: 
+	
+\begin{itemize}
+	\item $\textcolor{blue}{\ket{\psi}} \, \Rightarrow \, $ rappresenta uno stato,
+	\item $\textcolor{ForestGreen}{\alpha} \, \Rightarrow \, $ rappresenta una costante complessa non nulla.
+\end{itemize} 
+	
+	Allora: $\textcolor{blue}{\ket{\psi}}$ e $\textcolor{ForestGreen}{\alpha}\textcolor{blue}{\ket{\psi}}$ rappresentano lo stesso stato fisico.
+\end{myth}
+
+	Abbiamo rappresentato gli stati come $\ket{\psi}$, essi sono vettori appartenenti ad uno spazio vettoriale denominati con questa nuova scrittura che poi approfondiamo, il \text{ket}. In ogni caso, di fatto, si tratta di un vettore e quindi possiamo anche rappresentarlo come: $\underline{v}$. 
+	\\
+	\\
+	Allora il principio di sovrapposizione può essere anche scritto come:
+
+\begin{nb}
+	Moltiplicando per uno scalare complesso si ottengono vettori collineari, ossia:
+	
+\begin{align*}
+	\underline{v}_A \to \alpha \, \underline{v}_A \quad \alpha \in \mathbb{C}
+\end{align*}
+	Allora il \textit{principio di sovrapposizione} ci dice che se $\underline{v}_A$ rappresenta uno stato fisico, allora $\alpha \, \underline{v}_A$ rappresenta lo stesso identico stato fisico.
+\end{nb}
+
+\subsection{Il Prodotto Scalare}
+	
+	Alla fine del capitolo precedente, nell'ultimo paragrafo, si è accennato al concetto di \textit{probabilità} e di \textit{onda di probabilità}. Al fine di dare un carattere predittivo alla teoria (ovvero estrarre la probabilità che un dato evento accada) oltre alla somma che abbiamo capito prima poiché essere necessaria, è anche necessario che lo spazio $\mathcal{H}$ sia dotato di un \textit{prodotto scalare hermitiano} (hermitiano poiché siamo sul corpo complesso) del seguente tipo:
+	
+\begin{align*}
+	\mean{\cdot, \cdot} \,  :  \,  V \cp V  \to \mathbb{C}
+\end{align*}
+
+	è necessario poiché la probabilità di transizione da uno stato all'altro si definisce con l'operazione di prodotto scalare come vedremo più avanti.
+	\\
+	\\
+	Tale prodotto scalare hermitiano deve godere delle seguenti $3$ proprietà:
+	
+\begin{enumerate}[label=\arabic*)]
+	\item \textbf{Antilinearità:}
+	
+		Il prodotto scalare deve essere antilineare \textit{rispetto al primo termine} ovvero sia che $\forall v_1, v_2, w \in V$ e $\forall \lambda \in \mathbb{C}$ deve valere:
+	\begin{align*}
+		&\mean{v_1+v_2, w} = \mean{v_1, w}  + \mean{v_2, w} \\
+		&\mean{\lambda v_1, w} = \lambda^*\mean{v_1, w}
+	\end{align*}
+	
+	\item \textbf{Hermitianità:}
+		
+		Anche chiamata simmetria $\forall v, w \in V$ tale che:
+	\begin{align*}
+		\mean{v, w} = \mean{w, v}^*
+	\end{align*} 
+	
+	\item \textbf{Linearità:}
+	
+		Il prodotto scalare inoltre deve essere lineare \textit{rispetto al secondo termine} ovvero sia che $\forall w_1, w_2, v \in V$ e $\forall \lambda \in \mathbb{C}$ deve valere:
+	\begin{align*}
+		&\mean{v, w_1 + w_2} = \mean{v, w_1}  + \mean{v, w_2} \\
+		&\mean{v, \lambda w_1} = \lambda\mean{v, w_1}
+	\end{align*}
+	
+\end{enumerate}
+
+\subsubsection{N.B:}
+
+	Si noti che il simbolo "$*$" rappresenta il complesso coniugato, ovvero sia, per un numero complesso $\lambda$ vale:
+	
+\begin{align*}
+	&\lambda = a + ib \\
+	&\lambda^* = a - ib
+\end{align*}
+
+\subsection{La Norma Indotta}
+	
+	Dato che la citeremo successivamente, la \textbf{norma indotta} non è altro che:
+
+\begin{align*}
+	\| v \| = \sqrt{\mean{v, v}}  \qquad \forall v \in V
+\end{align*}	
+
+	dove $\mean{v, v}$ è proprio il prodotto scalare hermitiano visto prima.
+	
+\subsection{Lo Spazio Vettoriale}
+
+\begin{myapprf}
+	Ricorda che uno spazio vettoriale si definisce su un "campo" $K$ (spesso l'insieme dei numeri reali $\mathbb{R}$, nel nostro caso sui complessi $\mathbb{C}$) e consiste in:
+	
+	\begin{itemize}
+		\item Un insieme $V$ di vettori, 
+		\item Due operazione, la somma tra vettori e la moltiplicazione per uno scalare.
+	\end{itemize}
+	
+	Hanno poi diverse proprietà ($8$) che ora non elenchiamo tutte, come per esempio quella dell'esistenza dell'elemento neutro e di quello opposto 
+\end{myapprf}
+
+	
+	Le dimensioni di $\mathcal{H}$ dipendono dal sistema che si considera: normalmente essa è infinita. Dobbiamo fare delle supposizioni inoltre. Prima di tutto supponiamo lo spazio \textit{completo}, cosa significa?
+	\\
+	\\
+	Significa che è uno spazio vettoriale (tipicamente dotato di una norma o di una struttura metrica) ed ogni successione di Cauchy converge ad un elemento che appartiene allo spazio stesso. In altre parole, se in una successione di vettori la distanza tra i termini diventa arbitrariamente piccola man mano che la successione progredisce, allora esiste un vettore limite all'interno dello spazio. Questa proprietà è essenziale per evitare "buchi" o "lacune" nello spazio, garantendo così che le operazioni di limite siano ben definite all'interno del contesto matematico. In generale possiamo dire che una \textbf{successione di Cauchy} è una cosa del tipo:
+	
+\begin{align*}
+	\qty(a_n)_{n \in \mathbb{N}} = \qty(a_0, a_1, a_2, a_3, \dots) \quad \text{t.c} \quad |a_n - a_m| \to 0
+\end{align*}
+
+	Ne segue che, con quest'ultima supposizione allora vale che $\mathcal{H}$ è uno \textbf{spazio di Hilbert}, ovvero:
+	
+\begin{mydef}
+	Uno \textit{spazio di Hilbert} è uno spazio vettoriale dotato di un prodotto scalare che è \textit{completo} rispetto alla norma indotta da questo prodotto. In altre parole, oltre ad avere una struttura algebrica (somma di vettori e moltiplicazione per scalari) e una struttura geometrica (dato dal prodotto scalare, che definisce lunghezze e angoli), uno spazio di Hilbert soddisfa la condizione che ogni successione di Cauchy converga ad un vettore che appartiene allo spazio stesso.
+\end{mydef}
+
+	Vediamo una nota sulla successione di Cauchy per capire meglio:
+	
+\begin{myapprf}
+
+	In un contesto di spazi di Hilbert (che sono spazi vettoriali dotati di un prodotto scalare e di una norma indotta) una successione di Cauchy è una successione di vettori $\qty{v_n}$ tale che, a partire da un certo indice, i vettori diventano arbitrariamente vicini tra loro. Segue la \textit{definizione formale:}
+	\\
+	\\
+	Una successione $\qty{v_n}$ in uno spazio normato (e quindi anche in uno spazio di Hilbert poiché è dotato di una norma) è detta di Cauchy se, per ogni $\varepsilon > 0$, esiste un intero $N$ tale che per ogni $m, n \geq N$ vale:
+	
+\begin{align*}
+	||\, v_m - v_n \, || < \varepsilon
+\end{align*}
+
+\end{myapprf}
+
+	Assumiamo ora che lo spazio di Hilbert $\mathcal{H}$ sia \textbf{separabile}, ovvero sia che \textit{ammetta una base numerabile}, ovvero che la base abbia cardinalità pari a quella dell'insieme dei numeri naturali $\mathbb{N}$. In altre parole, gli elementi della base possono essere "contati" tramite una successione infinita:
+
+\begin{align*}
+	\qty{e_1, e_2, e_3,  \dots}
+\end{align*}
+
+	si ricordi inoltre che una \textit{base di uno spazio vettoriale} è un insieme di vettori che consente di rappresentare univocamente ogni vettore dello spazio tramite una combinazione lineare degli elementi della base stessa.
+
+\subsection{Spazio Proiettivo e Vettori}
+
+	Prima di tutto definiamo la \textbf{relazione di equivalenza} come:
+
+\begin{mydef}
+	Siano $\underline{v}, \underline{v}' \in V_{\mathbb{C}}$, allora:
+	
+\begin{align*}
+	\underline{v} \sim \underline{v}' \, \Leftrightarrow  \, \underline{v}' = \alpha \, \underline{v}  \qquad \text{con :} \quad \alpha \in \mathbb{C}^{*} \equiv \qty{\mathbb{C} - 0}
+\end{align*}
+
+	dove $\sim$ sta per \textbf{relazione di equivalenza}. $\underline{v}, \underline{v}'$ sono due vettori nello spazio $V_{\mathbb{C}}$.
+\end{mydef}
+
+	Oltre alla \textit{relazione di equivalenza} definiamo anche lo \textbf{spazio vettoriale quozientato}, ossia:
+
+\begin{mydef}
+
+	Lo \textbf{spazio vettoriale quozientato} è definito come:
+	
+\begin{align*}
+	V_{\mathbb{C}} \, \, / \sim \,\, \, \equiv \,  \text{insieme delle classi di equivalenza} = \qty\Big{ \qty[v] = \qty{v' = \alpha v \,, \,\,  \alpha \in \mathbb{C}}}
+\end{align*}
+\end{mydef}
+
+	Lo spazio quozientato è un artefatto matematico per raggruppare i vettori facenti parte della stessa classe di equivalenza. Dunque ogni spazio quozientato contiene tutti i vettori che giacciono sulla stessa linea 1D.
+	\\
+	\\
+	In matematica si definisce lo \textbf{spazio proiettivo} come:
+	
+\begin{mydef}
+	Lo \textbf{spazio proiettivo} è definito come: 
+	
+	\begin{align*}
+		\mathbb{P}\qty(V_{\mathbb{C}}) \equiv V_{\mathbb{C}} / \sim
+	\end{align*}
+
+\end{mydef}
+
+	infatti lo spazio proiettivo non è altro che lo spazio dei vettori collineari. A cosa serve questa cosa?
+	\\
+	\\
+	Siccome in meccanica quantistica i vettori rappresentano gli stati, ma la prediction fisica che ci importa realmente sono le probabilità. Allora ne segue che i vettori in realtà portano "troppa" informazione:
+	
+\begin{itemize}
+	\item \textit{Normalizzazione:} La lunghezza dei vettori non è davvero importante infatti le probabilità sono sempre normalizzate ad $1$ ($100\%$). Tutte le volte che calcoleremo la probabilità forzeremo i nostri vettori ad avere lunghezza $1$ (normalizzandoli), come vedremo nei prossimi capitoli e sottocapitoli. Ne segue che $v$ e $v' = 5 v$ rappresentano esattamente lo stesso identico sistema fisico.
+	\item \textit{Fase globale:} I numeri complessi hanno una fase come sappiamo, ma come vediamo tra poco il modulo di una fase è sempre $1$, ed essendo che quando calcoliamo la probabilità facciamo il modulo quadro (lo vediamo dopo) questa fase scomparirà completamente.
+\end{itemize}
+
+	dunque possiamo immaginare che moltiplicare un vettore per una costante $\alpha$ (sia che si cambi la lunghezza che la fase globale) non cambia nessuna realtà fisica reale. Alla natura non importa quale vettore specifico tu scelga sulla linea.
+	\\
+	\\
+	La meccanica quantistica quindi può essere considerata una teoria \textbf{proiettiva}, cosa significa?
+	 \\
+	 \\
+	 Come possiamo immaginare la risposta è, si. Ma cosa significa? \textit{Significa che lo stato fisico di un sistema quantistico non è descritto direttamente da un vettore nello spazio di Hilbert, ma piuttosto dalla direzione di quel vettore, ovvero dal "raggio" su cui esso giace.}
+	 \\
+	 \\
+	 Supponiamo che $\ket{\psi}$ sia un vettore dello spazio di Hilbert che descrive un certo stato, allora ogni vettore della forma:
+
+\begin{align*}
+	e^{i\textcolor{ForestGreen}{\phi}} \ket{\psi}
+\end{align*}
+		
+	dove $\textcolor{ForestGreen}{\phi}$ è un angolo reale, rappresenta lo stesso stato fisico.
+	\\
+	\\
+	Ciò ha delle conseguenze, prima di tutto significa che il sistema fisico è invariante rispetto ad una moltiplicazione per una fase globale ovvero sia: dire che uno spazio (o meglio, la rappresentazione degli stati in meccanica quantistica) è invariante per una moltiplicazione per una fase globale significa che la fisica descritta non cambia se i vettori di stato vengono moltiplicati per un numero complesso di modulo 1, come $e^{i\phi}$. Siccome però tutte le fasi globali sono fisicamente indistinguibili, lo stato fisico non è descritto dal vettore stesso, ma dal raggio proiettivo su cui esso si trova. Lo spazio degli stati fisici diventa quindi uno spazio proiettivo, formalmente indicato come spazio di Hilbert proiettivo: $\mathbb{P}\qty(V_{\mathbb{C}})$.
+	\\
+	\\
+	Possiamo quindi dire che: 
+	
+\begin{nb}
+	Lo \textbf{spazio degli stati fisici} è proprio $V_{\mathbb{C}}/\sim$. Ossia lo spazio proiettivo $\mathbb{P}\qty(V_{\mathbb{C}})$.
+\end{nb}
+
+	Inoltre considera che:
+	
+\begin{nb}
+	Se abbiamo $v, w \in V_{\mathbb{C}}$, allora come abbiamo detto vale che:
+	
+	\begin{align*}
+		v' = 5 v \sim v
+	\end{align*}
+	
+		ma \textbf{non vale} invece che
+		
+	\begin{align*}
+		v'' = v + w
+	\end{align*}
+		
+		è equivalente a:
+		
+	\begin{align*}
+		v''' = 5v + w
+	\end{align*}
+	
+		questo perché per essere equivalente deve esistere un coefficiente $\alpha$ tale che dove averlo moltiplicato per tutto il vettore $v''$ si ottenga $v'''$, ossia deve valere la relazione di equivalenza che conosciamo:
+		
+	\begin{align*}
+		v \sim \alpha v
+	\end{align*}
+	
+		ossia in questo caso:
+		
+	\begin{align*}
+		v'' \sim \alpha v'''
+	\end{align*}
+	
+		che in questo caso non esiste mentre nel caso precedente era esattamente $\alpha = 5$.
+
+\end{nb}
+
+	
+\begin{myapprf}
+
+\subsubsection{Notazione di Dirac}
+	
+	I vettori di $\mathcal{H}$ vengono anche indicati con una delle notazioni più importanti, la \textit{notazione di Dirac}, il simbolo usato è:
+	
+\begin{align*}
+	\ket{\cdots}
+\end{align*}
+	
+	tale simbolo è chiamato \textbf{ket}. Il \textit{prodotto scalare} fra due vettori $\ket{\cdots}$ e $\ket{\cdots}$ è indicato con il \textbf{bra-ket}:
+	
+\begin{align*}
+	\braket{\cdots}{\cdots}
+\end{align*}
+
+	Rivediamo quindi le proprietà del prodotto scalare in questa notazione:
+	\\
+	\\
+	Siano i due vettori: $\ket{A}$ e $\ket{B}$ allora se ne faccio il prodotto scalare vale che:
+
+\begin{align*}
+	&\braket{B}{A} = \braket{A}{B}^* \\
+	&\braket{\beta B}{\alpha A} = \beta^* \alpha \braket{B}{A}
+\end{align*}
+	
+	con $\alpha, \beta \in \mathbb{C}$. Per la seconda uguaglianza è come fare il prodotto scalare tra:
+
+\begin{itemize}
+	\item Il "ket": $\alpha \ket{A}$
+	\item ed il "bra": $\beta^* \bra{B}$
+	
+\end{itemize}
+
+\end{myapprf}
+
+	Il \textit{principio di sovrapposizione}, che abbiamo visto poco prima, esprime il fatto che gli stati, essendo rappresentati da vettori, possono "interferire": se $\ket{A}$ e $\ket{B}$ rappresentano due stati, allora:
+	
+\begin{align*}
+	\alpha \ket{A} + \beta \ket{B} \quad \forall \alpha, \beta \in \mathbb{C}
+\end{align*} 
+
+	rappresenta uno stato diverso sia da $\ket{A}$ che da $\ket{B}$. 
+	\\
+	\\
+	Riprendiamo l'esperimento di interferenza dei fotoni ora. Diciamo che $\ket{A}$ rappresenta lo stato che si ha quando solo il foro $S_1$ mentre $\ket{B}$ rappresenta lo stato che si ha quando il solo foro $S_2$ è aperto. Allora quando entrambi i fori sono aperti, lo stato del fotone è rappresentato da:
+	
+\begin{align*}
+	\ket{C} = \ket{A} + \ket{B}
+\end{align*}
+
+	questo significa che il vettore $\ket{C}$ che rappresenta lo stato $C$ del fotone è una combinazione lineare dei vettori $\ket{A}$ e $\ket{B}$.
+	
+\subsubsection{N.B:}
+
+	Nei paragrafi e capitoli a seguire, per non appesantire il discorso, diremo semplicemente ed impropriamente lo "stato $\ket{A}$", invece di "lo stato rappresentato dal vettore $\ket{A}$", si ricordi infatti che l'abbreviazione è impropria perché \textit{non vi è corrispondenza tra stati e vettori ma solo tra stati e raggi.}
+	
+%%%%%
+\newpage
+%%%%%
+
+\section{Le Osservabili}
+
+\subsection{Autovalori ed Osservabili}
+	
+\begin{mydef}
+	Chiamiamo \textbf{osservabili} le grandezze fisiche che possono essere misurate su un sistema. 
+	\\
+	\\
+	Sia $O$ un'osservabile e siano $\qty{\lambda_1, \dots, \lambda_n}$ i possibili risultati delle misure di $O$ sul sistema. Chiamiamo allora i $\lambda_i$ gli \textbf{autovalori} di $O$.
+\end{mydef}
+
+	In generale se si misura l'osservabile $O$ sul sistema in uno stato $\ket{A}$, il risultato della misura non è determinato a priori, ma si potrà trovare un qualsiasi $\lambda_i$ come risultato, con la probabilità $P_i$ che dipende dallo stato $\ket{A}$.
+	
+\subsubsection{Esempi di osservabile:}
+
+	Vediamo alcuni esempi di osservabili: se prendiamo come sistema una particella, sono osservabili, l'energia, il momento angolare, le componenti della posizione, le componenti della quantità di moto, lo spin (che non ha un analogo classico).
+	\\
+	\\
+	Inoltre è importante sottolineare che per osservabile non intenderemo solo la grandezza, ma anche lo strumento atto a misurarla.
+	
+\subsubsection{Esempi di autovalori:}
+
+	Sia la particella un sistema, l'energia l'osservabile, allora i possibili valori dell'energia, cioè i livelli energetici, sono gli autovalori dell'osservabile \textit{energia}.
+		
+\subsection{Autostati e Autovettori}
+	
+\begin{mydef}
+	Definisco gli \textbf{autostati} di $O$ quei particolari stati sui quali il risultato di misure di $O$ è determinato a priori e quindi è sempre lo stesso. 
+\end{mydef} 
+	
+	Denotiamo, invece, un vettore rappresentate un autovettore in due modi:
+	
+\begin{align*}
+	\ket{\lambda_{iO}} \quad \text{oppure} \quad v_{\lambda_{iO}}
+\end{align*}
+	
+	e diciamo che $O$ ha un determinato valore $\lambda_{iO}$ su di esso.
+	
+\begin{mydef}
+	Chiamiamo \textbf{autovettori} di $O$ i vettori di $\mathcal{H}$ che rappresentano gli autostati di $O$.
+\end{mydef}
+
+	Dunque un autostato di $O$ corrispondente all'autovalore $\lambda_i$ è uno stato per il quale il risultato delle misure di $O$ è sempre e solo $\lambda_i$. Per quel $\lambda_i$ allora la probabilità di essere "pickato" è $P_i = 1$ mentre vale per un qualsiasi $\lambda_j$, con $j \neq i$, che la $P_j = 0$. Un vettore che rappresenta l'autostato di $O$ (un autovettore) si può scrivere come $\ket{\lambda_{iO}}$ o per non appesantire la scrittura si può indicare anche con solo: $\ket{\lambda_i}$. 
+	\\
+	\\
+	Spesso diremo, impropriamente,  "l'autostato $\ket{\lambda_i}$" invece di "l'autostato di O rappresentato dall'autovettore $\ket{\lambda_i}$".
+
+\subsection{Osservabili Degeneri e Non Degeneri}
+	
+	In corrispondenza di un dato autovalore $\lambda_i$ di un'osservabile $O$ possono esistere uno o più autostati. Si dice che:
+
+\begin{mydef}
+\begin{itemize}
+	\item Se esiste un autostato solo corrispondente all'autovalore allora si dice che l'autovalore $\lambda_i$ si dice \textbf{non degenere}.
+	\item Se invece esistono più autostati allora si dice che $\lambda_i$ è \textbf{degenere}.
+\end{itemize}
+\end{mydef}
+
+	Come mai si distingue tra questi due casi? $\Rightarrow \, $ Se una misura di $O$ fornisce come risultato l'autovalore $\lambda_i$ e se questo è \textit{non degenere} allora sappiamo in che stato si trova il sistema dopo la misura. Nel caso in cui invece $\lambda_i$ sia \textit{degenere} sappiamo solo che dopo la misura il sistema si trova in un autostato di $O$ corrispondente all'autovalore $\lambda_i$, ma non sappiamo in quale.
+
+\begin{mydef}
+\begin{itemize}
+	\item Diciamo allora che un osservabile \textbf{non degenere} è un osservabile tale che ad ogni suo autovalore corrisponde un solo autostato. 
+	\item Un'osservabile invece è \textbf{degenere} è un osservabile tale che ad ogni suo autovalore corrispondono più autostati.
+\end{itemize}
+\end{mydef}
+
+	Una discussione più approfondita su osservabili degeneri e non degeneri sarà affrontata più avanti.
+	
+\subsection{Postulato del Collasso (versione semplificata di Von Neumann)}
+
+	Si tratta di un postulato molto importante della meccanica quantistica, tale postulato dice che:
+
+\begin{mypost}
+	Se si misura un'osservabile $O$ sul sistema ed il risultato della misura è $\lambda_i$, subito dopo la misura il sistema è in un autostato di $O$ corrispondente a $\lambda_i$. 
+\end{mypost}
+	
+	Se il sistema è in una stato $\ket{A}$ e si effettua una misura di $O$, non possiamo sapere a priori quale risultato otterremo ed in quale stato si troverà $O$ dopo, ma quando la misura è stata effettuata e il risultato è $\lambda_i$, sappiamo che il sistema si trova in un autostato di $O$ corrispondente all'autovalore $\lambda_i$: allora se subito dopo la misura se ne effettua una seconda siamo certi di ritrovare lo stesso risultato (e quindi ad ogni autovalore corrisponde almeno un autostato).
+	\\
+	\\
+	In generale significa che una  misura \textit{perturba} lo stato del sistema, ovvero:
+	
+\begin{align*}
+	\ket{A} \to \ket{\lambda_i}
+\end{align*}
+	
+	fa eccezione il caso in cui $\ket{A}$ sia esso stesso un autostato di $O$.
+	\\
+	\\
+	 È facile rendersi conto che in molti processi di misura questo postulato viene contraddetto. In questa formulazione (riformulazione semplice del \textit{postulato di Von Neumann}), può essere violato o messo in dubbio in diverse circostanze reali, soprattutto quando il sistema ha proprietà addizionali o più complicate di quelle previste dal caso ideale. Basti pensare a casi in cui $O$ è degenere, il postulato diventa subito impreciso poiché non sappiamo quale autostato con precisione, sappiamo solo l'autovalore corrispondente. Inoltre nella realtà sperimentale, una misura ideale e perfetta (proiettiva) è un'idealizzazione. Le misure reali non sono mai perfettamente proiettive che portano il sistema in uno stato misto, non necessariamente un autostato puro esatto dell'osservabile (vedremo più avanti meglio).
+	 
+\subsubsection{Come va inteso allora questo postulato?}
+
+	Va inteso come una definizione, ovvero che da un lato definisce quali sono gli strumenti "ideali" di misura che corrispondono alle grandezze osservabili, fissandone il comportamento, dall'altro postula che ogni osservabile esiste almeno uno strumento "ideale" in grado di misurarla. Vale comunque in generale che:
+	
+\begin{mypost}
+	Se si effettua una misura su un'osservabile $O$ sul sistema nello stato $\ket{A}$, lo stato dopo la misura è completamente determinato dallo stato di partenza $\ket{A}$ e dall'autovalore $\lambda_i$ trovato.
+\end{mypost}
+
+	e che:
+
+\begin{mypost}
+	Ogni stato è autostato di qualche osservabile \textit{non} degenere.
+\end{mypost}
+	
+	Si nota allora che un tipo di informazione sufficiente a caratterizzare lo stato di un sistema consiste nel sapere quale osservabile non degenere è stata misurata sul sistema e qual è stato il risultato: non è necessario conoscere tutta la storia passata del sistema. 
+	
+\section{Probabilità di Transizione}
+	
+	Sia $O$ un'osservabile. Sappiamo che una misura di $O$ su di uno stato $\ket{A}$ darà come risultato uno degli autovalori $\lambda_i$ e che per effetto della misura allora, il sistema, compierà una \textbf{transizione} ad un autostato $\ket{\lambda_i}$. Diamo dunque una definizione di \textbf{probabilità di transizione}:
+
+\begin{mydef}
+	La \textit{probabilità di transizione} da $\ket{A}$ a $\ket{\lambda_i}$ è la probabilità $P_i$ di trovare come risultato un determinato autovalore $\lambda_i$.
+\end{mydef}
+
+	Vale inoltre il seguente postulato:
+
+\begin{mypost}
+	Siano $\ket{A}$ e $\ket{B}$ i vettori rappresentativi di due stati. Si postula che la probabilità che per effetto di una misura sul sistema nello stato $\ket{A}$ si ottenga lo stato $\ket{B}$ non dipenda dallo strumento ideale utilizzato per la misura e che, al contempo, sia data da:
+\begin{align*}
+	P_{\ket{A} \to \ket{B}} = \frac{|\braket{B}{A}|^2}{\braket{A}  \braket{B}}
+\end{align*}
+\end{mypost}
+
+	Nonostante sia un postulato essa è una buona definizione poiché:
+	
+\begin{enumerate}[label=\arabic*)]
+	\item $P$ non dipende dai numeri $\alpha, \beta \in \mathbb{C}$, fattori di proporzionalità, si può infatti dimostrare che:
+	\begin{nb}
+	\begin{align*}
+		P_{\alpha\ket{A} \to \beta\ket{B}} = P_{\ket{A} \to \ket{B}} 
+	\end{align*}
+	\end{nb}
+		infatti ho che vale:
+	\begin{myprf}
+	\begin{align*}
+		\textcolor{cyan}{P_{\ket{A} \to \ket{B}}} = \frac{|\braket{B}{A}|^2}{\braket{A}  \braket{B}} \quad ; \quad \textcolor{orange}{P_{\alpha \ket{A} \to \beta \ket{B}}} = \frac{|\braket{\beta B}{\alpha A}|^2}{\braket{\alpha A}  \braket{\beta B}} 
+	\end{align*}
+		dove possiamo riscrivere: $\textcolor{orange}{P_{\alpha \ket{A} \to \beta \ket{B}}}$ come:
+	\begin{align*}
+		\textcolor{orange}{P_{\alpha \ket{A} \to \beta \ket{B}}} = \frac{| \beta^* \alpha \braket{B}{A}|^2}{\alpha^* \alpha \, \beta^* \beta \braket{A}  \braket{B}} 
+	\end{align*}
+		allora sapendo che $\alpha \, \alpha^* = | \alpha |^2$ e $\beta \, \beta^* = | \beta |^2$ si può scrivere:
+	\begin{align*}
+		\textcolor{orange}{P_{\alpha \ket{A} \to \beta \ket{B}}} =  \frac{\textcolor{red}{|\beta|^2 \, |\alpha|^2} \, | \braket{B}{A}|^2}{\textcolor{red}{|\beta|^2 \, |\alpha|^2} \braket{A}  \braket{B}} = \frac{|\braket{B}{A}|^2}{\braket{A}  \braket{B}} =\textcolor{cyan}{ P_{\ket{A} \to \ket{B}} }
+	\end{align*}
+	\end{myprf}
+	
+	\item Dalla disuguaglianza di Schwartz si ha che: 
+	\begin{nb}
+	\begin{align*}
+		0 \leq P \leq 1
+	\end{align*}
+	\end{nb}
+		vediamo una dimostrazione veloce:
+	\begin{myprf}
+		Sappiamo che la disuguaglianza di Schwartz, riscritta nella notazione di Dirac è:
+	\begin{align*}
+		|\braket{A}{B}| \leq \|A\| \, \|B\|
+	\end{align*}
+		supponiamo di essere nella situazione più conveniente possibile, quella in cui abbiamo due vettori rappresentati due stati quantistici normalizzati: $\ket{\psi}$ e $\ket{\phi}$, allora ne segue che:
+	\begin{align*}
+		P_{\ket{\psi} \to \ket{\phi}} = |\braket{\phi}{\psi}|^2
+	\end{align*}	
+		allora per la disuguaglianza di Schwartz vale che:
+	\begin{align*}
+		 |\braket{\phi}{\psi}|^2 \leq \|\psi\| \, \| \phi \|
+	\end{align*} 
+		ed essendo che gli stati sono normalizzati, la loro norma è sicuramente $1$, allora:
+	\begin{align*}
+		 |\braket{\phi}{\psi}|^2 \leq 1
+	\end{align*} 
+		chiaramente il valore minimo che può assumere è invece $0$, quando i due stati sono ortogonali, dunque:
+	\begin{align*}
+		0 \leq |\braket{\phi}{\psi}|^2 \leq 1
+	\end{align*} 
+		ne segue che:
+	\begin{align*}
+		0 \leq P \leq 1
+	\end{align*}
+		si tratta di una condizione importante che il postulato verifica. Infatti ci sta dicendo che la probabilità $P$ è compresa tra lo $0\%$ ed $100\%$, il che è coerente con il significato intrinseco di probabilità.
+	\end{myprf}
+\end{enumerate}
+
+	Si noti che $P = 0$ se e solo se $\ket{A}$ e $\ket{B}$ sono ortogonali: ne segue che non si hanno transizioni fra stati ortogonali (rispetto alla nozione di ortogonalità definita dal prodotto scalare).
+	\\
+	\\
+	Invece notiamo che $P = 1$ se e solo se $\ket{A}$ e $\ket{B}$ rappresentano uno stesso stato.
+	\\
+	\\
+	Infine notiamo che in genere conviene scegliere i vettori \textit{normalizzati} a $1$ per rappresentare gli stati:
+	
+\begin{align*}
+	\braket{A} = \braket{B} = 1
+\end{align*}
+
+	in questo modo l'espressione per la probabilità di transizione si riduce a:
+	
+\begin{align*}
+	P_{\ket{A} \to \ket{B}} = |\braket{B}{A}|^2
+\end{align*}
+
+	Inoltre la probabilità di transizione fra due stati $\ket{A}$ e $\ket{B}$ è, dal punto di vista operativo, sempre ben definita, in quanto abbiamo postulato che per ogni stato $\ket{B}$ esista sempre almeno una osservabile che ha suddetto stato come autostato corrispondente ad un autovalore non degenere.
+	\\
+	\\
+	In ogni caso, anche se $\lambda_i$ fosse un autovalore degenere (associato a più autostati) di $O$, la probabilità $P_i$ che una misura di $O$ su uno stato $\ket{A}$ dia $\lambda_i$ come risultato è data da:
+\begin{align*}
+	|\braket{A}{\lambda_i'}|^2
+\end{align*}
+	supponendo i vettori normalizzati. Dove $\ket{\lambda_i'}$ è quell'autostato di $O$ che, grazie al postulato di Von Neumann, è univocamente determinato da $\ket{A}$ e dall'autovalore $\lambda_i$. Si indica con $\ket{\lambda_i'}$, ha autovalore $\lambda_i$ ma è un autostato diverso da $\ket{\lambda_i}$, per questo la differenza di notazione.
+	\\
+	\\
+	Perché questo è vero?
+	\\
+	\\
+	\textit{Se $\lambda_i$ è non degenere la vita è facile}, infatti c'è solo uno stato quantistico (autovettore) nell'universo associato a questo specifico valore. Quando misuriamo su $\ket{A}$, istantaneamente allora collassa in uno stato specifico. \textit{Se invece $\lambda_i$ è degenere} allora questo significa che c'è un sottospazio di diversi autovettori in cui tutti condividono lo stesso identico autovalore $\lambda_i$, quindi se facciamo una misura su $\ket{A}$ in questo caso ed otteniamo il valore $\lambda_i$, in che autostato è collassato? \textbf{Non è davvero random!} È qui che entra in gioco il \textit{postulato di Von Neumann} (o Postulato Proiettivo), che ci dice come la funzione d'onda collassa. Il postulato ci dice che quando misuriamo un autovalore degenere lo stato iniziale $\ket{A}$ non collassa semplicemente in un randomico autovettore, bensì $\ket{A}$ è proiettato nel sottospazio appartenente a $\lambda_i$. Siccome lo stato finale è la proiezione di quello iniziale allora esso è univocamente determinato da due cose:
+	
+\begin{itemize}
+	\item L'oggetto da cui siamo partiti, ossia $\ket{A}$,
+	\item il sottospazio definito dall'autovalore $\lambda_i$.
+\end{itemize}
+
+
+\subsubsection{Esempio:}
+
+	Siccome i fotoni possiedono solo due stati di polarizzazione (destrorsa o sinistrorsa), si ottiene la \textit{polarizzazione lineare} se si sovrappongono questi due stati in parti uguali. Consideriamo quindi un fotone nello stato di polarizzazione lineare:
+	
+\begin{align*}
+	\ket{e_{\theta}} = \cos\theta \ket{e_1} + \sin\theta \ket{e_2}
+\end{align*}
+
+	con $\braket{e_1} = \braket{e_2} = 1$ e con i raggi ortogonali. Se voglio allora calcolare la probabilità che per effetto di una misura, il fotone, effettui una transizione allo stato $\ket{e_1}$, devo risolvere:
+	
+\begin{align*}
+	P_{\ket{e_{\theta}} \to \ket{e_1} } = |\braket{e_1}{e_{\theta}}|^2 = \qty( \cos\theta \textcolor{orange}{\braket{e_1}} + \sin\theta \textcolor{ForestGreen}{ \braket{e_1}{e_2}} )^2 
+\end{align*}
+
+	sapendo che vale:
+	
+\begin{itemize}
+	\item $\textcolor{orange}{\braket{e_1}} = 1$
+	\item $\textcolor{ForestGreen}{ \braket{e_1}{e_2}} = 0$
+\end{itemize}
+
+	allora vale che:
+	
+\begin{nb}	
+\begin{align*}
+	P_{\ket{e_{\theta}} \to \ket{e_1} }  = \cos^2\theta
+\end{align*}
+\end{nb}
+	
+	ritroviamo così la legge classica di Malus.  Infatti se un fascio di fotoni attraversa un filtro polarizzatore orientato con un angolo $\theta$, la probabilità che un singolo fotone venga trasmesso o assorbito è regolata dalle leggi della meccanica quantistica e dalla Legge di Malus. Il fotone dunque passerà con probabilità $\cos^2\theta$.
+
+\section{Conseguenze e Postulato di Von Neumann}
+	
+	Analizziamo ora alcune conseguenze dei postulati introdotti. \textit{Dimostreremo che data un'osservabile $O$ si può sempre trovare una base ortonormale $\qty{\ket{\lambda_i} \, \equiv \, v_{\lambda_i}  }$ di autovettori di $O$}. Può inoltre capitare che si mescolino le notazioni, l'importante è tenere a mente che:
+	
+\begin{align*}
+	& \braket{w}{v} = \mean{w, v} \\
+	& \ket{\lambda_i} = v_{\lambda_i}
+\end{align*}
+	
+\subsection{Osservabili Non Degeneri}
+
+\subsubsection{Base di Autovettori}
+	
+	Sia $O$ un'osservabile \textit{non degenere}, siano $\ket{\lambda_i}$ i suoi autovettori di autovalori $\lambda_i$ che supponiamo normalizzati ad $1$. Dalla definizione di osservabile non degenere sappiamo che: un'osservabile $O$ è detta non degenere quando a ciascun autovalore $\lambda_i$ corrisponde un unico autovettore $\ket{\lambda_i}$ Questo implica che non esistono due (o più) autovettori distinti associati allo stesso autovalore.
+	\\
+	\\
+	Inoltre essendo che è non degenere vale allora che:
+
+\begin{align*}
+	P_{\ket{\lambda_i} \to \ket{\lambda_j}} = |\braket{\lambda_i}{\lambda_j}|^2 = \begin{cases}
+0 & \text{se } i \neq j \\
+1 & \text{se } i = j
+\end{cases}
+\end{align*}
+
+	questo perché di fatto, ho la probabilità del $100\%$ che avvenga la transizione se $i$ e $j$ sono lo stesso mentre dello $0\%$ nel caso in cui siano autostati diversi, questo perché, per ipotesi, $O$ è non degenere, ovvero che ad ogni autovalore corrisponde un solo autostato. Infatti ipotizziamo di immaginare la transizione da $\ket{\lambda_i}$  a $\ket{\lambda_j}$, essendo $\ket{\lambda_i}$ autostato di $O$ sappiamo per certo che c'è il $100\%$ di possibilità di ritrovare l'autovalore $\lambda_i$, sarebbe impossibile trovare $\lambda_j$ con $j$ diverso da $i$. Perciò possiamo anche riscrivere il risultato come:
+	
+\begin{align*}
+	\braket{\lambda_i}{\lambda_j} = \delta_{ij}
+\end{align*}
+
+	ne segue che, gli autovettori normalizzati di un'osservabile $O$ \textit{non degenere} costituiscono una \textbf{sistema ortonormale} di $\mathcal{H}$ (poiché quello sopra è il criterio di ortonormalità). Ma sono anche una base di $\mathcal{H}$?
+	\\
+	\\
+	Per essere anche una base deve valere che:
+
+\begin{itemize}
+	\item Ortonormalità
+	\item Completezza
+\end{itemize}
+	
+	abbiamo confermato siano ortonormali, verifichiamo ora che siano anche un sistema completo, un sistema di autovettori è completo rispetto lo spazio di Hilbert $\mathcal{H}$, se ogni vettore di $\mathcal{H}$ può essere espresso come combinazione lineare finita o come limite di combinazioni lineari di questi autovettori. Formalmente, si deve dimostrare che non ci possono essere altri vettori ortogonali all'intero insieme, perché ciò implicherebbe che la base non copre tutto lo spazio. Allora dimostriamolo per assurdo:
+
+\begin{myth}
+	Vale che l'insieme di autovettori ortonormali $\qty{\ket{\lambda_i}}$ è una base di autovettori dello spazio $\mathcal{H}$.
+\end{myth}
+
+\begin{myprf}
+	Supponiamo per assurdo che $\qty{\ket{\lambda_i}}$ non sia un sistema completo, ovvero sia che manchi un vettore, tale per cui, poi, sarà descrivibile tutto lo spazio in termini di tutto il sistema. Allora, esiste un vettore (importante! il vettore è generico non un altro autovettore) non nullo $\psi$ tale per cui vale:
+\begin{align*}
+	\braket{\lambda_i}{\psi} = 0 \qquad \forall i
+\end{align*}
+	l'ortogonalità rispetto agli autovettori dunque la supponiamo. Calcoliamo ora la probabilità di transizione:
+\begin{align*}
+	P_{\ket{\psi} \to \ket{\lambda_i}} = |\braket{\lambda_i}{\psi}|^2 \qquad \forall i
+\end{align*}
+	essendo però ortogonali vale allora che:
+\begin{align*}
+	P_{\ket{\psi} \to \ket{\lambda_i}} = 0 \qquad \forall i
+\end{align*}
+	ovvero sia che $\psi$ sarebbe uno stato che non può mai essere "rilevato" misurando l'osservabile $O$. Ma questo non è possibile perché:
+\begin{enumerate}
+	\item Sto assumendo per assurdo che esista uno stato fisico $\ket{\psi}$, che però sarebbe "invisibile" ad ogni misura possibile dell’osservabile $O$. 
+	\item Questa invisibilità fisica (probabilità zero per tutti gli esiti della misura) è impossibile per uno stato diverso dal vettore nullo, perché violerebbe la struttura probabilistica della meccanica quantistica, ovvero sia la normalizzazione della probabilità di transizione, deve valere infatti che:
+	\begin{align*}
+		\sum_i P_i = 1
+	\end{align*}
+		ed invece noi otteniamo $0$.
+\end{enumerate}
+\end{myprf}
+	
+\subsubsection{Implicazioni dall'aver trovato la base di autovettori:}
+
+	Ogni vettore $\ket{A}$ dello spazio $\mathcal{H}$ può essere sviluppato quindi in serie di vettori della base (ogni vettore dello spazio vettoriale può essere scritto come combinazione lineare dei vettori della base, ovvero gli autovettori):
+	
+\begin{align*}
+	\ket{A} = \sum_i a_i \ket{\lambda_i}
+\end{align*}
+
+	chi sono tali coefficienti $a_i$?
+	\\
+	\\
+	Per trovare i coefficienti ci basta calcolare il prodotto scalare di ambo i membri dell'equazione qui sopra con il generico vettore normalizzato della base $\ket{\lambda_i}$ e rinomino la vecchia $i$ con $j$ tanto posso farlo perché sono indici indipendenti:
+
+\begin{align*}
+	\braket{\lambda_i}{A} = \sum_j a_j \braket{\lambda_i}{\lambda_j}
+\end{align*}
+
+	utilizzando ora il fatto che:
+	
+\begin{align*}
+	\braket{\lambda_i}{\lambda_{j}} = \begin{cases}  
+	0 & \text{se \, } i  \neq j\\
+	1 & \text{se\, } i = j
+\end{cases}
+\end{align*}
+	
+	partendo da:
+
+\begin{align*}
+	\textcolor{orange}{\braket{\lambda_i}{A} }=  \sum_j a_j \braket{\lambda_i}{\lambda_j}
+\end{align*}
+	
+	ne segue che:
+
+\begin{align*}
+	\sum_j a_j \braket{\lambda_i}{\lambda_j} = a_1 \braket{\lambda_i}{\lambda_2} + \dots  + a_i \braket{\lambda_i}{\lambda_i} + \dots = \textcolor{orange}{  a_i}
+\end{align*}
+
+	poiché tutti gli altri termini come sappiamo sono nulli. Ne segue allora che possiamo definire gli $a_i$ come:
+
+\begin{mydef}
+\begin{align*}
+	a_i = \braket{\lambda_i}{A}
+\end{align*}
+\end{mydef}
+
+	e pertanto possiamo scrivere la seguente espansione:
+	
+\begin{align*}
+	\ket{A} = \sum_i a_i \ket{\lambda_i}
+\end{align*}
+
+	come:
+	
+\begin{align*}
+	\ket{A} = \sum_i \textcolor{cyan}{a_i} \ket{\lambda_i} = \sum_i \textcolor{cyan}{\braket{\lambda_i}{A}} \ket{\lambda_i}
+\end{align*}
+	
+	infatti si può scrivere che (invertendo l'ordine):
+
+\begin{nb}
+\begin{align*}
+	\ket{A} = \sum_i \ket{\lambda_i} \braket{\lambda_i}{A}
+\end{align*}
+\end{nb}
+
+	tale identità è molto importante e verrà approfondita in seguito. 
+	
+\begin{myapprf}
+
+	Inoltre se $\ket{A}$ non è normalizzato possiamo già notare una cosa importante, calcolando il quadrato della norma del vettore $\ket{A}$, si ottiene:
+	
+\begin{align*}
+	\braket{A} = \sum_{ij} a^*_i a_j \braket{\lambda_i}{\lambda_j}
+\end{align*}
+
+	ed essendo che sappiamo che $\sum_{ij} \braket{\lambda_i}{\lambda_j} = 1$, allora vale che:
+	
+\begin{align*}
+	\braket{A} = \sum_{ij} a^*_i a_j \braket{\lambda_i}{\lambda_j} = \sum_i |a_i|^2
+\end{align*}
+
+	la relazione: 
+
+\begin{align*}
+	\ket{A} = \sum_i \ket{\lambda_i} \braket{\lambda_i}{A}
+\end{align*}
+
+	definisce un vettore su $\mathcal{H}$ \textbf{per somme infinite} se e solo se, in generale:
+
+\begin{align*}
+	\sum_i |a_i|^2 < \infty
+\end{align*}
+
+\end{myapprf}
+	
+	
+	Per ora ci limitiamo a notare una cosa importante che ha a che fare con la probabilità di transizione: supponiamo infatti di avere il vettore $\ket{A}$ normalizzato e $\ket{\lambda_i}$ (autovettore) pure, ovvero sia che:
+\begin{align*}
+	\braket{A} = 1 \quad ; \quad \braket{\lambda_i} = 1
+\end{align*}
+	allora notiamo che il fattore $a_i = \braket{\lambda_i}{A}$ al quadrato è esso la probabilità di transizione, infatti:
+\begin{align*}
+	|a_i|^2 = |\braket{\lambda_i}{A}|^2 = P_i
+\end{align*}
+
+	In generale due stati rappresentati dai vettori normalizzati:
+	
+\begin{align*}
+	\ket{A} = \sum_j a_j \ket{\lambda_j} \quad ; \quad \ket{B} = \sum_{j} a_j e^{ i \phi_j}\ket{\lambda_j}
+\end{align*}
+	
+	\textit{sono stati fisici diversi} poiché i fattori $e^{i\phi_j}$ possono variare con $j$; cioè, non c'è una sola fase globale comune a tutte le componenti. Queste fasi che variano da termine a termine sono dette fasi relative e hanno un ruolo fisico significativo, al contrario di una costante come avevamo visto per il principio di sovrapposizione.
+	
+	Anche se sono stati fisici diversi vale che si comportano allo stesso modo per quanto riguarda le misure dell'osservabile $O$ e questo avviene perché vale:
+	
+\begin{align*}
+	P_{\ket{A} \to \ket{\lambda_j}} = P_{\ket{B} \to \ket{\lambda_j}}
+\end{align*}
+
+	infatti dalla definizione dei coefficienti, che sono i medesimi per entrambi i vettori, vale:
+	
+\begin{align*}
+	|a_j|^2 = |\braket{\lambda_j}{A}|^2  = |\braket{\lambda_j}{B}|^2 = P_j
+\end{align*}
+
+	Proprio perché sono stati diversi, esisterà allora certamente qualche altra osservabile $O'$ rispetto a misure della quale $\ket{A}$ e $\ket{B}$ si comportano in maniera diversa.  Due stati possono avere gli stessi moduli dei coefficienti (e quindi le stesse probabilità di misurazione per $O$), ma differire per le fasi, il che li rende fisicamente distinguibili quando si considerano altre osservabili. Detta in un altro modo: nonostante le probabilità di $O$ siano le stesse, altre osservabili $O'$, che non commutano con $O$, possono rilevare le differenze nelle fasi relative. Queste differenze possono manifestarsi, ad esempio, in fenomeni di interferenza, dove le fasi relative determinano il pattern osservabile.
+
+\subsection{Osservabili Degeneri}
+
+	Definiamo l'\textbf{autospazio} ed il \textbf{grado di degenerazione}:
+
+\begin{mydef}
+	Sia $O$ un osservabile \textit{degenere} e sia $\mathcal{H}_{\lambda_i}$, lo spazio degli autovettori di $O$ con autovalore $\lambda_i$.
+	\\
+	\\
+	Ne segue che $\mathcal{H}_{\lambda_i}$ è l'\textbf{autospazio} associato a $\lambda_i$ e la sua dimensione viene detta \textbf{grado di degenerazione} dell'autovalore $\lambda_i$.
+\end{mydef}
+
+	Anche se, partendo da un insieme generico di autovettori, questi potrebbero non essere ortonormali, il \textbf{teorema spettrale complesso} (o teorema di decomposizione) garantisce che è sempre possibile scegliere una base ortonormale completa per lo spazio di Hilbert $\mathcal{H}$ (poiché è hermitiano) composta da autovettori dell'osservabile. In altre parole, possiamo sempre "diagonalizzare" l'operatore in una base in cui: gli autovettori corrispondenti ad autovalori differenti sono ortogonali.
+	
+\begin{myapprf}
+	Si ricorda che in algebra lineare una \textit{matrice hermitiana} o matrice autoaggiunta è una matrice a valori complessi che coincide con la propria trasposta coniugata (o matrice aggiunta). Inoltre allora vale che una matrice hermitiana con elementi nel campo dei numeri reali è una matrice simmetrica. $\mathcal{H}$ è hermitiano perché il prodotto scalare definito su di esso è per costruzione un prodotto scalare hermitiano per preservare tutte le caratteristiche strutturali e funzionali che rendono tali spazi così importanti in matematica e fisica.
+\end{myapprf}
+	
+	Vale inoltre il seguente, fondamentale, teorema:
+
+\begin{myth}
+	Quando un autovalore è degenere significa che esiste un sottospazio (di dimensione maggiore di 1) formato da autovettori che hanno lo stesso autovalore. In questo sottospazio, ogni combinazione lineare di questi autovettori, è anch'essa un autovettore corrispondente allo stesso autovalore.
+\end{myth}
+
+	Il teorema ci sta dicendo che: se $\lambda_1$ è un autovalore degenere, allora presi $\ket{\lambda_1'}$ e $\ket{\lambda_1''}$ rappresentanti due autostati di $O$ corrispondenti allo stesso autovalore $\ket{\lambda_1}$, ogni vettore del tipo:
+\begin{align*}
+	\alpha \ket{\lambda_1'} + \beta \ket{\lambda_1''}
+\end{align*}
+	rappresenta a sua volta un autostato di $O$ corrispondente all'autovalore $\lambda_1$. Vediamo la dimostrazione ora:
+
+\begin{myprf}	
+	Pongo: $\ket{A} = \alpha \ket{\lambda_1'} + \beta \ket{\lambda_1''}$. Allora, per dimostrare che $\ket{A}$ è ancora autostato di $O$ corrispondente all'autovalore $\lambda_1$, occorre dimostrare che una misura di $O$ su $\ket{A}$ da come risultato $\lambda_1$. Dire questo è come dire che mai deve venire come risultato $\lambda_i$ con $i \geq 2$. Questo pensiero è un po' articolato ma ci porterà velocemente alla soluzione. In realtà conoscendo la notazione di operatore, che vediamo poco più avanti, dimostrare che la misura di $O$ su $\ket{A}$ definito come prima è immediato tramite $\hat{O} \ket{A} = \lambda_1 \ket{A}$. \textit{Vediamo anche la dimostrazione di cui stavamo parlando senza sapere questa cosa:}
+	\\
+	\\
+	Ragiono dunque per assurdo e assumo che, facendo una misura su $O$ nello stato $\ket{A}$ trovo $\lambda_i$ con $i \geq 2$. Allora, dopo la misura, il sistema sarà in un autostato di $O$ corrispondente all'autovalore $\lambda_i$, ovvero: $\ket{\lambda_i}$.
+	\\
+	\\
+	Analizziamo allora la probabilità di transizione $\ket{A} \to \ket{\lambda_i}$, sarà:
+\begin{align*}
+	P_i = |\braket{A}{\lambda_i}|^2
+\end{align*}
+	supponendo i vettori normalizzati. Ma vale che:
+\begin{align*}
+	\bra{A} = \alpha^* \bra{\lambda_1'} + \beta^* \bra{\lambda_1''}
+\end{align*}
+	e allora:
+\begin{align*}
+	\braket{A}{\lambda_i} = \alpha^* \braket{\lambda_1'}{\lambda_i} + \beta^* \braket{\lambda_1''}{\lambda_i}
+\end{align*}
+	ma vale che:
+\begin{itemize}
+	\item	$\braket{\lambda_1'}{\lambda_i} = 0$
+	\item $\braket{\lambda_1''}{\lambda_i} = 0$
+\end{itemize}
+	a causa dell'ortogonalità degli autovettori corrispondenti ad autovalori diversi. Allora:
+\begin{align*}
+	\braket{A}{\lambda_i} = \alpha^* \braket{\lambda_1'}{\lambda_i} + \beta^* \braket{\lambda_1''}{\lambda_i} = 0
+\end{align*}
+	e quindi:
+\begin{align*}
+	P_i = 0
+\end{align*}
+	ho allora dimostrato che la probabilità di effettuare una transizione da uno stato $\ket{A}$ ad uno stato $\ket{\lambda_i}$ con $i \geq 2$ è impossibile, allora essendo che la probabilità è normalizzata, deve essere che:
+\begin{align*}
+	P_{\ket{A} \to \ket{\lambda_1}} = 1
+\end{align*}
+	e allora, a differenza dell'ipotesi, $\ket{A}$ rappresenta a sua volta un autostato di $O$ corrispondente all'autovalore $\lambda_1$.
+\end{myprf}
+
+	Questa libertà implica che:
+\begin{itemize}
+	\item  All'interno del sottospazio degenerato, possiamo scegliere tra molte possibili basi.
+	\item Tuttavia, possiamo sempre scegliere una base ortonormale all'interno di quel sottospazio (ad esempio, tramite il procedimento di Gram–Schmidt).
+\end{itemize}
+	
+	In sintesi, anche se per un osservabile degenere esistono molteplici autovettori per lo stesso autovalore, è sempre possibile selezionare una base ortonormale dell'intero spazio $\mathcal{H}$ in cui:
+\begin{itemize}
+	\item Gli autovettori associati a autovalori diversi sono ortogonali.
+	\item All'interno di ciascun sottospazio degenerato, ogni combinazione lineare (con coefficienti complessi) di autovettori ortonormali è ancora un autovettore per lo stesso autovalore.
+\end{itemize}
+	
+\subsection{Generalizzazione}
+	
+	In questa sezione cerchiamo di riassumere quanto detto prima generalizzandolo. In entrambi i casi, degenere e non degenere, un generico vettore $v \in \mathcal{H}$, può essere decomposto come:
+
+\begin{nb}
+\begin{align*}
+	v = \sum_i v_{\lambda_i}
+\end{align*}
+\end{nb}
+	
+	dove dunque $v_{\lambda_i} \in \mathcal{H}_{\lambda_i}$ sono le proiezioni ortogonali di $v$ su $\mathcal{H}_{\lambda_i}$.
+	\\
+	\\
+	Prendiamo ora il generico caso, ovvero sia quello \textit{degenere}, allora vale che:
+\begin{itemize}
+	\item L'autospazio $\mathcal{H}_{v_{\lambda_i}}$ ha dimensione maggiore di $1$
+	\item Esistono più autovettori ortonormali che condividono lo stesso autovalore.
+\end{itemize}
+	
+	 Dunque $v_{\lambda_i}$ è combinazione lineare di un insieme ortonormale di autovettori con lo stesso autovalore $\lambda_{i}$, ovvero sia:
+
+\begin{nb}
+\begin{align*}
+	v_{\lambda_i} = \sum_{\textcolor{red}{\alpha}} c_{i\textcolor{red}{\alpha}} v^{\qty(\textcolor{red}{\alpha})}_{\lambda_i} \quad ; \quad \mean{v^{\qty(\textcolor{red}{\alpha})}_{\lambda_i},v^{\qty(\textcolor{blue}{\beta})}_{\lambda_i} } = \delta_{\textcolor{red}{\alpha} \textcolor{blue}{\beta}}
+\end{align*}
+\end{nb}
+	
+	dove in particolare il simbolo $\textcolor{red}{\alpha}$ (come $\textcolor{blue}{\beta}$) è un indice che serve a distinguere gli autovettori degeneri, cioè diversi autovettori che corrispondono allo stesso autovalore. Supponiamo infatti di avere un autovalore $\lambda_i$ che è degenerato, ovvero corrisponde non a un unico autovettore, ma a un insieme di autovettori ortonormali. Chiamiamo questi autovettori allora:
+	
+\begin{align*}
+	v_{\lambda_i}^{\qty(\alpha)} = v_{\lambda_i}^{\qty(1)}, v_{\lambda_i}^{\qty(2)}, \ldots
+\end{align*}
+
+	Inoltre dalla teoria precedente sappiamo che i coefficienti equivalgono a:
+	
+\begin{align*}
+	c_{i\alpha} = \mean{v_{\lambda_i}^{\qty(\alpha)}, v_{\lambda_i}}
+\end{align*}
+
+	che è riscrivibile come:
+	
+\begin{align*}
+	c_{i\alpha} = \mean{v_{\lambda_i}^{\qty(\alpha)}, v}
+\end{align*}
+
+	perché $\mean{v_{\lambda_i}^{\qty(\alpha)}, v}$, con $v = \sum_j v_{\lambda_j}$ è equivalente a:
+	
+\begin{align*}
+	\mean{v_{\lambda_i}^{\qty(\alpha)}, \textcolor{red}{v}} = \mean{v_{\lambda_i}^{\qty(\alpha)}, \textcolor{red}{\sum_j v_{\lambda_j}}}
+= \sum_j \mean{v_{\lambda_i}^{\qty(\alpha)}, v_{\lambda_j}} 
+\end{align*}
+
+	ma siccome $\mean{v_{\lambda_i}^{\qty(\alpha)}, v_{\lambda_j}}  = c_{i\alpha}$ se e solo se $ i = j$, allora:
+	
+\begin{align*}
+	\mean{v_{\lambda_i}^{\qty(\alpha)}, v}= \mean{v_{\lambda_i}^{\qty(\alpha)}, v_{\lambda_i}} = c_{i \alpha} 
+\end{align*} 
+
+	È anche importante notare che, sebbene i $v_{\lambda_i}$ siano ortogonali tra loro, ovvero che:
+	
+\begin{align*}
+	\mean{v_{\lambda_i}, v_{\lambda_j}} = 0 \qquad \text{  per :  } \, i \neq j
+\end{align*}
+	
+	non vale lo stesso per:
+	
+\begin{align*}
+	\mean{v_{\lambda_i}, v_{\lambda_i}} = \sum_{\alpha} |c_{i\alpha}|^2 \mean{v_{\lambda_i}^{\qty(\alpha)}, v_{\lambda_i}^{\qty(\alpha)}} = \sum_{\alpha} |c_{i\alpha}|^2
+\end{align*}
+
+	poiché vale che: $\mean{v_{\lambda_i}^{\qty(\alpha)}, v_{\lambda_i}^{\qty(\alpha)}} = 1$. Se scelgo, inoltre, $|v| = 1$, questa è esattamente la \textbf{probabilità che una misura di $O$ su $v$ dia $\lambda_i$}:
+	
+\begin{align*}
+	P_{\lambda_i}\qty(v) = \sum_{\alpha} P_{v\to v_{\lambda_i}^{\qty(\alpha)}} = \sum_{\alpha} \abs{ \mean{  v_{\lambda_i}^{\qty(\alpha)} , v }}^2 = \sum_{\alpha} |c_{i\alpha}|^2
+\end{align*}
+
+	poiché sappiamo che il prodotto scalare: $ \mean{  v_{\lambda_i}^{\qty(\alpha)} , v } = c_{i\alpha}$ come da definizione.
+	\\
+	\\
+	Dunque possiamo ridefinire il \textbf{postulato di Von Neumann} detto in precedenza, per il caso più generico, come segue: 
+
+\begin{myprop}
+\subsubsection{Postulato di Von Neumann per autovalori degeneri:}
+
+	Se la misura di $O$ su $v$ da $\lambda_i$, il sistema immediatamente dopo la misura è nello stato $v_{\lambda_i}$. Infatti:
+\begin{align*}
+	P_{v\to v_{\lambda_i}} = \frac{|\mean{v_{\lambda_i}, v}|^2}{\mean{v_{\lambda_i},v_{\lambda_i} } \mean{v, v} } = \frac{ |\mean{v_{\lambda_i}, v_{\lambda_i}}|^2  }{\mean{v_{\lambda_i},v_{\lambda_i} }} = \mean{v_{\lambda_i}, v_{\lambda_i}} = P_{\lambda_i}\qty(v) 
+\end{align*} 
+	ricordando che $|v| = 1$ e allora: $\mean{v, v} = 1$ e che $\mean{v_{\lambda_i}, v} = \mean{v_{\lambda_i}, v_{\lambda_i}} = c_{i}$
+\end{myprop}
+
+	dunque abbiamo che vale che:
+	
+\begin{itemize}
+	\item \textbf{Caso non degenere:}
+	
+		Ogni autovalore corrisponde ad un singolo autovettore, e la probabilità è data dal modulo quadro della proiezione su quell'autovettore.
+	
+	\item \textbf{Caso degenere:}
+	
+		Ogni autovalore corrisponde a più autovettori. La probabilità di osservare quel valore è la somma delle probabilità dei singoli autovettori che compongono quel sottospazio. Subito dopo la misura, il sistema si trova proiettato su tale sottospazio.
+\end{itemize}
+			
+\section{Operatori Associati alle Variabili}
+
+	Nel processo di formalizzazione dei concetti fisici che stiamo portando avanti, abbiamo rappresentato gli stati di un sistema mediante i vettori di uno spazio di Hilbert; resta ora da capire in quale modo vengono formalizzate (ovvero da quali entità matematiche vengono rappresentate) le \textit{osservabili}. Sappiamo che le osservabili, sono caratterizzate dall'esistenza di quegli stati particolari che abbiamo chiamato: \textit{autostati} e dagli autovalori. Si noti ora che i termini "autovalore" o "autostato" non son stati utilizzati a caso bensì costituivano un'anticipazione di quello che sarebbe stato il risultato del processo di formalizzazione, ne segue infatti che:
+
+\begin{mypost}
+	È possibile, in maniera del tutto naturale, associare ad ogni osservabile $O$ un \textbf{operatore lineare} $\hat{O}$ su $\mathcal{H}$ tale che:
+\begin{align*}
+	\hat{O} \, : \, \mathcal{H} \to \mathcal{H}
+\end{align*}
+\end{mypost}
+
+	dove $\hat{O}$ è un'applicazione lineare appunto, definita da $\mathcal{H}$ a $\mathcal{H}$ e che possiamo formalizzare in due possibili modi:
+	
+\begin{mydef}
+	Scelta comunque una base ortonormale di autovettori $\ket{\lambda_i}$ dell'osservabile $O$, si definisce $\hat{O}$ sui vettori della base scelta 
+\begin{enumerate}
+	\item come:
+	\begin{align*}
+		\hat{O}v_{\lambda_i} \, \equiv \, \lambda_i v_{\lambda_i}
+	\end{align*}
+	
+	\item oppure come:
+	\begin{align*}
+		\hat{O}\ket{\lambda_i} \, \equiv \, \lambda_i \ket{\lambda_i}
+	\end{align*}
+	
+\end{enumerate}
+\end{mydef}
+	
+	e, tanto per cominciare, si estende la definizione per linearità a tutte le combinazioni lineari dei vettori della base, dunque, se:
+
+\begin{align*}
+	 &\ket{A} = \sum_i a_i \ket{\lambda_i}  \\
+	 &v = \sum_i v_{\lambda_i}
+\end{align*}
+
+	Dove $\ket{A}$ è la notazione che si introduce quando si discutono le osservabili \textbf{non} degeneri. Invece quella per $v$ è la formula generale che si applica a tutti i casi, compreso quello \textbf{degenere}, con $v_{\lambda_i}$ che definiamo come intera proiezione ortogonale di un generico stato $v$ sul sottospazio $\mathcal{H}_{\lambda_i}$.
+	
+\begin{myapprf}
+	Vediamo qui un attimo meglio come mai una scrittura è migliore dell'altra per la descrizione di osservabili degeneri o non degeneri.
+\begin{itemize}
+	\item $\ket{A} = \sum_i a_i \ket{\lambda_i} \, \Rightarrow \, $ è evidente in questo caso che per una osservabile degenere non vada bene questa scrittura, poiché matematicamente stiamo descrivendo un rapporto uno ad uno tra l'autovalore $\lambda_i$ e l'autovettore $\ket{\lambda_i}$. Come sappiamo una osservabile è degenere quando uno o più autovettori \textit{diversi} condividono lo stesso autovalore, in questo caso è evidente che gli autovettori che condividono "lo stesso autovalore" sono necessariamente l'autovettore stesso e basta.
+	
+	\item $v = \sum_i v_{\lambda_i} \, \Rightarrow \, $ questa scrittura invece è la somma delle proiezioni di $v$ nel sottospazio relativo a $\lambda_I$, $v_{\lambda_i}$. Dove $v_{\lambda_i} = \sum_{\alpha} c_{i\alpha} v_{\lambda}^{\alpha}$. Che funziona nel caso degenere poiché una singola misura che da come risultato $\lambda_i$ corrisponde ad un'intera sub-regione multidimensionale dello spazio di Hilbert chiamato "autospazio" $\mathcal{H}_{\lambda_i}$. Qui ci sono diversi e distinti basi ortonormali di vettori e tutte condividono lo stesso autovalore. Siccome quindi ci sono multiple basi di autovettori per lo stesso $\lambda_i$ non possiamo rappresentare gli autovettori con il solo indice "$i$". Abbiamo bisogno di un secondo indice ($\alpha$) per distinguere autovettori diversi dentro lo stesso autospazio. Il modo giusto di scrivere la componente dello stato associato a $\lambda_i$ è dunque una combinazione lineare di queste basi di vettori, come scritto sopra.
+\end{itemize}
+\end{myapprf}	
+	
+	Allora vale che le due scritte diventano:
+
+\begin{enumerate}
+
+	\item la prima:
+	\begin{align*}
+		\hat{O}v = \sum_i \textcolor{blue}{\hat{O} v_{\lambda_i}} = \sum_i \textcolor{blue}{\lambda_i v_{\lambda_i}} = \sum_i \lambda_i \sum_{\alpha} \textcolor{red}{c_{i\alpha}} v_{\lambda_i}^{\qty(\alpha)} = \sum_i \lambda_i \sum_{\alpha} v_{\lambda_i}^{\qty(\alpha)} \textcolor{red}{\mean{ v_{\lambda_i}^{\qty(\alpha)}, v  }}
+	\end{align*}
+
+	\item e la seconda:
+	\begin{align*}
+		\hat{O}\ket{A} = \sum_i a_i \textcolor{blue}{\hat{O} \ket{\lambda_i}} = \sum_i a_i \textcolor{blue}{\lambda_i \ket{\lambda_i}}
+	\end{align*}
+		dove $a_i$ sono i coefficienti di una combinazione lineare.
+	
+\end{enumerate}
+
+\begin{myapprf}
+
+	Ci sono diversi "problemi tecnici" (domain-problems) legati alla convergenza delle successioni che abbiamo presentato come definizioni (alcuni li abbiamo affrontati anche precedentemente legato alle successioni di termini infiniti). Però, pur essendo problemi importanti matematicamente, sono marginali dal punto di vista fisico. Anzi, in linea di principio, si dovrebbe affermare, che dal punto di vista fisico:
+	\\
+	\\
+	\textit{Tutte le osservabili sono rappresentate da operatori limitati ($ |\lambda_i| < M \, \,\forall i $) in quanto nessuno strumento fornisce risultati "grandi a piacere".} 
+	\\
+	\\
+	La scala di ogni strumento è sempre limitata, inferiormente e superiormente. L'unico problema per cui in pratica non possiamo dimenticarci completamente dei domain-problems sta nel fatto che quasi tutti gli operatori associati alle osservabili $f\qty(q, p)$ presenteranno uno \textit{spettro non limitato}: in risposta si può dire che tali operatori non rappresentano fedelmente le osservabili fisiche, ovvero gli strumenti di misura, ma costituiscono una schematizzazione matematica delle medesime. Il problema dunque rimane confinato nei termini matematici senza avere particolari effetti sulla fisica.
+				
+\end{myapprf}
+
+\subsection{Proprietà dell'Operatore Lineare}
+
+	L'operatore lineare ha le seguenti proprietà:
+	
+\begin{enumerate}[label=\arabic*)]
+	
+	\item Se $\hat{O}$ è limitato, allora è un operatore \textbf{autoaggiunto}, ovvero sia:
+	\begin{align*}
+		\hat{O} = \hat{O}^{\dagger}
+	\end{align*}
+		Si definisce l'autoaggiunto di $\hat{O}$ mediante la seguente equazione:
+	\begin{align*}
+		\mel{B}{\hat{O}^{\dagger}}{A} \, \equiv \,  \mel{A}{\hat{O}}{B}^* \quad \forall \ket{A}, \ket{B} \in \mathcal{H}
+	\end{align*}
+		In generale \textit{non} vale che tutti gli operatori sono autoaggiunti, se infatti mancasse la limitatezza si può al più dire che $\hat{O}$ è \textbf{hermitiano} (hermitiano ed autoaggiunto coincidono se $\hat{O}$ è limitato), ovvero sia che:
+	\begin{align*}
+		\mel{B}{\hat{O}}{A} = \mel{A}{\hat{O}}{B}^* \quad \forall \ket{A}, \ket{B} \in \mathcal{H}
+	\end{align*}
+	
+	\begin{myapprf}
+		In termini di matrici, l'operazione di \textbf{dagger} ($\dagger$) equivale a fare la \textit{trasposta coniugata} della matrice che rappresenta $\hat{O}$, ovvero:
+	\begin{align*}
+		(\hat{O})_{ij}^{\dagger} = (\hat{O})_{ji}^*
+	\end{align*}
+	\end{myapprf}
+	
+	\item Abbiamo sempre usato la terminologia $\ket{\lambda_i}$: autovettori di $\lambda_i$: autovalori. Questa terminologia ha un significato matematico ben preciso: il nostro non è stato un abuso di termini, ma effettivamente tutti gli autovalori e gli autovettori (in senso matematico) di $\hat{O}$ sono gli autovalori e autovettori (in senso fisico) di $O$ e viceversa.
+	
+	Dato infatti un operatore lineare $\hat{O}$, chiameremo i vettori tali che:
+	\begin{align*}
+		\hat{O}v = \lambda v \quad \text{per qualche } \lambda \in \mathbb{R}
+	\end{align*}
+		autovettori di qualche operatore lineare di autovalore $\lambda$.
+	\\
+	\\
+		Allora ad ogni osservabile $O$ corrisponde un operatore autoaggiunto $\hat{O}$ e vale che: \textit{gli autovalori e gli autovettori di $\hat{O}$ sono tutti e soli gli autovalori e autovettori di $O$}.
+	\\
+	\\
+		\textbf{Siamo dunque autorizzati ad identificare l'osservabile con l'operatore e viceversa}. 
+	\\
+	\\
+		In generale vale che:
+	\begin{itemize}
+		\item Ogni operatore autoaggiunto con spettro puramente discreto è associato ad un osservabile (spazio di dimensione finita), vale ulteriormente per quegli operatori con spettro continuo (infinito) (come l'energia di ionizzazione) che possono essere considerati "limiti", in senso da specificarsi, di operatori con spettro discreto.
+		\item Comunque non tutti gli operatori autoaggiunti su spazi di dimensioni infinita sono associati ad osservabili.
+	\end{itemize}
+\end{enumerate}
+	
+\section{Digressione sulla Notazione di Dirac}
+
+	La notazione di Dirac, che già abbiamo assaggiato nelle pagine precedenti, nacque come uno strumento di comodità per i fisici. Le differenze principali tra la notazione di Dirac e quella matematica classica derivano da due fatti:
+	
+\begin{enumerate}[label=\arabic*)]
+	\item I matematici rappresentano i vettori con le lettere dell'alfabeto, mentre i fisici usano lettere e simboli dentro il \textit{ket:} $\ket{\cdots}$
+	\item C'è una diversa notazione per il prodotto scalare: il prodotto scalare tra $u$ e $v$ nelle diverse notazioni è:
+	\begin{align*}
+		\mean{u, v} = \qty(u, v) \,\Leftrightarrow \, \braket{v}{u}
+	\end{align*}
+\end{enumerate}
+
+	per Dirac il \textit{bra} $\bra{v}$ è un elemento di un altro spazio vettoriale, chiamato lo spazio \textbf{duale} di $\mathcal{H}$, ovvero sia lo spazio dei funzionali lineari e continui su $\mathcal{H}$. Ciò è lecito grazie al seguente teorema, il \textbf{teorema di Riesz}:
+
+\begin{myth}
+	Il teorema di Riesz dice che il duale di $\mathcal{H}$ è isomorfo ad $\mathcal{H}$ stesso.
+\end{myth}
+
+	Vediamo ora le principali differenze notazionali che ne seguono: sia ora $\hat{O}$ un operatore lineare, non necessariamente autoaggiunto. Il vettore che risulta dall'applicazione dell'operatore $\hat{O}$ sul vettore $\ket{u}$ è $\hat{O}u$ nella notazione matematica mentre è $\hat{O}\ket{u}$ nella notazione di Dirac. Dunque, ne segue che, le due seguenti operazioni hanno lo stesso identico significato di \textbf{prodotto scalare} tra il vettore $\ket{v}$ ed il nuove vettore che si ottiene applicando $\hat{O}$ a $\ket{u}$, in due notazioni diverse:
+	
+\begin{align*}
+	\mel{v}{\hat{O}}{u} \,\, \Leftrightarrow \,\, \mean{v, \hat{O}u}
+\end{align*}
+
+	Precedentemente invece abbiamo visto l'\textbf{aggiunto} $\hat{O}^{\dagger}$ di un operatore $\hat{O}$ che nelle due notazioni è definito per mezzo della seguente equazione:
+	
+\begin{align*}
+	\mean{v, \hat{O}^{\dagger}w} = \mean{w, \hat{O}v}^*
+\end{align*}
+
+	ossia in termini della notazione di Dirac, come abbiamo già visto:
+	
+\begin{align*}
+	\mel{w}{\hat{O}^{\dagger}}{v} = \mel{v}{\hat{O}}{w}^*
+\end{align*}
+
+	dunque ne segue che, da quest'ultima equazione possiamo tirare fuori il fatto che il "bra" che corrisponde al "ket" $\hat{O}\ket{w}$ è: $\bra{w}\hat{O}^{\dagger}$. E se vale che:
+
+\begin{nb}
+\begin{align*}
+	\hat{O}\ket{w} = \ket{v} \,\,\, \text{allora} \, \Rightarrow \, \bra{w}\hat{O}^{\dagger}= \bra{v}
+\end{align*}
+	se inoltre è autoaggiunto l'operatore allora varrà che:
+\begin{align*}
+	\hat{O}\ket{w} = \ket{v} \,\,\, \text{allora} \, \Rightarrow \, \bra{w}\hat{O}= \bra{v}
+\end{align*}
+\end{nb}
+
+	possiamo chiamare:
+	
+\begin{itemize}
+	\item $\ket{\lambda_i} \, \Rightarrow \, $ "autoket" di $\hat{O} = \hat{O}^{\dagger} $ corrispondente all'autovalore $\lambda_i$ tale che:
+	\begin{align*}
+		\ket{\lambda_i} \lambda_i = \lambda_i \ket{\lambda_i}
+	\end{align*}
+	\item $\bra{\lambda_i} \, \Rightarrow \, $ "autobra" di $\hat{O} = \hat{O}^{\dagger} $ corrispondente sempre all'autovalore $\lambda_i$ tale che vale:
+	\begin{align*}
+		\bra{\lambda_i} \lambda_i = \lambda_i \bra{\lambda_i}
+	\end{align*}
+\end{itemize}
+	
+	Si noti che le operazioni valgono ma solo perché $\lambda_i$ è da considerarsi uno scalare, quindi la loro moltiplicazione con dei vettori commuta, non vale però in generale per: $\braket{\lambda_i}{\lambda_j} \neq \ketbra{\lambda_i}{\lambda_j}$. Dove il primo è uno scalare mentre il secondo in generale è una matrice. 
+	
+\subsection{Proprietà della Coniugazione Hermitiana}
+
+	La \textit{coniugazione hermitiana}, altro nome per identificare la "dagger operation" (o trasposta coniugata):
+	
+\begin{align*}
+	\hat{O} \to \hat{O}^{\dagger} 
+\end{align*}
+
+	ha le seguenti proprietà:
+	
+\begin{enumerate}[label=\arabic*)]
+	\item \textbf{Doppia hermitianità:}
+	\begin{align*}
+		(\hat{O}^{\dagger})^\dagger = \hat{O}
+	\end{align*}	
+	
+	\item \textbf{Moltiplicazione per uno scalare:}
+	\begin{align*}
+		(\alpha \hat{O})^{\dagger} = \alpha^* \hat{O}^{\dagger}
+	\end{align*}
+	
+	\item \textbf{Somma:}
+	\begin{align*}
+		\qty(\hat{O}_1 + \hat{O}_2)^{\dagger} = \hat{O}_1^{\dagger} + \hat{O}_2^{\dagger}
+	\end{align*}
+	
+	\item \textbf{Prodotto:}
+	\begin{align*}
+		\qty(\hat{O}_1 \hat{O}_2 )^{\dagger} = \hat{O}_2^{\dagger} \hat{O}_1^{\dagger}
+	\end{align*}
+
+\end{enumerate}
+
+	La notazione di Dirac in generale non è molto ben vista dai matematici mentre per i fisici è molto comoda. Infatti, per esempio, per fare il prodotto scalare di $\ket{u}$ con $\ket{v}$ bisogna incollare il \textit{bra} corrispettivo a $v$ al \textit{ket} di $u$. Inoltre seguono diverse semplificazioni che qui elenchiamo:
+
+\begin{itemize}
+	\item Il coniugato di $\alpha$ è $\alpha^*$,
+	\item Il coniugato di un operatore $\hat{O}$ è: $\hat{O}^{\dagger}$ (la ragione per cui non basta applicare solo il complesso coniugato a ciascun elemento della matrice, ma occorre anche trasporla, deriva dalla definizione stessa di operatore aggiunto. Questa relazione garantisce che il prodotto scalare rimanga coerente sotto l'operazione di coniugazione.),
+	\item Il coniugato di un bra o di un ket è il corrispondente ket o bra. 
+\end{itemize}
+
+	 Allora, per esempio, notazione di Dirac permette di scrivere in modo automatico un'espressione del tipo:
+	
+\begin{align*}
+	\mel{v}{\hat{O}_1\hat{O}_2\hat{O}_3 \cdots}{u}^*
+\end{align*}
+
+	infatti basta coniugare tutto ed invertire l'ordine, ne segue che vale:
+	
+\begin{align*}
+	\mel{v}{\hat{O}_1\hat{O}_2\hat{O}_3 \cdots}{u}^* = \mel{u}{\cdots \hat{O}_3^{\dagger}\hat{O}_2^{\dagger}\hat{O}_1^{\dagger}}{v}
+\end{align*}
+
+\section{Operatore di Proiezione e Relazione di Completezza}
+
+	Sia $\ket{v} \in \mathcal{H}$ e sia $\braket{v}{v} = 1$. Definiamo allora l'\textbf{operatore di proiezione} o \textbf{proiettore} come:
+
+\begin{mydef}
+	Sia $\hat{\mathcal{P}}_v$ il \textbf{proiettore} definito sulla \textit{varietà lineare unidimensionale} generata da $\ket{v}$ e tale per cui $\forall \ket{u} \in \mathcal{H}$ vale:
+	
+\begin{align*}
+	\hat{\mathcal{P}}_v \ket{u} = \ket{v} \braket{v}{u}
+\end{align*}
+\end{mydef}
+
+\begin{myapprf}
+	Cosa si intende per: \textbf{varietà lineare unidimensionale}?
+	\\
+	\\
+	La varietà lineare unidimensionale generata da un vettore (o ket) $\ket{v}$ è semplicemente l'insieme di tutti i vettori ottenibili moltiplicando il ket $\ket{v}$ per uno scalare complesso qualsiasi. Più formalmente, questa varietà è detta anche \textit{sottospazio vettoriale generato da $\ket{v}$} ed è definita come:
+\begin{align*}
+	\mathcal{V} = \qty{ \, \alpha \ket{v} \,\, \text{t.c} \,\,\, \alpha \in \mathbb{C} \,}
+\end{align*}
+	Perché \textit{unidimensionale}?
+	\\
+	\\
+	Perché questo insieme contiene soltanto vettori che sono tutti paralleli (collineari) tra loro. Non ci sono combinazioni lineari con altri vettori indipendenti: l'intero sottospazio ha dimensione esattamente uno. Infatti un sottospazio vettoriale ha dimensione 1 se esiste un unico vettore (non nullo) che ne costituisce una base ed in questo caso, quel vettore, è proprio $\ket{v}$.
+\end{myapprf}
+	
+	da questa definizione chiaramente si evince che, siccome applicare $\hat{\mathcal{P}}_v$ a $\ket{u}$ equivale ad "incollare" $\ketbra{v}$ a $\ket{u}$:
+	
+\begin{nb}
+\begin{align*}
+	\hat{\mathcal{P}}_v = \ketbra{v}
+\end{align*}
+\end{nb}
+
+	Vediamo allora una definizione più generale di proiettore:
+	
+\begin{mydef}
+	Sia $\mathcal{V}$ una varietà lineare \textit{chiusa} (ovvero che effettuando operazioni tra vettori che appartengono alla varietà stessa, il risultato non "esce" mai fuori dal sottospazio considerato) di dimensione arbitraria $\subset \mathcal{H}$.
+	\\
+	\\
+	Se $\ket{v_i} \in \mathcal{V} \subset \mathcal{H}$ è un qualunque insieme di vettori ortonormali che generano $\mathcal{V}$, il \textbf{proiettore} su $\mathcal{V}$ è allora è definito da:
+\begin{align*}
+	\hat{\mathcal{P}}_{\mathcal{V}} \ket{u} = \sum_i \ket{v_i} \braket{v_i}{u} \quad \forall \ket{u} \in \mathcal{H}
+\end{align*} 
+	perciò vale che:
+\begin{align*}
+	\hat{\mathcal{P}}_{\mathcal{V}} = \sum_i \ketbra{v_i}
+\end{align*}
+\end{mydef}
+
+\subsection{Proprietà del Proiettore}
+
+	Un proiettore ortogonale generico che proietta su un sottospazio vettoriale generato da una base ortonormale $\qty{\ket{v_i}}$ si scrive allora come:
+
+\begin{align*}
+	\hat{\mathcal{P}} = \sum_i \ketbra{v_i}
+\end{align*}
+	
+	Si tratta proprio della stessa forma della relazione vista sopra, come prima consideriamo che il numero di vettori $\ket{v_i}$ possa anche essere inferiore alla dimensione totale dello spazio (nel caso del proiettore generico).
+	\\
+	\\
+	Ora, controlliamo in modo esplicito le due proprietà fondamentali che un proiettore deve soddisfare:
+	
+\begin{itemize}
+	\item \textbf{Hermitianità:}
+	\begin{nb}
+	\begin{align*}
+		\hat{\mathcal{P}} = \hat{\mathcal{P}}^{\dagger}
+	\end{align*}
+	\end{nb}
+	\begin{myprf}
+	\begin{align*}
+		\hat{\mathcal{P}}^{\dagger} = \qty(\sum_i \ketbra{v_i})^{\dagger} = \sum_i \qty(\ketbra{v_i})^{\dagger}
+	\end{align*}
+		ed utilizzando la proprietà del \textit{prodotto hermitiano}, ovvero:
+	\begin{align*}
+		\qty(\hat{O}_1 \hat{O}_2)^{\dagger} = \hat{O}_2^{\dagger}\hat{O}_1^{\dagger}
+	\end{align*}
+		otteniamo che:
+	\begin{align*}
+		\hat{\mathcal{P}}^{\dagger} = \qty(\sum_i \ketbra{v_i})^{\dagger} = \sum_i \qty(\ketbra{v_i})^{\dagger} = \sum_i \qty(\bra{v_i})^{\dagger} \, \qty(\ket{v_i})^{\dagger} 
+	\end{align*}
+		allora:
+	\begin{align*}
+		\textcolor{red}{\hat{\mathcal{P}}^{\dagger}} = \sum_i \qty(\bra{v_i})^{\dagger} \, \qty(\ket{v_i})^{\dagger} = \sum_i \ketbra{v_i} = \textcolor{red}{\hat{\mathcal{P}}}
+	\end{align*}
+	\end{myprf}
+	
+	\item \textbf{Idempotenza:} 
+	\begin{nb}
+	\begin{align*}
+		\hat{\mathcal{P}}^2 = \hat{\mathcal{P}} 
+	\end{align*}
+	\end{nb}
+	\begin{myprf}
+	\begin{align*}
+		 \textcolor{red}{\hat{\mathcal{P}}^2} &= \hat{\mathcal{P}} \, \hat{\mathcal{P}} = \qty(\sum_i \ketbra{v_i}) \, \qty(\sum_j \ketbra{v_j}) = \sum_{ij} \ket{v_i} \textcolor{blue}{\braket{v_i}{v_j}} \bra{v_j} = \sum_{ij} \ket{v_i} \textcolor{blue}{\delta_{ij}} \bra{v_j} \\
+		& = \sum_{i} \ketbra{v_i} = \textcolor{red}{\hat{\mathcal{P}} }
+	\end{align*}
+	
+	\end{myprf}
+\end{itemize}
+
+\subsection{Relazione di Completezza}
+
+\begin{myth}
+	Se $\ket{\lambda_i}$ è una base ortonormale di $\mathcal{H}$, l'operatore identità $\hat{\mathbb{I}}$, ovvero sia il proiettore su tutto $\mathcal{H}$, soddisfa la seguente relazione, chiamata: \textbf{relazione di completezza}, ovvero:
+\begin{align*}
+	\hat{\mathbb{I}} = \sum_i \ketbra{\lambda_i}
+\end{align*}
+\end{myth}
+	
+	si chiama così poiché esprime il fatto che i vettori di $\ket{\lambda_i}$ costituiscono un insieme ortonormale completo. 
+	
+\begin{myprf}
+
+	Questa relazione deriva dalla proprietà di completezza di una base ortonormale in uno spazio di Hilbert:
+	\\
+	\\
+	Se hai una base ortonormale $\qty{\lambda_i}$, allora qualsiasi vettore $\ket{u}$ dello spazio può essere espresso come combinazione lineare di tali vettori di base:
+\begin{align*}
+	\ket{u} = \sum_i a_i \ket{\lambda_i}
+\end{align*}
+	dove $a_i = \braket{\lambda_i}{u}$. Allora se applico a $\ket{u}$, l'operatore identità ne segue che:
+
+\begin{align*}
+	\hat{\mathbb{I}}\ket{u} = \ket{u}
+\end{align*}
+	
+	proprio perché: $\hat{\mathbb{I}}\ket{u}$, sostituendo $\ket{u}$ dalla definizione, ritorna proprio se stesso, poiché $\hat{\mathbb{I}}\ket{\lambda_i} = \ket{\lambda_i}$.
+	\\
+	\\
+	Sostituendo lo sviluppo di $\ket{u}$ in quest'ultima relazione si ottiene:
+	
+\begin{align*}
+	\hat{\mathbb{I}} \ket{u} = \sum_i \textcolor{orange}{a_i} \ket{\lambda_i} = \sum_i \ket{\lambda_i} \textcolor{orange}{\braket{\lambda_i}{u}} 
+\end{align*}
+	
+	e dunque essendo che questa relazione deve valere $\forall \ket{u}$ segue necessariamente la validità generale dell’identità come relazione operatoriale:
+
+\begin{align*}
+	\hat{\mathbb{I}} = \sum_i \ketbra{\lambda_i}
+\end{align*}
+
+	abbiamo così appena ottenuto la \textbf{relazione di completezza}.
+\end{myprf}
+
+\subsubsection{Perché è proprio un proiettore e che caratteristiche ha?}
+
+	Cerchiamo di capire perché è un proiettore, esso soddisfa infatti le proprietà dei proiettori, ovvero:
+	
+\begin{itemize}
+	\item $\hat{\mathbb{I}}^2 = \hat{\mathbb{I}} \, \hat{\mathbb{I}} = \hat{\mathbb{I}}$
+	\item $\hat{\mathbb{I}}^{\dagger} = \hat{\mathbb{I}}$
+\end{itemize}
+
+	Dunque, formalmente, l'identità è un proiettore. Si tratta però di un proiettore molto particolare: infatti, proietta su tutto lo spazio di Hilbert, e quindi non opera una "selezione" di sottospazi minori. Generalmente:
+
+\begin{itemize}
+	\item Un proiettore generico $\hat{\mathcal{P}}$ proietta vettori su un sottospazio vettoriale specifico, tipo $\ket{u}$ su $\mathcal{V} \subset \mathcal{H}$.
+	\item L’operatore identità $\hat{\mathbb{I}}$ proietta semplicemente tutto lo spazio su sé stesso, ovvero non modifica nulla, e perciò è detto proiettore banale o proiettore totale.
+\end{itemize}
+
+	generalmente vale che:
+	
+\begin{itemize}
+	\item \textit{Proiettore standard:} riduce dimensioni, seleziona sotto-spazi, e ha rango minore della dimensione dello spazio.
+	\item \textit{Identità:} è il proiettore che lascia lo spazio invariato, cioè proietta lo spazio intero su sé stesso. Ha il rango massimo (dimensione dello spazio totale).
+\end{itemize}
+
+\section{Valori Medi}
+
+	Se sul sistema nello stato $\ket{A}$ effettuiamo $N$ misure dell'osservabile $O$, troviamo come risultati gli autovalori $\lambda_i$, ciascuno $N_i$ volte tale che valga $\sum_i N_i = N$.
+	\\
+	\\
+	\textbf{N.B:} dire ciò significa immaginare di disporre di $N$ copie del sistema, tutte quante nello stato $\ket{A}$, e che ogni misura viene effettuata su una di queste copie.
+	\\
+	\\
+	Possiamo definire il \textbf{valore medio} $\mean{O}$ nel seguente modo:
+
+\begin{mydef}
+	Sia un sistema nello stato $\ket{A}$, sia $O$ un'osservabile del sistema e sia $N$ il numero di misure fatte su $O$. Allora possiamo definire il \textbf{valore medio} $\mean{O}$ dell'osservabile sullo stato $\ket{A}$ come il valore medio dei risultati ottenuti nelle misure. Per $N$ molto grande vale:
+\begin{align*}
+	\mean{O} \, \equiv \, \frac{1}{N} \sum_i \lambda_i N_i = \sum_i \lambda_i P_{\lambda_i} \qquad \text{dove :} \,\, \, P_{\lambda_i}=\frac{N_i}{N}
+\end{align*}
+\end{mydef}
+
+	Preso $\braket{A} = 1$, per il \textit{postulato di Von Neumann}, se $\hat{\mathcal{P}}_i$ è il proiettore sull'autospazio di $O$ corrispondente all'autovalore $\lambda_i$, si ha allora:
+
+\begin{nb}
+\begin{align*}
+	P_{\lambda_i} \, \equiv \, P_{\ket{A} \to \ket{\lambda_i}}  = P_{\ket{A} \to \hat{\mathcal{P}}_i \ket{A}} 
+\end{align*}
+\end{nb}
+	
+	supponendo che $\ket{\lambda_i}$ sia normalizzato.	
+
+\begin{myprf}
+	
+	Quest'ultima relazione è verificabile sia vera a posteriori infatti:
+
+\begin{itemize}
+	\item Partiamo da quanto vale $ P_{\lambda_i}$:
+\begin{align*}
+	 P_{\lambda_i} \, \equiv \, P_{\ket{A} \to \ket{\lambda_i}} = |\braket{\lambda_i}{A}|^2
+\end{align*}
+	supponendo appunto entrambi i vettori normalizzati. Andiamo a svolgere i calcoli in $ P_{\lambda_i}$, infatti:
+\begin{align*}
+	P_{\lambda_i} =  |\braket{\lambda_i}{A}|^2 = \braket{\lambda_i}{A} \braket{\lambda_i}{A}^* = \braket{\lambda_i}{A} \braket{A}{\lambda_i}
+\end{align*}
+	dove sappiamo che:
+\begin{align*}
+	\hat{\mathcal{P}}_i \ket{A} = \ket{\lambda_i} \braket{\lambda_i}{A} \,\, \Rightarrow \,\, \hat{\mathcal{P}}_i = \ketbra{\lambda_i}
+\end{align*}
+	dunque ho:
+\begin{align*}
+	P_{\lambda_i} = \textcolor{red}{\braket{\lambda_i}{A}} \textcolor{blue}{\braket{A}{\lambda_i} }= \textcolor{blue}{\braket{A}{\lambda_i} } \textcolor{red}{\braket{\lambda_i}{A}} 
+\end{align*}
+	posso tranquillamente invertire l'ordine poiché sono due scalari. E allora noto che tale formulazione è riscrivbile in termini di $\hat{\mathcal{P}}_i$, infatti:
+\begin{align*}
+	P_{\lambda_i} = \braket{A}{\lambda_i}\braket{\lambda_i}{A} = \mel{A}{\hat{\mathcal{P}}_i}{A}
+\end{align*}
+
+	\item Mentre $P_{\ket{A} \to \hat{\mathcal{P}}_i \ket{A}} $:
+	
+		Dalla definizione di probabilità di transizione si ottiene che:
+\begin{align*}
+	P_{\ket{A} \to \hat{\mathcal{P}}_i \ket{A}}  = \frac{|\mel{A}{\hat{\mathcal{P}}_i}{A}|^2}{\bra{A}\hat{\mathcal{P}}_i \hat{\mathcal{P}}_i\ket{A} \braket{A}} = \frac{|\mel{A}{\hat{\mathcal{P}}_i}{A}|^2}{\bra{A}\hat{\mathcal{P}}^2_i\ket{A}} =  \frac{|\mel{A}{\hat{\mathcal{P}}_i}{A}|^2}{\bra{A}\hat{\mathcal{P}}_i\ket{A}}  = \mel{A}{\hat{\mathcal{P}}_i}{A}
+\end{align*}
+	
+	siccome $\braket{A} = 1$ e $\hat{\mathcal{P}}_i^2 = \hat{\mathcal{P}}_i$.
+
+\end{itemize}
+
+	Abbiamo dunque dimostrato che 
+\begin{align*}
+	P_{\ket{A} \to \ket{\lambda_i}}  = P_{\ket{A} \to \hat{\mathcal{P}}_i \ket{A}} 
+\end{align*}
+\end{myprf}
+
+	Questa dimostrazione mostra che passare da una descrizione in termini di stati (ampiezze di probabilità) a quella in termini di proiettori è naturale e automatico: il proiettore $\hat{\mathcal{P}}_i $ sullo stato finale rappresenta proprio la "direzione finale" nella quale collassa lo stato iniziale. E la probabilità è proprio il valore medio di questo proiettore nello stato iniziale, infatti entrambe equivalgono a:
+	
+\begin{align*}
+	P_{\lambda_i} = \mel{A}{\hat{\mathcal{P}}_i}{A}
+\end{align*}
+
+	che si legge come, appunto: "valore medio dell'operatore proiezione nello stato $\ket{A}$". Vediamo tra poco una definizione che ci aiuterà. 
+	\\
+	\\		
+	In ogni caso, se $\hat{O}$ è l'operatore associato ad una osservabile e indichiamo appunto: $\hat{\mathcal{P}}_i$ come il proiettore sulla varietà degli autovettori di $\hat{O}$ corrispondenti all'autovalore $\lambda_i$, allora per:
+	
+\begin{itemize}
+	\item $\hat{\mathbb{I}} = \sum_i \ketbra{\lambda_i}$,
+	\item $\hat{\mathcal{P}}= \sum_i \ketbra{v_i} \, \Rightarrow \,$ allora se $v_i = \lambda_i$ allora vale che $\, \Rightarrow \, \hat{\mathcal{P}}_i = \hat{\mathbb{I}} $
+\end{itemize}
+	
+	si ha che:
+	
+\begin{align*}
+	\sum_i \hat{\mathcal{P}}_i = \hat{\mathbb{I}}
+\end{align*}
+
+	allora:
+	
+\begin{align*}
+	\hat{O} \, \textcolor{red}{\equiv} \, \hat{O} \, \hat{\mathbb{I}} = \hat{O} \sum_i \hat{\mathcal{P}}_i = \textcolor{blue}{\sum_i \lambda_i \hat{\mathcal{P}}_i} = \sum_i \lambda_i \ketbra{\lambda_i}
+\end{align*}
+
+	e dunque ne segue che:
+	
+\begin{align*}
+	\mean{O} = \sum_i \lambda_i \mel{A}{\mathcal{P}_i}{A} = \bra{A} \textcolor{blue}{\sum_i \lambda_i \mathcal{P}_i} \ket{A} = \mel{A}{\hat{O}}{A}
+\end{align*}
+
+	dunque possiamo definire alcuni concetti importanti e proviamo a darne un significato fisico nelle pagine seguenti:
+
+\begin{itemize}
+
+	\item Il \textbf{valore di aspettazione}:
+\begin{mydef}
+	Definisco come il \textit{valore medio} o \textbf{valore di aspettazione} dell'osservabile $O$ sullo stato $\ket{A}$ come:
+\begin{align*}
+	\mean{O} = \mel{A}{\hat{O}}{A}
+\end{align*}
+\end{mydef}
+
+	\item La \textbf{varianza}:
+
+\begin{mydef}
+	Dalla definizione di \textit{valore di aspettazione} definisco la \textbf{varianza} (lo scarto quadratico medio) come:
+\begin{align*}
+	(\Delta O)^2 = \mean{O^2} - \mean{O}^2
+\end{align*}
+\end{mydef}
+
+	calcoliamo ora esplicitamente il valore della varianza, ci serve quindi esplicitare cosa sia:
+
+\begin{enumerate}[label=\arabic*)]
+
+	\item \textit{Partiamo dal trovare $O^2$ e poi $\mean{O^2}$:}
+		
+		Dunque, sia che $O^2$ è un osservabile e che tutti gli autovettori $\ket{\lambda_i}$ di O sono anche autovettori di $O^2$ corrispondenti agli autovalori: $\lambda_i^2$:
+		
+	\begin{align*}
+		\hat{O}^2 \ket{\lambda_i} = \hat{O} \, \textcolor{orange}{\hat{O} \ket{\lambda_i}} = \hat{O} \textcolor{orange}{ \lambda_i \ket{\lambda_i} } =  \lambda_i \, \hat{O} \ket{\lambda_i} = \lambda_i \, \lambda_i \ket{\lambda_i } = \lambda_i^2 \ket{\lambda_i}
+	\end{align*}
+	
+		Inoltre allora:
+		
+	\begin{align*}
+		\mean{O^2} = \textcolor{ForestGreen}{\mel{A}{\hat{O}^2}{A}} = \sum_i \lambda_i^2 \, P_{\lambda_i}
+	\end{align*}
+	
+		
+	\item \textit{trovo ora $\mean{O}^2$:}
+		
+		Sarà semplicemente:
+	
+	\begin{align*}
+		\mean{O}^2 = \textcolor{blue}{\mel{A}{\hat{O}}{A}^2}
+	\end{align*}
+		
+\end{enumerate}
+
+	mettendo insieme le cose possiamo scrivere che:
+
+\begin{nb}
+\begin{align*}
+	\qty(\Delta O)^2 = \mean{O^2} -\mean{O}^2 =  \textcolor{ForestGreen}{\mel{A}{\hat{O}^2}{A}} - \textcolor{blue}{\mel{A}{\hat{O}}{A}^2} = \mel{A}{ \, \qty(O - \mean{O})^2 \,}{A}
+\end{align*}
+\end{nb}
+
+\begin{myprf}
+	L'uguaglianza finale è dimostrabile nel seguente modo, prima di tutto svolgo il quadrato:
+\begin{align*}
+	\qty(O - \mean{O})^2 = O^2 + \mean{O}^2 - 2O\mean{O}
+\end{align*}
+	allora calcolo il valore medio sullo stato $\ket{A}$:
+\begin{align*}
+	\mel{A}{\, \qty(O - \mean{O})^2 \, }{A} = \mel{A}{\,  O^2 + \mean{O}^2 - 2O\mean{O} \, }{A}
+\end{align*}
+	e quindi:
+\begin{align*}
+	\mel{A}{\,  O^2 + \mean{O}^2 - 2O\mean{O} \, }{A} = \mel{A}{O^2}{A} + \mel{A}{\mean{O}^2}{A} - \mel{A}{2O\mean{O}}{A}
+\end{align*}
+	nota che stiamo tralasciando il "cappellino" di $O$ ma quello rimane un operatore, allora la sua media è un numero semplicemente:
+\begin{align*}
+	\mel{A}{O^2}{A} + \mel{A}{\mean{O}^2}{A} - \mel{A}{2O\mean{O}}{A} = \mel{A}{O^2}{A} + \mean{O}^2 \braket{A} - 2\mean{O} \mel{A}{\hat{O}}{A}
+\end{align*}
+	so che $\braket{A} = 1$ e che: $\mel{A}{\hat{O}}{A} = \mean{O}$, allora:
+\begin{align*}
+	\mel{A}{ \, \qty(O - \mean{O})^2 \,}{A} &= \mel{A}{O^2}{A} + \mean{O}^2 - 2\mean{O} \mean{O} \\
+	&= \mean{O^2} + \mean{O}^2 - 2\mean{O}^2 = \mean{O^2} - \mean{O}^2
+\end{align*}
+	abbiamo allora dimostrato il perché dell'uguaglianza finale.
+\end{myprf}
+
+\item L'\textbf{indeterminazione}:
+
+\begin{mydef}
+	Dalla definizione di \textit{varianza} definisco l'\textbf{indeterminazione} di $O$ su $\ket{A}$ come la radice quadrata della varianza:
+\begin{align*}
+	\Delta O= \sqrt{\mean{O^2} - \mean{O}^2}
+\end{align*}
+\end{mydef}
+
+	Legato all'indeterminazione abbiamo il seguente teorema:
+	
+\begin{myth}
+	$\Delta O = 0 $ se e solo se $\ket{A}$ è autovettore di $O$
+\end{myth}
+
+\begin{myprf}
+	Dimostriamo entrambe le frecce di: $\Delta O = 0 \, \Leftrightarrow \, \ket{A}$ è autovettore di $O$
+\begin{itemize}[label={},  leftmargin=5pt]
+	\item $\Leftarrow) \, $ Si parte dal fatto che $\ket{A}$ è autovettore di $O$.
+		
+		\qquad Supponiamo abbia autovalore $\lambda$, allora vale che:
+	\begin{align*}
+		\hat{O}\ket{A} = \lambda \ket{A}
+	\end{align*}
+		\qquad allora il valore atteso di $O$ nello stato $\ket{A}$ è:
+	\begin{align*}
+		\mean{O} = \mel{A}{\hat{O}}{A} = \bra{A} \lambda \ket{A} = \lambda
+	\end{align*}
+		\qquad supponendo $\ket{A}$ normalizzato. Considero ora il seguente operatore applicato $\ket{A}$:
+	\begin{align*}
+		\qty(\hat{O} - \mean{O}) \ket{A} = \hat{O}\ket{A} - \lambda \ket{A} = \lambda \ket{A} - \lambda \ket{A} = 0
+	\end{align*}
+		allora anche il quadrato di questo operatore proiettato su $\ket{A}$ fa zero:
+	\begin{align*}
+		\qty(\hat{O} - \mean{O})^2 \ket{A} = 0
+	\end{align*}
+		e quindi se ne faccio il valore medio ottengo 0, ovvero:
+	\begin{align*}
+		\mel**{A}{ \qty(\hat{O} - \mean{O})^2 }{A} = 0
+	\end{align*}
+		e abbiamo prima trovato che:
+	\begin{align*}
+		\qty(\Delta O)^2 =\mel**{A}{ \qty(\hat{O} - \mean{O})^2 }{A}
+	\end{align*}
+		e allora:
+	\begin{align*}
+		\qty(\Delta O)^2 = 0 \quad \Rightarrow \quad \Delta O = 0
+	\end{align*}
+	\item $\Rightarrow) \, $ Supponiamo invece ora che $\Delta O = 0$
+	
+		Sappiamo che per costruzione vale sempre che:		
+	\begin{align*}
+		\qty(\Delta O)^2 = \mel**{A}{ \qty(\hat{O} - \mean{O})^2 }{A}
+	\end{align*}
+		allora:
+	\begin{align*}
+		\mel**{A}{ \qty(\hat{O} - \mean{O})^2 }{A} = 0
+	\end{align*}
+		essendo l'operatore semi-definito positivo l'unico modo che sia mediamente zero è che lo sia sempre, ovvero:
+	\begin{align*}
+		\qty(\hat{O} - \mean{O})^2\ket{A} = 0  \, \Rightarrow \, (\hat{O} - \mean{O}) \ket{A} = 0
+	\end{align*}
+		svolgo allora l'uguaglianza:
+	\begin{align*}
+		\hat{O}\ket{A} - \mean{O}\ket{A} = 0 \, \Rightarrow \, \hat{O}\ket{A} = \mean{O}\ket{A}
+	\end{align*}
+		ovvero che: $\ket{A}$ è autovettore di $\hat{O}$ con autovettore $\mean{O}$.
+\end{itemize}
+\end{myprf}
+	
+	Da questo teorema campiamo che, il motivo per cui $\Delta O$ è chiamato \textit{indeterminazione} di $O$ su $\ket{A}$, infatti abbiamo che, nel caso in cui l'\textit{indeterminazione} sia nulla il valore di $O$ su $\ket{A}$ è completamente determinato. Dunque che tramite la sola conoscenza dei valori aspettazione è possibile stabilire se un certo stato è autostato di un osservabile, ed in caso positivo conosce l'autovalore corrispondente. C'è di più però, anche la probabilità di transizione è esprimibile tramite valori di aspettazione come abbiamo visto in uno dei paragrafetti precedenti.	
+
+\end{itemize}
+
+	La conclusione di questo paragrafo è che: tutte le informazioni fisiche che caratterizzano lo stato (probabilità di transizione, valori medi, osservabili di cui lo stato è autostato) sono esprimibili tramite i \textit{valori di aspettazione}. Perciò, la conoscenza di uno stato è equivalente alla conoscenza di tutti i valori di aspettazione sullo stato stesso. In Meccanica Quantistica è anche possibile una riformulazione intera in questi termini con la descrizione degli stati, come la collezione dei valori medi di tutte le osservabili anziché come vettori facenti parte dello spazio di Hilbert.
+
+\section{Osservabili Compatibili}
+
+	\textit{In fisica classica}, dato lo stato di un sistema, ogni osservabile ha un determinato valore su quello stato, facciamo un esempio $\Rightarrow$ Data la posizione e la velocità di una particella sono noti: energia, momento angolare e così via.
+	\\
+	\\
+	\textit{In meccanica quantistica} non è così invece. Se $O$ è un'osservabile, solo se $v$ è autostato di $O$ di autovalore $\lambda$ allora ha senso dire che $O$ ha un valore su $v$ (ovvero l'autovalore corrispondente). In caso contrario le uniche informazioni che possiamo estrapolare sono di carattere statistico (valori medi e probabilità di transizioni).
+	\\
+	\\
+	Prendiamo il caso di osservabile $O$ con autostato $v = v_{\lambda}$. Considero ora anche una diversa osservabile $O'$. In generale ne segue che $v_{\lambda}$ non sarà anche autostato di $O'$: in questo caso $O$ ha un valore definito su $v$ mentre $O'$ no. $O'$ avrà un valore definito su $v$ unicamente se $v_{\lambda}$ fosse anche autovettore di $O'$. In altre parole, più matematiche, $O$ ed $O'$ hanno valori definiti su $v$ solo se:
+	
+\begin{align*}
+	\hat{O}v = \lambda v \quad ; \quad \hat{O}'v = \eta v
+\end{align*}
+
+	Diamo dunque la seguente definizione:
+	
+\begin{mydef}
+	Diremo che $v$ è un \textbf{autovettore simultaneo} di autovalori: $\lambda, \eta$, di $O$ e di $O'$ e lo scriveremo come $v = v_{\lambda ; \eta}$, oppure come $\ket{\lambda, \eta}$ se valgono le relazioni sopra, ovvero:
+\begin{align*}
+	\hat{O}v = \lambda v \quad ; \quad \hat{O}'v = \eta v
+\end{align*}
+\end{mydef}
+
+	Dunque, abbiamo una seconda definizione che è:
+
+\begin{mydef}
+	Quando due osservabili hanno abbastanza \textit{autovettori simultanei} da formare una base, esse sono dette \textbf{osservabili compatibili}. 
+\end{mydef}	
+
+	In altre parole due osservabili sono compatibili se possono essere simultaneamente misurate su uno stato: la misura di un'osservabile sull’autostato dell’altra non distrugge l’informazione riguardante la prima osservabile. Al fine di formalizzare questo concetto andiamo a vedere un teorema:
+
+\subsection{Teorema sulle Osservabili Compatibili}
+
+\begin{myth}
+	Due osservabili sono \textbf{compatibili} se e solo se per gli operatori ad esse associati vale che:
+\begin{align*}
+	\hat{O}_1\hat{O}_2 = \hat{O}_2\hat{O}_1
+\end{align*}
+	In tal caso caso si dice che $\hat{O}_1$ e $\hat{O}_2$ \textbf{commutano}.
+\end{myth}
+
+	il significato semplificato del teorema é:
+	
+\begin{nb}
+	Due osservabili sono compatibili $ \, \Leftrightarrow \, $ commutano.
+\end{nb}
+
+	Diamo ora due definizioni, una che ci serviranno in generale ed in particolare per la dimostrazione:
+	
+\begin{itemize}
+
+	\item \textbf{Commutatore:}
+\begin{mydef}
+	Sia il commutatore di $\hat{O}_1$ e $\hat{O}_2$ il seguente oggetto:
+\begin{align*}
+	\qty[\hat{O}_1, \hat{O}_2 ] = \hat{O}_1\hat{O}_2 - \hat{O}_2\hat{O}_1
+\end{align*}
+\end{mydef}
+	ne segue se $\hat{O}_1$ e $\hat{O}_2$ commutano allora il commutatore è nullo, ovvero:
+\begin{align*}
+	\qty[\hat{O}_1, \hat{O}_2 ] = 0
+\end{align*}
+	
+	\item \textbf{Anticommutatore:}
+\begin{mydef}
+	Allo stesso modo del \textit{commutatore} possiamo definire un \textbf{anticommutatore} di $\hat{O}_1$ e $\hat{O}_2$, che servirà più avanti, tale per cui:
+\begin{align*}
+	\qty{\hat{O}_1, \hat{O}_2 } = \hat{O}_1\hat{O}_2 + \hat{O}_2\hat{O}_1
+\end{align*}
+\end{mydef}
+
+	\item \textbf{Relazione che lega commutatore e anticommutatore:}
+\begin{mydef}
+\begin{align*}
+	\hat{O}_1\hat{O}_2 = \frac{1}{2} \, \qty( \qty[\hat{O}_1, \hat{O}_2] + \qty{\hat{O}_1, \hat{O}_2})
+\end{align*}
+\end{mydef}
+	
+\end{itemize}
+
+	dopo aver dato alcune definizioni andiamo ora a dimostrare il teorema di prima:
+
+\begin{myprf}
+
+	Prese due osservabili compatibili $\hat{O}_1$ e $\hat{O}_2$, ovvero con una base di autovettori simultanei in comune è facilmente dimostrabile che allora significa che gli operatori commutano (l'altra implicazione non la dimostriamo perché è più che altro una supercazzola matematica) :
+	\\
+	\\
+	Sia $\qty{v_{\lambda_i; \, \eta_{\alpha}}}$ una base di autostati simultanei. Dunque vale:
+\begin{align*}
+	\hat{O}_1 v_{\lambda_i; \,\eta_{\alpha}} = \lambda_i v_{\lambda_i;\, \eta_{\alpha}}
+\end{align*}
+	allora:
+\begin{align*}
+	\hat{O}_2\hat{O}_1 v_{\lambda_i;\, \eta_{\alpha}} = \lambda_i \hat{O}_2 v_{\lambda_i;\, \eta_{\alpha}} = \lambda_i \eta_{\alpha} v_{\lambda_i;\, \eta_{\alpha}} 
+\end{align*}
+	allo stesso modo allora vale che:
+\begin{align*}
+	\hat{O}_1\hat{O}_2 v_{\lambda_i;\, \eta_{\alpha}} = \eta_{\alpha} \hat{O}_1 v_{\lambda_i;\, \eta_{\alpha}} = \eta_{\alpha} \lambda_i v_{\lambda_i;\, \eta_{\alpha}} 
+\end{align*}
+	da cui troviamo che:
+\begin{align*}
+	\qty[\hat{O}_1, \hat{O}_2] v_{\lambda_i;\, \eta_{\alpha}} = 0
+\end{align*}
+	che, per linearità, siccome $v$ è una qualsiasi combinazione lineare dei vettori $v_{\lambda_i;\, \eta_{\alpha}}$ si ha che:
+\begin{align*}
+	\qty[\hat{O}_1, \hat{O}_2] v = 0 \quad \forall v
+\end{align*}
+
+	ovvero che $\hat{O}_1$ e $\hat{O}_2$ commutano per ogni autostato. 
+	
+\end{myprf}
+
+\subsection{Osservazioni}
+
+	Facciamo ora alcune osservazioni sul teorema:
+	
+\begin{itemize}
+	\item Il teorema non dice che se $[\hat{O}, \hat{O}'] = 0$ allora ogni autovettore di un'osservabile è anche autovettore dell'altra, ma dice che esiste, cioè si può trovare, un insieme completo di autovettori simultanei: infatti per esempio l'operatore identità $\hat{\mathbb{I}}$ commuta con qualsiasi operatore ed ogni vettore (non nullo) è autovettore di $\hat{\mathbb{I}}$ con autovalore $1$, ma certamente non è vero che allora ogni vettore è anche autovettore di qualsiasi altra osservabile.
+	\item È vero che se una delle osservabili, per esempio $O$ è non degenere, ogni autovettore di $O$ allora è anche autovettore di $O'$.
+	\item Se $[\hat{O}, \hat{O}'] \neq 0$ può accadere che abbiamo alcuni autovettori simultanei, ma certo non tanti da fornire un insieme completo e dunque una base.
+\end{itemize}
+	
+	
+\subsection{Lemma sulle Osservabili Compatibili}
+
+	Legato al teorema precedente esiste un corollario molto importante che riguarda le proprietà che hanno autovettori e autovalori di osservabili compatibili. Essendo di grande importanza, è lecito enunciarlo sotto forma di lemma. Allora:
+
+\begin{myprop}
+	Siano $\hat{O}_1$ e $\hat{O}_2$ tali che:
+\begin{align*}
+	\qty[\hat{O}_1, \hat{O}_2] = 0
+\end{align*}
+	duque, l'azione di $\hat{O}_2$ su un autovettore di $\hat{O}_1$ produce un autovettore di $\hat{O}_1$ con lo stesso autovalore.
+\end{myprop}
+
+\begin{myprf}
+	Si supponga $\hat{O}_1 v = \lambda v$ ovvero che $v$ è autovettore di $\hat{O}_1$, voglio dunque dimostrare che il vettore $\hat{O}_2v$ sia autovettore di $\hat{O}_1$ con autovalore ancora uguale a $\lambda$, perciò ha senso calcolare:
+\begin{align*}
+	\hat{O}_1\qty(\hat{O}_2v)
+\end{align*}
+	ovvero l'azione di $\hat{O}_1$ sul vettore indicato. Essendo che gli operatori commutano:
+\begin{align*}
+	\hat{O}_1\hat{O}_2v = \hat{O}_2\hat{O}_1 v = \hat{O}_2 \lambda v = \lambda \qty(\hat{O}_2v)
+\end{align*}
+	e quindi vale che:
+\begin{align*}
+	\hat{O}_1\qty(\hat{O}_2v) =  \lambda \qty(\hat{O}_2v)
+\end{align*}
+	ovvero proprio quello che volevamo dimostrare, $\hat{O}_2v$ è autovettore di $\hat{O}_1$ di autovalore $\lambda$.
+\end{myprf}
+
+	\textit{Ovviamente la nozione di osservabili compatibili è estendibile nel caso di $n$ osservabili tramite dimostrazioni matematiche noiose.}
+	\\
+	\\
+	Elenchiamo invece alcune proprietà dei commutatori, dunque:
+	
+\subsection{Proprietà dei Commutatori}
+	
+	Siano $\hat{A}, \hat{B}, \hat{C}$ operatori, allora:
+
+\begin{enumerate}[label=\arabic*)]
+	\item \textbf{Anticommutatività:}
+	\begin{align*}
+		[\hat{A}, \hat{B}] = - [\hat{B}, \hat{A}]
+	\end{align*}
+	
+	\item \textbf{Antihermitianità:}
+	\begin{align*}
+		[\hat{A}, \hat{B}]^{\dagger} = - [\hat{A}, \hat{B}]
+	\end{align*}
+		se vale che: $\hat{A} = \hat{A}^{\dagger}$ e $\hat{B} = \hat{B}^{\dagger}$
+	
+	\item \textbf{Somma:}
+	\begin{align*}
+		[\hat{A}, \hat{B}+\hat{C}] = [\hat{A}, \hat{B}] + [\hat{A}, \hat{C}]
+	\end{align*}
+	
+	\item \textbf{Prodotto destro:}
+	\begin{align*}
+		[\hat{A}, \hat{B}\hat{C}] = \hat{B} [\hat{A}, \hat{C}] + [\hat{A}, \hat{B}] \hat{C}
+	\end{align*}
+	
+	\item \textbf{Prodotto sinistro:}
+	\begin{align*}
+		[\hat{A}\hat{B}, \hat{C}] = \hat{A} [\hat{B}, \hat{C}] + [\hat{A}, \hat{C}] \hat{B}
+	\end{align*}
+	
+	\item \textbf{Identità di Jacobi}
+	\begin{align*}
+		\qty[\hat{A}, [\hat{B}, \hat{C}]] + \qty[\hat{B}, [\hat{C}, \hat{A}]] + \qty[\hat{C}, [\hat{A}, \hat{B}]] = 0
+	\end{align*}
+\end{enumerate}
+
+\section{Relazioni di Indeterminazione}
+
+	Siano $O_1$ ed $O_2$ due osservabili in generale non compatibili, il cui commutatore non è nullo dunque, ovvero vale:
+	
+\begin{align*}
+	\qty[\hat{O}_1, \hat{O}_2] = i \hat{O}_{12} \neq 0
+\end{align*}
+
+	ovvero sia, il commutatore tra due osservabili in generale è equivalente ad una terza osservabile moltiplicata per $i$ per conservare l'hermitianità. 
+	
+\begin{myapprf}
+	Il motivo della $i$ davanti è che: il commutatore sappiamo essere antihermitiano ma di base, gli operatori gli vogliamo hermitiani, è per questo che ci mettiamo $i$ davanti. Una breve dimostrazione:
+	\\
+	\\
+	Sia $\qty[\hat{O}_1, \hat{O}_2]$, per \textit{definizione}, siccome vogliamo mantenere l'hermitinità del nuovo operatore, è come se scrivessimo che:
+\begin{align*}
+	\hat{O}_{12} \, \equiv \, \frac{1}{i}\qty[\hat{O}_1, \hat{O}_2]
+\end{align*} 
+	allora vale che:
+\begin{align*}
+	\qty[\hat{O}_1, \hat{O}_2] = i \hat{O}_{12} 
+\end{align*} 
+	supponiamo di avere un commutatore antihermitiano: $\qty[\hat{O}_1, \hat{O}_2]$, se lo moltiplichiamo per $i$ ne otteniamo uno hermitiano, infatti:
+\begin{align*}
+	\qty( i \qty[\hat{O}_1, \hat{O}_2] )^{\dagger} = i^* \qty(- \qty[\hat{O}_1, \hat{O}_2] ) = \qty(-i) \, \qty(- \qty[\hat{O}_1, \hat{O}_2] ) = i \qty[\hat{O}_1, \hat{O}_2]
+\end{align*}
+\end{myapprf}
+	
+	In generale $\hat{O}_{12}$ è un operatore che rappresenta l'"ampiezza" della non-commutatività tra $\hat{O}_1$ e $\hat{O}_2$. In altre parole, esso misura in che modo le due osservabili non sono compatibili; a volte è una costante moltiplicata per l'operatore identità. Abbiamo inoltre visto che se $\braket{v} = 1$, il valore medio di un'osservabile allora è:
+	
+\begin{align*}
+	\mean{O} = \mel{v}{\hat{O}}{v}
+\end{align*}
+
+	Adesso introduciamo gli operatori \textit{non hermitiani}:
+	
+\begin{mydef}
+	Definiamo gli \textbf{operatori non hermitiani} come segue:
+\begin{align*}
+	&\hat{O} \, \equiv \, \hat{O}_1 + ix\hat{O}_2  \\
+	&\hat{O}^{\dagger} \, \equiv \,  \hat{O}_1 - ix\hat{O}_2
+\end{align*}
+	con $x \in \mathbb{R}$. Infatti $\hat{O}_1 \neq \hat{O}_2$
+\end{mydef}
+
+	Inoltre:
+	
+\begin{nb}
+	 Ora $\forall v \in \mathcal{H}_{\mathbb{C}}$ sia $w = \hat{O}v$, notiamo allora che considerando la definizione precedente, vale il \textit{teorema di Schwartz}, e allora ho che:
+\begin{align*}
+	\textcolor{blue}{|\braket{v}{w}|^2} \leq \textcolor{BrickRed}{\braket{v}} \textcolor{ForestGreen}{\braket{w}}
+\end{align*}
+\end{nb}
+
+	Vediamo allora, partendo da quest'ultima relazione, cosa succede a sinistra e a destra si si fanno delle considerazioni:
+	
+\begin{itemize}
+	\item Partiamo da: $|\braket{v}{w}|^2$, possiamo prima di tutto partire da $\braket{v}{w}$ e quindi scrivere:
+\begin{align*}
+	\braket{v}{w} = \mel{v}{\hat{O}}{v} = \mel{v}{\hat{O}_1}{v} + ix \mel{v}{\hat{O}_2}{v} = \mean{O_1} + ix \mean{O_2} 
+\end{align*}
+	poiché il modulo al quadrato di un numero complesso è $|z|^2 = zz^*$ si ha allora che:
+\begin{align*}
+	\textcolor{blue}{|\braket{v}{w}|^2} = \mean{O_1}^2 + x^2 \mean{O_2}^2 
+\end{align*}
+
+	\item Sappiamo invece che $\braket{v} = 1$ per ipotesi, allora:
+	\begin{align*}
+		\textcolor{BrickRed}{\braket{v} }= 1
+	\end{align*}
+	
+	\item Infine, riscrivo $\braket{w}$ notando le seguenti cose (stai attento quando fai i prodotti delle osservabili, infatti prima avevi dei valori medi, che sono scalari, e quindi commutano, ma ora hai operatori che \textcolor{SeaGreen}{non commutano a prescindere}):
+	\begin{align*}
+		\braket{w} = \braket*{\hat{O}v} = \textcolor{Magenta}{\mel{v}{\hat{O}^{\dagger}\, \hat{O} }{v}} &= \mel{v}{(\hat{O}_1 - ix \hat{O}_2) \, (\hat{O}_1 + ix \hat{O}_2)}{v} \\
+		&= \mel{v}{\qty(\hat{O}^2_1 + x^2 \hat{O}^2_2 + ix\textcolor{SeaGreen}{\qty(\hat{O}_1\hat{O}_2 - \hat{O}_2\hat{O}_1)})}{v} \\
+		&= \mel{v}{\qty(\hat{O}^2_1 + x^2 \hat{O}^2_2 + ix\textcolor{SeaGreen}{[\hat{O}_1, \hat{O}_2]})}{v} \\
+		&= \mel{v}{\hat{O}^2_1}{v} + x^2 \mel{v}{\hat{O}^2_2}{v} +\textcolor{RedOrange}{ i}x  \textcolor{RedOrange}{\mel{v}{ \, [\hat{O}_1, \hat{O}_2 ] \, }{v}} \\
+		&= \mean{O^2_1} + x^2\mean{O_2^2} \textcolor{RedOrange}{-}x\textcolor{RedOrange}{\mean{O_{12}}}
+	\end{align*}
+	
+		si noti che la \textcolor{Magenta}{seconda uguaglianza} vale, poiché dalla digressione sulla notazione di Dirac sappiamo che:
+	
+\begin{enumerate}[label=\arabic*)]
+	\item $\bra{\hat{O}v} = \bra{v} \hat{O}^{\dagger}$
+	\item $\ket{\hat{O}v} = \hat{O} \ket{v} $
+\end{enumerate}
+		Andando avanti si ottiene che:
+	
+	\begin{align*}
+		\textcolor{ForestGreen}{\braket{w}} = \mean{O^2_1} + x^2\mean{O_2^2} -x\mean{O_{12}}
+	\end{align*}
+\end{itemize}
+	
+	allora possiamo sostituire:
+	
+\begin{align*}
+	\textcolor{blue}{ \mean{O_1}^2 + x^2 \mean{O_2}^2 } \leq \textcolor{BrickRed}{1} \, \qty( \textcolor{ForestGreen}{ \mean{O^2_1} + x^2\mean{O_2^2} -x\mean{O_{12}} } ) 
+\end{align*}
+	
+	allora:
+	
+\begin{align*}
+	 \mean{O_1}^2 + x^2 \mean{O_2}^2  \leq \mean{O^2_1} + x^2\mean{O_2^2} -x\mean{O_{12}}
+\end{align*}
+
+	posso riscrivere:
+	
+\begin{align*}
+	\mean{O^2_1} - \mean{O_1}^2 + x^2\qty(\mean{O_2^2} - \mean{O_2}^2) - x\mean{O_{12}} \geq 0
+\end{align*}
+	
+	inoltre dalla definizione di \textit{varianza}: 
+	
+\begin{align*}
+	\textcolor{orange}{\qty(\Delta O_2)^2} = \mean{O_2^2} - \mean{O_2}^2 \quad ; \quad \textcolor{cyan}{ \qty(\Delta O_1)^2 } = \mean{O_1^2} - \mean{O_1}^2
+\end{align*}
+
+	allora possiamo scrivere:
+	
+\begin{align*}
+	\textcolor{cyan}{ \qty(\Delta O_1)^2 }  + x^2 \textcolor{orange}{\qty(\Delta O_2)^2} - x\mean{O_{12}} \geq 0 \, \Rightarrow \, x^2 \qty(\Delta O_2)^2  - x\mean{O_{12}}  +  \qty(\Delta O_1)^2   \geq 0
+\end{align*}
+
+	dunque per essere vera questa disuguaglianza deve valere che il discriminante dell'equazione di secondo grado in $x$ è minore o uguale a zero, infatti la condizione di partenza è che questa disuguaglianza debba essere vera per ogni $x$ reale. Se un polinomio di secondo grado dev'essere sempre positivo (o al massimo nullo) per ogni valore reale, deve verificarsi una precisa condizione matematica: il polinomio non può mai intersecare l'asse delle ascisse (o al massimo toccarlo in un punto), l'unico caso in cui si verifica ciò è per le soluzioni complesse, ovvero deve valere che:
+	
+\begin{align*}
+	\mean{O_{12}}^2 - 4\qty(\Delta O_1)^2 \, \qty(\Delta O_2)^2 \leq 0
+\end{align*}
+
+	ovvero sia quando:
+	
+\begin{align*}
+	\Delta O_1 \Delta O_2 \geq \frac{1}{2} \, |\mean{O_{12}}|
+\end{align*}
+
+	ne segue che abbiamo trovato la  \textbf{relazione di indeterminazione} che assume la sua forma più generale nella seguente definizione:
+
+\begin{mydef}
+	La \textbf{relazione di indeterminazione} si presenta nella forma più generale come:
+\begin{align*}
+	\Delta O_1 \Delta O_2 \geq \frac{1}{2} \, \abs{\mel{v}{\,[\hat{O}_1, \hat{O}_2 ] \,}{v}}
+\end{align*}
+\end{mydef}
+
+\begin{myapprf}
+	Vediamo un caso \textit{importante}: quando il commutatore è un multiplo dell'operatore identità, ovvero quando:
+\begin{align*}
+	\qty[\hat{O}_1, \hat{O}_2] = i\, c \, \hat{\mathbb{I}} \quad c \in \mathbb{R}
+\end{align*}
+	solo in questi casi si ottiene la più "popolare" forma:
+\begin{align*}
+	\Delta O_1 \Delta O_2 \geq \frac{1}{2} \, |c|
+\end{align*}	
+	ovvero sia che il prodotto delle indeterminazioni è maggiore o al più uguale di una certa quantità fissata indipendente dallo stato che si considera.
+\end{myapprf}
+
+\subsection{Canonical Commutation Relations (CCR)}
+
+	In meccanica quantistica esistono delle regole, in italiano: \textbf{condizioni di quantizzazione}. Tali regole sono 3 e le vediamo subito, dette $q_i$ la coordinata e $p_i$ il corrispondente momento coniugato valgono:
+	
+\begin{enumerate}[label=\arabic*)]
+	\item $[\hat{q}_i, \hat{q}_j] = 0$
+	\item $[\hat{p}_i, \hat{p}_j] = 0$
+	\item $[\hat{q}_i, \hat{p}_j] = \textcolor{red}{\text{i}} \, \hbar \delta_{ij} \, \hat{\mathbb{I}}$
+\end{enumerate}
+
+	\subsubsection{N.B:}
+		
+		Si noti che $\textcolor{red}{\text{i}}$ non è un indice bensì è proprio l'unità immaginaria.
+		
+\subsection{Principio di Indeterminazione di Heisenberg}
+
+\begin{myth}
+	Se scegliamo:
+\begin{itemize}
+	 \item $\hat{q} = \hat{x}$ posizione di una particella.
+	 \item $\hat{p} = \hat{p}$ il momento della particella.
+\end{itemize}
+
+	allora otteniamo il \textbf{principio di indeterminazione di Heisenberg} che dice:
+	
+\begin{align*}
+	\Delta \hat{x} \Delta \hat{p} \geq \frac{1}{2} \, \hbar
+\end{align*}
+\end{myth}
+
+	ovvero sia che non possiamo conoscere "perfettamente" posizione e momento di una particella simultaneamente. Gli stati per cui vale il segno di uguaglianza vengono chiamati \textbf{stati di minima indeterminazione}. Considerando tali stati come soluzione dell'equazione di secondo grado di coefficienti $a, b, c$ si ha che essi sono dati da:
+	
+\begin{align*}
+	x_0 = -\, \frac{b}{2a} = \frac{ \mean{O}_{12} }{2\qty(\Delta O_2)^2} = \pm \, \frac{\Delta O_1}{\Delta O_2}
+\end{align*}

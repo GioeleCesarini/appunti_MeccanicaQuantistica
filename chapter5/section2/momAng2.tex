@@ -1,0 +1,1302 @@
+\section{Momento Angolare Orbitale}
+
+	Ricordiamo che in fisica classica il momento angolare è una grandezza vettoriale che descrive il moto rotatorio di un corpo attorno a un punto fisso o rispetto ad un asse. Esso è definito come:
+
+\begin{align*}
+	\vb{L} = \vb{r} \cp \vb{p} 
+\end{align*}
+
+	dove rispettivamente, come sappiamo:
+
+\begin{itemize}
+	\item $\vb{r}$ è il vettore posizione della particella rispetto al punto scelto come origine,
+	\item $\vb{p}$ è il momento lineare della particella.
+\end{itemize}
+
+	In meccanica quantistica, ogni grandezza fisica osservabile viene associata ad un operatore hermitiano, e il momento angolare orbitale non fa eccezione come sappiamo. Abbiamo infatti visto che esiste un operatore associato alle rotazioni chiamato:
+	
+\begin{nb}
+	Il \textbf{momento angolare orbitale} che è definito come:
+\begin{align*}
+	\hat{L}_i \, \equiv \, \varepsilon_{ijk} \, \hat{x}^{\, j} \, \hat{p}^{\, k} 
+\end{align*}
+	a partire dagli operatori posizione e momento.
+\end{nb}
+	
+	dove:
+	
+\begin{itemize}
+	\item $\varepsilon_{ijk}$ è il tensore totalmente antisimmetrico di Levi-Civita,
+	\item gli indici $i, j, k$ corrispondono alle componenti cartesiane $\qty(x, y, z)$,
+	\item vige implicitamente la somma sugli indici ripetuti (notazione di Einstein).
+\end{itemize}
+
+	In sostanza, come sappiamo, questa formula è una \textit{generalizzazione quantistica}  del prodotto vettoriale $\vb{r} \cp \vb{p}$.
+	\\
+	\\
+	Cosa succede in rappresentazione di Schrödinger?
+	\\
+	\\
+	Come sappiamo la rappresentazione di Schrödinger consiste nel descrivere gli stati quantistici come funzioni d'onda 
+$\psi\qty(x, y, z)$. In tale rappresentazione, gli operatori posizione sono semplicemente moltiplicazioni per la variabile spaziale corrispondente (ad esempio $\hat{x} \to x$), mentre gli operatori impulso hanno la forma differenziale che conosciamo bene ovvero:
+
+\begin{align*}
+	\hat{p}_x = - i \hbar \, \pdv{x} \quad ; \quad \hat{p}_y = - i \hbar \, \pdv{y} \quad ; \quad \hat{p}_z = - i \hbar \, \pdv{z} 
+\end{align*}
+	
+	Ricordiamo il valore del tensore di Levi-Civita, è una funzione a tre indici che vale:
+	
+\begin{itemize}
+	\item $\varepsilon_{ijk} = + 1$ se $\qty(i, j, k)$ è una permutazione \textit{pari} di $\qty(1, 2, 3)$, ossia: $\qty(1, 2, 3), \qty(2, 3, 1), \qty(3, 1, 2)$.
+	\item $\varepsilon_{ijk} = -1$ se $\qty(i, j, k)$ è una permutazione \textit{dispari} di $\qty(1, 2, 3)$, ossia: $\qty(3, 2, 1), \qty(1, 3, 2), \qty(2, 1, 3)$.
+	\item $\varepsilon_{ijk} = 0$ se almeno due indici sono uguali
+\end{itemize}
+
+	Allora applicando queste definizioni agli operatori del momento angolare, otteniamo espressamente:
+	
+\begin{align*}
+	& \hat{L}_x = \hat{y}\hat{p}_z - \hat{z}\hat{p}_y = - i \hbar \, \qty( y\partial_z  - z \partial_y ) \\
+	& \hat{L}_y = \hat{z}\hat{p}_x - \hat{x}\hat{p}_z = - i \hbar \, \qty( z\partial_x  - x \partial_z ) \\
+	& \hat{L}_z = \hat{x}\hat{p}_y - \hat{y}\hat{p}_x = - i \hbar \, \qty( x\partial_y  - y \partial_x )
+\end{align*}
+
+	Queste equazioni mostrano chiaramente il significato geometrico degli operatori $\hat{L}_i$: sono operatori differenziali associati alle rotazioni infinitesime nello spazio delle coordinate. Ad esempio, l'operatore $\hat{L}_z$ corrisponde a una rotazione infinitesima attorno all'asse $z$, ed analogamente per gli altri assi. Inoltre quello che abbiamo ottenuto è che le componenti del momento angolare diventano operatori differenziale del primo ordine. 
+	\\
+	\\
+	Vogliamo ora approfondire il significato geometrico e algebrico dell'operatore momento angolare (sia orbitale che totale), collegandolo alle rotazioni finite, al loro sviluppo per angoli piccoli e alla struttura dei commutatori fondamentali. Vediamo tutto con calma e chiarezza:
+	\\
+	\\
+	Mi chiedo per prima cosa cosa cosa succeda a $\psi$ se applico $\hat{L}$ per una rotazione finita. Ovvero faccio:
+	
+\begin{align*}
+	\hat{U}\qty[ R_z(\theta) ] = e^{\, i/\hbar \,\, \theta \hat{L}_z}
+\end{align*}
+
+	infatti, questa espressione, descrive una rotazione finita attorno all'asse $z$ di un angolo $\theta$, realizzata tramite un operatore unitario $\hat{U}$. Sappiamo infatti che le rotazioni nello spazio fisico si traducono in operatori unitari che agiscono sullo spazio degli stati. Allora diciamo che $\psi'$ è lo stato ruotato e dunque applicando l'operatore per la rotazione su uno stato d’onda $\psi(x, y, z)$ otteniamo:
+	
+\begin{align*}
+	 \psi' = \hat{U}_z(\theta) \psi =  e^{\, i/\hbar \,\, \theta \hat{L}_z} \psi
+\end{align*}
+
+	In rappresentazione di Schrödinger allora, per piccoli valori di $\theta$ abbiamo che possiamo espandere in \textit{serie di Taylor}:
+	
+\begin{align*}
+	\psi'  \simeq \psi\qty(x, y, z) + \theta \, \qty(x\partial_y - y \partial_x) \, \psi\qty(x, y, z) + \order{\theta^2}
+\end{align*}
+	
+	Ma per ordini superiori invece? Se prendo $R \in SO(3)$ vicina all'identità, ho che:
+	
+\begin{align*}
+	R = \mathbb{I}_3 + i\theta \, \hat{n} \cdot \vb*{\mathcal{L}} + \order{\theta^2} \,\, \Rightarrow \,\, \hat{U}(R) + i\theta \, \hat{n} \cdot \hat{\vb*{L}} + \order{\theta^2} 
+\end{align*}
+
+	ed ottengo che, utilizzando l'azione per coniugazione che ha sugli operatori $\hat{x}$ e $\hat{p}$, allora:
+	
+\begin{align*}
+	\qty[\hat{L}_i, \hat{x}^j] = i\hbar \, \varepsilon_{ijk} \, \hat{x}^{\, k} \quad ; \quad \qty[\hat{L}_i, \hat{p}^j] = i\hbar \, \varepsilon_{ijk} \, \hat{p}^{\, k} 
+\end{align*}
+
+	Questi due commutatori sono equivalenti alla definizione di $\hat{U}(R)$ e danno tutte le informazioni sufficienti, senza dover fare lo sviluppo ad ordini superiori. Se lo spazio degli stati è lo spazio degli stati di Schrödinger, allora questi commutatori fissano $\hat{L}_i$ ad essere $\hat{L}_i = \varepsilon_{ijk} \, \hat{x}^{\, j} \hat{p}^{\, k}$ a meno di oggetti che commutano con $\hat{x}$ ed $\hat{p}$. In particolare, l'operatore $\hat{J} $, dove:
+
+\begin{mydef}
+	Vale che:
+\begin{align*}
+	\hat{J} = \hat{L} + \hat{S}
+\end{align*}
+	tale che:	
+\begin{align*}
+	\qty[\hat{S}_i, \hat{x}^{\, j}] = 0 \quad ; \quad \qty[\hat{S}_i, \hat{p}^{\, j}] = 0
+\end{align*}
+\end{mydef}
+
+	è la soluzione più generale dei  commutatori e rappresenta il \textit{momento angolare totale}. Il significato di $\hat{S}$, sarà chiarito più avanti, per ora limitiamoci a dire che:
+	
+\begin{mydef}
+	$\hat{\vb{S}}$ è definito come il \textbf{momento angolare intrinseco} o \textbf{spin}.
+\end{mydef}
+
+
+	Considero ora due rotazioni che chiamiamo: $R$ ed $\tilde{R}$ e coniugo con $\hat{U}$ ovvero:
+	
+\begin{align*}
+	\hat{U}^{-1}\qty(\tilde{R})\hat{U}^{-1}\qty(R)\hat{x}^i\hat{U}\qty(R)\hat{U}\qty(\tilde{R})
+\end{align*}
+
+	tale scrittura non deve spaventarci, infatti sappiamo che:
+	
+\begin{align*}
+	\hat{U}^{-1}\qty(R)\hat{x}^i\hat{U}\qty(R)
+\end{align*}
+
+	è \textit{la trasformazione} dell'operatore $\hat{x}^i$ sotto rotazione $R$, chiamata "\textit{coniugazione}". Con la scrittura precedente invece intendiamo due rotazioni una dietro l'altra:
+	
+\begin{align*}
+	\hat{U}^{-1}\qty(\tilde{R})\hat{U}^{-1}\qty(R)\hat{x}^i\hat{U}\qty(R)\hat{U}\qty(\tilde{R})
+\end{align*}
+
+	ci chiediamo dunque come cambi $\hat{x}^{i}$ se applichiamo prima $R$ e dopo $\tilde{R}$. Possiamo procedere riscrivendo le rotazioni in forma matriciale con gli indici sommati, ovvero, sapendo che vale:
+
+\begin{align*}
+	\hat{U}^{-1}\qty(R)\hat{x}^i\hat{U}\qty(R) = R_{ij} \hat{x}^{j}
+\end{align*}
+
+	con l'indice $j$ sommato. Ricordiamo che $R_{ij}$ sono gli elementi della matrice di rotazione. Allora l'azione combinata di due rotazioni $R$ ed $\tilde{R}$ sull'operatore posizione $\hat{x}^i$ possiamo vederla come una singola rotazione combinata $\qty(\tilde{R}R)$, otteniamo infatti:
+	
+\begin{align*}
+	\hat{U}^{-1}\qty(\tilde{R})\hat{U}^{-1}\qty(R)\hat{x}^i\hat{U}\qty(R)\hat{U}\qty(\tilde{R}) = \hat{U}^{-1}\qty(\tilde{R}) R_{ij} \hat{x}^{j}\hat{U}\qty(\tilde{R}) = R_{ij} \hat{U}^{-1}\qty(\tilde{R})  \hat{x}^{j}\hat{U}\qty(\tilde{R}) = R_{ij}\tilde{R}_{jk}\hat{x}^{k} = \qty(R\tilde{R})_{ik} \hat{x}^k
+\end{align*}
+
+	chiaramente, si può fare lo stesso identico procedimento per $\hat{p}$. Se $R, \tilde{R} \in SO(3)$ (gruppo delle matrici reali speciali ortogonali $ 3 \times 3$, con determinante uguale ad $1$) allora il prodotto matriciale $R\tilde{R} \in SO(3)$ poiché è un gruppo. Vale quindi che possiamo scrivere:
+	
+\begin{align*}
+	\hat{U}^{-1}\qty(\tilde{R})\hat{U}^{-1}\qty(R)\hat{x}^i\hat{U}\qty(R)\hat{U}\qty(\tilde{R}) = \hat{U}^{-1}\qty(R\tilde{R})\hat{x}^i\hat{U}\qty(R\tilde{R})
+\end{align*}
+
+	Quindi per le matrici di rotazione vale in generale:
+	
+\begin{nb}
+\begin{align*}
+	\hat{U}\qty(R)\hat{U}\qty(\tilde{R}) = \lambda\qty(R, \tilde{R}) \hat{U}(R\tilde{R}) \quad ; \quad \lambda\qty(R, \tilde{R}) \in \mathbb{C}
+\end{align*}
+\end{nb}
+
+	tale formula ci dice che applicare due rotazioni una dopo l'altra equivale ad una rotazione singola così composta e l'uguaglianza vale a meno di una fattore complesso (che per costruzione ha modulo uno). Come sappiamo gli stati sono rappresentati da vettori di uno spazio di Hilbert, ma fisicamente uno stato quantistico è invariato se lo moltiplichi per un fattore di fase globale ($e^{\, i\phi}$), quindi le operazioni fisiche (rotazioni) devono essere rappresentate almeno a meno di una fase globale. Ciò risiede nella natura \textit{proiettiva} della meccanica quantistica. 
+	\\
+	\\
+	Osservo una cosa: posto $\lambda = 1$, se $\tilde{R} = R^{-1}$ allora ho che:
+
+\begin{align*}
+	\hat{U}\qty(R)\hat{U}\qty(R^{-1}) = \hat{U}\qty(RR^{-1}) = \hat{U}\qty(\mathbb{I}) = \mathbb{I} \, \, \Rightarrow \, \, \textcolor{blue}{\hat{U}\qty(R^{-1}) = \hat{U}^{-1}\qty(R)}
+\end{align*}
+
+	Come traduco il tutto per $\hat{L}_i$?
+	\\
+	\\
+	Si può fare per qualsiasi valore di $\lambda$ ma senza perdere di generalità, poniamo per semplicità $\lambda = 1$:
+
+\begin{align*}
+	\hat{U}\qty(R)\hat{U}\qty(\tilde{R}) = \hat{U}\qty(R\tilde{R}) \,\, \Rightarrow \,\,  \hat{U}\qty(R) \hat{U}\qty(\tilde{R}) \hat{U}^{-1}\qty(R)=  \hat{U}\qty(R\tilde{R}) \hat{U}^{-1}\qty(R)
+\end{align*}
+
+	ma da prima so che:
+	
+\begin{align*}
+	 \hat{U}\qty(R) \hat{U}\qty(\tilde{R}) \textcolor{blue}{\hat{U}^{-1}\qty(R)} =  \hat{U}\qty(R)\hat{U}\qty(\tilde{R}) \textcolor{blue}{\hat{U}^{-1}\qty(R)}= \hat{U}\qty(R\tilde{R}R^{-1})
+\end{align*}
+
+	consideriamo ora una $\tilde{R}$ molto piccola (vicino all'identità, cioè una rotazione di angolo piccolissimo $\tilde{\theta}$ attorno a una direzione $\tilde{\hat{n}}$) come al solito ed espandiamo con Taylor:
+	
+\begin{align*}
+	\tilde{R} = \mathbb{I} + i\tilde{\theta}\tilde{\hat{n}} \cdot \vb*{\mathcal{L}} + \order{\tilde{\theta}^{\,2}} \,\, \Rightarrow \,\, \hat{U}\qty(\tilde{R}) = \mathbb{I} + \frac{i}{\hbar} \, \tilde{\theta}\tilde{\hat{n}} \cdot \hat{\vb*{L}} + \order{\tilde{\theta}^{\, 2}}
+\end{align*}
+
+	ricordando che:
+	
+\begin{itemize}
+	\item $\mathbb{I}$ è la matrice identità $3 \times 3$ (nessuna rotazione),
+	\item $\vb*{\mathcal{L}}$ sono i \textit{generatori infinitesimali} della rotazione nello spazio delle matrici $SO\qty(3)$, si possono pensare come le "infinitesime matrici di rotazione",
+	\item $i\tilde{\theta}\tilde{\hat{n}} \cdot \vb*{\mathcal{L}}$ è il primo ordine dello sviluppo in $\tilde{\theta}$.
+\end{itemize}
+
+	inoltre essendo che ogni rotazione è rappresentata da un operatore unitario $\hat{U}\qty(R)$ che agisce sugli stati quantistici. L'operatore unitario per una rotazione finita attorno a un asse $\tilde{\hat{n}}$ di angolo $\tilde{\theta}$ è:
+	
+\begin{align*}
+	\hat{U}\qty(\tilde{R}) = e^{\, i  \,\tilde{\theta} \tilde{\hat{n}} \cdot \vb*{L}/ \hbar}
+\end{align*}
+
+	e sviluppando per Taylor per $\tilde{\theta}$ piccolo si ottiene il membro l'equazione di destra scritta prima. Dunque siamo arrivati a:
+	
+\begin{align*}
+	  \hat{U}\qty(R)\hat{U}\qty(\tilde{R}) \hat{U}\qty(R^{-1}) = \hat{U}\qty(R\tilde{R}R^{-1})
+\end{align*}
+
+	chiaramente vale la stessa cosa se facciamo anche:
+
+\begin{nb}
+\begin{align*}
+	  \hat{U}\qty(R^{-1})\hat{U}\qty(\tilde{R}) \hat{U}\qty(R) = \hat{U}\qty(R^{-1}\tilde{R}R)
+\end{align*}
+\end{nb}
+
+\begin{myapprf}
+	Vale che:
+\begin{align*}
+	\hat{U}\qty(R^{-1}\tilde{R}R) \neq \hat{U}\qty(R\tilde{R}R^{-1})
+\end{align*}
+	infatti:
+\begin{align*}
+	R\tilde{R} \neq \tilde{R}R
+\end{align*}
+	sono rotazioni composte diverse, una nel verso contrario rispetto all'altra e dunque applicando tali matrici allo stesso stato si ottengono due stati ruotati diversi.
+\end{myapprf}
+
+	Analizziamo ora i due membri dell'espressione:
+
+\begin{itemize}
+	\item \textit{Sinistra:}
+	\begin{align*}
+		\hat{U}\qty(R^{-1})\hat{U}\qty(\tilde{R}) \hat{U}\qty(R) = \mathbb{I} + \frac{i}{\hbar} \, \tilde{\theta}\tilde{\hat{n}}^{\, i} \,\hat{U}^{-1}\qty(R) L_i \hat{U}\qty(R)
+	\end{align*}
+	
+	\begin{myprf}
+		Per ricavare questa espressione notiamo che partendo da:
+	\begin{align*}
+		\hat{U}\qty(\tilde{R}) \simeq \mathbb{I} + \frac{i}{\hbar} \tilde{\theta}\tilde{n}^{\, i} \hat{L}_i
+	\end{align*}
+	
+		allora:
+		
+	\begin{align*}
+		\hat{U}\qty(R^{-1})\hat{U}\qty(\tilde{R})\hat{U}\qty(R) & \simeq \hat{U}\qty(R^{-1})\qty(\mathbb{I} + \frac{i}{\hbar} \tilde{\theta}\tilde{n}^{\, i} \hat{L}_i)\hat{U}\qty(R) \\
+		& = \hat{U}\qty(R^{-1})\hat{U}\qty(R) + \frac{i}{\hbar} \tilde{\theta} \tilde{n}^i \, \hat{U}\qty(R^{-1})\hat{L}_i \hat{U}\qty(R) \\
+		& = \mathbb{I} + \frac{i}{\hbar} \tilde{\theta} \tilde{n}^i \,\hat{U}\qty(R^{-1})\hat{L}_i \hat{U}\qty(R)
+	\end{align*}
+	
+		e allora:
+	
+	\begin{align*}
+		\hat{U}\qty(R^{-1})\hat{U}\qty(\tilde{R})\hat{U}\qty(R) = \mathbb{I} + \frac{i}{\hbar} \tilde{\theta} \tilde{n}^i \,\hat{U}\qty(R^{-1})\hat{L}_i \hat{U}\qty(R) = \mathbb{I} + \frac{i}{\hbar} \tilde{\theta} \tilde{n}^i \,\hat{U}^{-1}\qty(R)\hat{L}_i \hat{U}\qty(R) 
+	\end{align*}
+	
+	\end{myprf}
+		
+		Il lato sinistro dà l'identità più una piccola rotazione trasformata tramite $R$.
+
+ 
+	\item \textit{Destra:}
+	\begin{align*}
+		\hat{U}\qty(R^{-1}R\tilde{R}) = \hat{U}\qty(\mathbb{I} + i \, \tilde{\theta}\tilde{n}^{\, i} \, R^{-1} \mathcal{L}_i R + \order{\tilde{\theta}^{\, 2}})
+	\end{align*}
+		
+	\begin{myprf}
+		Vediamo velocemente perché, partendo da:
+	
+	\begin{align*}
+		\tilde{R} \simeq \mathbb{I} + i \tilde{\theta} \, \tilde{n}^{ \, i} \, \mathcal{L}_i
+	\end{align*}
+	
+		allora vale che:
+	
+	\begin{align*}
+		R^{-1}\tilde{R}R & \simeq R^{-1}\qty(\mathbb{I} + i \tilde{\theta} \, \tilde{n}^{ \, i} \, \mathcal{L}_i)R \\
+		& = \mathbb{I} + i \tilde{\theta} \, \tilde{n}^{ \, i} \, R^{-1}\mathcal{L}_iR
+	\end{align*}
+
+	\end{myprf}
+
+\end{itemize}
+
+	Sapendo ora che il determinate di $R$ è uguale ad $1$ e che il tensore di Levi-Civita è invariante si trova che $\hat{L}$ si trasforma sotto $\hat{U}$ come $\hat{x}, \hat{p}$. In particolare, si dice che $\hat{L}$ è un \textbf{operatore vettoriale}. Per definizione vale che:
+	
+\begin{mydef}
+	Un \textbf{operatore vettoriale} trasforma come:
+\begin{align*}
+	\hat{U}^{-1}\qty(R)\hat{V}_i\hat{U}\qty(R) = R_{ij}\hat{V}_j
+\end{align*}
+\end{mydef}
+	
+	e dunque essendo che $\hat{L}_i$ lo è, vale che:
+	
+\begin{align*}
+	\hat{U}^{-1}\qty(R)\hat{L}_i\hat{U}\qty(R) = R_{ij}\hat{L}_j
+\end{align*}
+
+	In conclusione, in analogia con la relazione di commutazione che segue:
+
+\begin{align*}
+	\qty[\hat{L}_i, \hat{x}^j] = i \hbar \, \varepsilon_{ijk} \, \hat{x}^{k}
+\end{align*}
+	
+	ho allora:
+	
+\begin{mydef}
+	La \textit{principale relazione di commutazione del momento angolare orbitale:}
+\begin{align*}
+	\qty[\hat{L}_i, \hat{L}_j] = i\hbar \, \varepsilon_{ijk} \, \hat{L}^{\, k}
+\end{align*}
+\end{mydef}
+	
+	Infatti affinché $\hat{U}\qty(R)$ sia rappresentate di una rotazione, i generatori $\hat{L}_i$ non devono commutare tra di loro, ma devono soddisfare la relazione appena trovata.
+
+\section{Spin, Operatori a Scaletta e Matrici di Pauli}
+
+	Abbiamo visto che il \textit{momento angolare totale} si scrive come:
+
+\begin{align*}
+	\hat{J} = \hat{L} + \hat{S}
+\end{align*}
+	
+	con $\hat{S}_i$ tale che, per quanto detto:
+	
+\begin{align*}
+	\qty[\hat{S}_i, \hat{x}^{\, j}] = \qty[\hat{S}_i, \hat{p}^{\, j}] = \qty[\hat{S}_i, \hat{L}_{ j}] = 0 
+\end{align*}
+
+	A questo punto mi chiedo quanto valga il commutatore tra le diverse componenti di $\hat{J}_i$. Facciamo il calcolo diretto:
+
+\begin{align*}
+	\qty[\hat{J}_i, \hat{J}_j] = \qty[\hat{L}_i + \hat{S}_i, \hat{L}_j + \hat{S}_j ] = \qty[\hat{L}_i, \hat{L}_j] + \qty[\hat{L}_i, \hat{S}_j] +\qty[\hat{S}_i, \hat{L}_j] + \qty[\hat{S}_i, \hat{S}_j] 
+\end{align*}
+	
+	dove l'espansione vale per \textit{linearità}. Si osserva che i commutatori misti sono nulli per ipotesi, infatti $\hat{S}_i$ agisce solo sullo spazio degli spin mentre $\hat{L}_j$ agisce solo sulle coordinate spaziali. Pertanto rimane che:
+	
+\begin{align*}
+	\qty[\hat{J}_i, \hat{J}_j] =  \qty[\hat{L}_i, \hat{L}_j] + \qty[\hat{S}_i, \hat{S}_j] 
+\end{align*}
+
+	vale allora la seguente regola, essendo anche $\hat{S}$ un operatore vettoriale:
+
+\begin{align*}
+	\qty[\hat{S}_i, \hat{S}_j] =  i \hbar \, \varepsilon_{ijk} \hat{S}_k
+\end{align*}
+
+	e dunque possiamo scrivere che:
+ 
+\begin{align*}
+	\qty[\hat{J}_i, \hat{J}_j]  =  i \hbar \, \varepsilon_{ijk} \hat{L}_k + i \hbar \, \varepsilon_{ijk} \hat{S}_k
+\end{align*}
+
+	Esistono particelle, dette \textbf{scalari}, il cui spazio è proprio lo spazio $\mathcal{H}_{\mathbb{C}} = L_2\qty(\mathbb{R})$: in questo caso l'operatore $\hat{S}$ è nullo perché lo stato è determinato completamente da $\hat{x}$ e da $\hat{p}$. Ma cosa c'entra?
+	\\
+	\\
+	Se una particella ha solo coordinate spaziali $\qty(\hat{x}, \hat{p})$ che descrivono il suo stato quantistico, allora non ha bisogno di un operatore $\hat{S}$ separato (lo spin), cioè funzioni d'onda del tipo $\psi\qty(\va{x})$ sulle coordinate spaziali. In questo caso, l'unico momento angolare possibile è quello orbitale, $\hat{L}$ e non c'è spin interno $\hat{S} = 0$. Quindi vale che:
+	
+\begin{align*}
+	\hat{J} = \hat{L}
+\end{align*}
+	
+	ovvero che il momento angolare totale $\hat{J}$ coincide con il momento angolare orbitale $\hat{L}$. Inoltre varrà che e il commutatore $\qty[\hat{J}_i, \hat{J}_j] $ è semplicemente quello di $\hat{L}$. Le \textit{particelle scalari} dunque:
+
+\begin{itemize}
+	\item Non hanno spin.
+	\item Non hanno gradi di libertà interni.
+	\item Sono completamente descritte da $\hat{x}, \hat{p}$.
+\end{itemize} 
+
+	Tuttavia esistono anche altri tipi di particelle, il cui stato non è descritto invece completamente da $\hat{x}$ ed $\hat{p}$. Si introduce quindi una nuova variabile dinamica, $\hat{S}$, di cui conosco il commutatore tra le componenti, che prende il nome di momento angolare intrinseco o spin.
+	\\
+	\\
+	In generale, ma non sempre, le componenti di $\hat{J}$ commutano con \textit{tutti gli operatori scalari $\hat{S}$} (attenzione: in questi calcoli seguenti $\hat{S}$ non è lo spin ma un generico operatore scalare). Valendo allora:
+
+\begin{align*}
+	\qty[\hat{J}, \hat{S}] = 0
+\end{align*}
+
+	Ipotizziamo per esempio di avere l'operatore scalare $\hat{J}^2$, che scritto in componenti è per definizione:
+
+\begin{mydef}
+\begin{align*}
+	\hat{S} = \hat{J}^{\, 2} = \hat{J}_1^{\, 2} + \hat{J}_2^{\, 2} + \hat{J}_3^{\, 2}
+\end{align*}
+\end{mydef}
+
+	\textit{dimostriamo velocemente che è effettivamente scalare:}
+	
+\begin{myprf}
+	
+\begin{align*}
+	\qty[\hat{J}_i, \hat{J}^{\, 2}]  = \qty[\hat{J}_i, \hat{J}_1^{\, 2} + \hat{J}_2^{\, 2} + \hat{J}_3^{\, 2}] =  \qty[\hat{J}_i, \hat{J}_1^{\, 2}] + \qty[\hat{J}_i, \hat{J}_2^{\, 2}] + \qty[\hat{J}_i, \hat{J}_3^{\, 2}] 
+\end{align*}
+
+	utilizzando l'identità:
+	
+\begin{align*}
+	\qty[\hat{A}, \hat{B}^2] = \qty[\hat{A}, \hat{B}] \hat{B} + \hat{B} \qty[\hat{A}, \hat{B}]
+\end{align*}
+
+	allora:
+	
+\begin{align*}
+	\qty[\hat{J}_i, \hat{J}_{j}^{\, 2}] = \qty[\hat{J}_i, \hat{J}_j] \hat{J}_j +\hat{J}_j \qty[\hat{J}_i, \hat{J}_j]
+\end{align*}
+
+	ma sappiamo che:
+	
+\begin{align*}
+	\qty[\hat{J}_i, \hat{J}_{j}] = i\hbar \, \varepsilon_{ijk} \, \hat{J}_k
+\end{align*}
+
+	e dunque:
+	
+\begin{align*}
+	\qty[ \hat{J}_i, \hat{J}_j^{\, 2} ] = \qty(i \hbar \, \varepsilon_{ijk} \hat{J}_k)\hat{J}_j + \hat{J}_j  \qty(i \hbar \, \varepsilon_{ijk} \hat{J}_k) = i \hbar \, \varepsilon_{ijk} \, \qty( \hat{J}_k\hat{J}_j + \hat{J}_j\hat{J}_k )
+\end{align*}
+
+	notiamo ora che però vale che:
+	
+\begin{itemize}
+	\item Il simbolo di Levi-Civita $\varepsilon_{ijk}$ è \textit{antisimmetrico} rispetto allo scambio di $j, k$.
+	\item $ \qty( \hat{J}_k\hat{J}_j + \hat{J}_j\hat{J}_k )$ è invece \textit{simmetrico} rispetto allo scambio di $j, k$.
+\end{itemize}
+
+	e vale che \textit{se moltiplichi tensore di antisimmetrico per tensore di simmetrico, il risultato è nullo.} (non vale per ogni oggetto, pensa per esempio a due funzioni, $x$ (antisimmetrica) e $\cos x$ (simmetrica) il loro prodotto non è certo nullo, ma l'integrale si. In generale vale che in questo caso è vero perché i tensori hanno gli indici sommati che fanno annullare i termini. Infatti simmetrico per antisimmetrico fa antisimmetrico nel caso delle funzioni, se non integro). Allora abbiamo ottenuto che:
+	
+\begin{align*}
+	\qty[ \hat{J}_i, \hat{J}^{\, 2} ] = 0
+\end{align*}
+
+	per ogni $i = 1, 2, 3$.
+
+\end{myprf}
+
+	Perché ci interessa $\hat{J}^{\, 2}$? Perché sapendo che è un operatore scalare sappiamo anche che ogni componente del momento angolare totale commuta con lui, quindi significa che $J_i$ e $J^2$ sono osservabili compatibili e quindi sono simultaneamente diagonalizzabili. Esiste pertanto una base di
+autovettori simultanei di, ad esempio, $\hat{J}_3$ e $\hat{J}^{\, 2}$. L'insieme di osservabili compatibili $\qty{\hat{J}_3, \hat{J}^{\, 2}}$ però non è necessariamente un insieme completo: ciò vuol dire che gli autovettori simultanei di $\hat{J}_3$ e di $\hat{J}^{\, 2}$ potrebbero degenerare.
+	\\
+	\\
+	Supponiamo quindi di aggiungere all'insieme abbastanza osservabili compatibili, indicate collettivamente con $\qty{\hat{O}}$, per formare un insieme completo di osservabili che indichiamo come:
+	
+\begin{align*}
+	\qty{\hat{J}_3, \hat{J}^{\, 2}, \hat{O} }
+\end{align*}
+
+	per ipotesi $\hat{O}$ deve commutare sia con la componente $3$ di $\hat{J}$, sia con $\hat{J}^{\, 2}$ ovvero:
+
+ \begin{align*}
+ 	\qty[\hat{J}_3, \hat{O}] = \qty[\hat{J}^{\, 2}, \hat{O}] = 0
+ \end{align*}
+ 
+ 	assumiamo inoltre che $\hat{O}$ commuti con tutte le componenti di $\hat{J}$, quindi:
+	
+\begin{align*}
+	\qty[\hat{J}_i, \hat{O}] = 0
+\end{align*}
+
+	adesso, si denoti il seguente vettore:
+	
+\begin{align*}
+	\ket{\mu^2, m, \lambda}
+\end{align*}
+	
+	e se scriviamo: $\qty{\ket{\mu^2, m, \lambda}}$, si tratta dei vettori della base ortonormale di autovettori simultanei di $\qty{\hat{J}_3, \hat{J}^{\, 2}, \hat{O}}$. Vale allora che, l'applicazione degli operatori sui vettori della base ci da per definizione (essendo autovettore):
+
+\begin{nb}
+\begin{align*}
+	& \hat{J}^{\, 2} \ket{\mu^2, m, \lambda} = \hbar^2 \mu^2  \ket{\mu^2, m, \lambda} \\
+	& \hat{J}_3 \ket{\mu^2, m, \lambda} = \hbar m \ket{\mu^2, m, \lambda} \\
+	& \hat{O} \ket{\mu^2, m, \lambda} = \lambda \ket{\mu^2, m, \lambda} 
+\end{align*}
+\end{nb}
+
+	dove il fattori $\hbar, \hbar^2$ serve a rendere $\mu^2, m$ dei numeri adimensionali. 
+
+\begin{myapprf}
+	Si noti che è proprio un nuovo tipo di scrittura, infatti per $\qty{\ket{\mu^2, m, \lambda}}$ si intende la famiglia di vettori della base ortonormale di autovettori simultanei di $\qty{\hat{J}_3, \hat{J}^{\, 2}, \hat{O}}$. Per esempio infatti potrebbe valere:
+\begin{align*}
+	\ket{1, 2, 3}
+\end{align*}
+	In particolare allora, per convenzione l'autovalore relativo a $\hat{J}^{\, 2}$ sarebbe $\mu^2 = 1$ e gli altri a seguire. La scrittura del vettore è diversa dal solito perché per descrivere lo stato ora abbiamo bisogno di più informazioni.
+\end{myapprf}
+
+	Poiché tutti i $\hat{J}_i$ commutano sia con $\hat{J}^{\, 2}$ ed $\hat{O}$, quando $\hat{J}_i$ agisce sul vettore della base $\ket{\mu^2, m, \lambda}$ produce una combinazione lineare di autovettori con gli stessi $\lambda$ e $\mu^2$.
+
+\begin{mydef}
+	Si definiscono allora \textit{le combinazioni lineari di $\hat{J}_1$ e $\hat{J}_2$} come:
+	
+\begin{align*}
+	\hat{J}_{+} \, \equiv \, \hat{J}_1 + i \hat{J}_2 \quad ; \quad \hat{J}_-  \, \equiv \, \hat{J}_1 - i \hat{J}_2 
+\end{align*}
+\end{mydef}
+
+	questo significa che per costruzione vale:
+	
+\begin{align*}
+	\hat{J}_- = \qty(\hat{J}_+)^{\dagger}
+\end{align*}
+
+	Possiamo inoltre dare le seguenti definizioni ricavate dalle precedenti:
+	
+\begin{mydef}
+\begin{align*}
+	\textcolor{red}{\hat{J}_1} \, \equiv \, \hat{J}_x = \frac{1}{2} \, \qty(\hat{J}_+ + \hat{J}_-) \quad ; \quad \textcolor{red}{\hat{J}_2} \, \equiv \, \hat{J}_y = \frac{1}{2i} \, \qty(\hat{J}_+ - \hat{J}_-) \quad ; \quad \textcolor{red}{\hat{J}_3} \, \equiv \, \hat{J}_z
+\end{align*}
+\end{mydef}
+
+	da calcolo diretto con la definizione di commutatore inoltre si ha che:
+
+\begin{align*}
+	\qty[\hat{J}_3, \hat{J}_{\pm}] = \pm \, \hbar \hat{J}_{\pm} \qquad ; \qquad \qty[\hat{J}_+, \hat{J}_-] = 2\hbar \, \hat{J}_3
+\end{align*}
+
+	inoltre possiamo scriverci $\hat{J}^{\, 2}$ con i nuovi operatori combinati:
+	
+\begin{mydef}
+	Otteniamo che $\hat{J}^{\, 2}$ possiamo scrivere come:
+\begin{align*}
+	\hat{J}^{\, 2} = \hat{J}_+ \hat{J}_- + \hat{J}^{\, 2}_3 - \hbar \hat{J}_3 = \hat{J}_- \hat{J}_+ + \hat{J}^{\, 2}_3 + \hbar \hat{J}_3
+\end{align*}
+\end{mydef}
+
+\begin{myprf}
+	Infatti ricordiamo che per definizione:
+	
+\begin{align*}
+	\hat{J}^{\, 2} = \hat{J}_x^{\, 2} + \hat{J}_y^{\, 2} + \hat{J}_z^{\, 2}
+\end{align*}
+	
+	allora utilizzando le espressioni di $\hat{J}_x$ ed $\hat{J}_y$ scritte in termini di $\hat{J}_{\pm}$, ovvero:
+
+\begin{align*}
+	\hat{J}_x = \frac{1}{2} \, \qty(\hat{J}_+ + \hat{J}_-) \quad ; \quad \hat{J}_y = \frac{1}{2i} \, \qty(\hat{J}_+ - \hat{J}_-) 
+\end{align*}
+	
+	calcoliamo il quadrato ed otteniamo:
+	
+\begin{align*}
+	\hat{J}_x^{\, 2} = \frac{1}{4} \, \qty(\hat{J}_+ + \hat{J}_-)^2 \qquad ; \qquad  \hat{J}_y^{\, 2} = - \, \frac{1}{4}  \, \qty(\hat{J}_+ - \hat{J}_-)^2
+\end{align*}
+	
+	e allora la somma:
+	
+\begin{align*}
+	\hat{J}_x^{\, 2}  + \hat{J}_y^{\, 2} = \frac{1}{4} \, \qty( \hat{J}_+ + \hat{J}_-)^2 - \, \frac{1}{4}  \, \qty(\hat{J}_+ - \hat{J}_-)^2 = \frac{1}{2} \, \qty(  \hat{J}_+\hat{J}_- + \hat{J}_-\hat{J}_+  )
+\end{align*}
+	
+	allora:
+	
+\begin{align*}
+	\hat{J}^{\, 2} = \textcolor{blue}{\hat{J}_x^{\, 2} + \hat{J}_y^{\, 2}} + \hat{J}_z^{\, 2} = \textcolor{blue}{ \frac{1}{2} \, \qty(  \hat{J}_+\hat{J}_- + \hat{J}_-\hat{J}_+  ) } + \hat{J}_3^{\, 2}
+\end{align*}
+
+	notiamo ora che:
+
+\begin{align*}
+	\qty[\hat{J}_+, \hat{J}_-] = 2\hbar \, \hat{J}_3 \, \, \Rightarrow \,\, \hat{J}_+ \hat{J}_- - \hat{J}_- \hat{J}_+ = 2\hbar\, \hat{J}_3
+\end{align*}
+
+	e quindi possiamo sostituire:
+	
+\begin{align*}
+	& \hat{J}_-\hat{J}_+ =\hat{J}_+\hat{J}_- - 2\hbar \, \hat{J}_3 \\
+	& \hat{J}_+\hat{J}_- =\hat{J}_-\hat{J}_+ + 2\hbar \, \hat{J}_3
+\end{align*}
+
+	allora sostituendo prima uno e poi l'altro si ottiene rispettivamente:
+	
+\begin{align*}
+	& \hat{J}^{\, 2} = \hat{J}_+ \hat{J}_- + \hat{J}^{\, 2}_3 - \hbar \hat{J}_3 \\
+	&  \hat{J}^{\, 2} = \hat{J}_- \hat{J}_+ + \hat{J}^{\, 2}_3 + \hbar \hat{J}_3
+\end{align*}
+
+
+
+
+
+
+	
+\end{myprf}
+
+	Ci chiediamo ora come agiscano questi nuovi operatori sugli stati.
+	\\
+	\\
+	In generale avrò che:
+	
+\begin{nb}
+	L'\textit{azione} degli operatori combinati sui vettori della base é rispettivamente:
+\begin{align*}
+	& \hat{J}_+ \ket{\mu^2, m, \lambda} = C^+_{\mu, m, \lambda} \ket{\mu^2, m+1, \lambda} \\
+	& \hat{J}_- \ket{\mu^2, m, \lambda} = C^-_{\mu, m, \lambda} \ket{\mu^2, m-1, \lambda}
+\end{align*}
+\end{nb}
+	
+	dove i coefficienti $C^{\pm}_{\mu, m, \lambda}$ sono dei numeri. Vediamo perché questo è l'effetto
+	
+\begin{myprf}
+
+	In particolare noi sappiamo che il contesto della base $\ket{\mu^2, m, \lambda}$ è che soddisfa:
+	
+\begin{align*}
+	& \hat{J}^{\, 2}\ket{\mu^2, m, \lambda}  = \hbar^2 \mu^2 \ket{\mu^2, m, \lambda} \\
+	& \hat{J}_3 \ket{\mu^2, m, \lambda} = \hbar m \ket{\mu^2, m, \lambda}
+\end{align*}
+
+	inoltre sappiamo che vale:
+	
+\begin{align*}
+	\qty[\hat{J}^{\, 2}, \hat{J}_{\pm}] = 0 \qquad ; \qquad \qty[\hat{J}_3, \hat{J}_{\pm}] = \pm \, \hbar \hat{J}_{\pm}
+\end{align*}
+
+	questo significa che l'operatore $\hat{J}_{\pm}$ \textit{commuta} con $\hat{J}^{\, 2}$ ma \textit{non lo fa} con $\hat{J}_3$ e quindi applicandoli ad un autostato di $\hat{J}_3$ producono un nuovo autostato con autovalore magnetico $m \pm 1$. Perché proprio $\pm1$?
+	\\
+	\\
+	Perché se prendiamo $\ket{j, m}$ un autostato simultaneo di $\hat{J}^{\, 2}$ e $\hat{J}_3$ tale che:
+
+\begin{align*}
+	\hat{J}_3 \ket{j, m} = \hbar m \ket{j, m}
+\end{align*}
+
+	applicando invece $\hat{J}_3$ allo stato: $\hat{J}_{\pm} \ket{j, m}$ otteniamo:
+
+\begin{align*}
+	\textcolor{ForestGreen}{\hat{J}_3 \hat{J}_{\pm}} \ket{j, m} = \qty(\textcolor{ForestGreen}{ \hat{J}_{\pm} \hat{J}_{3}  + \qty[\hat{J}_3, \hat{J}_{\pm}] }) \ket{j, m}
+\end{align*}
+
+	utilizzando il fatto che:
+	
+\begin{align*}
+	\qty[\hat{J}_3, \hat{J}_{\pm}]  = \hat{J}_3 \hat{J}_{\pm} -  \hat{J}_{\pm} \hat{J}_{3} 
+\end{align*}
+
+	allora:
+	
+\begin{align*}
+	\hat{J}_3 \hat{J}_{\pm} \ket{j, m} = \qty(\hat{J}_{\pm} \hat{J}_{3}  + \qty[\hat{J}_3, \hat{J}_{\pm}] ) \ket{j, m} & =   \hat{J}_{\pm} \hat{J}_{3} \ket{j, m} + \qty[\hat{J}_3, \hat{J}_{\pm}] \ket{j, m} \\
+	& = \hat{J}_{\pm} \hat{J}_{3} \ket{j, m} \pm \hbar \hat{J}_{\pm} \ket{j, m} 
+\end{align*}
+
+	conoscendo allora l'azione di $\hat{J}_3$ possiamo dire:
+
+\begin{align*}
+	\hat{J}_3 \hat{J}_{\pm} \ket{j, m} = \hat{J}_{\pm} \textcolor{orange}{\hat{J}_{3} \ket{j, m}} \pm \hbar \hat{J}_{\pm} \ket{j, m} = \hat{J}_{\pm} \textcolor{orange}{\hbar m \ket{j, m}}  \pm \hbar \hat{J}_{\pm} \ket{j, m}
+\end{align*}
+
+	allora:
+	
+\begin{align*}
+	\hat{J}_3 \hat{J}_{\pm} \ket{j, m} =  \hat{J}_{\pm} \hbar m \ket{j, m}  \pm \hbar \hat{J}_{\pm} \ket{j, m} = \hat{J}_{\pm}  \hbar \,  \qty(m +1) \ket{j, m} =   \hbar \,  \qty(m \pm 1) \hat{J}_{\pm} \ket{j, m}
+\end{align*}
+
+	allora abbiamo ottenuto che $\hat{J}_{\pm} \ket{j, m}$ è un autostato di $\hat{J}_3$ con autovalore $ \hbar\qty(m \pm 1)$.
+
+\end{myprf}
+
+	Abbiamo ottenuto che rispettivamente $\hat{J}_+, \hat{J}_-$ alzano e abbassano di $1$ l'autovalore $m$ di $\hat{J}_3$. Notiamo che funzionano in modo analogo agli operatori di creazione e di distruzione dell'oscillatore armonico. Diamo la seguente definizione:
+	
+\begin{mydef}
+	Per definizione diciamo che $\hat{J}_+$ e $\hat{J}_-$ rispettivamente sono chiamati \textbf{operatori a scaletta}.
+\end{mydef}
+
+	Vorremmo sapere se e quando, applicando ripetutamente questi operatori su un dato autostato di $\hat{J}_3$, otteniamo eventualmente un vettore nullo. Iniziamo notando che, per ogni vettore $\ket{v}$ si ha che:
+	
+\begin{align*}
+	\mel{v}{\hat{J}^{\, 2} - \hat{J}^{\, 2}_3}{v} = \mel{v}{\hat{J}_1^{\, 2} + \hat{J}_2^{\, 2}}{v} \geq 0 
+\end{align*}
+
+	e quindi vale sicuramente anche per $\ket{v} = \ket{\mu^2, m, \lambda}$, infatti:
+
+\begin{align*}
+	\mel{\mu^2, m, \lambda}{\hat{J}^{\, 2} - \hat{J}^{\, 2}_3}{\mu^2, m, \lambda} = \mel{\mu^2, m, \lambda}{\hat{J}^{\, 2}}{\mu^2, m, \lambda} - \mel{\mu^2, m, \lambda}{ \hat{J}^{\, 2}_3}{\mu^2, m, \lambda}=  \hbar^2 \, \qty(\mu^2 - m^2)  \geq 0 
+\end{align*}
+
+	dunque deve valere che:
+	
+\begin{align*}
+	\hbar^2 \, \qty(\mu^2 - m^2)  \geq 0  \, \, \Rightarrow \, \, \hbar^2 \mu^2 - \hbar^2 m^2 \geq 0 \, \, \Rightarrow \, \, \mu^2 \geq m^2
+\end{align*}
+
+	allora:
+	
+\begin{align*}
+	|m| \leq \mu \,\, \Rightarrow \,\, -\mu \leq m \leq \mu
+\end{align*}
+
+	ciò implica che esistono dei valori massimi e minimi di $m$ che chiamiamo rispettivamente: $m_{\text{max}}$ ed $m_{\text{min}}$ tale per cui:
+
+\begin{nb}
+\begin{align*}
+	& \hat{J}_+ \ket{\mu^2, m_{\text{max}}, \lambda} = 0 \\
+	& \hat{J}_- \ket{\mu^2, m_{\text{min}}, \lambda} = 0 
+\end{align*}
+\end{nb}
+
+	inoltre so che che calcoliamo il valore medio di:
+	
+\begin{align*}
+	& \mel{\mu^2, m, \lambda}{\hat{J}_-\hat{J}_+}{\mu^2, m, \lambda} = \abs{C^+_{\mu, m, \lambda}}^2 = \hbar^2 \, \qty(\mu^2 - m^2 - m) \\
+	& \mel{\mu^2, m, \lambda}{\hat{J}_+ \hat{J}_-}{\mu^2, m, \lambda} = \abs{C^-_{\mu, m, \lambda}}^2 = \hbar^2 \, \qty(\mu^2 - m^2 + m)
+\end{align*}
+
+	e quindi otteniamo che per essere nullo deve valere:
+	
+\begin{align*}
+	& C^+_{\mu, m, \lambda} = 0  \, \, \Leftrightarrow \,\, \mu^2 = m_{\text{max}} \, \qty(m_{\text{max}} + 1) \\
+	&  C^-_{\mu, m, \lambda} = 0  \, \, \Leftrightarrow \,\, \mu^2 = m_{\text{min}} \, \qty(m_{\text{min}} - 1)
+\end{align*}
+
+	A questo punto, cerco le soluzioni dell'equazione risultante dal sistema che segue dal precedente punto, ovver:
+	
+\begin{align*}
+	m_{\text{max}} \, \qty( m_{\text{max}} +1 ) = m_{\text{min}} \, \qty( m_{\text{min}} - 1 ) 
+\end{align*}
+
+	e le soluzioni sono:
+	
+\begin{align*}
+	m_{\text{max}} = - m_{\text{min}} \qquad ; \qquad m_{\text{max}} = m_{\text{min}} - 1 
+\end{align*}
+	
+	la seconda soluzione però chiaramente non è accettabile poiché verrebbe che $m_{\text{max}} \leq m_{\text{min}}$. Quindi ne segue che gli autovalori $m$ sono i seguenti:
+	
+\begin{align*}
+	-m_{\text{max}}, \, -m_{\text{max}} +1,\, \ldots, \, m_{\text{max}} - 1,\, m_{\text{max}}
+\end{align*}
+
+	Allora rinominiamo: $m_{\text{max}} \, \equiv \, j$, e anche semplicemente contando gli autovalori $m$ che abbiamo scritto in forma estesa, possiamo dedurre che: 
+	
+\begin{align*}
+	\mathcal{H}_j = 2j +1
+\end{align*}
+	
+	 affinché questo valore sia un intero positivo (in quanto dimensione di uno spazio vettoriale), bisogna avere che:
+	
+\begin{align*}
+	j = 0, \, \frac{1}{2}, \, 1, \, \frac{3}{2}, \, \ldots = \frac{n}{2} \qquad n = 0, 1, 2, \ldots
+\end{align*}
+
+	Per quanto appena detto dunque, gli autovalori di $\hat{J}^{\, 2}$ sono:
+	
+\begin{align*}
+	\mu^2 = j \, \qty(j+1) 
+\end{align*}
+
+	mentre quelli di $\hat{J}_3$ sono:
+	
+\begin{align*}
+	m = -j, \, -j +1, \, \ldots, \, j-1, \, j
+\end{align*}
+
+	Poiché il valore di $\mu^2 = j \, \qty( j + 1 )$ è univocamente determinato dal valore di $j$, gli autovettori della base $\ket{\mu^2, m, \lambda}$ sono spesso denotati con $\ket{j, m, \lambda}$. 
+	
+\begin{mydef}
+	Dunque per quanto detto prima, l'\textbf{azione degli operatori a scaletta sugli stati} è data da:
+\begin{align*}
+	& \hat{J}_+ \ket{j, m, \lambda} = \hbar \, \sqrt{ j \qty(j+1) - m \qty(m+1) } \, \ket{j, m +1, \lambda} \\
+	& \hat{J}_- \ket{j, m, \lambda} = \hbar \, \sqrt{ j \qty(j+1) - m \qty(m-1) } \, \ket{j, m -1, \lambda} 
+\end{align*}
+	che in forma compatta sarebbe:
+\begin{align*}
+	\hat{J}_{\pm} \ket{j, m, \lambda} = \hbar \, \sqrt{ j \qty(j+1) - m \qty(m \pm 1) } \, \ket{j, m \pm 1, \lambda}  
+\end{align*}
+\end{mydef}
+
+	Riassumendo allora: l'autospazio con autovalore fissato di $\hat{J}^{\, 2}$, $\lambda$, ha dimensione $2j + 1$, con $j$ numero positivo intero o semi-intero. Possiamo dire che:
+
+\begin{mydef}
+	Questi $2j + 1$ autovettori, definiti dagli autovalori di $\hat{J}_3$, formano un \textbf{multipletto} o \textbf{rappresentazione irriducibile} del momento angolare. 
+\end{mydef}
+	
+	Da ciò si può vedere che se $\hat{J} = \hat{L}$, il momento angolare $\hat{J}$ assume solo autovalori positivi. L'operatore di spin $\hat{S}$ che serve a descrivere una particella in uno spazio tridimensionale, non relativistica, dotata di spin, da luogo ad una rappresentazione in cui $j$ ha valore interi e semi-interi. 
+
+\begin{nb}
+	Per tutto ciò che abbiamo detto, lo spazio $\mathcal{H}_{\mathbb{C}}$ si decompone come somma diretta degli autospazi delle osservabili compatibili, ovvero:
+	
+\begin{align*}
+	\mathcal{H}_{\mathbb{C}} = \bigoplus_{\lambda} \, \qty(\bigoplus_j \mathcal{H}_{i\lambda}) \quad ; \quad \dim \mathcal{H}_j = 2j +1 
+\end{align*}
+	con $j$ semi-intero.
+\end{nb}
+
+	Una possibile base è costituita da:
+	
+\begin{align*}
+	\qty{ \ket{j, m, \lambda}, m = -j, \ldots, j}
+\end{align*}
+
+	Di conseguenza:
+	
+\begin{align*}
+	& \hat{J}^{\, 2} \ket{j, m, \lambda} = \hbar^2 \, j(j+1) \ket{j, m, \lambda}  \\
+	& \hat{J}_3  \ket{j, m, \lambda} = \hbar m \ket{j, m, \lambda} \\
+	& \hat{\lambda}  \ket{j, m, \lambda} = \lambda  \ket{j, m, \lambda}
+\end{align*}
+
+	in questo modo posso trovare anche $\hat{J}_1$ e $\hat{J}_2$ rispetto a $\ket{j, m, \lambda}$ tramite gli operatori a scaletta. Per ogni dimensione $\mathcal{H}_j$ ho un un'unica famiglia di spin (ad esempio, se $\dim \mathcal{H}_j = 55$, allora $j = \qty(\dim\mathcal{H}_j -1)/2 = 27 $).
+	\\
+	\\
+	Supponiamo che per un dato sistema siano possibili sia valori interi $j'$ che valori semi-interi $j''$ di $j$ e consideriamo $\ket{\psi}$ il generico stato. Si ha allora che il generico stato è dato dalla seguente somma:
+	
+\begin{align*}
+	\ket{\psi} = \sum \ket{j', m', \ldots} + \sum \ket{j'', m'', \ldots} \, \equiv \, \ket{\psi'} + \ket{\psi''}
+\end{align*}
+	
+	dove la prima somma è fatta sugli stati con $j$ interi mentre la seconda somma è fatta su $j$ semi-interi.
+	
+\begin{myapprf}
+	Ricordiamo infatti che questa espressione rappresenta un principio fondamentale della meccanica quantistica: ovvero la possibilità di esprimere qualsiasi stato quantistico come combinazione lineare di stati appartenenti ad una base completa dello spazio degli stati.
+\end{myapprf}
+	
+	 Consideriamo una rotazione di $2\pi$ attorno all'asse $z$. Si ha:
+	
+\begin{align*}
+	U(2\pi) \ket{\psi'} = \sum e^{\, - i/\hbar \,\, 2\pi L_z} \ket{j', m', \ldots} = \sum  e^{\, -\, 2i\pi m'} \ket{j', m', \ldots} = \ket{\psi'}
+\end{align*}
+
+	dato che $e^{ \, -2\pi i m'} = 1$ per $m'$ intero. Invece siccome per $m''$ semi-intero si ha che $e^{ \, -2\pi i m''} = -1$, si ottiene allora:
+
+\begin{align*}
+	U(2\pi) \ket{\psi''} = \sum e^{\, - i/\hbar \,\, 2\pi L_z} \ket{j'', m'', \ldots} = \sum  e^{\, - \, 2i\pi m''} \ket{j'', m'', \ldots} = - \ket{\psi''}
+\end{align*}
+
+	Naturalmente $\ket{\psi'}$ e $\ket{\psi''}$ rappresentano lo stesso stato, come deve essere, dato che una rotazione di $2\pi$ è la trasformazione identica su tutte le osservabili (e quindi $U(2\pi)$ è un multiplo dell'identità), però:
+	
+\begin{align*}
+	U(2\pi) \ket{\psi} = U(2\pi) \, \qty(\ket{\psi'} + \ket{\psi''}) = \ket{\psi'} - \ket{\psi''} \neq \ket{\psi} 
+\end{align*}
+
+	questo significa che per un sistema non sono simultaneamente possibili valori di momento angolare interi e semi-interi: le rotazioni di $2\pi$ non sarebbero equivalenti alla trasformazione identica.
+	\\
+	\\
+	Voglio ora capire come decomporre $\mathcal{H}_{\mathbb{C}}$ di dimensione finita in una somma diretta di autospazi con spin definito.
+	\\
+	\\
+	Prima di fare ciò, studiamo due sottospazi con momento angolare già fissato. Sia $\hat{L}_i = 0$, di conseguenza: $\hat{J}_i = \hat{S}_i$.
+
+\begin{itemize}
+	\item $j = 0$
+		
+		Nel primo caso ho $j = 0$ e dato che:
+	
+\begin{align*}	
+	\dim \mathcal{H}_j = 2j + 1 \quad ; \quad m = -j, -j + 1, \ldots, j-1, j
+\end{align*}
+
+	allora:
+
+\begin{align*}	
+	\dim \mathcal{H}_0 = 1 \quad ; \quad m = 0
+\end{align*}
+
+	quindi:
+	
+	\begin{align*}
+		\hat{J} \ket{0, 0, \lambda} = \hat{S} \ket{0, 0, \lambda} = 0
+	\end{align*}
+	
+	questo perché per qualsiasi stato con $j = 0$ , il momento angolare totale è nullo. Perciò:
+	
+	\begin{align*}
+		\hat{U}\qty(R) \ket{0, 0, \lambda} = \ket{0, 0, \lambda} 
+	\end{align*}
+	
+	ovvero: $\hat{U}\qty(R) = \mathbb{I}$. Pertanto in questo caso le rotazioni lasciano lo spazio invariato: sono soggetti scalari.
+
+	\item $j = 1/2$
+		
+		Nel secondo caso invece abbiamo $j = 1/2$. In questo caso:
+		
+	\begin{align*}
+		\dim \mathcal{H}_{1/2} = 2j +1 = 2 \quad ; \quad m = \pm 1/2
+	\end{align*}
+	
+		dove appunto questo spazio $\mathcal{H}_{1/2}$ è il sottospazio degli autostati dell’operatore $\hat{J}^{\, 2}$ con autovalore $j\qty(j + 1)\hbar^2$ e dell'operatore $\hat{J}_z$ con autovalori $m\hbar$. Una base di questo sottospazio è:
+		
+	\begin{align*}
+		\qty{\ket{\frac{1}{2},\, \frac{1}{2} }, \ket{\frac{1}{2},\, -\frac{1}{2} }  } \, \equiv \, \qty{\ket{+}, \ket{-}}
+	\end{align*}
+	
+		da $\ket{j, m}$ sostituendo $j$ ed $m$. Inoltre, presa la definizione, $\qty{\ket{+}, \ket{-}}$, sono detti base ortonormale canonica di questo sottospazio perché:
+		
+	\begin{itemize}
+		\item Sono autostati simultanei di $\hat{J}^{\, 2}$ e $\hat{J}_z$,
+		\item Sono ortogonali e normalizzati,
+		\item Sono una base nel senso che ogni stato quantistico con $j = 1/2 $ può essere scritto come combinazione lineare di questi due.
+	\end{itemize}
+	
+		Vediamo ora quanto valgono le applicazioni degli operatori scaletta sugli stati:
+	
+	\begin{align*}
+		\hat{J}_+ \ket{+} = 0 \qquad &; \qquad \hat{J}_- \ket{-} = 0 \\
+		\hat{J}_+ \ket{-} = \hbar \ket{+} \qquad &; \qquad \hat{J}_- \ket{+} = \hbar \ket{-}
+	\end{align*}
+		
+		Scriviamo ora le matrici che rappresentano gli operatori a scaletta in questa base, indicando il $ket$ con il valore di $m$ associato. Per quanto riguarda $\hat{J}_+$ ho che:
+	
+	\begin{align*}
+		& \hat{J}_+ \ket{+} = 0 = 0 \cdot \frac{1}{2} + 0 \cdot \qty( - \frac{1}{2}) \\
+		& \hat{J}_+ \ket{-} = \hbar \ket{+} = \hbar \qty[ 1 \cdot \frac{1}{2} + 0 \cdot \qty(- \frac{1}{2})  ] 
+	\end{align*}
+	
+		ne segue che:
+		
+	\begin{align*}
+		\Rightarrow \, \hat{J}_+ = \hbar \, \mqty( 0 & 1 \\ 0 & 0 )
+	\end{align*}
+	
+		per quanto riguarda $\hat{J}_-$ invece:
+	
+	\begin{align*}
+		& \hat{J}_- \ket{-} = 0 = 0 \cdot \frac{1}{2} + 0 \cdot \qty( - \frac{1}{2}) \\
+		& \hat{J}_- \ket{+} = \hbar \ket{-} = \hbar \qty[ 0 \cdot \frac{1}{2} + 1 \cdot \qty(- \frac{1}{2})  ] 
+	\end{align*}
+	
+		ne segue che:
+		
+	\begin{align*}
+		\Rightarrow \, \hat{J}_- = \hbar \, \mqty( 0 & 0 \\ 1 & 0 )
+	\end{align*}
+	
+		dunque dalla definizione di $\hat{J}_+$ ed $\hat{J}_-$ ho che:
+		
+	\begin{align*}
+		& \hat{J}_1 = \hat{S}_1 = \hat{S}_x  = \frac{1}{2} \, \qty(\hat{J}_+ + \hat{J}_-) = \frac{1}{2} \, \hbar \, \mqty( 0 & 1 \\ 1 & 0 ) \, \equiv \, \frac{1}{2} \, \hbar \, \sigma_1 \\
+		& \hat{J}_2 = \hat{S}_2 = \hat{S}_y  = \frac{1}{2i} \, \qty(\hat{J}_+ - \hat{J}_-) = \frac{1}{2} \, \hbar \, \mqty( 0 & -i \\ i & 0 ) \, \equiv \, \frac{1}{2} \, \hbar \, \sigma_2
+	\end{align*}
+		
+		mentre:
+		
+	\begin{align*}
+		\hat{J}_3 = \hat{S}_3 \, \equiv \, \hat{S}_y = \frac{1}{2} \, \hbar \, \mqty( 1 & 0 \\ 0 & -1 ) \, \equiv \, \frac{1}{2} \hbar \, \sigma_3
+	\end{align*}
+
+\end{itemize}
+
+\begin{mydef}
+	Quindi, per i sistemi a spin $1/2$, si ha:
+
+\begin{align*}
+	\textcolor{red}{\hat{S}_i }= \frac{1}{2} \, \hbar \, \sigma_i
+\end{align*}
+\end{mydef}
+
+	dove le matrici $\sigma_i$ sono collettivamente rappresentate dalla seguente definizione:
+
+\begin{mydef}
+	Le matrici $\sigma_i$ sono chiamate \textbf{matrici di Pauli}, generatori del gruppo $SU(2)$
+\begin{align*}
+	\vb*{\sigma} = \qty{     \mqty( 0 & 1 \\ 1 & 0), \, \mqty( 0 & -i \\ i & 0 ) , \, \mqty( 1 & 0 \\ 0 & -1 )  }
+\end{align*}
+\end{mydef}
+
+	Vediamo ora le \textit{proprietà notevoli} della matrice di Pauli:
+	
+\begin{enumerate}[label=\arabic*)]
+
+	\item Vale la seguente identità:
+	\begin{align*}
+		\hat{S}^{\, 2} = \hat{S}^{\, 2}_x + \hat{S}^{\, 2}_y + \hat{S}^{\, 2}_z = \frac{1}{4} \, \hbar^2 \, \qty(\sigma_1^2 + \sigma_2^2 + \sigma_3^2 ) = \frac{3}{4} \, \hbar^2 \, \mathbb{I}
+	\end{align*}
+	
+	\item Vale la seguenti identità:
+	
+	\begin{align*}
+		\sigma_1^{2} = \sigma_2^{2} = \sigma_3^2 = \mqty( 1 & 0 \\ 0 & 1 )  = \mathbb{I}
+	\end{align*}
+	
+	\item Il prodotto di due matrici di Pauli è dato, in generale, da:
+	
+	\begin{align*}
+		\sigma_i \sigma_j = i \, \varepsilon_{ijk} + \delta_{ij} \mathbb{I}
+	\end{align*}
+	
+	\item Il prodotto delle tre matrici è l'unità immaginaria:
+	
+	\begin{align*}
+		\sigma_1 \sigma_2 \sigma_3 = i
+	\end{align*}
+
+	\item Verificano le seguenti relazioni di commutazione e anticommutazione:
+	
+	\begin{align*}
+		\qty[\sigma_i, \sigma_j] = 2 i \, \varepsilon_{ijk} \sigma_k \qquad ; \qquad \qty{\sigma_i, \sigma_j} = 2 \delta_{ij} = \mathbb{I}
+	\end{align*}
+	
+	\item Traccia e determinante sono:
+	
+	\begin{align*}
+		\det \sigma_i = -1 \qquad ; \qquad \Tr \sigma_i = 0
+	\end{align*}
+	
+	\item Dalle relazioni precedenti si ricava che gli autovalori delle tre matrici sono:
+	
+	\begin{align*}
+		\lambda = \pm 1
+	\end{align*}
+	
+	\item Vale l'identità molto importante:
+	
+	\begin{align*}
+		\qty(\vb*{\sigma} \vdot \vb*{\alpha}) \, \qty(\vb*{\sigma} \vdot \vb*{\beta}) = \vb*{\alpha} \vdot \vb*{\beta} + i \vb*{\sigma} \vdot \qty(\vb*{\alpha} \cp \vb*{\beta})
+	\end{align*}
+	
+		con $\vb*{\sigma}$ matrice di Pauli, $\vb*{\alpha}, \vb*{\beta}$ due vettori tridimensionali.
+	
+	\begin{myprf}
+	
+		Per dimostrare l'identità prima di tutto mostro esplicitamente quanto faccia il prodotto a sinistra, ovvero, in componenti:
+		
+	\begin{align*}
+		\qty(\vb*{\sigma} \vdot \vb*{\alpha}) \, \qty(\vb*{\sigma} \vdot \vb*{\beta}) = \alpha_i \beta_j \, \qty(\sigma_i \sigma_j) 
+	\end{align*}
+	
+		utilizzando la notazione di Einstein per gli indici sommati. Notiamo ora una proprietà importante del prodotto delle matrici:
+		
+	\begin{align*}
+		AB = \frac{1}{2} \, \qty( \qty[A, B] + \qty{A, B} ) 
+	\end{align*}	
+	
+		precedentemente abbiamo esposto alcune proprietà di commutazione ed anticommutazione delle matrici di Pauli, dunque possiamo procedere con il calcolo diretto dove le matrici sono $\sigma$ mentre i $\alpha_i, \beta_j$ sono componenti dei vettori rispettivi:
+		
+	\begin{align*}
+		\qty(\vb*{\sigma} \vdot \vb*{\alpha}) \, \qty(\vb*{\sigma} \vdot \vb*{\beta}) & = \alpha_i \beta_j \, \qty(\sigma_i \sigma_j) = \frac{1}{2} \, \alpha_i \beta_j \, \qty(\textcolor{orange}{ \qty[\sigma_i, \sigma_j]} +\textcolor{cyan}{  \qty{\sigma_i, \sigma_j} } ) \\
+		& = \frac{1}{2} \, \alpha_i \beta_j \, \qty(    \textcolor{orange}{ 2 i \, \varepsilon_{ijk} \sigma_k } +\textcolor{cyan}{  2 \delta_{ij} }      ) =  \alpha_i \beta_j \, \qty(  i \, \varepsilon_{ijk} \sigma_k  + \delta_{ij}    )  \\
+		& =  i \, \textcolor{ForestGreen}{\varepsilon_{ijk}\alpha_i \beta_j}  \,  \sigma_k   + \textcolor{blue}{ \delta_{ij} \alpha_i \beta_j}
+	\end{align*}
+	
+		ricordando che l'$i$ che moltiplica non è un indice ma l'unità immaginaria. Allora conoscendo le definizione di prodotto scalare e vettoriale, sempre utilizzando la notazione di Einstein, ovvero:
+		
+	\begin{align*}
+		& \vb*{\alpha} \vdot \vb*{\beta} =  \textcolor{blue}{ \delta_{ij} \alpha_i \beta_j}\\
+		& \qty(\vb*{\alpha} \cp \vb*{\beta})_k = \textcolor{ForestGreen}{\varepsilon_{ijk}\alpha_i \beta_j}
+	\end{align*}
+
+		otteniamo allora:
+		
+	\begin{align*}
+		\qty(\vb*{\sigma} \vdot \vb*{\alpha}) \, \qty(\vb*{\sigma} \vdot \vb*{\beta}) = i \, \qty(\vb*{\alpha} \cp \vb*{\beta}) \vdot \vb*{\sigma} + \vb*{\alpha} \vdot \vb*{\beta}
+	\end{align*}
+	
+		che è proprio ciò che volevamo dimostrare.
+		
+	\end{myprf}
+
+
+\end{enumerate}
+
+	Come è rappresentata in questa base la \textit{matrice di rotazione} $\hat{U}$ associata alla componente $z$ dello spin?
+	\\
+	\\
+	Utilizzando la convenzione sui segni sulla matrice di rotazione $R_z$ opposta a quella utilizzata in precedenza si ha che:
+	
+\begin{align*}
+	\hat{U} = e^{ \, - i/\hbar \,\, \vb*{\theta} \vdot \vb{S}} = e^{\, -i/2 \,\vb*{\theta} \vdot \vb{S} } = \sum_{ k = 0}^{\infty} \qty(- \frac{i}{2})^k \, \qty( \vb*{\theta} \vdot \vb*{\sigma})^k \, \frac{1}{k!}
+\end{align*}
+
+	Quanto vale però $\qty(\vb*{\theta} \vdot \vb*{\sigma})^k$?
+	\\
+	\\
+	Dall'ultima proprietà elencata delle matrici di Pauli vale che se $\vb*{\alpha} = \vb*{\beta}$ ho $\qty(\vb*{\alpha} \vdot \vb*{\sigma})^2 = |\vb*{\alpha}|^2 \mathbb{I}$, perciò:
+
+\begin{empheq}[left={ \qty(\vb*{\theta} \vdot \vb*{\sigma})^k=\empheqlbrace}]{align*}
+	& |\vb*{\theta}|^k \quad ; \quad k \,\, \text{pari} \\
+	& |\vb*{\theta}|^{k-1}\vb*{\theta} \vdot \vb*{\sigma} \quad ; \quad k \,\, \text{dispari}
+\end{empheq}
+
+	Quindi, sia $|\vb*{\theta}| = \theta$:
+	
+\begin{align*}
+	\hat{U} & = \sum_{ k \text{ pari }} \qty(- \frac{i}{2})^k \frac{1}{k!} \, \theta^k \mathbb{I} \,\, + \sum_{k \text{ dispari }} \qty(- \frac{i}{2})^k \frac{1}{k!} \, \theta^{k-1} \vb*{\theta} \vdot \vb*{\sigma} \\
+	& = \sum_{ k \text{ pari }} \qty(-i)^k  \frac{1}{k!} \, \qty(\frac{\theta}{2})^k \mathbb{I} \,\, + \sum_{k \text{ dispari }} \qty(- \frac{i}{2})^k \frac{1}{k!} \, \theta^{k} \hat{\theta} \vdot \vb*{\sigma}
+\end{align*}
+	
+	dove $\hat{\theta} = \vb*{\theta}/\theta$. Riconosciamo quindi gli sviluppi in serie di seno e coseno, perciò, nel caso più generale:
+	
+\begin{align*}
+	\hat{U} = \cos\qty(\frac{\theta}{2}) \mathbb{I} - i \sin\qty(\frac{\theta}{2}) \hat{\theta} \vdot \vb*{\sigma}
+\end{align*}
+
+	Poiché noi vogliamo vedere cosa succede per la componente $z$, ovvero mettiamo che $\hat{\theta} = \qty(0, 0, 1)$, da cui $\hat{\theta} \vdot \vb*{\sigma} = \sigma_3$ e quindi:
+	
+\begin{align*}
+	\hat{U}_{S_z}\qty(\theta) =\mqty( e^{ \, - i \, \theta/2} & 0 \\ 0 & e^{ \, i \, \theta/2} & )
+\end{align*}
+
+	da ciò si vede come lo spin torna allo stato iniziale $\qty(\hat{U} = \mathbb{I})$ dopo una "rotazione" di $4\pi$. L'operatore di rotazione dovuto al momento angolare totale è dato quindi da:
+	
+\begin{align*}
+	\hat{U}\qty(\vb*{\hat{n}}, \theta) = e^{\, - i/\hbar \,\, \qty(\vb*{\hat{J
+}} \vdot \vb*{\hat{n}}) \theta} = e^{\, - i/\hbar \,\, \qty(\vb*{\hat{L}} + \vb*{\hat{S}}) \vdot \vb*{\hat{n}}  \theta} =   e^{\, - i/\hbar \,\, \qty(\vb*{\hat{L}} \vdot \vb*{\hat{n}}) \theta} \,  e^{\, - i/\hbar \,\, \qty(\vb*{\hat{S}} \vdot \vb*{\hat{n}} ) \theta}
+\end{align*}
+
+	dove l'ultimo passaggio è lecito soltanto perché gli operatori $\vb*{\hat{L}} \vdot \vb*{\hat{n}}$ e $\vb*{\hat{S}} \vdot \vb*{\hat{n}}$ commutano.
+	\\
+	\\
+	Concludiamo il discorso sulle matrici di Pauli parlando di due particolarità che possono tornare utili:
+	
+\begin{itemize}
+
+	\item Tramite le matrici di Pauli è possibile esprimere gli operatori $\hat{S}_x$ e $\hat{S}_y$ nella base degli autostati di $\hat{S}_z$, la base $\qty{\ket{+}, \ket{-}}$. 
+	
+		Prima di tutto scriviamo l'azione di $\hat{S}_z$ sugli elementi della base scelta:
+	
+	\begin{align*}
+		& \hat{S}_z \ket{+} = \frac{1}{2} \, \hbar \ket{+} \\
+		& \hat{S}_z \ket{-} = -\frac{1}{2} \, \hbar \ket{-}
+	\end{align*}
+
+		dopodiché, ricordiamoci che un operatore qualsiasi $\hat{O}$ può essere scritto, nella base in cui è diagonale, in termini dei suoi autovalori e dei suoi autostati come:
+	
+	\begin{align*}
+		\hat{O} = \sum_i \lambda_i \ketbra{\lambda_i}
+	\end{align*}
+	
+		ho che:
+	
+	\begin{nb}
+	\begin{align*}
+		\hat{S}_z = \frac{1}{2} \, \hbar \, \qty\Big( \ket{+} \mel{+}{-}{-} \bra{-} )
+	\end{align*}
+	\end{nb}
+	
+		Invece poiché vale che:
+		
+	\begin{align*}
+		\hat{S}_x \ket{+} = \frac{1}{2} \, \hbar \ket{-} \qquad &; \qquad \hat{S}_x \ket{-} = \frac{1}{2} \, \hbar \ket{+} \\
+		\hat{S}_y \ket{+} = \frac{1}{2} \, i\hbar \ket{-} \qquad &; \qquad \hat{S}_y \ket{-} = - \frac{1}{2} \, i\hbar \ket{+}
+	\end{align*}
+
+		e facendo i prodotti tensore si ha che:
+		
+	\begin{nb}
+	\begin{align*}
+		& \hat{S}_x = \frac{1}{2} \, \hbar \, \qty\Big( \ket{+} \mel{-}{+}{-} \bra{+} ) \\
+		& \hat{S}_y = \frac{1}{2} \, i \hbar \, \qty\Big( \ket{-} \mel{+}{-}{+} \bra{-} )
+	\end{align*}
+	\end{nb}
+	
+	\item Come esprimo gli autostati di $\hat{S}_x$ ed $\hat{S}_y$ in termini degli autostati di $\hat{S}_z$? 
+	
+		A meno di termini $\hbar/2$ e di autovalori (che saranno $\pm 1$ in tutti i tre casi), cerchiamo gli autostati, senza calcolarli (basta diagonalizzare le matrici), delle tre matrici di Pauli e li scrivo in termini degli autostati $\hat{S}_z$. Gli autostati di $\hat{S}_z$ sappiamo essere:
+	
+	\begin{align*}
+		\mqty( 1 \\ 0) \, \equiv \, \ket{+}_z \qquad ; \qquad  \mqty( 0 \\  1) \, \equiv \, \ket{-}_z
+	\end{align*}
+	
+		mentre quelli di $\hat{S}_x$ sono:
+		
+	\begin{align*}
+		\frac{1}{\sqrt{2}} \, \mqty( 1 \\ 1) \, \equiv \, \ket{+}_x \qquad ; \qquad  \frac{1}{\sqrt{2}} \,\mqty( 1 \\  -1) \, \equiv \, \ket{-}_x
+	\end{align*}
+	
+		e di $\hat{S}_y$ invece:
+		
+	\begin{align*}
+		\frac{1}{\sqrt{2}} \, \mqty( 1 \\ i) \, \equiv \, \ket{+}_y \qquad ; \qquad  \frac{1}{\sqrt{2}} \,\mqty( 1 \\  -i) \, \equiv \, \ket{-}_y
+	\end{align*}
+	
+		Posso allora esprimere gli autostati di $\hat{S}_x$ e $\hat{S}_y$ in termini di autostati $\hat{S}_z$ nel seguente modo:
+		
+	\begin{align*}
+		\ket{+}_x = \frac{1}{\sqrt{2}} \, \qty\Big(\ket{+}_z + \ket{-}_z) \qquad ; \qquad \ket{-}_x = \frac{1}{\sqrt{2}} \, \qty\Big(\ket{+}_z - \ket{-}_z) \qquad ; \qquad U_{z \to x} = \frac{1}{\sqrt{2}} \, \mqty( 1 & 1 \\ 1 & -1)
+	\end{align*}
+	
+		e
+	
+	\begin{align*}
+		\ket{+}_y = \frac{1}{\sqrt{2}} \, \qty\Big(\ket{+}_z + i \ket{-}_z) \qquad ; \qquad \ket{-}_y = \frac{1}{\sqrt{2}} \, \qty\Big(\ket{+}_z - i \ket{-}_z) \qquad ; \qquad U_{z \to y} = \frac{1}{\sqrt{2}} \, \mqty( 1 & 1 \\ i & -i)
+	\end{align*}
+
+\end{itemize}
+
+\section{Matrici di Spin $1$ ed Estensione ad un Generico Spin $s$}
+	
+	Cerchiamo ora di fare la stessa cosa con le matrici di spin relative ad una particella di spin $1$. Poiché ho spin $1$, la dimensione dello spazio degli stati sarà necessariamente $\mathcal{H}_1 = 3$, perciò una base formata da tre elementi è data dal valore dello spin e dalla sua proiezione lungo l'asse $z$:
+	
+\begin{align*}
+	\ket{s, m} = \qty{\ket{1, 1}, \ket{1, 0}, \ket{1, -1} }
+\end{align*}
+
+	Qual è l'azione delle matrici $\hat{S}_+$ ed $\hat{S}_-$ sulla base scelta?
+	\\
+	\\
+	Ricordiamoci che:
+	
+\begin{align*}
+	\hat{S}_{\pm} \ket{s, m} = \hbar \, \sqrt{s \, \qty(s + 1) - m \qty(m \pm 1)} \, \ket{s, m \pm 1}
+\end{align*}
+
+	allora otteniamo che:
+
+\begin{align*}
+	\hat{S}_+ = \hbar \, \sqrt{2} \, \mqty( 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0) \qquad ; \qquad \hat{S}_- = \hbar \, \sqrt{2} \, \mqty( 0 & 0 & 0 \\ 1 & 0 & 0 \\ 0 & 1 & 0) 
+\end{align*}
+
+	da cui ottengo, tramite le definizioni date, il valore delle seguenti matrici:
+	
+\begin{align*}	
+	\hat{S}_x = \frac{\hbar \sqrt{2}}{2} \, \mqty( 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0) \qquad ; \qquad \hat{S}_y = \frac{i\hbar \sqrt{2}}{2} \, \mqty( 0 & -1 & 0 \\ 1 & 0 & -1 \\ 0 & 1 & 0)
+\end{align*}
+
+	Viene naturale, per come abbiamo costruito la base, affermare allora che:
+	
+\begin{align*}
+	\hat{S}_z = \hbar \, \mqty( 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1)
+\end{align*}
+
+	dove nello specifico sappiamo che gli autostati di $\hat{S}_z$ sono:
+	
+\begin{align*}
+	\mqty( 1  \\ 0  \\ 0 ) \, \equiv \, \ket{1}_z  \quad ; \quad \mqty( 0  \\ 1  \\ 0 ) \, \equiv \, \ket{0}_z  \quad ; \quad \mqty( 0  \\ 0  \\ 1 ) \, \equiv \, \ket{-1}_z
+\end{align*}
+
+	mentre quelli di $\hat{S}_x$:
+
+\begin{align*}
+	\frac{1}{2} \, \mqty( 1  \\ \sqrt{2}  \\ 1 ) \, \equiv \, \ket{1}_x  \quad ; \quad \frac{1}{\sqrt{2}}\mqty( 1  \\ 0  \\ -1 ) \, \equiv \, \ket{0}_x  \quad ; \quad \frac{1}{2} \,\mqty( 1  \\ -\sqrt{2}  \\ 1 ) \, \equiv \, \ket{-1}_x
+\end{align*}
+	
+	ed infine quelli di $\hat{S}_y$:
+	
+\begin{align*}
+	\frac{1}{2} \, \mqty( 1  \\ -i \sqrt{2}  \\ -1 ) \, \equiv \, \ket{1}_y  \quad ; \quad \frac{i}{\sqrt{2}}\mqty( 1  \\ 0  \\ -1 ) \, \equiv \, \ket{0}_y  \quad ; \quad \frac{1}{2} \, \mqty( 1  \\ i\sqrt{2}  \\ -1 ) \, \equiv \, \ket{-1}_y
+\end{align*}
+
+	Noto quindi che posso scrivere:
+	
+\begin{align*}
+	& \ket{1}_x = \frac{1}{2} \, \qty\Big(\ket{1}_z + \sqrt{2} \ket{0}_z + \ket{-1}_z) \\
+	& \ket{0}_x = \frac{1}{2} \, \qty\Big(\ket{1}_z - \ket{-1}_z) \\
+	& \ket{-1}_x = \frac{1}{2} \, \qty\Big(\ket{1}_z - \sqrt{2} \ket{0}_z + \ket{-1}_z)
+\end{align*}
+
+	da cui:
+	
+\begin{align*}
+	U_{z \to x} = \frac{1}{2} \, \mqty( 1 & \sqrt{2} & 1 \\ \sqrt{2} & 0 & - \sqrt{2} \\ 1 & -\sqrt{2} & 1)    
+\end{align*}
+
+	e
+	
+\begin{align*}
+	& \ket{1}_y = \frac{1}{2} \, \qty\Big( \ket{1}_z - i \sqrt{2} \ket{0}_z - \ket{-1}_z) \\
+	& \ket{0}_y = \frac{i}{\sqrt{2}} \, \qty\Big( \ket{1}_z - \ket{-1}_z) \\
+	& \ket{-1}_y = \frac{1}{2} \, \qty\Big( \ket{1}_z + i \sqrt{2} \ket{0}_z - \ket{-1}_z ) \\
+\end{align*}
+
+	da cui:
+
+\begin{align*}
+	U_{z \to y} = \frac{1}{2} \, \mqty( 1 & i\sqrt{2} & 1 \\ -i\sqrt{2} & 0 & i\sqrt{2} \\ -1 & -i\sqrt{2} & 1)    
+\end{align*}
+	
+	Trovando quindi l'espressione degli autostati di $\hat{S}_x$ ed $\hat{S}_y$ in termini di autostati di $\hat{S}_z$.
+	\\
+	\\
+	Infine, senza darne una dimostrazione, scriviamo le matrici rappresentative le componenti di spin per un generico valore di spin $s$ nella base degli autostati di $\hat{S}_z$. Iniziamo dalla componente di $z$:
+
+\begin{align*}	
+	\hat{S}_z = \hbar \, \mqty(  s & 0 & 0 & \ldots & 0  \\ 0 & s-1 & 0 & \ldots & 0 \\ 0 & 0 & s-2 & \ldots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \ldots & -s    )
+\end{align*}
+
+	Per quanto riguarda la componente $x$ invece si ha:
+	
+\begin{align*}
+	\hat{S}_x = \frac{\hbar}{2} \, \mqty( 0 & b_s & 0 & 0 & \ldots & 0 & 0 \\ b_s & 0 & b_{s-1} & 0 & \ldots & 0 & 0 \\ 0 & b_{s-1} & 0 & b_{s-2} & \ldots & 0 & 0 \\ 0 & 0 & b_{s-2} &  0 & \ldots & 0 & 0 \\ \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & 0 & 0 & \ldots & 0 & b_{-s +1} \\ 0 & 0 & 0 & 0 & \ldots & b_{-s+ 1} & 0)
+\end{align*}
+
+	ed infine la componente $y$ è:
+
+\begin{align*}
+	\hat{S}_y = \frac{i\hbar}{2} \, \mqty( 0 & -b_s & 0 & 0 & \ldots & 0 & 0 \\ b_s & 0 & - b_{s-1} & 0 & \ldots & 0 & 0 \\ 0 & b_{s-1} & 0 &  - b_{s-2} & \ldots & 0 & 0 \\ 0 & 0 & b_{s-2} &  0 & \ldots & 0 & 0 \\ \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & 0 & 0 & \ldots & 0 & -b_{-s +1} \\ 0 & 0 & 0 & 0 & \ldots & b_{-s+ 1} & 0)
+\end{align*}
+
+	dove:
+	
+\begin{align*}
+	b_j \, \equiv \,  \sqrt{\qty(s + j) \, \qty(s - j + 1)}
+\end{align*}
+
+	In forma più compatta, si ha quindi:
+	
+\begin{align*}
+	& \qty(\hat{S}_x)_{ij}  = \frac{\hbar}{2} \, \qty\big(\delta_{a, b +1} + \delta_{a + 1, b}) \, \sqrt{\qty(s + 1) \, \qty(a +b -1) - ab} \\
+	& \qty(\hat{S}_y)_{ij}  = \frac{i\hbar}{2} \, \qty\big(\delta_{a, b +1} + \delta_{a + 1, b}) \, \sqrt{\qty(s + 1) \, \qty(a +b -1) - ab}  \\
+	& \qty(\hat{S}_z)_{ij}  = \hbar \, \qty( s +1 - a) \, \delta_{ab} = \hbar \, \qty(s + 1 - b ) \delta_{ab}
+\end{align*}
+
+	dove $a$ e $b$ (diverso da quello precedente) sono numeri interi tali che:
+	
+\begin{align*}
+	1 \leq a \leq 2s + 1 \qquad ; \qquad 1 \leq b \leq 2s + 1 
+\end{align*}
+
+
+	

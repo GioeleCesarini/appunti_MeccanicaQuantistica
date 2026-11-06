@@ -1,0 +1,436 @@
+\chapter{Appunti Meccanica Quantistica}
+
+%%%%%%%%%%%%%%%%%%
+
+\section{La Normalizzazione}
+
+	Sia:
+	
+\begin{align*}
+	\psi = c_0 \psi_0 + c_1 \psi_1
+\end{align*}
+	
+	allora $\psi$ è normalizzato solo se:
+	
+\begin{align*}
+	\braket{\psi}{\psi} = 1
+\end{align*}
+
+	Per normalizzare lo stato che risulti non normalizzato allora si pone la $\psi$ normalizzata come:
+
+\begin{align*}
+	\tilde{\psi} = N \, \qty(c_0 \psi_0 + c_1 \psi_1)
+\end{align*}
+
+	con $N$ fattore di normalizzazione.
+	\\
+	\\
+	Allora si pone che:
+
+\begin{align*}
+	N^2\qty(c_0^2 + c_1^2) = 1
+\end{align*}
+
+	e si trova il valore di $N$ \textit{nel caso in cui} $\psi_1$ e $\psi_0$ siano ortogonali.
+
+%%%%%%%%%%%%%%%%%%
+
+\section{Operatori Fisici}
+
+	Consideriamo una qualunque matrice che rappresenti un certo operatore, l'operatore è \textbf{fisico} se la matrice è uguale alla sua trasposta coniugata. Nel caso in cui le particelle di cui la matrice rappresenta l'interazione fossero tutte uguali, allora, le uniche interazioni distinguibili sono una particella con se stessa oppure una particella con un'altra. Per esempio se la matrice fosse reale avrebbe sulla diagonale tutto lo stesso parametro $\alpha$ e sulla off diagonale tutto lo stesso altro parametro $\beta$.
+
+%%%%%%%%%%%%%%%%%%
+
+\section{Riscrittura delle Hamiltoniane}
+
+	Spesso si ha una forma del tipo:
+	
+\begin{align*}
+	H = \alpha \qty(\va{s}_1 \cdot \va{s_2})
+\end{align*}
+
+	dove $s_1$ è l'operatore di spin della prima particella ed $s_2$ l'operatore di spin della seconda particella. Siccome generalmente vale che:
+	
+\begin{align*}
+	\va{S} = \va{s}_1 + \va{s}_2
+\end{align*}
+
+	allora si usa riscrivere $H$ come:
+
+\begin{align*}
+	H = \frac{\alpha}{2} \qty(S^2 - s_1^2 - s_2^2)
+\end{align*}
+
+	usando: $S^2 = s_1^2 + s_2^2 + 2 \, \va{s}_1 \cdot \va{s_2}$.
+	\\
+	\\
+	Può succedere che questa riscrittura non funzioni, per esempio, si prenda l'interazione tra tre spin di 3 particelle, e sia:
+	
+\begin{align*}
+	H_1 = \alpha \qty(\va{s}_1 \cdot \va{s}_2 + \va{s}_1 \cdot \va{s}_2) + \beta \qty(\va{s}_2 \cdot \va{s}_3)
+\end{align*}
+
+	Si noti che $\va{S}_{12}^2$ e $\va{S}_{13}^2$ non commutano e quindi non è possibile conoscere allo stesso tempo il valore di questi due termini. Come fare? Generalmente questa non è la prima Hamiltoniana che viene data siccome non si può scomporre, devi allora scriverti $H_1$ in termini di $H_0$:
+	
+\begin{align*}
+	H_1 = H_0 - H_0 + \alpha \qty(\va{s}_1 \cdot \va{s}_2 + \va{s}_1 \cdot \va{s}_2) + \beta \qty(\va{s}_2 \cdot \va{s}_3)
+\end{align*}
+
+	Se $H_0$ è scritta in termini di $S^2$, ne esce che $S_{23}^2$ commuta con $S^2$ dato che:
+	
+\begin{align*}
+	\va{S} = \va{S}_1 + \va{S}_{23}
+\end{align*}
+
+
+	
+%%%%%%%%%%%%%%%%%%
+
+\section{Probabilità, funzioni d'onda, armoniche sferiche e funzioni radiali}
+
+
+\subsection{Funzione d'onda dipendente da armoniche sferiche e spin}
+
+	Considera per esempio la funzione d'onda:
+	
+\begin{align*}	
+	\psi = \alpha x^2 e^{- \frac{r}{3 a_0}} + \beta y^2 e^{- \frac{r}{3 a_0}}
+\end{align*}
+
+\subsubsection{Valori di L e probabilità di trovarli}
+
+	Nel caso in cui ci venga chiesto di trovare i possibili risultati di $L^2$ su $\psi$ e quali sono le loro probabilità, una volta sostituite le coordinate con le relative armoniche sferiche è subito chiaro che la parte radiale non incide nel calcolo della probabilità poiché sarà la medesima sia per $\braket{\psi}{\psi}$ che per $|\braket{L}{\psi}|^2$. Inoltre nel calcolo della probabilità dei possibili valori $L$ non devi contare lo spin poichè gli spazi sono indipendenti.
+	\\
+	\\
+	La probabilità sarà a numeratore la somma del modulo quadro di ogni termine con $L = 0$, questo perché $\ket{+}$ è ortogonale a $\ket{-}$. Infatti se diversi termini che contengono $L = 0$ sono ortogonali tra di loro, per esempio hanno diverso spin, diverso $m$ o $n$, allora dobbiamo calcolare la probabilità come somma di moduli, al contrario se invece fosse $\ket{+}$ per entrambi i termini allora si potrebbero raggruppare i termini per $Y_0^0$ e otterremo il modulo quadro della somma di essi.
+
+
+%%%%%%%%%%%%%%%%%%
+
+\section{Trovare Autovettori simultanei}
+	
+	Come sappiamo se due operatori commutano allora essi condividono una base completa di autovettori simultanei. Se abbiamo gli autovettori \textit{non degeneri} di un operatore $\hat{A}$, allora essi saranno autovettori anche dell'altro operatore $\hat{A}$ (non per forza non degeneri), se $\qty[A, B] = 0$. Nel caso in cui $\hat{A}$ abbia autovalori degeneri (associati a più autovettori), allora una combinazione lineare di questi è autovettore di $\hat{B}$
+	\\
+	\\
+	Se $A$ e $B$ non commutassero?
+	\\
+	\\
+	Possiamo comunque trovare specifici stati che sono autovettori di entrambi, pur non formando una base completa.
+	\\
+	\\
+	Per esempio si supponga che $H$ non commuta con $J^2$ ma commuta con $J_z$. Vogliamo trovare gli autovettori simultanei di $H$ e $J^2$. Analizza allora lo spazio degli stati, trova i possibili valori di $J$, infine calcola i $J_z$ possibili. Verifica la degenerazione dei $J_z$, tipo $\qty(J_z, \text{deg})$ (quante volte compare lo stesso $J_z$ per tutti i possibili valori di $J$), tutte le volte che $J_z$ ha deg $1$ gli stati non si mescolano ovvero che si trova una coppia $\qty(l_z, s_z)$ unica per ogni valore di $J_z$ non degenere. Loro allora sono direttamente autostati di $H$ e $J^2$ simultanei. Gli altri non possono esserlo perché saranno necessariamente combinazioni lineari diverse.
+
+
+%%%%%%%%%%%%%%%%%%
+
+
+\section{Degenerazione di uno spazio fermionico nel caso di coincidenze e spettro di S, L, J}
+
+\subsection{Caso $1$. Prendo 2 volte $S = 1/2$ o solo una volta $S = 3/2$ per fare uno spazio di dimensione 4?:}
+
+	Supponiamo di avere un spazio degenere 4. Dalla conta dei numeri quantici del momento angolare ci viene che:
+	
+\begin{align*}
+	S = \frac{3}{2} \oplus \frac{1}{2} \oplus \frac{1}{2}
+\end{align*}
+
+	ma non so quale prendere, poiché andrebbe bene sia $2$ volte $1/2$ che una volta $3/2$. Il modo migliore di agire a questo punto è sciogliere la degenerazione di S, verificare quindi quali siano davvero gli $S_z$ possibili in questa configurazione e verificare che una delle due è impossibile, se per esempio se $S_z = 3/2$, allora $S = 1/2$ non è possibile. Lo spettro di $S^2$ è $3/2$. 
+
+\subsection{Caso $2$, come trovo il sottospazio antisimmetrico e quello simmetrico?:}
+	
+	Supponiamo di avere uno spazio degenere $20$ fermionico, composto da 3 particelle identiche di spin $1/2$ e momento angolare $l = 1$. Sappiamo che facendo il prodotto tensore di tutte particelle uguali il numero più grande che otteniamo sicuramente compone un sottospazio simmetrico. Siccome le particelle sono 3 e non ho livelli in cui separarle ho un problema. Infatti calcolo $S$ e $L$:
+	
+\begin{align*}
+	& L = 1 \otimes 1 \otimes 1 = (3 \oplus 2 \oplus 1) \oplus \qty(2 \oplus 1 \oplus 0) \oplus 1 \\
+	& S = 1/2 \otimes 1/2 \otimes 1/2 = \frac{3}{2} \oplus \frac{1}{2} \oplus \frac{1}{2}
+\end{align*}
+
+	ricorda che è vero che per particelle uguali il più grande è sempre simmetrico, quindi $S = 3/2$ e $L = 3$, ma non vale la scaletta $+-+ \ldots$ Quando componi per esempio $L_{12}$ con $L_3$ anche fossero uguali in numero, in quanto in realtà sono sistemi diversi, uno è un sistema composto e l'altro un sistema di singola particella, la scaletta vale solo quando accoppio particelle singole. Devo trovare allora un sottospazio antisimmetrico per $S$ totale o per $L$, noto che per $S$ è impossibile, infatti proiettando gli $s$ di singola particella su $z$, non posso ottenere una $S_z$ totale con tutti gli $s$ piccoli diversi. Al contrario esiste un sottospazio $L$ tale che sia antisimmetrico quello in cui: $L_z = l_1^z + l_2^z + l_3^z =  \qty(1) + \qty( -1 ) +\qty(0) = 0$. Quindi siccome $\qty|L_z| \leq L$ allora $L = 0$ è l'unico sottospazio del momento angolare orbitale antisimmetrico. Accoppio allora questo a quello simmetrico per $S$, trovando degenerazione 4. Mancano 16 stati. Siccome ho preso giù una volta $3/2$ e siccome non compare un altra volta, devo prendere perforza un $S = 1/2$ con simmetria mista, allora posso accoppiarlo con chi? Di certo non con $L = 3$ che è simmetrico, quindi o con $2$ o con $1$, siccome $S = 1/2$ ha degenerazione 2 e $L = 2 \oplus 1$ ha degenerazione $8$, ne segue che ho altre due combinazioni che vanno bene che sono $\qty(L, S) = \qty(2, 1/2), \qty(1, 1/2)$ oltre a $\qty(0, \frac{3}{2})$.
+
+
+%%%%%%%%%%%%%%%%%%
+
+\section{Note sugli Operatori e loro commutazione in relazione agli autostati}
+
+	Presi due operatori $\hat{O}_1$ e $\hat{O}_2$, sia un autostato di $\hat{O}_1$, $\psi_1$. Allora se i due operatori commutano allora $\psi_1$ è anche autostato di $\hat{O}_2$ se $\psi_1$ \textbf{non} è degenere.
+
+%%%%%%%%%%%%%%%%%%
+
+\section{Logica dei Filtri dei Numeri Quantici}
+
+	Supponiamo di avere uno stato del tipo $\psi = \ket{s_1^z, s_z^2, s_z^3}$, allora necessariamente $S_z = s_1^z + s_2^z + s_3^z$, allora $\qty|S_z| \leq S$.
+	
+%%%%%%%%%%%%%%%%%%
+
+\section{Trovare uno Stato Ortogonale ad un altro}
+
+\begin{align*}
+	\psi_{\perp} = \psi - \braket{\psi_0}{\psi} \psi_0
+\end{align*}
+
+	con $\psi$ lo stato di partenza che si scompone in due stati ortogonali $\psi_0$ e $\psi_{\perp}$. Io cerco $\psi_{\perp} \perp \psi_0$
+	
+\subsection{Esempio}
+
+	Sia un sistema composto da 3 particelle diverse ognuna delle quali con spin $3/2$. Sia $S_z = s_1^z +s_2^z +s_3^z $. Sia per esempio lo stato di partenza $\ket{s_1^z = \frac{3}{2}, s_2^z = \frac{3}{2}, s_3^z = \frac{1}{2}}$. Sia $\psi$ scomponibile, magari tramite una misura, in due stati che so essere ortogonali. Allora sia $\psi_0$ lo stato che identifico facilmente, sia $\psi_{\perp}$ quello che non conosco tramite semplici ragionamenti. Per esempio una misura di $S^2$ su $\psi$ mi da due valori di $S$ possibili $\frac{9}{2}, \frac{7}{2}$, allora $\ket{S = 9/2, S_z = 7/2}$ è quello facilmente individuabile, basta far ruotare i valori in $\ket{s_1^z = \frac{3}{2}, s_2^z = \frac{3}{2}, s_3^z = \frac{1}{2}}$ poiché $S$ è il valore massimo possibile per la configurazione e quindi so essere completamente simmetrica la sua autofunzione. Ne segue poi che l'altro si trova per proiezione come da formula ($\ket{S = \frac{7}{2}, S_z = \frac{7}{2}}$).
+
+
+%%%%%%%%%%%%%%%%%%
+
+\section{Particelle Diverse}
+
+	Generalmente si parla di particelle diverse quando si ha un sistema composto da sottosistemi non identici.
+	
+\subsection{Degenerazione totale del sistema}
+
+	Siccome le particelle non sono identiche vale la formula:
+	
+\begin{align*}
+	\text{dim}\hat{\mathcal{H}} = k^N
+\end{align*}
+
+	dove $N$ è il numero di particelle e $k$ è la degenerazione di singola particella. 
+
+%%%%%%%%%%%%%%%%%%
+
+
+\section{Particelle Identiche}
+
+\subsection{Principio di Sovrapposizione di Pauli}
+	
+	Presi \textbf{due o più fermioni identici} deve valere il principio di Pauli (anche fossero fermioni ma diversi Pauli non vale). Esso prevede che la funzione d'onda totale di un sistema di più fermioni identici deve essere antisimmetrica. Si veda la parte sulle particelle identiche degli appunti. Inoltre due fermioni identici non possono occupare lo stesso medesimo stato quantistico, ovvero non posso avere gli stessi numeri quantici.
+	
+\subsection{Bosoni}
+
+	Per quanto i \textbf{bosoni identici} non debbano rispettare il principio di Pauli, essi devono comporre funzioni d'onda \textbf{simmetriche}.
+
+\subsection{Basi di Autostati che rispettino il principio di Pauli per i Fermioni}
+
+	La soluzione è il \textbf{determinante di Slater} visto nelle pagine delle particelle identiche fermioniche. Si identifica una base di numeri quantici, spesso data dal testo, si determinano i numeri quantici possibili per ogni elettrone che occupa una certa posizione, energetica, spaziale o di spin. Definiti i numeri quantici si crea una matrice quadrata degli stati, per esempio per 3 fermioni si avranno 3 righe e 3 colonne ($6 \times 6$) labellando particella e stato nel seguente modo:
+	
+\begin{align*}
+	\ket{n, l, m, \sigma}_i
+\end{align*}
+
+	con $"i"$ particella $i-$esima.
+
+\subsection{Fermioni in un Potenziale Coulombiano}
+		
+	Si identifica con il potenzaile Coulombiano:
+	
+\begin{align*}	
+	V\qty(r) = - Z \,\frac{e^2}{4 \pi \varepsilon_0} \, \frac{1}{r}
+\end{align*}
+
+	$Z$ dipende dal numero di protoni nel nucleo, per particelle neutre esso è uguale al numero di elettroni. Per esempio un atomo di Litio ha $3$ elettroni, ossia $Z = 3$
+	
+\subsubsection{Come si trova l'energia di un livello?}
+
+	Sia l'Hamiltoniana di singola particella:
+	
+\begin{align*}
+	\hat{h}_0 = \frac{\hat{p}^2}{2m} + V\qty(r)
+\end{align*}
+
+	allora si schematizzano gli elettroni su delle shell, ossia sui livelli possibili di $n$. Siccome vale il \textit{principio di Pauli} su ogni shell il numero di elettroni ed i loror numeri quantici non sono arbitrari ma devono seguire le regole di antisimmetrizzazione.
+	\\
+	\\
+	Per ogni singolo elettrone vale:
+	
+\begin{align*}
+	E_n = - \qty[\frac{m}{2\hbar^2} \qty(\frac{Z e^2}{4\pi \varepsilon_0})^2] \, \frac{1}{n^2}
+\end{align*}
+	
+	per un atomo di Litio per esempio, $Z = 3$. Per un atomo di Elio invece $Z= 2$, al contrario per il Berillio $Z = 4$.
+	\\
+	\\
+	Allora l'energia totale per esempio di un certo livello è data dalla somma delle energie dei singoli elettroni rispetto alla posizione che occupano nella shell designata.
+	
+\subsubsection{Caso delle più configurazioni energetiche}
+
+	Si stabilisce che il livello fondamentale ha il valore $n_{\text{tot}}$ (dipende da Pauli). Dove si identifica che $n_{\text{tot}} = n = n_1 + n_2 + \ldots$. Per esempio sia il caso del Litio, quindi $3$ elettroni, allora al livello fondamentale abbiamo per Pauli che $n_1 = 1, n_2 = 1$ e $n_3 = 2$, ovviamente sono indistinguibili le particelle, le labelliamo per comodità. Quindi il livello fondamentale ha $n_{\text{tot}} = 4$, ne segue che il primo eccitato ha $n_{\text{tot}} = 5 $ necessariamente. Capita dunque che siano più di una le configurazioni possibili in cui possiamo distribuire gli elettroni sulle shell in modo tale che $n_{\text{tot}}= 5$, in ogni caso bisogna calcolare l'energia, siccome l'energia di un idrogeneide va con $\frac{1}{n^2}$ allora le due energia nonostante l'$n_{\text{tot}}$ identico saranno diverse poiché come abbiamo già detto: per ogni singolo elettrone vale:
+	
+\begin{align*}
+	E^i_n = - \qty[\frac{m}{2\hbar^2} \qty(\frac{Z e^2}{4\pi \varepsilon_0})^2] \, \frac{1}{n^2}
+\end{align*}
+
+	e quindi nel caso del primo livello eccitato per $3$ elettroni si può avere (con $E_{n_1, n_2, n_3}$) l'energia totale della configurazione e $E^i_n$ l'energia dell'$i-$esimo elettrone nell'$n-esima$ shell, si inoltre faccia il disegno della shell per capirlo):
+	
+\begin{align*}
+	E_{1 , 1, 3} = E^1_1 + E^2_1 + E^3_3
+\end{align*}
+
+	oppure:
+	
+\begin{align*}
+	E_{1 , 2, 2} = E^1_1 + E^2_2 + E^3_2
+\end{align*}
+	
+	calcolando il risultato si ottiene che $E_{1 , 1, 3} < E_{1 , 2, 2}$. Allora $E_{1 , 1, 3}$ è il primo livello eccitato e $E_{1 , 2, 2}$ è il secondo livello eccitato.
+
+\subsubsection{Che degenerazione hanno i livelli energetici?}
+
+	La degenerazione dipende da diversi fattori. In primis si valuti con la formula $\text{dim} \mathcal{H}_-$ nelle shell con più elettroni. Si moltiplichino poi le degenerazioni delle varie shell che contengono elettroni nella configurazione designata. Inoltre per la degenerazione di singola particella si noti che se per esempio una particella avesse più valori possibili dello stesso momento angolare allora tali dimensioni vanno sommate, per esempio, si prenda un elettrone in $n = 3$ per un atomo di Idrogeno, allora:
+	
+\begin{align*}
+	\mathcal{H}_k = \mathcal{H}_L \otimes \mathcal{H}_S = \qty(\mathcal{H}_{l = 2} \oplus \mathcal{H}_{l = 1} \oplus  \mathcal{H}_{l = 0}) \otimes \mathcal{H}_S
+\end{align*}
+
+	dove infatti $ L = 2 \oplus 1 \oplus 1 \oplus 0$. Quindi vale che la degenerazione di singola particella è:
+
+\begin{align*}
+	\text{dim} \mathcal{H}_k = \text{dim} \mathcal{H}_L \times \text{dim} \mathcal{H}_S = \qty(\dim{H}_{l = 2} + \dim{H}_{l = 1} +  \text{dim} \mathcal{H}_{l = 0}) \times \text{dim} \mathcal{H}_S
+\end{align*}
+
+\subsubsection{Quanto valgono $\qty(L, S, J)$?}
+
+	In generale si siccome vale Pauli, si valutano gli $\qty(L, S) $ su ogni shell e poi si fa il prodotto tensore. Immaginiamo per esempio di avere dei fermioni in $n = 1$ e dei fermioni in $n = 2$, allora
+	
+\begin{align*}
+	\qty(L, S) = \qty(L, S)_{n = 1} \otimes \qty(L, S)_{n = 2}
+\end{align*}
+
+	la degenerazione dipende dal $J$ risultante.
+	
+\subsubsection{Probabilità di ottenere una certa misura sullo stato e passaggio da $L_x$ ad $L_z$}
+
+	Capita che si voglia calcolare la probabilità di ottenere una certa misura di un operatore sullo stato. Facciamo un \textbf{esempio}: si supponga di avere il sistema in uno stato iniziale con: $S = \frac{1}{2}$, $L = 1$ e $S_z = \frac{1}{2}$ e $L_x = 0$. E che il testo ci dica che vogliamo calcolare le probabilità di ottenere $P_{J, J_z}$ che una misura del momento angolare totale su questo stato designato mi dia la coppia $\qty(J, J_z)$.
+	\\
+	\\
+	La prima cosa da pensare è al trovare i possibili valori di $\qty(J, J_z)$, in questo caso $J$ è facilmente trovabile dal prodotto tensore tra $L$ ed $S$ dati ma invece $J_z$ no in quanto abbiamo solo $S_z$ e non $L_z$. \textit{La prima cosa da fare} allora è riscriverci un autostato di $L_x $ in funzione degli autostati di $L_z$. Infatti un generico stato di $L = 1$ ha come $L_z$ i numeri $-1, 0, 1$. Quindi scrivo $L_x$ come combinazione lineare dei possibili $L_z$, a questo punto applico $L_x$ sula combinazione trovata, per ipotesi sappiamo che $L_x$ sull'autostato di $L_x$ deve darci $0$, quindi sia:
+	
+\begin{align*}
+	\ket{L_x = 0} = \alpha \ket{L_z = -1 } + \beta \ket{L_z = 0} + \gamma \ket{L_z = 1 }
+\end{align*}
+
+	a questo punto applico $L_x = \frac{1}{2} \qty(L_+ + L_-)$ sia a destra che a sinistra e trovo che:
+	
+\begin{align*}
+	\beta \ket{L_z = 1} + \qty(\gamma + \alpha )\ket{L_z = 0} + \beta \ket{L_z = -1} = 0
+\end{align*}
+
+	e quindi pongo delle restrizioni sui coefficienti tali il risultato sia zero (ricorda $L_x \ket{L_x = 0} = 0$ per ipotesi), quindi $	\beta = 0, \gamma + \alpha = 0$, allora possiamo scrivere che:
+	
+\begin{align*}
+	\ket{L_x = 0} = \alpha \qty(\, \ket{L_z = -1 } - \gamma \ket{L_z = 1 }\,) 
+\end{align*}
+ 
+	quindi abbiamo trovato che $L_z = - 1, 1$ per lo stato di partenza. Abbiamo quindi due possibili $J_z$ e quindi $3$ possibili $\qty(J, J_z)$, si usa ora Clebsh-Gordan per riscriverci i tre possibili $\ket{J, J_z}$ in funzione di $\ket{L_z}{S_z}$, allora infine, avendo trovato prima che:
+	
+\begin{align*}
+	\ket{L_x = 0, S_z = \frac{1}{2}} = \alpha \qty( \, \ket{L_z = -1, S_z = \frac{1}{2} } - \gamma \ket{L_z = 1, S_z = \frac{1}{2} }\,) 
+\end{align*}
+	
+\begin{align*}
+	P_{J, J_z} = \qty|\braket{J, J_z}{L_x = 0, S_z = \frac{1}{2}}|^2
+\end{align*}
+
+	evidentemente saranno $3$ possibili, verifica sempre che la probabilità totale poi sia uno.
+
+%%
+\subsection{Bosoni Identici in un Potenziale Armonico}
+
+\subsubsection{Come trovare i livelli energetici?}
+
+	Sia un sistema composto da 3 oscillatori armonici $1D$ identici e bosonici.
+	\\
+	\\
+	Sia $n_1, n_2, n_3$ i 3 relativi numeri quantici relativi all'energia rispettivamente della prima della seconda e della terza particella. Dalla teoria sappiamo che per ognuna delle particelle vale che:
+	
+\begin{align*}
+	E_{n_i} = \hbar \omega \qty(\frac{1}{2} + n_i) 
+\end{align*}
+	
+	esclusivamente in 1 dimensione. Allora:
+	
+\begin{align*}
+	E_{n} =\hbar \omega \qty(\frac{1}{2} + n_1) + \hbar \omega \qty(\frac{1}{2} + n_2) + \hbar \omega \qty(\frac{1}{2} + n_3) = \hbar \omega \qty(\frac{3}{2} + n) 
+\end{align*}
+	
+	con $n = n_1 + n_2 + n_3$.
+	\\
+	\\
+	Siccome le particelle sono identiche e bosoniche fissiamo un ordine nel numero quantico $n$ per scovare così le possibili combinazioni degli $n_i$ tali che si ottengano i valori dell'energia senza ripetizioni.
+	\\
+	\\
+	Sia: $n_1 \geq n_2 \geq n_3$, allora la combinazione dei $\qty(n_1, n_2, n_3)$:
+	
+\begin{align*}
+	& n = 0 \,\, \Rightarrow \,\, \qty(0, 0, 0) \,\, \Rightarrow \,\, \text{deg} = 1 \\
+	& n = 1 \,\, \Rightarrow \,\, \qty(1, 0, 0) \,\, \Rightarrow \,\, \text{deg} = 1 \\
+	& n = 2  \,\, \Rightarrow \,\, \qty(2, 0, 0), \qty(1, 1, 0) \,\, \Rightarrow \,\, \text{deg} = 2 \\
+	& n = 3  \,\, \Rightarrow \,\, \qty(3, 0, 0), \qty(2, 1, 0), \qty(1, 1, 1)\,\, \Rightarrow \,\, \text{deg} = 3 \\
+	& n = 4  \,\, \Rightarrow \,\, \qty(4, 0, 0), \qty(3, 1, 0), \qty(2, 2, 0), \qty(2, 1, 1) \,\, \Rightarrow \,\, \text{deg} = 4 \\
+	& n = 5  \,\, \Rightarrow \,\, \qty(5, 0, 0), \qty(4, 1, 0), \qty(3, 2, 0), \qty(3, 1, 1), \qty(2, 2, 1)\,\, \Rightarrow \,\, \text{deg} = 5 \\
+	& n = 6  \,\, \Rightarrow \,\, \qty(6, 0, 0), \qty(5, 1, 0), \qty(4, 2, 0), \qty(4, 1, 1), \qty(3, 2, 1), \qty(3, 3, 0), \qty(2, 2, 2) \,\, \Rightarrow \,\, \text{deg} = 7\\
+	& \ldots
+\end{align*}
+
+	\textbf{N.B}: la degenerazione del livello è data da quante combinazioni ordinate 
+
+
+%%%%%%%%%%%%%%%%%%
+
+
+\section{Relazioni tra Hamiltoniane}
+
+\subsection{Cosa comporta la commutazione tra $\hat{H}_1$ e $\hat{H}_2$?}
+
+	Prese due Hamiltoniane $\hat{H}_1$ e $\hat{H}_2$, allora se esse sono compatibili (ovvero se commutano):
+	
+\begin{align*}
+	\qty[\hat{H}_1,\hat{H}_2] = 0
+\end{align*}
+
+	allora esse condividono un set completo di autovettori simultanei, allora per ognuno di questi stati condivisi vale che l'energia totale è:
+	
+\begin{align*}
+	E_{\text{tot}} = E_1 + E_2
+\end{align*}
+
+
+
+%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Evoluzione Temporale di uno Stato}
+
+	Sia \textbf{l'operatore evoluzione temporale}:
+	
+\begin{align*}
+	\hat{U}\qty(t) = e^{-\frac{i}{\hbar} \, \hat{H}\, t}
+\end{align*}
+
+	allora preso un'autostato dell'energia $\Psi_n$, vale che l'azione dell'operatore sull'autostato dell'energia è:
+	
+\begin{align*}
+	\hat{U}\qty(t) \Psi_n = e^{-\frac{i}{\hbar} \, \hat{H}\, t} \Psi_n = e^{-\frac{i}{\hbar} \, E_n \, t} \Psi_n
+\end{align*}
+
+\subsection{Come si fa evolvere uno stato?}
+
+	Si identifichi con $\psi$ uno stato al tempo iniziale $t = 0$. Allora si riscriva lo stato in questione in funzione degli autostati dell'energia, ossia come combinazione lineare di essi (\textit{si verifichi sia normalizzato}). Una volta fatto ciò si faccia agire su $\psi$ l'operatore di evoluzione temporale, in questo modo si ottiene $\psi\qty(t)$.
+	
+\begin{align*}
+	\psi\qty(t) =  e^{-\frac{i}{\hbar} \, \hat{H}\, t} \psi\qty(t = 0) 
+\end{align*}
+
+\subsection{Qual è la probabilità di ottenere partendo dallo stato $\psi(t)$, lo stato $\psi(t = 0)$?}
+
+	Spesso ci viene chiesto quale sia la probabilità di ottenere lo stesso stato a $t > 0$, dove per stesso stato intendo, ritrovare $\psi$ come a $t = 0$, ovvero in funzione degli autostati dell'energia ma prima di applicare l'operatore temporale. Mentre $\psi(t)$ è $\psi(t = 0)$ con l'operatore temporale applicato. Allora la probabilità è a meno di normalizzazioni è:
+	
+\begin{align*}
+	P\qty(t) = \qty|\braket{\psi\qty(t = 0)}{\psi\qty(t)}|^2
+\end{align*}
+
+	si faccia attenzione che per un numero complesso $Z$, vale che:
+	
+\begin{align*}
+	\qty|Z|^2 = Z \, Z^*
+\end{align*}
+
+
+	
+
+

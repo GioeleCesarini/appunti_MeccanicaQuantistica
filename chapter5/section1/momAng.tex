@@ -1,0 +1,1121 @@
+\chapter{Teoria del Momento Angolare}
+
+	Abbiamo visto che i cambi di rappresentazione sono associati sempre ad operatori unitari. 
+	\\
+	\\
+	In particolare, rappresentazioni legate da trasformazioni unitarie sono fisicamente equivalenti. In altre parole, rappresentazioni diverse ma legate da trasformazioni unitarie sono descrizioni diverse dello stesso, identico, sistema fisico. 
+	\\
+	\\
+	Si supponga di avere un sistema descritto da uno spazio degli stati lineare $\mathcal{H}$, su cui è definita una osservabile $O$. Si consideri allora una trasformazione unitaria del seguente tipo:
+	
+\begin{align*}
+	\hat{U} : \mathcal{H} \to \mathcal{H}'
+\end{align*}
+
+	tale trasformazione unitaria, manda: $v \in \mathcal{H}$ in $v' = \hat{U}v \in \mathcal{H}'$. Dunque, la descrizione del sistema, dal punto di vista dello stato $v \in \mathcal{H}$ e dell'osservabile $O$, è fisicamente equivalente alla descrizione dal punto di vista dello stato $v' \in \mathcal{H}'$ e dell'osservabile $O'$, dove $O'$ in particolare è tale che:
+	
+\begin{align*}
+	\hat{O}' = \hat{U}^{\dagger}\hat{O}\hat{U} \qquad ;  \qquad v' = \hat{U}v
+\end{align*}
+	
+	Vedremo quindi come trasformazioni del tipo traslazione o rotazionale, influenzino gli stati nello spazio di Hilbert. Cercheremo quindi delle trasformazioni unitarie nello spazio $\mathcal{H}$, ovvero dei cambi di rappresentazione ed andremo a vederne le conseguenze.
+	\\
+	\\
+	L'ultima richiesta che facciamo, prima di avventurarci all'interno dello studio di tali trasformazioni, è che la norma degli stati sia conservata e normalizzata. Ovvero che valga:
+	
+\begin{align*}
+	\braket{\psi} = \braket{\psi'} = 1 \quad \forall \ket{\psi} \in \mathcal{H}
+\end{align*}
+
+	perché abbiamo bisogno di questo?
+	\\
+	\\
+	Perché la norma dello stato in meccanica quantistica ha un significato fondamentale:
+	
+\begin{itemize}
+	
+	\item La quantità $\braket{\psi}$ rappresenta la probabilità totale, che deve essere sempre uguale a $1$, in quanto il sistema deve essere certamente descritto dal suo stato.
+	
+	\item Se cambiassimo rappresentazione (ad esempio, ruotando il nostro sistema di coordinate), la probabilità totale di trovare il sistema in un qualunque stato deve rimanere invariata. Non ha senso fisico che cambiando punto di vista (rappresentazione) cambi la probabilità totale, che per definizione è sempre $1$.
+
+\end{itemize}
+
+	Allora la condizione: $\braket{\psi} = \braket{\psi'} = 1$, è una condizione necessaria perché il cambiamento di rappresentazione sia fisicamente coerente.
+	\\
+	\\
+	 Notiamo che supponendo una norma conservata e normalizzata otteniamo che gli operatori di trasformazione devono essere unitari. Vediamolo subito:
+	\\
+	\\
+	Sia $\ket{\psi}$ definito come:
+	
+\begin{align*}
+	\ket{\psi} \, \equiv \, \ket{\phi} + \lambda \ket{\eta}
+\end{align*}
+
+	dove $\lambda \in \mathbb{C}$. Allora vale:
+	
+\begin{align*}
+	& 1 = \braket{\psi} = \braket{\phi} + \lambda \lambda^* \braket{\eta} + \lambda^* \braket{\eta}{\phi} + \lambda\braket{\phi}{\eta} \\
+	& 1 = \braket{\psi'} = \qty(\hat{U} \ket{\psi})^{\dagger}  \qty(\hat{U} \ket{\psi}) = \mel{\psi}{\hat{U}^{\dagger}\hat{U}}{\psi} =  \mel{\phi}{\hat{U}^{\dagger}\hat{U}}{\phi} + \lambda \lambda^* \mel{\eta}{\hat{U}^{\dagger}\hat{U}}{\eta} + \lambda^* \mel{\eta}{\hat{U}^{\dagger}\hat{U}}{\phi} + \lambda \mel{\phi}{\hat{U}^{\dagger}\hat{U}}{\eta}
+\end{align*}
+ 
+	con $\lambda \lambda^* = |\lambda|^2$.
+	\\
+	\\
+	Per ipotesi inoltre, $\hat{U}$ mantiene anche la norma di $\ket{\phi}$ e $\ket{\eta}$. Allora essendo che vale:
+
+\begin{align*}
+	\braket{\phi} + \lambda \lambda^* \braket{\eta} + \lambda^* \braket{\eta}{\phi} + \lambda\braket{\phi}{\eta} = \mel{\phi}{\hat{U}^{\dagger}\hat{U}}{\phi} + \lambda \lambda^* \mel{\eta}{\hat{U}^{\dagger}\hat{U}}{\eta} + \lambda^* \mel{\eta}{\hat{U}^{\dagger}\hat{U}}{\phi} + \lambda \mel{\phi}{\hat{U}^{\dagger}\hat{U}}{\eta}
+\end{align*}
+
+	vale anche:
+	
+\begin{align*}
+	& \mel{\phi}{\hat{U}^{\dagger}\hat{U}}{\phi} = \braket{\phi} \\
+	& \mel{\eta}{\hat{U}^{\dagger}\hat{U}}{\eta} = \braket{\eta}
+\end{align*}
+
+	e dunque:
+
+\begin{align*}
+	\textcolor{blue}{\braket{\phi}} + \textcolor{orange}{ \lambda \lambda^* \braket{\eta} } + \lambda^* \braket{\eta}{\phi} + \lambda\braket{\phi}{\eta} = \textcolor{blue}{\mel{\phi}{\hat{U}^{\dagger}\hat{U}}{\phi}} + \textcolor{orange}{\lambda \lambda^* \mel{\eta}{\hat{U}^{\dagger}\hat{U}}{\eta} }+ \lambda^* \mel{\eta}{\hat{U}^{\dagger}\hat{U}}{\phi} + \lambda \mel{\phi}{\hat{U}^{\dagger}\hat{U}}{\eta}
+\end{align*}
+
+	allora semplificando otteniamo:
+	
+\begin{align*}
+	\lambda^* \braket{\eta}{\phi} + \lambda\braket{\phi}{\eta} = \lambda^* \mel{\eta}{\hat{U}^{\dagger}\hat{U}}{\phi} + \lambda \mel{\phi}{\hat{U}^{\dagger}\hat{U}}{\eta}
+\end{align*}
+
+	raccogliendo $\lambda$ e $\lambda^*$ si ottiene allora:
+	
+\begin{align*}
+	\lambda \, \qty\Big[ \braket{\phi}{\eta} - \mel{\phi}{\hat{U}^{\dagger}\hat{U}}{\eta}  ] = \lambda^* \,  \qty\Big[ \braket{\eta}{\phi} - \mel{\eta}{\hat{U}^{\dagger}\hat{U}}{\phi}  ] 
+\end{align*}
+
+	ed è evidente che l'unico modo affinché tale equazione sia verificata $\forall \lambda, \ket{\phi}, \ket{\eta}$ è che: $\hat{U}^{\dagger}\hat{U} = \mathbb{I}$, ossia che $\hat{U}$ sia proprio unitario, come detto.
+
+\section{Trasformazioni e Simmetrie}
+
+	In questa sezione trattiamo le trasformazioni e tutto ciò che comportano. Partiamo da una breve introduzione al concetto di gruppo, fondamentale in fisica, per poi vedere traslazioni (spaziali, di parità, temporali) e le rotazioni.
+
+\subsection{Gruppi}
+	
+	La struttura algebrica:
+	
+\begin{align*}
+	G = \qty(U, \circ)
+\end{align*}
+
+	con $\circ$ operazione di composizione, è \textbf{struttura di gruppo} se:
+
+\begin{enumerate}[label=\arabic*)]
+	\item \textit{Presi due elementi del gruppo, la loro composizione in entrambi i sensi è ancora un elemento del gruppo:}
+	\begin{align*}
+		\forall U_1, U_2 \in G \,\, \Rightarrow \,\, U_1 \circ U_2 \in G \, \, , \quad U_2 \circ U_1 \in G
+	\end{align*}
+	\begin{myapprf}
+		Inoltre se la composizione è \textit{commutativa}, ovvero sia se:
+	\begin{align*}
+		U_1 \circ U_2 = U_2 \circ U_1
+	\end{align*}
+		allora si dice che $G$ è \textbf{abeliano}.
+	\end{myapprf}
+	
+	\item \textit{Vale la proprietà associativa:}
+	\begin{align*}
+		\forall U_1, U_2, U_3 \in G \,\, \Rightarrow \,\, U_1 \circ \qty(U_2 \circ U_3) = \qty(U_1 \circ U_2) \circ U_3
+	\end{align*}
+
+	\item \textit{Esiste l'elemento neutro $\mathbb{I}$:}
+	\begin{align*}
+		\exists \, \mathbb{I} \in G \quad \text{tale che} \quad \mathbb{I} \circ U = U \circ \mathbb{I} = U 
+	\end{align*}
+
+	\item \textit{Esiste l'elemento inverso $U^{-1}$:}
+	\begin{align*}
+		\forall U \in G, \, \exists \, U^{-1} \in G \quad \text{tale che} \quad U \circ U^{-1} = U^{-1} \circ U = \mathbb{I}
+	\end{align*}
+
+\end{enumerate}
+
+	Diamo ora una definizione:
+	
+\begin{mydef}
+	Chiamiamo \textbf{gruppi discreti} quei gruppi che contengono un numero finito di elementi.
+\end{mydef}
+
+	 Alcuni esempi di gruppi discreti sono:
+	 
+\begin{itemize}
+	\item $O(N)$ è il gruppo delle matrici reali ortogonali $ N \times N$.
+	
+	\item $SO(N)$ è il gruppo delle matrici reali speciali ortogonali $N \times N$, con determinante $1$.
+	
+	\item $U(N)$ è il gruppo delle matrici unitarie $N \times N$.
+	
+	\item $SU(N)$ è il gruppo delle matrici speciali unitarie $N \times N$ con determinante $1$.
+	 
+	\item $GL(N, \mathbb{R})$ è il gruppo delle matrici reali $N \times N$ con determinante diverso da zero, ovvero invertibili.
+	
+	\item $GL(N, \mathbb{C})$ è il gruppo delle matrici complesse $N \times N$ con determinante diverso da zero, ovvero invertibili.
+\end{itemize}
+	
+	Un tipo di gruppo molto importante è costituito dai \textbf{gruppo di Lie}. Diamo la definizione:
+	
+\begin{mydef}
+	I \textbf{gruppi di Lie} sono tutte le trasformazioni dipendenti da una collezione $\vb*{\theta}$ di parametri, tali che:
+\begin{align*}
+	U = U(\vb*{\theta}) \quad ; \quad U(0) = \mathbb{I}
+\end{align*}
+\end{mydef}
+
+	Per $\vb*{\theta}$ piccolo posso espandere in serie di Taylor:
+	
+\begin{align*}
+	U(\vb*{\theta}) = \mathbb{I} + i \theta_a \, \hat{T}_a + \ldots \quad ; \quad \theta_a \in \mathbb{R}
+\end{align*}
+	
+	con somma sugli indici ripetuti e con tanti operatori $\hat{T}$ quanto è la dimensione di $\theta$: gli elementi $T$ sono i \textit{generatori del gruppo}. Inoltre, poiché $\hat{U}$ è unitario, allora possiamo scrivere:
+	
+\begin{align*}
+	\hat{U} \hat{U}^{\dagger} = \mathbb{I} \,\, \Rightarrow \,\, \qty( \mathbb{I} + i \theta_a \, \hat{T}_a) \,  \qty( \mathbb{I} + i \theta_a \, \hat{T}_a) ^{\dagger} = \mathbb{I }  \,\, \Rightarrow \,\, \mathbb{I} - i \theta_a \, \hat{T}_a^{\dagger} + i \theta_a \, \hat{T}_a + \order{\vb*{\theta}^2}= \mathbb{I}
+\end{align*}
+
+	allora trascurando il termine di ordine $\vb*{\theta}^2$ otteniamo che:
+
+\begin{align*} 
+	\hat{T}_a = \hat{T}_a^{\dagger}
+\end{align*}
+
+	Quindi abbiamo ottenuto che $\hat{T}_a$ è autoaggiunto. Ne segue che i generatori del gruppo potrebbero essere osservabili, che sia $\hat{T}_a$ hermitiano è infatti una condizione necessaria.
+	\\
+	\\
+	Una rappresentazione non infinitesima, in termini di rappresentazioni infinitesime, è la seguente:
+	
+\begin{align*}
+	U(\vb*{\theta}) = \lim_{n \to \infty} \qty( \mathbb{I} + \frac{i}{n} \, \theta_a \hat{T}_a )^n = e^{\, i \theta_a \, \hat{T}_a}
+\end{align*}
+
+	che, per $\theta_a \to 0$ si ha $U(\vb*{\theta}) = \mathbb{I}$.
+	\\
+	\\
+	Ho due punti di vista per le trasformazioni:
+	
+\begin{enumerate}[label=\arabic*)]
+	
+	\item \textit{Attivo:}
+	
+		$U$ è un gruppo di trasformazioni che agisce sugli stati:
+	\begin{align*}
+		\ket{\psi'} = U \ket{\psi}
+	\end{align*}
+	
+	\item \textit{Passivo:}
+	
+		$U$ è un gruppo di trasformazioni che agisce sugli operatori. Ad esempio, il valore di aspettazione su $\ket{\psi'}$ di $\hat{A}$ è:
+	\begin{align*}
+		\mel{\psi'}{\hat{A}}{\psi'} = \mel{\psi}{ \hat{U}^{\dagger} \hat{A} \hat{U}}{\psi} \, \equiv \, \mel{\psi}{\hat{A}'}{\psi}
+	\end{align*}
+		quindi:
+	\begin{align*}
+		\hat{A}' = \hat{U}^{\dagger}\hat{A}\hat{U} = \qty( \mathbb{I} - i \theta_a \, \hat{T}_a^{\dagger}) \hat{A} \qty( \mathbb{I} + i \theta_a \, \hat{T}_a) & = \qty( \hat{A} - i \theta_a \, \hat{T}_a \hat{A}) \,  \qty( \mathbb{I} + i \theta_a \, \hat{T}_a)  \\
+		& =  \hat{A} + i \theta_a \, \qty(\hat{A} \hat{T}_a - \hat{T}_a \hat{A} )
+	\end{align*}
+
+	ossia:
+
+	\begin{align*}
+		\hat{A}' = \hat{A} + i \theta_a \, \qty[\hat{A}, \hat{T}_a ]
+	\end{align*}
+\end{enumerate}
+
+\subsection{Traslazioni Spaziali}
+
+	Una traslazione spaziale di un sistema fisico corrisponde al cambiamento delle coordinate spaziali secondo una quantità costante, descritta dal vettore $\vb{a}$. In termini classici, questa trasformazione è semplicemente:
+
+\begin{align*}
+	\vb{x}' = \vb{x} + \vb{a}  
+\end{align*}
+
+	Quando passiamo alla meccanica quantistica, una trasformazione del genere viene rappresentata da un operatore unitario $\hat{U}(\vb{a})$. 
+	\\
+	\\
+	Perché l'operatore deve essere unitario?
+	\\
+	In meccanica quantistica, trasformazioni canoniche (come le traslazioni spaziali, le rotazioni o le trasformazioni temporali) sono sempre rappresentate da operatori unitari. Questa unità garantisce la conservazione delle probabilità (la norma dello stato non cambia sotto la trasformazione). Dunque:
+
+\begin{align*}
+	\hat{U}^{\dagger}(\vb{a}) \hat{U}(\vb{a}) = \mathbb{I}
+\end{align*}
+
+	Vediamo ora la scrittura esplicita per posizione e momento:
+
+\begin{nb}
+	Poiché le traslazioni spaziali sono una famiglia di trasformazioni canoniche esiste, come abbiamo detto, un operatore unitario tale che:
+	
+\begin{align*}
+	&\hat{x}'^i = \hat{U}^{\dagger}(\vb{a})\hat{x}^i\hat{U}(\vb{a}) = \hat{x}^i + a^i \mathbb{I} \\
+	&\hat{p}'^i = \hat{U}^{\dagger}(\vb{a})\hat{p}^i\hat{U}(\vb{a}) = \hat{p}^i 
+\end{align*}
+	definito come azione per traslazione sugli operatori $\hat{x}$ ed $\hat{p}$.
+\end{nb}
+	
+	ciò significa che:
+	
+\begin{itemize}
+	\item L'operatore posizione $\hat{x}^i$ dopo una traslazione $\vb{a}$, diventa semplicemente sé stesso più la costante $a^i$, moltiplicata per l'operatore identità $\mathbb{I}$. In altre parole, la posizione si "sposta" di una quantità $\vb{a}$.
+	 
+	\item L'operatore impulso $\hat{p}^i$ resta invariante sotto traslazioni spaziali, cioè il momento lineare non cambia per traslazioni nello spazio (in accordo con il fatto che l'impulso genera la traslazione stessa).
+	
+\end{itemize}
+
+	Fisicamente, questa trasformazione dice che quando "sposto il sistema fisico nello spazio di un vettore $\vb{a}$", gli operatori che osservano le posizioni vengono anch'essi spostati, mentre quelli che osservano gli impulsi non vengono influenzati.
+	\\
+	\\
+	Analizziamo meglio ora chi sia $\hat{U}(\vb{a})$. Considero una traslazione $\vb{b}$, tale che $\vb{c} = \vb{a} + \vb{b}$:
+
+\begin{align*}
+	\hat{x}''^{\,i} = \hat{U}^{\dagger}(\vb{c})\hat{x}^i\hat{U}(\vb{c})
+\end{align*}
+
+	cioè:
+	
+\begin{align*}
+	\hat{x}''^{\,i} = \hat{U}^{\dagger}(\vb{c})\hat{x}^i\hat{U}(\vb{c}) = \hat{U}^{\dagger}(\vb{a} + \vb{b})\hat{x}^i\hat{U}(\vb{a} + \vb{b}) & =  \hat{U}^{\dagger}(\vb{a})\hat{U}^{\dagger}(\vb{b})\hat{x}^i\hat{U}(\vb{a})\hat{U}(\vb{b})  \\
+	& = \hat{U}^{\dagger}(\vb{b})\textcolor{blue}{\hat{U}^{\dagger}(\vb{a})\hat{x}^i\hat{U}(\vb{a})}\hat{U}(\vb{b}) \\
+	& = \hat{U}^{\dagger}(\vb{b})\textcolor{blue}{\hat{x}'^{\,i}}\hat{U}(\vb{b}) 
+\end{align*}
+
+	per confronto allora vale che:
+	
+\begin{align*}
+	\hat{U}(\vb{a} + \vb{b}) = \hat{U}(\vb{a})\hat{U}(\vb{b})
+\end{align*}
+	
+	la cui soluzione è come già abbiamo visto:
+	
+\begin{align*}
+	\hat{U}(\vb{a}) = e^{\, \vb{a} \vdot \vb{p} \, i/\hbar} \, \equiv \, e^{ \, i \, \vb{a} \vdot \vb{K}}
+\end{align*}
+
+	con: $\hat{K} = \hat{K}^{\dagger}$. Ma chi è $\vb{K}$?
+	\\
+	\\
+	Nel limite di $\vb{a} \to 0$ sviluppo $\hat{U}(\vb{a})$ come:
+	
+\begin{align*}
+	\hat{U}(\vb{a}) = \mathbb{I} + i \, \vb{a} \vdot \vb{K} + \order{\vb{a}^2}
+\end{align*}
+
+	quindi:
+	
+\begin{align*}
+	\hat{U}^{\dagger}(\vb{a}) = \hat{U}^{-1}(\vb{a}) = \mathbb{I} - i \, \vb{a} \vdot \vb{K} + \order{\vb{a}^2}
+\end{align*}
+
+	da cui:
+	
+\begin{align*}
+	\hat{U}^{\dagger}(\vb{a}) \hat{a}^i\hat{U}(\vb{a}) &= \qty[\mathbb{I} - i \, \vb{a} \vdot \vb{K} + \order{\vb{a}^2} ]\hat{x}^i \qty[ \mathbb{I} + i \, \vb{a} \vdot \vb{K} + \order{\vb{a}^2}] \\
+	& = \hat{x}^i - i\, \vb{a} \vdot \vb{K} \, \hat{x}^i + i \, \hat{x}^i \, \vb{a} \vdot \vb{K} + \order{\vb{a}^2} \\
+	 & = \hat{x}^i - i \, a_j \, \qty[ \hat{K}_j, \hat{x}^i ]
+\end{align*}
+
+	chiaramente ciò deve essere uguale anche a $\hat{x}^i + a^i \mathbb{I}$, allora facendo l'uguaglianza:
+	
+\begin{align*}
+	\hat{x}^i - i \, a_j \, \qty[ \hat{K}_j, \hat{x}^i ] = \hat{x}^i + a^i \mathbb{I}
+\end{align*}
+
+	si ottiene:
+	
+\begin{align*}
+	- i \, \qty[ \hat{K}_j, \hat{x}^{i}] = \delta^i_j
+\end{align*}
+
+	e ripetendo il calcolo per $\hat{p}^i$ si ottiene:
+	
+\begin{align*}
+	\hat{p}^i - i \, a_j \, \qty[\hat{K}_j, \hat{p}^i] = \hat{p}^i \, \, \Rightarrow \, \, \qty[\hat{K}_j, \hat{p}^i] = 0
+\end{align*}
+	
+	Poiché per $\vb{K}$ devono valere sia $\hat{K} = \hat{K}^{\dagger}$ sia due relazioni di commutazione appena trovate ovvero:
+	
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& \hat{K} = \hat{K}^{\dagger}\\
+	& - i \, \qty[ \hat{K}_j, \hat{x}^{i}] = \delta^i_j \\
+	& \qty[\hat{K}_j, \hat{p}^i] = 0
+\end{empheq}
+	
+	si ha che:
+	
+\begin{align*}
+	\hat{K}_j = - \, \frac{\hat{p}_j}{\hbar} \, \, \Rightarrow \, \, \hat{U}(\vb{a}) = e^{\, - i/\hbar \, \, \vb{a} \vdot \vb{p} }
+\end{align*}
+
+	e più in generale si può scrivere:
+	
+\begin{align*}
+	\hat{K}_j = - \, \frac{\hat{p}_j}{\hbar} + \hat{z}_i \quad ; \quad \qty[\hat{z}_i, \hat{x}^i] = \qty[\hat{z}_i, \hat{p}^i] = 0
+\end{align*}
+
+	dove $\hat{z}_i$ è un oggetto che commuta con tutto.
+	\\
+	\\
+	Dunque, due operatori in due diversi sistemi di coordinate sono legati sotto traslazioni spaziali da:
+	
+\begin{align*}
+	\hat{O}' = e^{\, i/\hbar \,\, a^i \hat{p}^i} \hat{O} e^{\, - i/\hbar \,\, a^i \hat{p}^i}
+\end{align*}
+
+	se, in particolare, l'osservabile in questione è l'Hamiltoniana del sistema, si ha che:
+	
+\begin{align*}
+	\hat{H}' =  e^{\, i/\hbar \,\, a^i \hat{p}^i} \hat{H} e^{\, - i/\hbar \,\, a^i \hat{p}^i}
+\end{align*}
+
+	allora nel caso in cui $\hat{H} = \hat{H}'$, diremo che il sistema è \textbf{simmetrico} (o invariante) sotto traslazioni di $a^i$. Se ciò è vero per ogni $a^i$, nel limite $a^i \to 0$, la condizione $\hat{H} = \hat{H}'$ è equivalente al fatto che:
+	
+\begin{align*}
+	\qty[\hat{p}^i, \hat{H}] = 0
+\end{align*}
+
+	In conclusione, dato un certo stato $\psi(\vb{x})$, allora $\hat{U}(\vb{a})$ è l'operatore che manda i vettore del sistema di riferimento $S'$ nel sistema di riferimento $S$ e $\hat{U}^{-1}(\vb{a})$ il contrario (non è viceversa per come abbiamo definito $\hat{U}(\vb{a})$). In particolare, chi è $\psi'(\vb{x})$? È quello stato tale che:
+	
+\begin{align*}
+	\psi'(\vb{x}) = \hat{U}^{-1}(\vb{a})\psi(\vb{x}) = e^{ \, i/\hbar \,\, \vb{a} \vdot \vb{p}} \psi(\vb{x})
+\end{align*}
+
+	Nella RS in $3$ dimensioni ho che:
+
+\begin{align*}
+	\hat{p} = - i \hbar \, \nabla
+\end{align*}
+
+	perciò abbiamo che:
+	
+\begin{align*}
+	\psi'(\vb{x}) = e^{\, \vb{a} \vdot \vb*{\nabla}} \psi(\vb{x}) = \sum \frac{\qty(\vb{a} \vdot \vb*{\nabla})^n}{n!} \, \psi(\vb{x})
+\end{align*}
+
+	L'operatore $\qty(\vb{a} \vdot \vb*{\nabla})$ agisce sulla funzione $\psi(\vb{x})$ calcolando le derivate successive rispetto ad $\vb{x}$. La serie risultante corrisponde esattamente allo sviluppo di Taylor della funzione $\psi(\vb{x})$ intorno ad $\vb{x}$ traslata di un vettore $\vb{a}$:
+	
+\begin{align*}
+	\psi'(\vb{x}) = \psi(\vb{x} + \vb{a})
+\end{align*}
+
+	Posso dunque concludere che $\hat{U}(\vb{a})$ manda uno stato del sistema in un altro stato traslato per lo stesso osservatore.
+
+%%%%%%%
+\vspace{1em}
+%%%%%%%
+\begin{minipage}{0.5\textwidth}
+\begin{tikzpicture}[scale=0.7]
+
+    % Assi
+    \draw[->, thick] (-2,0) -- (5,0) node[below right] {$x$};
+    \draw[->, thick] (0,-2) -- (0,5) node[above] {$y$};
+    % Assi
+    \draw[->, thick] (-2,0) -- (7,0) node[below right] {$x'$};
+    \draw[->, thick] (2,-2) -- (2,5) node[above] {$y'$};
+    
+    % centri
+    \filldraw (0, 0) circle (2pt) node[below left] {$O$}; 
+    \filldraw (2, 0) circle (2pt) node[below left] {$O'$}; 
+    
+    % distanza
+    \draw[thick, <->, red] (0, 3) -- (2, 3) node[midway, above] {$\va{a}$};
+    
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+
+	Tutto ciò può essere rifatto utilizzando i gruppi di Lie. Ricaveremo gli stessi risultati ma rifare tutti i conti in questa ottica è istruttivo. Definiamo l'operatore posizione $\hat{\vb{x}} = \qty(\hat{x}_1, \hat{x}_2, \hat{x}_3)$. Pongo che il valore di aspettazione di $\hat{\vb{x}}$ sullo stato $\ket{\psi}$ mi dia il valore $\vb{x}_0$, ovvero:
+	
+\begin{align*}
+	\mel{\psi}{\hat{\vb{x}}}{\psi} = \vb{x}_0
+\end{align*}
+
+	Qual è l'operatore che identifica la traslazione spaziale? In genere questo tipo di traslazione formano un \textit{gruppo di Lie abeliano}.
+	
+\end{minipage}
+
+%%%%%%%
+\vspace{1em}
+%%%%%%%
+
+	Sia $\hat{U}_T$ tale che:
+	
+\begin{align*}
+	\hat{U}_T(\vb{a}) \ket{\psi} = \ket{\psi'}
+\end{align*}
+
+	qual è il valore di aspettazione di $\hat{x}$ su $\ket{\psi'}$?
+	\\
+	\\
+	Mi aspetto che sia $\vb{x}_0$ traslato di $\vb{a}$, cioè:
+	
+\begin{align*}
+	\mel{\psi'}{\hat{x}}{\psi'} = \vb{x}_0 + \vb{a}
+\end{align*}
+
+	ossia:
+	
+\begin{align*}
+	\vb{x}_0 + \vb{a} = \mel{\psi}{\hat{\vb{x}}}{\psi} + a \mel{\psi}{\mathbb{I}}{\psi} = \mel{\psi}{\hat{\vb{x}} + \vb{a} \, \mathbb{I}}{\psi}
+\end{align*}
+
+	ma in generale:
+	
+\begin{align*}
+	\hat{\vb{x}}' = \hat{U}^{-1} \hat{\vb{x}}\hat{U} \, \, \Rightarrow \, \, \hat{U}_T^{-1} \hat{x}_i \hat{U}_T = \hat{x}_i + a_i
+\end{align*}
+
+	Dalla teoria dei gruppi di Lie so che:
+	
+\begin{align*}
+	\hat{A}' = \hat{A} + i \, \theta_a \, \qty[\hat{A}, \hat{T}_a]
+\end{align*}
+	
+	quindi:
+	
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& \hat{x}_i' = \hat{x}_i + a_i \\
+	& \hat{x}_i' = \hat{x}_i - i \, a_j \, \qty[\hat{T}_j, \hat{x}_i]
+\end{empheq}
+	
+\begin{align*}
+	\Rightarrow \, \, - i a_j \, \qty[\hat{T}_j, \hat{x}_i] = a_i \, \, \Rightarrow \, \, i a_j \, \qty[\hat{x}_i, \hat{T}_j] = i \hbar \, \delta_{ij}
+\end{align*}
+
+	ora moltiplico per $\hbar$ ed ottengo:
+	
+\begin{align*}
+	\qty[\hat{x}_i, - \hbar \, \hat{T}_j] = i \hbar \, \delta_{ij}
+\end{align*}
+
+	da cui, tramite la CCR, ricaviamo che $ - \hbar \hat{T}_j = \hat{p}_j$, cioè il \textit{generatore delle traslazioni spaziali continue è l'impulso} $\hat{p}$, quindi:
+	
+\begin{align*}
+	\hat{U}_T(\vb{a}) = e^{ \, - i/\hbar \,\, \hat{\vb{p}} \vdot \vb{a}} 
+\end{align*}
+
+	Poiché $\qty[\hat{p}_i, \hat{p}_j] = 0$, $\hat{p}_i$ e $\hat{p}_j$ formano un gruppo abeliano.
+	\\
+	\\
+	Come sono le traslazioni su $\psi(\vb{x})$?
+	
+\begin{align*}
+	\psi(\vb{x}) = \braket{\vb{x}}{\psi} \, \, \Rightarrow \, \, \psi'(\vb{x}) = \braket{\vb{x}}{\psi'} = \mel{\vb{x}}{\hat{U}_T(\vb{a})}{\psi}
+\end{align*}
+	
+	faccio agire $\hat{U}^{-1}(\vb{a})$ su $\bra{\vb{x}}$, da cui ottengo:
+	
+\begin{align*}
+	\psi'(\vb{x}) = \braket{\vb{x} - \vb{a} }{\psi} = \psi\qty(\vb{x} - \vb{a})
+\end{align*}
+
+	Il cambio di segno rispetto a prima è dovuto sempre alla definizione data di $\hat{U}$.
+
+\subsubsection{Traslazioni Spaziali in un Potenziale Periodico}
+
+	Facciamo un'ultima considerazione. Considero un potenziale $V\qty(x)$ tale che:
+	
+\begin{align*}
+	V\qty(x) = V\qty(x + a)
+\end{align*}
+
+	se ciò è vero per ogni valore di $a$ il potenziale è \textbf{costante}, se è vero per valore specifici di $a$ allora il potenziale è \textbf{periodico}.
+
+%%%%%%%%
+\vspace{1em}
+%%%%%%%%
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        axis line style = {->, thick},
+        xlabel = {$x$},
+        ylabel = {$V(x)$},
+        x label style = {anchor=south west},
+        y label style = {anchor=south west},
+        xmin = -3.5, xmax = 3.5,
+        ymin = -0.5, ymax = 1.8,
+        xtick = \empty,
+        ytick = \empty,
+        width = 12cm,
+        height = 8cm,
+        clip = false
+    ]
+    
+    % The periodic potential curve (blue, thick)
+    % A squared cosine wave creates the correct shape where minima touch the x-axis.
+    % Period is set to 2 (meaning a = 2).
+    \addplot[very thick, blue, domain=-3.1:2, samples=150] {cos(x*90)^2};
+    
+    % The origin label "0"
+    \node[below left] at (0,0) {0};
+    
+    % The dashed line dropping from the peak at x = a (which is x=2)
+    \draw[thick, dashed] (2, 1) -- (2, 0);
+    
+    % The double-headed arrow indicating the period 'a'
+    \draw[stealth-stealth, thick] (0, -0.25) -- (2, -0.25) node[midway, below] {$a$};
+    
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+%%%%%%%%
+\vspace{1em}
+%%%%%%%%
+
+	Cerco quindi di risolvere l'equazione agli autovalori $\hat{H} \ket{\psi} = E \ket{\psi}$. 
+	\\
+	\\
+	Definiamo l'\textbf{operatore di traslazione spaziale discreta} tale che:
+	
+\begin{align*}
+	\hat{T}_{\vb{R}} \, f\qty(\vb{r}) = f\qty(\vb{r} + \vb{R})
+\end{align*}
+	
+	che trasla una generica funzione $f\qty(\vb{r})$ di un vettore $\vb{R}$. 
+	\\
+	\\
+	Notiamo che l'Hamiltoniana è invariante sotto l'azione di questo operatore per ipotesi di periodicità del potenziale:
+	
+\begin{align*}
+	\qty[\hat{T}_{\vb{R}}, \hat{H}] = 0
+\end{align*}
+
+	Possiamo quindi scegliere una base comune di autostati per $\hat{H}$ e $\hat{T}_{\vb{R}}$:
+	
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& \hat{H} \ket{\psi} = E \ket{\psi} \\
+	& \hat{T}_{\vb{R}} \ket{\psi} = c\qty(\vb{R}) \ket{\psi} = \psi\qty(\vb{r} + \vb{R})
+\end{empheq}
+	
+	Poiché l'operatore $\hat{T}_{\vb{R}}$ a appartiene al gruppo delle traslazioni discrete deve soddisfare la proprietà:
+	
+\begin{align*}
+	\hat{T}_{\vb{R}} \, \hat{T}_{\vb{R'}} = \hat{T}_{\vb{R'}} \, \hat{T}_{\vb{R}} = \hat{T}_{\vb{R} + \vb{R'}}
+\end{align*}
+
+	Questa proprietà si riflette sui suoi autovalori, con la condizione:
+	
+\begin{align*}
+	c\qty(\vb{R}) \, c\qty(\vb{R'}) = c\qty(\vb{R} + \vb{R'})
+\end{align*}	
+
+	Imponiamo ora la normalizzazione della funzione d'onda, sia per $\psi\qty(\vb{r})$ sia per la funzione traslata $\psi\qty(\vb{r} + \vb{R})$. Si ha:
+	
+\begin{align*}
+	\int \qty|\psi\qty(\vb{r})|^2 \, \dd V = \int \qty|\psi\qty(\vb{r} + \vb{R})|^2 \, \dd V = \int \qty|c\qty(\vb{R})|^2 \, \qty|\psi\qty(\vb{r})|^2 \, \dd V = 1
+\end{align*}
+
+	da cui otteniamo il vincolo:
+	
+\begin{align*}
+	\qty|c\qty(\vb{R})|^2 = 1
+\end{align*}
+
+\begin{myth}
+	Se ho un potenziale periodico di passo $\vb{R}$, allora posso scrivere le autofunzioni di $\hat{H}$ come:
+	
+\begin{align*}
+	\psi\qty(\vb{r} + \vb{R}) = e^{ \, i \vb{k} \cdot \vb{R}} \, \psi\qty(\vb{r}) \quad ; \quad \psi\qty(\vb{r}) = e^{ \, i \vb{k} \cdot \vb{r}} \, u_{\vb{k}}\qty(\vb{r})
+\end{align*}
+\end{myth}
+
+\begin{myprf}
+	Usando l'equazione agli autovalori si ottiene:
+	
+\begin{align*}
+	\hat{T}_{\vb{R}} \ket{\psi} = c\qty(\vb{R}) \ket{\psi} = e^{ \, i \vb{k} \cdot \vb{R}} \, \psi\qty(\vb{r})
+\end{align*}
+	
+	Per giungere alla seconda forma,  a partire da quella appena ottenuta dividiamo ambo i membri per $e^{ \, i \vb{k} \cdot \qty(\vb{r} + \vb{R}) }$ da cui segue:
+	
+\begin{align*}
+	\frac{\psi\qty(\vb{r} + \vb{R})}{e^{ \, i \vb{k} \cdot \qty(\vb{r} + \vb{R}) }} = \frac{\psi\qty(\vb{r})}{e^{\, i \vb{k} \cdot \vb{r}}} \equiv u_{\vb{k}}\qty(\vb{r})
+\end{align*}
+
+	da cui l'equazione della sua seconda forma, detta \textbf{funzione d'onda di Bloch}:
+	
+\begin{align*}
+	\psi\qty(\vb{r}) = e^{\, i \vb{k} \cdot \vb{r}} \, u_{\vb{k}}\qty(\vb{r})
+\end{align*}
+
+	Pertanto $u\qty(\vb{r})$ ha modulazione periodica. In effetti, lo stato $\psi\qty(\vb{r})$ è il prodotto di un'autofunzione di una particella libera e di una funzione che la modula e che ha lo stesso andamento del potenziale.
+
+\end{myprf}
+
+\subsection{Traslazioni di Parità}
+
+	La parità è l'operazione che mappa $\vb{x}$ in $-\vb{x}$, definita dall'operatore \textbf{parità} $\mathbb{\hat{I}}$.
+	\\
+	\\
+	Le traslazioni di parità non formano un gruppo di Lie. Come agisce tale operatore?
+	\\
+	\\
+	Impongo che:
+
+\begin{align*}
+	\hat{U}^{-1}_{\mathbb{\hat{I}}} \vb{\hat{x}} \hat{U}_{\mathbb{\hat{I}}} = - \vb{\hat{x}}
+\end{align*}	
+
+	da cui:
+	
+\begin{align*}
+	\hat{U}_{\mathbb{\hat{I}}} \hat{U}^{-1}_{\mathbb{\hat{I}}} \vb{\hat{x}} \hat{U}_{\mathbb{\hat{I}}} = - \hat{U}_{\mathbb{\hat{I}}} \vb{\hat{x}} \quad \Rightarrow \quad \vb{\hat{x}} \hat{U}_{\mathbb{\hat{I}}} + \hat{U}_{\mathbb{\hat{I}}}  \vb{\hat{x}} = 0 \quad \Rightarrow \quad \qty{\vb{\hat{x}}, \hat{U}_{\mathbb{\hat{I}}}} = 0
+\end{align*}
+
+	Quindi $\vb{\hat{x}}$ anticommuta con $\hat{U}_{\mathbb{\hat{I}}}$
+	\\
+	\\
+	In genere si ha che:
+	
+\begin{enumerate}
+	\item Un operatore vettore $\vb{\hat{v}}$ anticommuta con $\hat{U}_{\mathbb{\hat{I}}}$ 
+	\item Un operatore vettore assiale $\vb{\hat{a}}$, uno pseudovettore, commuta con $\hat{U}_{\mathbb{\hat{I}}}$ 
+\end{enumerate}
+
+	Inoltre:
+	
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& \hat{U}_{\mathbb{\hat{I}}}^{-1} = \hat{U}_{\mathbb{\hat{I}}}^{\dagger}\\
+	& \hat{U}_{\mathbb{\hat{I}}}^2 = \mathbb{\hat{I}}
+\end{empheq}
+
+	allora:
+	
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& \hat{U}_{\mathbb{\hat{I}}} \hat{U}_{\mathbb{\hat{I}}}^{\dagger}=  \mathbb{\hat{I}} \\
+	& \hat{U}_{\mathbb{\hat{I}}} \hat{U}_{\mathbb{\hat{I}}} = \mathbb{\hat{I}}
+\end{empheq}
+
+	allora ne esce che:
+	
+\begin{align*}
+	\hat{U}_{\mathbb{\hat{I}}} = \hat{U}_{\mathbb{\hat{I}}}^{\dagger}
+\end{align*}
+	
+	Pertanto $\hat{U}_{\mathbb{\hat{I}}}$ è unitario, hermitiano, con valori reali $\lambda = \pm 1$. Infatti:
+	
+\begin{align*}
+	\hat{U}_{\mathbb{\hat{I}}} \ket{\psi} = \lambda \ket{\psi} \quad \Rightarrow \quad \hat{U}_{\mathbb{\hat{I}}}^2 \ket{\psi} = \lambda \hat{U}_{\mathbb{\hat{I}}} \ket{\psi} = \qty|\lambda|^2 \ket{\psi}
+\end{align*}	
+
+	quindi, poiché $\hat{U}_{\mathbb{\hat{I}}}$ è unitario $\qty|\lambda| = 1$ e poiché hermitiano allora $\qty|\lambda| \in \mathbb{R}$, da cui si ha $\lambda = \pm 1$.
+	\\
+	\\
+	Considero ora $\vb{\hat{x}}$, cioè considero l'equazione agli autovalori:
+	
+\begin{align*}
+	\vb{\hat{x}} = \ket{\vb{x}} = \vb{x} \ket{\vb{x}}
+\end{align*}
+	
+	Ora sia:
+	
+\begin{align*}
+	\ket{\vb{x'}} = \hat{U}_{\mathbb{\hat{I}}} \ket{\vb{x}} \quad , \quad c \in \mathbb{C}
+\end{align*}
+
+	se applico di nuovo la parità ho che:
+
+\begin{empheq}{align*}
+	& \hat{U}_{\mathbb{\hat{I}}} \ket{\vb{x'}} = c^2 \ket{\vb{x}} \\
+	&  \hat{U}_{\mathbb{\hat{I}}} \ket{\vb{x'}} = \hat{U}_{\mathbb{\hat{I}}}^2 \ket{\vb{x}} = \ket{\vb{x}} 
+\end{empheq}
+
+	allora invece:
+	
+\begin{align*}
+	c^2 = 1 \quad \Rightarrow \quad c = \pm 1
+\end{align*}
+
+	confermando anche nel caso più generale quanto detto poco prima. Che conseguenza ho per le funzioni d'onda?
+	
+\begin{align*}
+	\mathbb{\hat{I}} \psi\qty(\vb{x}) = \mel{\vb{\hat{x}}}{\hat{U}_{\mathbb{\hat{I}}}}{\psi} = c^* \braket{- \vb{x}}{\psi} = \pm \braket{- \vb{x}}{\psi} = \pm \, \psi\qty(- \vb{x})
+\end{align*}
+
+	confermando un risultato già noto.	
+
+\subsection{Traslazioni Temporali}
+
+	Le trasformazioni temporali sono trasformazioni che mappano $t$ in $t + \Delta t$, cioè:
+	
+\begin{align*}
+	\tau : t \to t + \Delta t
+\end{align*}
+
+	Qual è l'operatore ad essa associato? Poiché formano un gruppo di Lie Abeliano ho che:
+	
+\begin{align*}
+	\ket{\psi'} = \hat{U}_{\tau} \qty(\Delta t) \ket{\psi} = e^{\, i \Delta t \, \hat{T}} \ket{\psi}
+\end{align*}
+
+	ma anche:
+	
+\begin{align*}
+	\ket{\psi'} = \ket{\psi\qty(t + \Delta t)}
+\end{align*}
+
+	Per $\Delta t << 1$ ho l'espressione:
+	
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& \ket{\psi'} = \qty[\mathbb{I} + i \Delta t \, \hat{T} + o\qty(\Delta t^2) ] \ket{\psi}\\
+	& \ket{\psi'} = \ket{\psi\qty(t + \Delta t)}
+\end{empheq}
+
+	allora:
+	
+\begin{align*}
+	\ket{\psi\qty(t + \Delta t)} =\ket{\psi\qty(t) + i \Delta t \, \hat{T} \, \psi\qty(t)}
+\end{align*}
+
+	ossia:
+	
+\begin{align*}
+	\frac{\ket{\psi\qty(t + \Delta t)} - \ket{\psi\qty(t)}}{\Delta t} = i \, \hat{T} \ket{\psi\qty(t)}
+\end{align*}
+
+	facendo il limite $\Delta t \to 0$ ho allora:
+	
+\begin{align*}
+	\pdv{\ket{\psi\qty(t)}}{t} = i \, \hat{T} \ket{\psi\qty(t)} \quad \Rightarrow \quad i \hbar \pdv{\ket{\psi}}{t} = - \hbar \, \hat{T} \ket{\psi}
+\end{align*}
+
+	in questo modo ho ottenuto l'equazione di Schrodinger per l'evoluzione temporale, che messa a confronto con la sua forma originale, mi da che il \textbf{generatore delle traslazioni temporali è l'Hamiltoniana}, infatti:
+
+\begin{align*}
+	\hat{H} = - \hbar \, \hat{T}
+\end{align*}
+
+	da cui:
+	
+\begin{align*}
+	\hat{U}_{\tau} \qty(\Delta t) = e^{\, - \frac{i}{\hbar} \hat{H} \Delta t}
+\end{align*}
+
+	Riprendendo quanto detto nel capitolo precedente, l'evoluzione temporale a partire dagli stati definisce la \textbf{pittura di Schrodinger}, in cui gli stati evolvono nel tempo. Tuttavia:
+	
+\begin{align*}
+	\mel{\psi_a\qty(t)}{\hat{A}_S}{\psi_b\qty(t)} = \mel{\psi_a\qty(0)}{\hat{U}_{\tau}^{-1} \hat{A}_S \hat{U}_{\tau}}{\psi_b\qty(t)} \equiv \mel{\psi_a\qty(t)}{\hat{A}_H}{\psi_b\qty(t)}
+\end{align*}
+
+	avendo definito $\hat{A}_H = \hat{U}_{\tau}^{-1} \hat{A}_S \hat{U}_{\tau}$
+	\\
+	\\
+	In questa nuova visione gli stati non evolvono più nel tempo, ma gli operatori si: è la \textbf{pittura di Heisenberg}. Ora, esprimiamo $\hat{A}_H$ come:
+	
+\begin{align*}
+	\hat{A}_H\qty(t) = \hat{U}_{\tau}^{-1} \hat{A}_S \hat{U}_{\tau} = e^{\, \frac{i}{\hbar} \hat{H} t} \hat{A}_S e^{\, - \frac{i}{\hbar} \hat{H} t}
+\end{align*}
+
+	e considero una traslazione temporale infinitesima: derivo assumendo che $\hat{A}_S$ non vari nel tempo:
+	
+\begin{align*}
+	\dv{t} \hat{A}_H\qty(t) = \frac{i}{\hbar} e^{\, \frac{i}{\hbar} \hat{H} t} \hat{A}_S e^{\, - \frac{i}{\hbar} \hat{H} t} - \frac{i}{\hbar} e^{\, \frac{i}{\hbar} \hat{H} t} \hat{A}_S e^{\, - \frac{i}{\hbar} \hat{H} t} = \frac{i}{\hbar} \, \qty(\hat{H} \hat{A}_H - \hat{A}_H \hat{H})
+\end{align*}
+
+	da cui l'equazione di Heisenberg:
+	
+\begin{mydef}
+	L'\textbf{equazione di Heisenberg} è:
+\begin{align*}
+	\dv{t} \hat{A}_H\qty(t) = \frac{i}{\hbar} \, \qty[\hat{H}, \hat{A}_H]
+\end{align*}
+\end{mydef}
+
+\subsection{Rotazioni}
+
+	Per trattare le rotazioni in meccanica quantistica, faremo riferimento a matrici appartenenti al gruppo $SO\qty(3)$ (\textbf{ortogonali speciali}). Una matrice $R$ appartiene al gruppo $SO\qty(3)$ se:
+	
+\begin{itemize}
+	\item $R$ è una $3 x 3$, 
+	\item $R$ è ortogonale: $^TRR = \mathbb{I}$, 
+	\item $R$ è speciale: $\text{det} R = +1$
+\end{itemize}
+
+	La scelta di considerare le matrici ortogonali speciali sta nel fatto che esse sono le uniche matrici "raggiungibili" mediante rotazioni continue della matrice identità. Tutte le altre matrici si ottengono come composizione con matrici $P$ di riflessione. Ad esempio la matrice:
+	
+\begin{align*}
+	P = \mqty( -1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1)
+\end{align*}
+
+	riflette gli assi $x, y, z$. 
+	\\
+	\\
+	Qualunque rotazione speciale è caratterizzata da un vettore $\hat{n}$ unitario (asse) e da un angolo $\theta \in \qty[0, 2\pi]$. Tuttavia $\hat{n}$ a sua volta è caratterizzato da due angoli $\alpha, \beta$, pertanto $R$ è caratterizzata da $3$ angoli. Non ho però corrispondenza $1$ ad $1$ tra lo spazio di $\hat{n}$ e lo spazio di $\theta$: infatti, ad esempio, $\qty(\hat{n}, \theta) = \qty(- \hat{n}, - \theta)$. Perciò scegliendo $\alpha$ e $\beta$ (quindi $\hat{n}$) in modo particolare, ottengo sottoinsiemi di $R$ dipendenti da un unico parametro $\theta$, ossia ottengo tre matrici che definisco come:
+	
+\begin{align*}
+	R_x\qty(\theta) = \mqty( 1 & 0 & 0 \\ 0 & \cos\theta & \sin\theta \\ 0 & -\sin\theta & \cos\theta) \,\, ; \,\, R_y\qty(\theta) = \mqty( \cos\theta & 0 & -\sin\theta \\ 0 & 1 & 0 \\ \sin\theta & 0 & \cos\theta) \,\, ; \, \, R_z\qty(\theta) = \mqty( \cos\theta & \sin\theta & 0 \\ -\sin\theta & \cos\theta & 0 \\ 0 & 0 & 1)
+\end{align*}
+
+	Prendiamo allora come esempio $R_z\qty(\theta_1) R_z\qty(\theta_2) = R_z\qty(\theta_1 + \theta_2)$. In generale avrò che:
+	
+\begin{align*}
+	R_z\qty(\theta_1)R_z\qty(\theta_2) = R_z\qty(\theta_1 + \theta_2)
+\end{align*}
+
+	perché ruoto nella stessa direzione. 
+	\\
+	\\
+	La soluzione è il solito esponenziale:
+
+\begin{align*}
+	R_z\qty(\theta) = e^{\, i \theta \mathcal{L}_z}
+\end{align*}
+
+	con $\mathcal{L}_z$ matrice $3x3$. Sviluppando in serie di Taylor al primo ordine in $\theta$ ambo i membri allora ho:
+	
+\begin{align*}
+	R_z\qty(\theta) = \mathbb{I}_3 + \theta \mqty(0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0) + o\qty(\theta^2)
+\end{align*}
+
+	e:
+	
+\begin{align*}
+	e^{\, i \theta \mathcal{L}_z} = \mathbb{I}_3 + i\theta \mathcal{L}_z + o\qty(\theta^2) 
+\end{align*}
+
+	da cui per confronto:
+	
+\begin{align*}
+	\mathcal{L}_z = - i  \mqty(0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0) \quad \Rightarrow \quad \qty(\mathcal{L}_z)_{jk} = - i \varepsilon_{zjk}
+\end{align*}
+
+	Analogamente, per $R_x\qty(\theta)$ e $R_y\qty(\theta)$ otteniamo:
+	
+\begin{align*}
+	\qty(\mathcal{L}_x)_{jk} = - i \varepsilon_{xjk} \quad ; \quad  \qty(\mathcal{L}_y)_{jk} = - i \varepsilon_{yjk}
+\end{align*}
+
+	dove $i$ davanti è l'unità immaginaria. Quindi in generale, i \textbf{generatori delle rotazioni} (piccole) sono:
+	
+\begin{align*}
+	\qty(\mathcal{L}_i)_{jk} = - i \varepsilon_{ijk}
+\end{align*}
+	
+	Avrei potuto scegliere un generico asse $\hat{n}$ tale per cui:
+	
+\begin{align*}
+	R_{\hat{n}}\qty(\theta_1) R_{\hat{n}}\qty(\theta_2) = R_{\hat{n}}\qty(\theta_1 + \theta_2)
+\end{align*}
+
+	da cui:
+	
+\begin{align*}
+	R_{\hat{n}\qty(\theta)} = e^{\, i \theta \mathcal{L}_{\hat{n}}}
+\end{align*}
+
+	dove questa volta $\mathcal{L}_{\hat{n}} = \hat{n}^i \mathcal{L}_{\i}= \hat{n} \cdot \vb{\mathcal{L}}$ con: $\vb{\mathcal{L}} = \qty(\mathcal{L}_1, \mathcal{L}_2, \mathcal{L}_3)$ e quindi:
+	
+\begin{align*}
+	R_{\hat{n}}\qty(\theta) = e^{\, i \theta \hat{n} \cdot \vb{\mathcal{L}}}
+\end{align*}
+
+	con $\mathcal{L}_1, \mathcal{L}_2, \mathcal{L}_3$ matrici $3 x 3$.
+	\\
+	\\
+	Per ogni rotazione di un angolo $\theta$ attorno a $z$, ad esempio, deve esistere un operatore unitario $\hat{U}\qty[R_z\qty(\theta)]$ tale che:
+	
+\begin{empheq}{align*}
+	& \hat{U}^{-1}\qty[R_z\qty(\theta)] \hat{x}^i \hat{U}\qty[R_z\qty(\theta)] = \qty[R_z\qty(\theta)]_{ij} \hat{x}^j \\
+	& \hat{U}^{-1}\qty[R_z\qty(\theta)] \hat{p}^i \hat{U}\qty[R_z\qty(\theta)] = \qty[R_z\qty(\theta)]_{ij} \hat{p}^j
+\end{empheq}
+
+	definito come l'azione per coniugazione che ha sugli operatori $\hat{x}$ ed $\hat{p}$. È definito così proprio perché essendo una trasformazione canonica, lascia invariate le CCR (\textit{Canonical Commutation Relations}) e dunque, per il \textbf{Teorema di Stone-Von Neumann}, esiste un operatore unitario associato. Sviluppo allora con Taylor in $\theta = 0$ ambo i membri:
+	
+\begin{itemize}
+	\item A \textbf{destra:}
+	
+	\begin{empheq}{align*}
+		& \qty(I \, \dd x) \,\, \Rightarrow \,\, \qty[R_z\qty(\theta)] _{ij} \hat{x}^j = \hat{x}^i + \theta \, \varepsilon_{zij} \, \hat{x}^j + o\qty(\theta^2) \\
+		& \qty(II \, \dd x) \,\, \Rightarrow \,\, \qty[R_z\qty(\theta)] _{ij} \hat{p}^j = \hat{p}^i + \theta \, \varepsilon_{zij} \, \hat{p}^j + o\qty(\theta^2)
+	\end{empheq}
+	
+		Inoltre so che, per il gruppo delle rotazioni (\textbf{Teorema di Bargmann}), si ha:
+		
+	\begin{align*}
+		\hat{U}\qty[R_z\qty(\theta_1)]\hat{U}\qty[R_z\qty(\theta_2)] = \hat{U}\qty[R_z\qty(\theta_1)R_z\qty(\theta_2)] = \hat{U}\qty[R_z\qty(\theta_1 + \theta_2)]
+	\end{align*}
+
+		per semplicità sia:
+		
+	\begin{align*}
+		\hat{U}\qty[R_z\qty(\theta)] \equiv \hat{U}_z\qty(\theta)
+	\end{align*}
+	
+		quindi:
+		
+	\begin{align*}
+		\hat{U}\qty(\theta_1)\hat{U}\qty(\theta_2) = \hat{U}\qty(\theta_1 + \theta_2) \, \, \Rightarrow \, \, \hat{U}_z\qty(\theta) = e^{\, i \theta \hat{K}_z}
+	\end{align*}
+	
+		con $\hat{K}_z$ operatore hermitiano: $\hat{K}_z = \hat{K}_z^{\dagger}$
+		
+	\item  A \textbf{sinistra:}
+	
+	\begin{empheq}{align*}
+		& \qty(I \, \dd s) \,\, \Rightarrow \,\, \qty[\mathbb{I} - i \theta \hat{K}_z + o\qty(\theta^2)] \hat{x}^i \qty[\mathbb{I} + i \theta \hat{K}_z + o\qty(\theta^2)] = \hat{x}^i - i\theta \qty[\hat{K}_z , \hat{x}^i] + o\qty(\theta^2) \\
+		& \qty(II \, \dd s) \,\, \Rightarrow \,\, \qty[\mathbb{I} - i \theta \hat{K}_z + o\qty(\theta^2)] \hat{p}^i \qty[\mathbb{I} + i \theta \hat{K}_z + o\qty(\theta^2)] = \hat{p}^i - i\theta \qty[\hat{K}_z , \hat{p}^i] + o\qty(\theta^2)	
+	\end{empheq}
+	
+\end{itemize}
+
+	Per confronto dunque, al primo ordine, so quanto vale il commutatore di $\hat{K}_z$ con $\hat{x}$ e $\hat{p}$:
+	
+\begin{align*}
+	\qty[\hat{K}_z, \hat{x}^i] = i \varepsilon_{zij} \hat{x}^j \quad ; \quad \qty[\hat{K}_z, \hat{p}^i] = i \varepsilon_{zij} \hat{p}^j
+\end{align*}
+
+	Se ripeto i calcoli per le matrici $R_x\qty(\theta)$ e $R_y\qty(\theta)$ arrivo agli stessi risultati, con i rispettivi indici. Concludo quindi che, in generale:
+	
+\begin{align*}
+	\qty[\hat{K}_i, \hat{x}^j] = i \varepsilon_{ijk} \hat{x}^{k} \quad ; \quad \qty[\hat{K}_i, \hat{p}^j] = i \varepsilon_{ijk} \hat{p}^{k}
+\end{align*}
+
+	dunque i generatori delle rotazioni nello spazio degli stati quantistici sono $3$ operatori $\hat{K}_x, \hat{K}_y, \hat{K}_z$ con le proprietà di commutazione appena trovate. Se vogliamo fare un conto più esplicito, ad esempio per $\hat{K}_z$, ho che:
+	
+\begin{align*}
+	& \qty[\hat{K}_z, \hat{x}] = i \hat{y} \quad ; \quad \qty[\hat{K}_z, \hat{y}] =  - i \hat{x} \quad ; \quad \qty[\hat{K}_z, \hat{z}] = 0  \\
+	& \qty[\hat{K}_z, \hat{p}_x] = i \hat{p}_y \quad ; \quad \qty[\hat{K}_z, \hat{p}_y] =  - i \hat{p}_x \quad ; \quad \qty[\hat{K}_z, \hat{p}_z] = 0 
+\end{align*}
+	
+	da cui, si può ricavare ad esempio che:
+	
+\begin{align*}
+	\hat{K}_z = \frac{1}{\hbar} \qty( - \hat{y} \hat{p}_x + \hat{x} \hat{p}_y) + \hat{S}_z \equiv \frac{1}{\hbar} \hat{L}_z + \hat{S}_z
+\end{align*}
+
+	cioè, in forma più compatta:
+	
+\begin{align*}
+	\hat{K}_i = \frac{1}{\hbar} \varepsilon_{ijk} \hat{x}^j \hat{p}^k + \hat{S}_i
+\end{align*}
+
+	ossia:
+	
+\begin{align*}
+	\hat{K}_i = \frac{1}{\hbar} \hat{L}_i + \hat{S}_i
+\end{align*}
+
+	dove a priori $\hat{S}_i$ è un operatore che commuta con qualsiasi oggetto in modo tale da non modificare il risultato. Pertanto $\hat{K}_i$ è il generatore di $\hat{L}_i$ che, data la forte analogia classica, prende il nome di \textbf{momento angolare orbitale}, poiché comprende $\hat{x}$ e $\hat{p}$:
+	
+\begin{align*}
+	\hat{L}_i = \varepsilon_{ijk} \hat{x}^j \hat{p}^k
+\end{align*}
+
+	e quindi in conclusione:
+	
+\begin{align*}
+	\hat{U}\qty(\hat{n}, \theta) = e^{\, \frac{i}{\hbar} \theta \, \hat{n} \cdot \hat{\vb{L}}}
+\end{align*}
+
+	pertanto il \textbf{generatore delle rotazioni è il momento angolare}. Tutto quanto si potrebbe rifare utilizzando i gruppi di Lie, stando attenti nella definizione (dei segni) delle matrici di rotazione.
+
+\subsection{Simmetrie}
+
+	Si consideri un operatore $\hat{U}$ generico. Se la trasformazione associata ad $\hat{U}$ non cambia l'Hamiltoniana $\hat{H}$ del sistema, si dice che la trasformazione associata ad $\hat{U}$ è una \textbf{simmetria}. Quindi:
+	
+\begin{align*}
+	\hat{U}^{-1} \hat{H} \hat{U} = \hat{H} \quad \Rightarrow \quad \hat{U} \hat{U}^{-1} \hat{H} \hat{U} = \hat{U} \hat{H} \quad \Rightarrow \quad \hat{H} \hat{U} = \hat{U} \hat{H} \quad \Rightarrow \quad \qty[\hat{H}, \hat{U}] = 0
+\end{align*}
+
+	Se considero $\hat{U}$ continua, allora per quanto appreso sui gruppi di Lie so che $\hat{U} = e^{\, i \theta_a \hat{T}_a}$, quindi:
+	
+\begin{align*}
+	\hat{H}' = e^{ - \, i \theta_a \hat{T}_a} \hat{H} e^{ \, i \theta_a \hat{T}_a} = \hat{H} - i \theta_a \qty[\hat{T}_a, \hat{H}]
+\end{align*}
+
+	se $\hat{U}$ è una simmetria, allora $\hat{H}' = \hat{H}$ e quindi; $\qty[\hat{T}_a, \hat{H}] = 0$, perciò in rappresentazione di Heisenberg:
+	
+\begin{align*}
+	\dv{t} \hat{T}_H^a = \frac{i}{\hbar} \, \qty[\hat{T}_a, \hat{H}] = 0
+\end{align*}
+
+	ossia, $\hat{T}_H$ \textbf{non} dipende dal tempo. Una generalizzazione di tutto ciò è un importantissimo teorema;
+	
+\begin{myth}
+	\textbf{Teorema di Noether:}
+		
+		Alle simmetrie di un problema fisico corrispondono sempre delle quantità conservate.
+\end{myth}
+
+	Ad esempio, per ciò che abbiamo visto:
+	
+\begin{itemize}
+	\item Un sistema fisico è invariante sotto traslazioni spaziali quando $\qty[\hat{\vb{p}}, \hat{H}] = 0$: a questa simmetria corrisponde la conservazione dell'impulso $\hat{\vb{p}}$.
+	\item Un sistema fisico è invariante sotto traslazioni temporali quando $\pdv{\hat{H}}{t} = 0$: a questa simmetria corrisponde la conservazione dell'energia $\hat{H}$.
+	\item Un sistema fisico è invariante sotto rotazioni quando $\qty[\hat{\vb{L}}, \hat{H}] = 0$: a questa simmetria corrisponde la conservazione del momento angolare $\hat{\vb{L}}$.
+\end{itemize}
+	
+	Quali sono le conseguenze principali della simmetria?
+	
+\begin{enumerate}
+	\item Poiché $\qty[\hat{H}, \hat{T}_a] = 0$, $\hat{H}$ e $\hat{T}_{\alpha}$ commutano e quindi posso trovare una base di autostati comuni.
+	\item Il valore medio di $\hat{T}_{\alpha}$ sul tempo è costante.
+	\item Data $t^{\alpha}_{n}$ tale che $\hat{T}\ket{u_n} = t_n^{\alpha} \ket{u_n}$, come calcolo la probabilità di trovare $t_n^{\alpha}$?
+\end{enumerate}
+
+\begin{align*}
+	P\qty(t_n^{\alpha}) = \qty|\braket{u_n}{\psi\qty(t)}|^2 = \qty|\mel{u_n}{\sum_m e^{\, - \frac{i}{\hbar} E_m t } c_m}{\psi_m}|^2
+\end{align*}
+
+	ma se $\qty[\hat{H}, \hat{T}_a] = 0$ allora $\qty{\ket{u_m}} \simeq \qty{\ket{\psi_m}}$, quindi:
+	
+\begin{align*}
+	P\qty(t_n^{\alpha}) = \qty|\sum_m c_m \, |^2 e^{\, - \frac{i}{\hbar} E_m t} \delta_{nm}|^2 = \qty|c_n \, ^{\, - \frac{i}{\hbar} E_m t} |^2 = \qty|c_n|^2
+\end{align*}
+
+	Cerchiamo adesso il legame tra \textbf{simmetrie} e \textbf{degenerazione}. Considero un operatore unitario $\hat{U}$ simmetrico. Se $\ket{\psi_n}$ è autostato di $\hat{H}$ allora:
+	
+\begin{align*}
+	\ket{\psi_n'} = \hat{U} \ket{\psi_n} \quad ; \quad \hat{H} \ket{\psi_n} = E_n \ket{\psi_n}
+\end{align*}
+
+	da cui:
+	
+\begin{align*}
+	\hat{H} \ket{\psi'_n} = \hat{H} \hat{U} \ket{\psi_n} = \hat{U} \hat{H} \ket{\psi_n} = \hat{U} E_n \ket{\psi_n} = E_n \ket{\psi_n'}
+\end{align*}
+
+	Quindi $\ket{\psi_n}$ e $\ket{\psi_n'}$ sono entrambi autostati di $\hat{H}$, ma questo \textit{non} implica degenerazione, perché $\ket{\psi_n}$ e $\ket{\psi_n'}$ sono proporzionali. Infatti:
+	
+\begin{align*}
+	\ket{\psi_n'} = \hat{U} \ket{\psi_n} = q \ket{\psi_n}
+\end{align*}
+ 
+	Pertanto \textbf{simmetrie non conducono necessariamente a degenerazione!}
+	\\
+	\\
+	Considero ora:
+	
+\begin{align*}
+	\qty[\hat{U}_i, \hat{H}] = 0 \quad ; \quad \qty[\hat{U}_i, \hat{U}_j] = 0 \quad \forall i, j
+\end{align*}
+
+	Quando ho degenerazione? In questo caso per ogni valore di $i$ e di $j$ possono trovare una base comune a tutti gli $\hat{U}_i$ e ad $\hat{H}$ e quindi non ho degenerazione. Se invece considero $\hat{U}_1$, $\hat{U}_2$ simmetrie tali che:
+	
+\begin{align*}
+	\qty[\hat{U}_1, \hat{H}] = 0 \quad ; \quad \qty[\hat{U}_2, \hat{H}] = 0 \quad ; \quad \qty[\hat{U}_1, \hat{U}_2] \neq 0
+\end{align*}
+
+	non riesco a trovare una base di autofunzioni comune ai tre operatori. Infatti:
+	
+\begin{align*}
+	\hat{U}\ket{\psi_n} = E_n \ket{\psi_n} \quad ,  \quad \hat{U}_1\ket{\psi_n} = q_n' \ket{\psi_n}
+\end{align*}
+
+	da cui:
+	
+\begin{align*}
+	\hat{H}\hat{U}_2 \ket{\psi_n} = \hat{U}_2 \hat{H} \ket{\psi_n} = E_n \hat{U}_2 \ket{\psi_n}
+\end{align*}
+
+	quindi $\ket{\psi_n}$ e $\hat{U}_2 \ket{\psi_n}$ hanno lo stesso autovalore $E_n$, perciò ho 2 stati distinti con stesso autovalore: la degenerazione è 2.
+

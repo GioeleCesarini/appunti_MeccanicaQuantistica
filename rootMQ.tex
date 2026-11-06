@@ -1,0 +1,306 @@
+%%%%%%%%%%%%%%%
+% MECCANICA QUANTISTICA DISPENSE FILE ROOT
+%%%%%%%%%%%%%%%
+
+\documentclass{book}
+
+% Pacchetti per la gestione di font, lingua e input
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{textcomp}
+
+% Pacchetti per la matematica
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{physics} % Per divergenza, rotore e simili
+\usepackage{empheq} %Per gestire le formule
+
+% Pacchetti per grafica e layout
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[a4paper]{geometry}
+\usepackage{wrapfig}
+
+ % carica il pacchetto enumitem per personalizzare gli elenchi
+\usepackage{enumitem} 
+
+% Pacchetto per l'inclusione di pagine PDF
+\usepackage{pdfpages}
+\usepackage{multicol}
+
+% Pacchetto per il verbatim
+\usepackage{verbatim}
+
+%Pacchetto per il disegno delle funzioni:
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+% Definizione delle variabili sigma e hbar
+\pgfmathsetmacro{\sigmaA}{1}
+\pgfmathsetmacro{\hbarA}{0.2} %% a scopo grafico
+
+% Pacchetto per TikZ
+\usepackage{tikz}
+\usepackage{tkz-fct}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.markings}
+
+% Pacchetti per colori e box
+\usepackage[dvipsnames]{xcolor}
+\usepackage{varwidth}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+
+% Pacchetto per i collegamenti ipertestuali
+\usepackage[bookmarks=false]{hyperref}
+\hypersetup{
+    colorlinks=false, % set true if you want colored links
+    linktoc=all,     % set to all if you want both sections and subsections linked
+    linkcolor=blue,  % choose some color if you want links to stand out
+}
+
+% Due importanti pacchetti per i simboli matematici e fisici
+\usepackage{lmodern} 
+
+% Virgolette
+\usepackage[autostyle=false]{csquotes}
+\MakeOuterQuote{"}
+
+% Definizione del comando personalizzato per la media
+\newcommand{\bigmean}[1]{\left\langle #1 \right\rangle}
+\newcommand{\mean}[1]{\langle #1 \rangle}
+
+% Comandi per i riquadri di definizioni, teoremi e dimostrazioni
+\newtcolorbox{defbox}{
+    enhanced,
+    arc=2mm,
+    colback=yellow!38,
+    colframe=yellow!96!black,
+    coltitle=black,
+    title=\textbf{Definizione},
+    boxrule=0.5mm,
+    parbox=false,
+    % Rimuovi la larghezza fissa per adattarla al contenuto
+    boxsep=5pt,
+    left=1pt,
+    right=0pt,
+    top=5pt,
+    bottom=5pt,
+    rounded corners, 
+    breakable % Aggiungi questa opzione
+}
+
+\newtcolorbox{nbbox}{
+    enhanced,
+    arc=2mm,
+    colback=gray!15,
+    colframe=gray!45,
+    coltitle=black,
+    title=\textbf{Importante},
+    boxrule=0.5mm,
+    parbox=false,
+    boxsep=5pt,
+    left=5pt,
+    right=5pt,
+    top=5pt,
+    bottom=5pt,
+    rounded corners, 
+    breakable % Aggiungi questa opzione
+}
+
+\newtcolorbox{riassbox}{
+    enhanced,
+    arc=2mm,
+    colback=Orchid!15,
+    colframe=Purple!65,
+    coltitle=black,
+    boxrule=0.4mm,
+    leftrule=0.8mm,
+    rightrule=0mm,
+    toprule=0mm,
+    bottomrule=0mm,
+    title=\textbf{Riassunto},
+    parbox=false,
+    boxsep=5pt,
+    left=5pt,
+    right=5pt,
+    top=5pt,
+    bottom=5pt,    
+    breakable % Aggiungi questa opzione
+}
+
+\newtcolorbox{propbox}{
+    enhanced,
+    arc=2mm,
+    colback=blue!15,
+    colframe=blue!45,
+    coltitle=black,
+    title=\textbf{Proposizione},
+    boxrule=0.5mm,
+    parbox=false,
+    boxsep=5pt,
+    left=1pt,
+    right=0pt,
+    top=5pt,
+    bottom=5pt,
+    rounded corners, 
+    breakable % Aggiungi questa opzione
+}
+
+\newtcolorbox{thbox}{
+    enhanced,
+    arc=2mm,
+    colback=orange!30,
+    colframe=orange!80!black,
+    coltitle=black,
+    title=\textbf{Teorema},
+    boxrule=0.5mm,
+    parbox=false,
+    boxsep=5pt,
+    left=1pt,
+    right=0pt,
+    top=5pt,
+    bottom=5pt,
+    rounded corners,
+    breakable % Aggiungi questa opzione
+}
+
+\newtcolorbox{princbox}{
+    enhanced,
+    arc=2mm,
+    colback=cyan!25,
+    colframe=cyan,
+    coltitle=black,
+    title=\textbf{Principio},
+    boxrule=0.5mm,
+    parbox=false,
+    % Rimuovi la larghezza fissa per adattarla al contenuto
+    boxsep=5pt,
+    left=1pt,
+    right=0pt,
+    top=5pt,
+    bottom=5pt,
+    rounded corners, 
+    breakable % Aggiungi questa opzione
+}
+
+\newtcolorbox{postbox}{
+    enhanced,
+    arc=2mm,
+    colback=Magenta!20,
+    colframe=Magenta!95,
+    coltitle=black,
+    title=\textbf{Postulato},
+    boxrule=0.5mm,
+    parbox=false,
+    boxsep=5pt,
+    left=1pt,
+    right=0pt,
+    top=5pt,
+    bottom=5pt,
+    rounded corners,
+    breakable % Aggiungi questa opzione
+}
+
+\newtcolorbox{prfbox}{
+    colback=white,
+    arc=2mm,
+    colframe=black,
+    boxrule=0.4mm,
+    leftrule=0.8mm,
+    rightrule=0mm,
+    toprule=0mm,
+    bottomrule=0mm,
+    title=\textbf{Dimostrazione},
+    parbox=false,
+    boxsep=5pt,
+    left=5pt,
+    right=5pt,
+    top=5pt,
+    bottom=5pt,
+    breakable, % Aggiungi questa opzione
+}
+
+\newtcolorbox{notabenebox}{
+    arc=2mm,
+    colback=green!10,       % sfondo verde chiaro
+    colframe=green!70!black, % bordo verde scuro
+    coltitle=black,
+    boxrule=0.4mm,
+    leftrule=0.8mm,
+    rightrule=0mm,
+    toprule=0mm,
+    bottomrule=0mm,
+    title=\textbf{Approfondimento},
+    parbox=false,
+    boxsep=5pt,
+    left=5pt,
+    right=5pt,
+    top=5pt,
+    bottom=5pt,    
+    breakable % Aggiungi questa opzione
+}
+
+% Comandi per richiamare i box facilmente
+\newenvironment{mydef}
+    {\begin{defbox}}
+    {\end{defbox}}
+
+\newenvironment{nb}
+    {\begin{nbbox}}
+    {\end{nbbox}}
+    
+\newenvironment{myriass}
+    {\begin{riassbox}}
+    {\end{riassbox}}
+
+\newenvironment{myprop}
+    {\begin{propbox}}
+    {\end{propbox}}
+
+\newenvironment{myth}
+    {\begin{thbox}}
+    {\end{thbox}}
+    
+\newenvironment{myprinc}
+    {\begin{princbox}}
+    {\end{princbox}}
+    
+\newenvironment{mypost}
+    {\begin{postbox}}
+    {\end{postbox}}
+
+\newenvironment{myprf}
+    {\begin{prfbox}}
+    {\end{prfbox}}
+    
+\newenvironment{myapprf}
+    {\begin{notabenebox}}
+    {\end{notabenebox}}
+    
+%%%%%%%%%%%%%%%
+%INIZIO DOCUMENTO
+%%%%%%%%%%%%%%%
+
+\usepackage{esint} % Pacchetto per simboli matematici più complessi (es: Integrale doppio chiuso)
+
+\begin{document}
+
+\frontmatter
+\include{front}
+
+\mainmatter
+\include{chapter1/fcCRISIS}
+\include{chapter2/form}
+\include{chapter3/eqSCH}
+\include{chapter4/ev}
+\include{chapter5/mm}
+\include{chapter6/id}
+\include{chapter7/schemi}
+
+\backmatter
+\newpage
+
+\end{document}

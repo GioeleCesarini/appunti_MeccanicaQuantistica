@@ -1,0 +1,382 @@
+\chapter{Evoluzione Temporale}
+	
+	In meccanica classica, dato uno stato di un sistema, conoscere la sua evoluzione temporale significa conoscere la traiettoria nello spazio delle fasi. Finora, in meccanica quantistica, abbiamo sempre trattato sistemi ad un tempo fissato. Il problema dell'evoluzione temporale in meccanica quantistica è la determinazione dell'evoluzione del sistema, conoscendo ad un determinato istante $t_0$. Si hanno due schemi o \textbf{pitture} diverse: quella \textit{Schrodinger} e quella di \textit{Heisenberg}.
+	
+\section{Pittura di Schrodinger}
+
+	Nella pittura di Schrodinger gli stati evolvono nel tempo.
+	\\
+	\\ 
+	Dato uno stato $\psi(t_0)$ al tempo $t_0$ nello spazio degli stati $\mathcal{H}_{\mathbb{C}}$, come è relazionato con lo stato $\psi(t)$ al tempo $t > t_0$?
+	\\
+	\\
+	Data la struttura lineare dello spazio degli stati, è naturale assumere che l'evoluzione temporale è ben determinata da un operatore lineare ed unitario del seguente tipo:
+	
+\begin{align*}
+	\hat{U} : \mathcal{H}_{\mathbb{C}} \to \mathcal{H}_{\mathbb{C}} 
+\end{align*}
+	
+	tale che valga:
+	
+\begin{align*}
+	\psi(t) = \hat{U}(t, t_0) \, \psi(t_0)
+\end{align*}
+
+	con:
+	
+\begin{align*}
+	\psi(t_0) \, \equiv \, \psi_0 \quad ; \quad \hat{U}(t_0, t_0) = \mathbb{I} \quad ; \quad \hat{U}(t, t_0)\hat{U}^{\dagger}(t, t_0) =  \mathbb{I} 
+\end{align*}
+	
+	se consideriamo un sistema soggetto a forze indipendenti dal tempo, quindi \textit{invariante per traslazioni temporali}, allora vale che:
+	
+\begin{align*}
+	\hat{U}(t, t_0) \, \equiv \, \hat{U}(t-t_0)
+\end{align*}
+
+	Pertanto posso comporre facilmente evoluzioni temporali successive del tipo:
+	
+\begin{align*}
+	\psi(t_0) \xrightarrow{t_1} \psi(t_1 ) = \hat{U}(t_1 - t_0) \, \psi(t_0) \xrightarrow{t_2} \psi(t_2) =  \hat{U}(t_2 - t_0) \, \psi(t_1)
+\end{align*}
+	
+	cioè
+
+\begin{align*}
+	\psi(t_2) = \hat{U}(t_2 - t_0) \hat{U}(t_1 - t_0) \, \psi(t_0) = \hat{U}(t_1 + t_2) \, \psi(t_0)
+\end{align*}
+
+	e allora:
+	
+\begin{align*}
+	\hat{U}(t_1 + t_2) = \hat{U}(t_1)\hat{U}(t_2)
+\end{align*}
+	
+	e la soluzione di questa equazione è il \textbf{teorema di Stone}:
+	
+\begin{myth}
+	Il \textbf{teorema di Stone} ci dice che la soluzione dell'equazione:
+	
+\begin{align*}
+	\hat{U}(t_1 + t_2) = \hat{U}(t_1)\hat{U}(t_2)
+\end{align*}
+
+	é:
+	
+\begin{align*}
+	\hat{U}(t) = e^{ \, \hat{K} \, t} \, \equiv \, \sum_{n = 0}^{\infty} \frac{t^n}{n!} \, \hat{K}^n
+\end{align*}
+\end{myth}
+	
+	dove abbiamo definito l’esponenziale di un operatore, quindi di una matrice, tramite la sua serie di potenze e dove $\hat{K}$ è un operatore che controlla l’evoluzione temporale. Ciò vale per gli operatori, che formano un'algebra non commutativa. In generale, con la definizione data, si ha che:
+	
+\begin{align*}
+	e^{\hat{A}}e^{\hat{B}} \neq e^{\hat{A} + \hat{B}}
+\end{align*}
+
+	cioè la somma è commutativa ma il prodotto no. Vale comunque la \textbf{formula di Baker-Campbell- Hausdorff-Weyl}: si ha, per due operatori che commutano col loro commutatore, una soluzione all'equazione come sviluppo in serie, che troncata al secondo ordine da:
+	
+\begin{align*}
+	e^{\hat{A}}e^{\hat{B}} = e^{\hat{A} + \hat{B} + 1/2 \, \qty[\hat{A}, \hat{B}]}
+\end{align*}
+	
+	inoltre, se l'operatore $\hat{A}$ è rappresentato da una matrice, il determinante della sua matrice esponenziale è facilmente determinabile grazie alla proprietà:
+	
+\begin{align*}
+	\det\qty(e^{\hat{A}}) = e^{\Tr\qty(\hat{A})}
+\end{align*}
+
+	che proprietà ha $\hat{U}$? Poiché unitario:
+	
+\begin{itemize}
+
+	\item \textit{Conserva la norma:}
+	\begin{align*}
+		\hat{U}^{\dagger}(t)\hat{U}(t) = \mathbb{I} \, \Rightarrow \, \braket{\hat{U}(t)\psi}{\hat{U}(t)\psi} = \braket{\hat{U}(t)\hat{U}^{\dagger}(t)\psi}{\psi} = \braket{\psi}
+	\end{align*}
+	
+	\item \textit{Permette di dire che $\hat{K}$ è antihermitiano:}
+	
+		Infatti possiamo vedere che da:
+	\begin{align*}
+		\hat{U}^{\dagger}(t)\hat{U}(t) = \mathbb{I} \, \Rightarrow \, \hat{U}^{\dagger} = \hat{U}^{-1}(t)
+	\end{align*}
+	
+		quindi:
+		
+	\begin{align*}
+		\hat{U}^{\dagger}(t) = \qty(\sum_{n = 0}^{\infty} \frac{t^n}{n!} \, \hat{K}^n)^{\dagger} = \sum_{n=0}^{\infty} \frac{t^n}{n!} \, \qty(\hat{K}^{\dagger})^n = e^{\hat{K}^{\dagger} t}
+	\end{align*}
+	
+		ma, per costruzione, ho che $\hat{U}(0) = \mathbb{I}$, ovvero che: $\hat{U}(t-t) = \mathbb{I}$, cioè: 
+	
+	\begin{align*}
+		\hat{U}(t)\hat{U}(-t) = \mathbb{I}
+	\end{align*}
+	
+		perciò:
+	
+	\begin{align*}
+		\hat{U}(-t) = \hat{U}^{-1}(t) = e^{\, -\hat{K}t}
+	\end{align*}
+	
+		da cui per confronto:
+		
+	\begin{align*}
+		\hat{K}^{\dagger} = - \hat{K}
+	\end{align*}
+
+\end{itemize}
+
+	 Dato che $\hat{K}$ è antihermitiano, definisco un nuovo operatore:
+	 
+\begin{align*}
+	\hat{H} \, \equiv \, i\hat{K}
+\end{align*}
+
+	il quale è hermitiano. Dunque, poiché $\hat{H}$ è hermitiano, posso connettere l'evoluzione temporale ad un'osservabile. Per far tornare le unità di misura divido per $\hbar$ e ho:
+	
+\begin{align*}
+	\hat{U}(t) = e^{\, - i \, \hat{H}t /\hbar}
+\end{align*}
+
+	Abbiamo studiato in precedenza il problema agli autovalori per l'energia:
+	
+\begin{align*}
+	\hat{H} = E \, \psi_E
+\end{align*}
+
+	se, per un dato $t_0$, ho un'energia definita come:
+	
+\begin{align*}
+	\psi(t_0) = \psi_0 = \psi_E
+\end{align*}
+
+	allora ho che:
+	
+\begin{align*}
+	\psi(t) = e^{\, - i \, \hat{H}t /\hbar} \,\psi_0 = e^{\, - i \, Et /\hbar} \, \psi_E
+\end{align*}
+
+	se $\psi_E$ è autostato di $\hat{H}$, allora è anche autostato di:
+
+\begin{align*}
+	\hat{H}^n \, \psi_E = E^n \, \psi_E
+\end{align*}
+
+	quindi:
+	
+\begin{align*}
+	\psi(t) = \sum \qty(-\frac{i}{\hbar} \, t)^n \, \frac{1}{n!} \, E^n \, \psi_E
+\end{align*}
+
+	ciò è vero se $\psi_0$ ha energia definita costante nel tempo: in questo caso si parla di \textit{stati stazionari}. In generale posso decomporre uno stato nella base in cui è rappresentato:
+	
+\begin{align*}
+	\psi(0) = \sum_{n = 0}^{\infty} c_n \, \psi_{E_n} \qquad \text{con : } \quad c_n = \braket{\psi_{E_n}}{\psi(0)}
+\end{align*}
+
+	Dunque:
+
+\begin{align*}
+	\psi(t) = e^{\, - i \, \hat{H} t/ \hbar} \psi(0) = \sum_{n = 0}^{\infty} c_n \, e^{\, - i \, \hat{H} t/ \hbar} \,\psi_{E_n} = \sum_{n = 0}^{\infty} c_n e^{\, - i E_n t /\hbar} \, \psi_{E_n} = \sum_{n = 0}^{\infty} c_n(t) \, \psi_{E_n}
+\end{align*}
+
+	dove i coefficienti $c_n(t)$, le coordinate del vettore nella base dell'energia, variano nel tempo come $c_n$ con una fase:
+	
+\begin{align*}
+	c_n(t) = c_n e^{\, - i E_n t /\hbar}
+\end{align*}
+
+	A questo punto, dato $\psi(t)$, cosa succede se derivo e moltiplico per $i\hbar$?
+	
+\begin{align*}
+	i\hbar \, \dv{t} \psi(t) = i \hbar \,\dv{t} \qty(e^{\, - i \hat{H} t /\hbar}) \, \psi(0) = \hat{H} \, e^{\, - i\hat{H}t / \hbar} \psi(0) = \hat{H} \psi(t) 
+\end{align*}
+
+	dunque, data la condizione iniziale per cui: $\psi(0) = \psi_0$, allora $\psi(t)$ è soluzione di:
+	
+\begin{align*}
+	i\hbar \, \pdv{t} \Psi(x, t) = \hat{H}\Psi(x, t)
+\end{align*}
+
+	che come sappiamo è: l'\textit{equazione di Schrodinger dipendente dal tempo.}
+	\\
+	\\
+	Se non ho invarianza per traslazioni temporali, ovvero che vale:
+
+\begin{align*}
+	\hat{H} = \hat{H}(t)
+\end{align*}
+
+	allora ho che:
+
+\begin{align*}
+	i\hbar \dv{t}\psi(t) = \hat{H}(t) \psi(t) 
+\end{align*}
+
+	che invece \textit{non} ha come soluzione:
+	
+\begin{align*}
+	\psi(t) =  e^{\, - i \hat{H} t /\hbar} \, \psi(0) 
+\end{align*}
+
+\section{Pittura di Heisenberg}
+
+	La pittura di Heisenberg, del tutto equivalente a quella di Schrodinger, \textit{postula che non sono gli stati a variare nel tempo, bensì gli operatori}. Si ha dunque un'algebra degli operatori che varia nel tempo. 
+	\\
+	\\
+	In che modo la pittura di Schrodinger è equivalente alla pittura di Heisenberg?
+	\\
+	\\
+	Si consideri un operatore $\hat{O}$ ed i suoi elementi di matrice tra due stati generici $\psi_1(t)$ e $\psi_2(t)$. Se parto dalla PS (pittura di Schrodinger) ho che:
+	
+\begin{align*}
+	\mel{\psi_1(t)}{\hat{O}}{\psi_2(t)} = \mel*{\psi_1(t_0)}{\hat{U}^{\dagger}(t)\hat{O}\hat{U}(t)}{\psi_2(t_0)} \, \equiv \, \mel{\psi_{10}}{\textcolor{red}{\hat{O}_H(t)}}{\psi_{20}}
+\end{align*}
+
+	dove con: 
+	
+\begin{align*}
+	\textcolor{red}{\hat{O}_H(t)}
+\end{align*}
+
+	indichiamo un operatore che varia nel tempo nella PH (pittura di Heisenberg) ed è dunque definito da:
+
+\begin{align*}
+	\hat{O}_H(t) \, \equiv \, \hat{U}^{\dagger}(t)\hat{O}\hat{U}(t)
+\end{align*}
+
+	In questo senso, sono gli operatori ad evolvere nel tempo mentre gli stati ne sono indipendenti. Calcolando la derivata temporale di $\hat{O}_H(t)$ si ha:
+	
+\begin{align*}
+	\dv{t} \hat{O}_H(t) &= \dv{t} \hat{U}^{\dagger}(t)\hat{O}(t)\hat{U}(t) + \hat{U}^{\dagger}(t) \dv{t}\hat{O}(t)\hat{U}(t) + \hat{U}^{\dagger}(t)\hat{O}(t)\dv{t} \hat{U}(t)\\
+	& = \frac{i}{\hbar} \, \hat{H} \hat{U}^{\dagger}\hat{O}\hat{U} + \hat{U}^{\dagger} \dv{t}\hat{O} \hat{U} - \frac{i}{\hbar} \, \hat{U}^{\dagger}\hat{O}\hat{U}\hat{H} = \frac{i}{\hbar} \, \hat{H}\hat{O}_H - \frac{i}{\hbar} \, \hat{O}_H \hat{H} + \bigmean{\dv{\hat{O}}{t}} \\
+	& = \frac{i}{\hbar} \, \qty[\hat{H}, \hat{O}_H(t)] + \bigmean{\dv{\hat{O}}{t}} 
+\end{align*}
+
+	supponendo che l'operatore $\hat{O}$ sia allora indipendente dal tempo, nella PH ho che:
+
+\begin{nb}
+	Vale l\textbf{equazione di Heisenberg}:
+\begin{align*}
+	\dv{t}\hat{O}_H(t) = \frac{i}{\hbar} \, \qty[\hat{H}, \hat{O}_H(t)]
+\end{align*}
+\end{nb}
+
+	dove essa è formalmente identica alle equazioni di Hamilton classiche del moto. Si nota subito che, nel caso particolare in cui ho operatori che commutano con $\hat{U}$, ovvero:
+	
+\begin{align*}
+	\hat{U}\hat{O} = \hat{O}\hat{U}
+\end{align*}
+
+	e quindi:
+	
+\begin{align*}
+	\hat{H}\hat{O}_H = \hat{O}_H\hat{H}
+\end{align*}
+
+	allora ho delle osservabili che sono \textit{conservate}, ovvero che non variano nel tempo:
+	
+\begin{align*}
+	\hat{O}_H(t)= \hat{O}_H(t_0) = \hat{O}_H \quad \forall t
+\end{align*}
+
+	perciò, nella PH non ho evoluzione temporale se ho un'osservabile che commuta con $\hat{H}$. Se $\mathcal{H}_{\lambda}$ è autospazio di $\hat{O}$ con autovalore $\lambda$:
+
+\begin{align*}
+	\hat{O}_H(t) : \mathcal{H}_{\lambda} \to \mathcal{H}_{\lambda}
+\end{align*}
+
+	gli stati che hanno un certo autovalore e sono conservati avranno sempre lo stesso autovalore $\forall t$. In questo senso l'evoluzione temporale preserva l'autospazio.
+	\\
+	\\
+	Si consideri infine un sistema unidimensionale con Hamiltoniana:
+	
+\begin{align*}
+	\hat{H} = \frac{\hat{p}^2}{2m} + V(x)
+\end{align*}
+
+	Le equazioni del moto per $\hat{x}$ e per $\hat{p}$ sono, nella PH sono:
+
+\begin{align*}
+	& \dv{\hat{x}_H}{t} = \frac{i}{\hbar} \, \qty[ \hat{H}, \hat{x}_H(t) ] = \frac{i}{\hbar} \, \hat{U}^{\dagger}(t) \, \qty[\hat{H}, \hat{x}] \, \hat{U}(t) = \frac{1}{m} \, \hat{U}^{\dagger}(t) \hat{p}\hat{U}(t) = \frac{\hat{p}_H(t)}{m} \\
+	& \dv{\hat{p}_H}{t} = \frac{i}{\hbar} \, \qty[ \hat{H}, \hat{p}_H(t) ] = \frac{i}{\hbar} \, \hat{U}^{\dagger}(t) \, \qty[\hat{H}, \hat{p}] \, \hat{U}(t) = - \hat{U}^{\dagger}(t)V'(x)\hat{U}(t) = -V'(\hat{x}_H(t))
+\end{align*}
+
+	questi risultati, estesi ai valori di aspettazione di $\hat{x}$ e di $\hat{p}$, ci dicono che le leggi del moto per i valori di aspettazione di un'osservabile quantistica coincidono con le leggi del moto classiche per la stessa grandezza fisica, questo risultato è noto come: \textbf{teorema di Ehrenfest}.
+
+\section{Conservazione della Probabilità}
+
+	Sappiamo che la quantità scalare:
+	
+\begin{align*}
+	\rho( \vb{x}, t) \, \equiv \, |\psi(\vb{x}, t)|^2
+\end{align*}
+
+	per una funzione d'onda normalizzata $\psi(\vb{x}, t)$ al tempo $t$, cioè tale che, poiché si conserva la norma:
+	
+\begin{align*}
+	\int_{-\infty}^{\, + \infty} \dd^3 \vb{x} \, |\psi(\vb{x}, t)|^2 = \int_{-\infty}^{\, + \infty} \dd^3 \vb{x} \, |\psi(\vb{x}, 0)|^2 = 1
+\end{align*}
+	
+	è da interpretare come la densità di probabilità di trovare la particella descritta dalla funzione $\psi(\vb{x}, t)$ nella posizione $\vb{x}$ al tempo $t$. La norma di $\psi(\vb{x}, t)$ è conservata, ma non è detto che $\rho(\vb{x}, t)$ non cambi. Verifichiamolo: come varia nel tempo?
+	
+\begin{align*}
+	\pdv{\rho}{t}\qty(\vb{x}, t) = \pdv{t} |\psi(\vb{x}, t)|^2 = \pdv{t}\psi^*\qty(\vb{x}, t)\psi(\vb{x}, t) + \psi^*(\vb{x}, t) \pdv{t} \psi(\vb{x}, t)
+\end{align*}
+
+	In rappresentazione di Schrodinger ho che:
+	
+\begin{align*}
+	\hat{H} = \frac{\hat{p}^2}{2m} + V(\hat{\vb{x}}) = - \frac{\hbar^2}{2m} \nabla^2 + V(\vb{x})
+\end{align*}
+
+	perciò dall'equazione di Schrodinger dipendente dal tempo:
+	
+\begin{align*}
+	\pdv{\psi}{t}(\vb{x}, t) = - \frac{i}{\hbar} \, \qty[ - \frac{\hbar^2}{2m} \psi''(\vb{x}, t) + V(\vb{x})\psi(\vb{x}, t)]
+\end{align*}
+
+	quindi, omettendo la dipendenza $\qty(\vb{x}, t)$:
+	
+\begin{align*}
+	\pdv{\rho}{t} & = \frac{i}{\hbar} \, \qty(- \frac{\hbar^2}{2m} \nabla^2\psi^* + V\psi^*)\psi - \frac{i}{\hbar} \, \psi^* \, \qty(-\frac{\hbar^2}{2m} \nabla^2 \psi + V\psi) \\
+	 & = - \frac{i\hbar}{2m} \, \qty\Big(\nabla^2 \psi^*\psi - \psi^* \nabla^2 \psi) = - \frac{i\hbar}{2m} \, \nabla \vdot  \qty\Big(\nabla \psi^*\psi - \psi^* \nabla \psi)  
+\end{align*}
+
+	Definendo quindi:
+	
+\begin{align*}
+	\vb{J}(\vb{x}, t) = \frac{i\hbar}{2m} \, \qty\Big(\nabla \psi^* \psi - \psi^* \nabla \psi)
+\end{align*}
+
+	ottengo allora:
+	
+\begin{mydef}
+	Definisco l'\textbf{equazione di conservazione della probabilità}, che è del tutto analoga all'equazione dell'elettrodinamica della conservazione della carica elettrica:
+\begin{align*}
+	\pdv{\rho}{t}(\vb{x}, t) = - \nabla \vdot \vb{J}(\vb{x}, t)
+\end{align*}
+\end{mydef}
+
+	come interpreto il risultato? Data una regione $V$ ho che:
+	
+\begin{align*}
+	\int_V \rho(\vb{x}, t) \, \dd^3 \vb{x} = P_V \, \Rightarrow \, \pdv{P_V}{t} = \int_V \pdv{\rho}{t} \, \dd^3 \vb{x} = - \int_V \nabla \vdot \vb{J} \, \dd^3 \vb{x}
+\end{align*}
+
+	ovvero, per il \textit{teorema di Stokes:}
+	
+\begin{align*}
+	\pdv{P_V}{t} = - \int_{\partial V} \vb{J} \vdot \hat{n} \, \dd^2 \vb*{\sigma}
+\end{align*}
+
+	pertanto interpreto $\vb{J}$ come \textit{flusso di probabilità:} localmente si conserva la probabilità, che varia tramite il flusso di probabilità $\vb{J}$.
+
+
+
+
+
+
+	

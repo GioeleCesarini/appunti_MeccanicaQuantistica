@@ -1,0 +1,1214 @@
+\chapter{Teoria delle Rappresentazioni}
+
+	Questo capitolo riguarda la \textit{Teoria delle Rappresentazioni}, ossia la teoria che sta dietro a tutti quei modi di \textit{rappresentare}, che vedremo cosa significa, gli stati quantistici, gli operatori, la loro mutua interazione e la loro evoluzione, fino a trattare il problema dell’oscillatore armonico quantistico unidimensionale sotto diversi punti di vista.
+
+\section{Rappresentazioni}
+
+	Per prima cosa do una definizione:
+	
+\begin{mydef}
+	Per \textbf{rappresentazione} si intende la scelta di un insieme completo di osservabili compatibili e delle basi ad esse associate.
+\end{mydef}
+
+\begin{myapprf}
+	Cos'è un \textbf{insieme completo di osservabili compatibili}? 
+	\\
+	\\
+	Si tratta del CSCO, \textit{complete set of commuting observables}, ed è una famiglia minima di operatori autoaggiunti che commutano tra loro e i cui autovalori determinano in modo univoco e non degenere un singolo autostato del sistema in uno \textit{spazio di Hilbert}.
+\end{myapprf}
+
+	Sia $\ket{\alpha}$ una \textit{base ortonormale} di vettori, dove $\alpha$ è un indice collettivo appartenente ad un insieme $I$ ($\alpha = 1, 2, 3, \dots$). Si ha allora, che per i capitoli precedenti, vale per ipotesi:
+		
+\begin{empheq}[left=\empheqlbrace]{align*}
+	& \braket{\alpha}{\beta} = \delta_{\alpha \beta} \qquad \text{(ortonormalità)} \\
+	& \sum_{\alpha} \ketbra{\alpha} = \mathbb{I} \qquad \text{(completezza)}
+\end{empheq}
+	
+Allora, per ogni vettore $\ket{v}$ di $\mathcal{H}$, vale la seguente decomposizione:
+
+\begin{align*}
+	\ket{v} = \sum_{\alpha} \ket{\alpha} \braket{\alpha}{v}
+\end{align*}
+
+	diremo che:
+	
+\begin{mydef}
+	In \textit{questa rappresentazione}, la successione di numeri complessi: 
+\begin{align*}
+	\qty{\braket{\alpha}{v}, \alpha \in I}
+\end{align*}
+	\textbf{rappresenta} $v$.
+	\\
+	\\
+	Possiamo anche dire che, gli $\qty{\braket{\alpha}{v}}$ si chiamano \textbf{rappresentativi} di $\ket{v}$ nella base $\ket{\alpha}$. 
+	\\
+	\\
+	In simboli possiamo dire:
+\begin{align*}
+	\ket{v} \to \qty{\braket{\alpha}{v}}
+\end{align*}
+\end{mydef}
+
+	Dati allora due vettori $\ket{v}$ e $\ket{w}$ rappresentati dalle successioni:
+	
+\begin{align*} 
+	\ket{v} \to \qty{\braket{\alpha}{v}} \quad ; \quad \ket{w} \to \qty{\braket{\alpha}{w}}
+\end{align*}
+
+	il loro prodotto scalare (hermitiano) si può scrivere (dalla relazione di completezza) come:
+	
+\begin{align*}
+	\braket{w}{v} = \sum_{\alpha} \braket{w}{\alpha} \braket{\alpha}{v} = \sum_{\alpha} \braket{\alpha}{w}^* \braket{\alpha}{v}
+\end{align*}
+
+	mentre la norma di un vettore è data da:
+	
+\begin{align*}
+	|v|^2 = \braket{v} = \sum_{\alpha} | \braket{\alpha}{v} |^2 < \infty
+\end{align*}
+
+	Supponiamo ora di voler misurare l'osservabile $O$ in un dato sistema fisico, preparato in uno stato $\ket{\psi}$. Siano $\ket{a_1}, \ket{a_2}, \ldots, \ket{a_n}$ gli autostati \textbf{non} normalizzati dell'operatore hermitiano $\hat{O}$, corrispondenti agli autovalori reali $a_1, a_2, \ldots, a_n$. Gli autostati formano una base su cui si può decomporre $\ket{\psi}$ come detto nei capitoli precedenti, ovvero:
+	
+\begin{align*}
+	\ket{\psi} = \sum_i c_i \ket{a_i} = \sum_i \ket{a_i} \braket{a_i}{\psi}
+\end{align*}
+
+	dove sappiamo valere che: $c_i = \braket{a_i}{\psi}$ e che questi $c_i$ sono dunque numeri complessi.
+	\\
+	\\
+	Postuliamo ora che l'atto di misura consista nel far collassare (\textit{postulato di Von-Neumann}) lo stato del sistema in uno degli autostati di $\hat{O}$ e che il valore misurato coincida con l'autovalore di $\hat{O}$ corrispondente. Postuliamo allora che la probabilità $P$ di ottenere il valore $a_j$ in una serie di misure effettuate sullo stesso sistema preparato nelle stesse condizioni sia uguale a, normalizzando:
+
+\begin{nb}
+\begin{align*}
+	P\qty(a_j) = \frac{|\braket{a_j}{\psi}|^2}{\braket{\psi}} = \frac{|c_j|2}{\sum_i |c_i|2}
+\end{align*}
+\end{nb}
+
+	Se adesso, per semplicità, indico con $\qty{\ket{\psi_i}}$ la mia base di autofunzioni, ho che:
+
+\begin{align*}
+	\ket{\psi} = \sum_j c_j \ket{\psi_j}
+\end{align*}
+
+	allora cerco i $c_j$, chi sono?
+	\\
+	\\
+	Proiettando lo stato $\ket{\psi}$ sullo stato generico $\psi_i$ ottengo:
+	
+\begin{align*}
+	\braket{\psi_i}{\psi} = \sum_j c_j \braket{\psi_i}{\psi_j} = \sum_j c_j \delta_{ij} = c_i
+\end{align*}
+
+	Cosa succede invece quando un operatore agisce su uno stato?
+	\\
+	\\
+	Un operatore $\hat{O}$ agente sul vettore $v$ produce un altro vettore, il quale può essere, ovviamente, decomposto nella stessa base, ovvero:
+	
+\begin{align*}
+	\ket{w} = \hat{O} \ket{v} = \sum_{\alpha} \hat{O} \ket{\alpha} \braket{\alpha}{v} = \sum_{\alpha} \sum_{\beta} \ket{\beta} \mel{\beta}{\hat{O}}{\alpha} \braket{\alpha}{v}
+\end{align*}
+
+	poiché però vale che:
+
+\begin{align*}
+	\ket{w} = \sum_{\beta} \ket{\beta} \braket{\beta}{w}
+\end{align*}
+
+	si ha, allora, per uguaglianza, che i \textit{rappresentativi} di $v$ e $w$ sono collegati da:
+	
+\begin{align*}
+	\braket{\beta}{w} = \mel{\beta}{\hat{O}}{\alpha} \braket{\alpha}{v}
+\end{align*}
+
+	ne segue la seguente definizione:
+	
+\begin{mydef}
+	Si può dire che $\hat{O}$ è rappresentato, nella rappresentazione scelta, dalla \textbf{matrice} che segue:
+\begin{align*}
+	\hat{O} \to \qty{\mel{\beta}{\hat{O}}{\alpha}}
+\end{align*}
+\end{mydef}
+
+	perciò:
+	
+\begin{mydef}
+	Gli \textbf{elementi di matrice} dell'operatore $\hat{O}$ nella base scelta sono:
+\begin{align*}
+	(\hat{O})_{\beta \alpha} = \mel{\beta}{\hat{O}}{\alpha}
+\end{align*}
+\end{mydef}
+	
+	usando, attenzione, $\alpha$ e $\beta$ come indici.
+
+\subsection{Proprietà dei Rappresentativi}
+	
+\begin{enumerate}[label=\arabic*)]
+	\item I rappresentativi dell'operatore identità sono in qualsiasi base: $\delta_{\alpha \beta}$.
+	\item Siano $\hat{O}_1$ e $\hat{O}_2$ due operatori. Quali sono i rappresentativi del prodotto $\hat{O}_1\hat{O}_2, \{(\hat{O}_1\hat{O}_2)_{\alpha \beta}\}$ in termini dei rappresentativi di $\hat{O}_1$ e $\hat{O}_2$?
+	\\
+	\\
+		Si ha, usando la relazione di completezza, che:
+	\begin{align*}
+		\qty(\hat{O}_1\hat{O_2})_{\beta \alpha} = \mel{\beta}{\hat{O}_1\hat{O}_2}{\alpha} = \sum_{\gamma} \mel{\beta}{\hat{O}_1}{\gamma} \mel{\gamma}{\hat{O}_2}{\alpha} = \sum_{\gamma} \qty(\hat{O}_1)_{\beta \gamma} \qty(\hat{O}_2)_{\gamma \alpha}
+	\end{align*}
+	
+	\item Per quanto riguarda la coniugazione hermitiana inoltre si ha che vale:
+	\begin{align*}
+		(\hat{O}^{\dagger})_{\beta \alpha} = \mel{\beta}{\hat{O}^{\dagger}}{\alpha} = \mel{\alpha}{\hat{O}}{\beta}^* = (\hat{O})_{\alpha \beta}^*
+	\end{align*}
+	come già sapevamo, la matrice che rappresenta l'operatore $\hat{O}^{\dagger}$ non è altro che la coniugata trasposta della matrice che rappresenta $\hat{O}$
+\end{enumerate}
+	
+\subsection{Introduzione alle Matrici che Rappresentano gli Operatori}
+	
+\subsubsection{Rappresentazione che diagonalizza tutti gli operatori dell'insieme completo di osservabili compatibili:}
+
+	Si consideri ora un'osservabile qualsiasi che chiamiamo $O_D$. Ipotizziamo che tale osservabile faccia parte dell'insieme completo di osservabili che definisce la nostra rappresentazione. Per definizione allora, gli $\ket{\alpha}$ sono autovettori di $O_D$ tali che:
+	
+\begin{align*}
+	\hat{O}_D \ket{\alpha} = \lambda_D \ket{\alpha}
+\end{align*}
+
+	dove: $\lambda_D = \lambda_D\qty(\alpha) \in \mathbb{R}$ sono chiaramente gli autovalori di $O_D$. Ne segue che
+la matrice che rappresenta l'operatore, corrispondente l'osservabile, $\hat{O}_D$ è:
+	
+\begin{align*}
+	\hat{O}_D \to \qty{\mel{\beta}{\hat{O}_D}{\alpha}} 
+\end{align*}
+	
+	quanto vale l'elemento di matrice dell'operatore $\hat{O}_D$ tra gli stati $\ket{\beta}$ e $\ket{\alpha}$ (ovvero il valore che si ottiene prendendo lo stato $\ket{\alpha}$, applicando l'operatore $\hat{O}_D$, e poi calcolando quanto il risultato sia proiettato nella direzione dello stato $\ket{\beta}$)?
+
+\begin{align*}
+	\mel{\beta}{\hat{O}_D}{\alpha} = \mel{\beta}{\lambda_D}{\alpha} = \lambda_D \braket{\beta}{\alpha}
+\end{align*}
+
+	e poiché gli autovettori formano una base ortonormale e completa vale:
+	
+\begin{align*}
+	\braket{\beta}{\alpha} = \delta_{\alpha \beta}
+\end{align*}
+
+	e quindi sostituendo:
+
+\begin{align*}
+	\mel{\beta}{\hat{O}_D}{\alpha}  = \lambda_D \delta_{\alpha \beta}
+\end{align*}
+
+	ottenendo di fatto che, \textit{per costruzione}, la matrice $\hat{O}_D$ deve essere \textbf{diagonale}. Per formalizzare questo concetto diamo la seguente definizione:
+	
+\begin{mydef}
+	Si consideri un'osservabile qualsiasi che chiamiamo $O_D$, presi i $\ket{\alpha}$ gli autovettori dell'osservabile di autovalore $\lambda_D$, allora ne segue che, la matrice che rappresenta l'operatore corrispondente all'osservabile è, per definizione, \textbf{diagonale}. I cui valori sulla diagonale sono proprio gli autovalori $\lambda_D$ dell'osservabile.
+\end{mydef}
+	
+	Ne segue che l'azione di $\hat{O}_D$ \textit{su di uno stato generico} rappresentato dalla successione $\{\braket{\alpha}{v}\}$ produce un vettore rappresentato da:
+	
+\begin{align*}
+	\hat{O}_D \ket{v} =\sum_{\alpha} \hat{O}_D \ket{\alpha} \braket{\alpha}{v} = \sum_{\alpha} \lambda_D \ket{\alpha} \braket{\alpha}{v}
+\end{align*}
+
+	e allora il rappresentativo corrispondente allo stato $\hat{O}_D \ket{v}$ sarà:
+	
+\begin{align*}
+	\hat{O}_D\ket{v} \to \{\lambda_D\qty(\alpha) \braket{\alpha}{v}\}
+\end{align*}
+	
+	In fine, possiamo dire, che ci riferiamo ad una rappresentazione di questo tipo come alla \textit{rappresentazione che diagonalizza tutti gli operatori $\hat{O}_D$ dell'insieme completo di osservabili compatibili.}
+	
+\subsubsection{Osservabili degeneri e non degeneri:}
+	
+	In generale, se la base è costituita dagli autovettori simultanei, ovvero:
+	
+\begin{align*}
+	\ket{\lambda_k, \eta_l, \gamma_m, \ldots}
+\end{align*}
+	
+	di un insieme completo di osservabili $O_1, O_2, O_3, \ldots$ che commutano tutte tra di loro. Allora per ciascuna delle osservabili, per esempio prendiamo $O_1$, si ha che:
+	
+\begin{align*}
+	\mel{\lambda_k,\eta_l, \gamma_m, \ldots }{\hat{O}_1}{\lambda_{k'}, \eta_{l'}, \gamma_{m'}, \ldots} = \lambda_k \delta_{kk'} \delta_{ll'} \delta_{mm'} \ldots
+\end{align*}
+
+	(che è un elemento di matrice dell'operatore $\hat{O}_1$ tra due stati particolari, identificati dagli indici che vedi sopra)
+	\\
+	\\
+	Quindi $\hat{O}_1$ è rappresentata da una matrice diagonale, gli elementi diagonali sono gli autovalori di $O_1$ e ciascuno di essi vi compare un numero di volte pari al suo grado di degenerazione. Stesso discorso per le altre osservabili. Per questo motivo si dice che la rappresentazione considerata è \textbf{la rappresentazione in cui $O_1, O_2, O_3, \ldots$ sono simultaneamente diagonali.}
+	\\
+	\\
+	Sia ora $O_1$ un'osservabile e $\ket{\lambda_i}$ una base di autovettori di $O_1$. Sia $\hat{O}_2$ un operatore che commuta con $\hat{O}_1$. Com'è rappresentato $\hat{O}_2$ nella base $\ket{\lambda_i}$? Si hanno due casi:
+	
+\begin{enumerate}[label=\arabic*)]
+	\item Se i vettori $\ket{\lambda_i}$ sono autovettori simultanei di $O_1$ e $O_2$ allora siamo nella situazione in cui $\hat{O}_2$ è rappresentato da una matrice diagonale. \textit{Questo succede quando $O_1$ è \textbf{non degenere}.} In un altro modo, si può dire: se $O_1$ è non degenere e commuta con un altro operatore $O_2$, la prima base di autovettori è anche una base di autovettori per 
+$O_2$; quindi $O_2$ risulta diagonale in quella base.
+
+	\item Se succede invece che i vettori $\ket{\lambda_i}$ \textit{non} sono tutti autovettori anche di $\hat{O}_2$, e \textit{quindi $O_1$ è \textbf{degenere}}, allora si ha che sono nulli gli elementi di matrice di $\hat{O}_2$ fra autovettori di $O_1$ che corrispondono ad autovalori diversi. Se invece succede che $\ket{\lambda_i}$ e $\ket{\lambda_j}$ corrispondono allo stesso autovalore di $O_1$, allora avremo che $\mel{\lambda_i}{\hat{O}_2}{\lambda_j}$ può essere non nullo. In questo caso si ottiene che:
+\begin{align*}
+	\qty(\hat{O}_2)_{ij} \, \, \text{è una matrice a blocchi} \,\, \text{(matrice a destra)}
+\end{align*}
+	ovvero che, è una matrice eventualmente diversa da zero solo entro blocchi quadrati sulla diagonale principale, ciascuno di dimensione pari al grado di degenerazione dell'autovalore di $O_1$ cui il blocco si riferisce (matrice a sinistra). Vediamo un esempio concreto:
+	
+\begin{align*}
+	\hat{O}_1 \to \mqty(\lambda_1 & 0 & 0 & 0 & 0 \\ 0 & \lambda_1 & 0 & 0 & 0 \\ 0 & 0 & \lambda_2 & 0 & 0 \\ 0 & 0 & 0 & \lambda_3 & 0 \\ 0 & 0 & 0 & 0 & \lambda_3 ) \quad ; \quad \hat{O}_2 \to \mqty(\eta_{11} & \eta_{12} & 0 & 0 & 0 \\ \eta_{21} & \eta_{22} & 0 & 0 & 0 \\ 0 & 0 & \eta_{33} & 0 & 0 \\ 0 & 0 & 0 & \eta_{44} & \eta_{45} \\ 0 & 0 & 0 & \eta_{54} & \eta_{55} )
+\end{align*}
+\end{enumerate}
+
+\subsubsection{Dimensione di $\mathcal{H}$:}
+
+	Concludiamo l'introduzione con un'osservazione molto importante. Che dimensione deve avere $\mathcal{H}$? Chi ci garantisce che esistono operatori che obbediscono alle regole di commutazione, in particolare a quelle canoniche (condizioni di quantizzazione)?
+	\\
+	\\
+	In generale, dato un qualunque operatore del tipo:
+	
+\begin{align*}
+	\hat{O} : \mathcal{H}_{\mathbb{C}} \to \mathcal{H}_{\mathbb{C}}
+\end{align*}
+	
+	so, per certo, che esso è rappresentato da una qualche matrice. La traccia dell'operatore $\hat{O}$ è dunque la traccia della matrice $(\hat{O})_{ij}$ che lo rappresenta in una base ortonormale, allora diciamo che:
+
+\begin{mydef}
+	Sia $v_{\lambda_i}$ un autovettore della base ortonormale di $\hat{O}$, allora definisco la traccia come, in \textit{notazione matematica}:
+\begin{align*}
+	\Tr \hat{O} \, \equiv \,  \sum_{\lambda_i}\mean{v_{\lambda_i}, \hat{O} v_{\lambda_i}}
+\end{align*}
+
+	mentre in \textit{notazione di Dirac}:
+	
+\begin{align*}
+	\Tr \hat{O} \, \equiv \, \sum_{\lambda_i}\mel{v_{\lambda_i}}{\hat{O}}{ v_{\lambda_i}}
+\end{align*}
+\end{mydef}
+
+	In generale si ha che vale che, prese due o più osservabili:
+	
+\begin{align*}
+	\Tr\qty(\hat{O}_1 \hat{O}_2) = \Tr\qty(\hat{O}_2\hat{O}_1) \quad ; \quad \Tr\qty(\hat{O}_1 \hat{O}_2 \hat{O}_3) = \Tr\qty( \hat{O}_3 \hat{O}_2\hat{O}_1)
+\end{align*}
+
+	e così via. Perciò se poniamo come:
+	
+\begin{align*}
+	\hat{O}_1 \, \equiv \, \hat{x} \quad ; \quad \hat{O}_2 \, \equiv \, \hat{p}
+\end{align*}
+
+	inoltre, come avevamo visto dalle condizioni di quantizzazione, definiamo commutatore di $\hat{x}$ e $\hat{p}$ come un operatore che vale:
+	
+\begin{align*}
+	\qty[\hat{x}, \hat{p}] = i \hbar \hat{\mathbb{I}} 
+\end{align*}
+
+	ed essendo un operatore possiamo calcolarne la traccia, ovvero:
+	
+\begin{align*}
+	\Tr\qty[\hat{x}, \hat{p}]  = \Tr\qty( i \hbar \hat{\mathbb{I}} )
+\end{align*}
+
+	essendo $i\hbar$ costante possiamo tirarle fuori:
+
+\begin{align*}
+	\Tr\qty[\hat{x}, \hat{p}]  = i \hbar \Tr\hat{\mathbb{I}} 
+\end{align*}
+
+	ottenendo la $\Tr\hat{\mathbb{I}}$, che è molto interessante poiché, di fatto, equivale proprio al numero di dimensioni di $\mathcal{H}_{\mathbb{C}}$, ovvero:
+	
+\begin{align*}
+	\Tr\hat{\mathbb{I}} = \text{dim}\mathcal{H}_{\mathbb{C}}
+\end{align*}
+	
+	allora abbiamo che:
+	
+\begin{align*}
+	\Tr\qty[\hat{x}, \hat{p}] =  i \hbar \, \text{dim}\mathcal{H}_{\mathbb{C}}
+\end{align*}
+
+	c'è però un problema, dalle proprietà della traccia e del commutatore possiamo anche dire che:
+	
+\begin{align*}
+	\Tr\qty[\hat{x}, \hat{p}] = \Tr\qty(\hat{x}\hat{p}) - \Tr\qty(\hat{p}\hat{x}) = 0
+\end{align*}
+
+	ne segue allora che:
+	
+\begin{align*}
+ 	\text{dim}\mathcal{H}_{\mathbb{C}} = 0
+\end{align*}
+
+	che però è inevitabilmente una contraddizione se $\text{dim}\mathcal{H}_{\mathbb{C}}$ fosse di dimensioni finite. Infatti uno spazio vettoriale di dimensione $0$ è lo spazio triviale, composto unicamente dal vettore nullo quindi in contraddizione netta con le dimensioni finite. Ora, perché allora non può essere $0$ la dimensione dello spazio? Perché uno spazio di Hilbert con dimensione $0$ (quindi il solo vettore nullo) non potrebbe descrivere alcun sistema fisico: non c’è modo di rappresentare stati non banali (tutti gli stati che usiamo in meccanica quantistica non possono coincidere con il vettore nullo). Di conseguenza, $\text{dim}= 0$ è un’ipotesi da escludere se vogliamo fare fisica quantistica. La conclusione dunque è che se nessuna dimensione finita ($1, 2, 3, \ldots$) è ammissibile, e $\text{dim} = 0$ non descrive uno spazio fisicamente sensato, allora la sola possibilità residua è che $\text{dim}\mathcal{H}_{\mathbb{C}} = \infty$, ovvero che la dimensione dello spazio di Hilbert sia infinita.
+	
+\section{Trasformazioni Unitarie}
+	
+	Nella nostra descrizione, un cambio di rappresentazione equivale ad un cambio di base. Siano $\ket{\alpha}$ e $\ket{\beta}$ due basi e sia $\ket{v}$ un vettore generico, allora vale sicuramente che:
+	
+\begin{align*}
+	\ket{v} = \sum_{\alpha} \ket{\alpha} \braket{\alpha}{v} = \sum_{\beta} \ket{\beta} \braket{\beta}{v}
+\end{align*}
+	
+	ossia anche:
+	
+\begin{align*}
+	\ket{v} = \sum_{\alpha}  \sum_{\beta} \ket{\alpha} \braket{\alpha}{\beta} \braket{\beta}{v}
+\end{align*}
+
+	ne segue che i due rappresentativi sono legati da:
+	
+\begin{align*}
+	\braket{\alpha}{v} = \sum_{\beta} \braket{\alpha}{\beta} \braket{\beta}{v}
+\end{align*}
+
+	notiamo la presenza di: $ \braket{\alpha}{\beta}$ che, in forma matriciale è: $\{ \braket{\alpha}{\beta} \}$. Possiamo allora definire una certa matrice che chiamiamo $U$ tramite gli elementi cui sopra:
+
+\begin{align*}
+	U \, \equiv \, \{ \braket{\alpha}{\beta} \}
+\end{align*}
+
+	questa matrice permette di cambiare base e dunque rappresentazione. Notiamo ora possiamo scrivere una nuova rappresentazione in termini della vecchia facendo:
+	
+\begin{align*}
+	\sum_{\beta} \braket{\alpha}{\beta} \braket{\beta}{\gamma} = \braket{\alpha}{\gamma} = \delta_{\alpha \gamma}
+\end{align*}
+
+	dove chiaramente vale che:
+	
+\begin{align*}
+	\braket{\alpha}{\gamma} = \braket{\gamma}{\alpha}^*
+\end{align*}
+
+	allora possiamo scrivere:
+
+\begin{align*}
+	\sum_{\beta} \braket{\alpha}{\beta} \braket{\beta}{\gamma} = \sum_{\beta} \braket{\alpha}{\beta} \braket{\gamma}{\beta}^*
+\end{align*}
+
+	e segnando per definizione che l'elemento n-esimo, m-esimo della matrice $U$, si scriva come: $\braket{n}{m}$, allora possiamo sostituire ed ottenere:
+
+\begin{align*}
+	\sum_{\beta} \textcolor{blue}{ \braket{\alpha}{\beta}} \textcolor{orange}{\braket{\gamma}{\beta}^*} = \sum_{\beta} \textcolor{blue}{U_{\alpha \beta}} \, \textcolor{orange}{U^*_{\gamma \beta}}
+\end{align*}
+
+	di fatto inoltre vale che:
+	
+\begin{align*}
+	U^*_{\gamma \beta} = U^{\dagger}_{\beta \gamma}
+\end{align*}
+
+	allora sostituiamo:
+	
+\begin{align*}
+	\sum_{\beta} \braket{\alpha}{\beta} \braket{\beta}{\gamma} = \sum_{\beta} U_{\alpha \beta} \, U^{\dagger}_{\beta \gamma} = \delta_{\alpha \gamma}
+\end{align*}
+
+	allora ne segue che vale:
+	
+\begin{itemize}
+	\item $UU^{\dagger} = \mathbb{I}$
+\end{itemize}
+
+	siccome poi $U$ è invertibile ovvero sia:
+	
+\begin{align*}
+	UU^{\, -1} = \mathbb{I}
+\end{align*}
+
+\begin{myapprf}
+	Una matrice è invertibile se:
+	
+\begin{align*}
+	\text{det}\qty(U) \neq 0
+\end{align*}
+
+	nel nostro caso siccome:
+	
+\begin{align*}
+	U U^{\dagger} = \mathbb{I}
+\end{align*}
+
+	allora possiamo fare:
+	
+\begin{align*}
+	\text{det}\qty(U U^{\dagger}) = \text{det}\qty(\mathbb{I}) = 1
+\end{align*}
+
+	e quindi possiamo anche scrivere:
+
+\begin{align*}
+	& \text{det}\qty(U) \text{det}\qty(U^{\dagger}) = 1 \\
+	& \Rightarrow  \text{det}\qty(U) \qty(\text{det}\qty(U))^* = 1
+\end{align*}
+
+	infatti prendere la trasposta di una matrice non ne cambia il determinate, e farne il coniugato significa prendere il coniugato del determinante, allora:
+	
+\begin{align*}
+	\qty|\text{det}\qty(U)|^2 = 1
+\end{align*}
+
+	siccome il valore assoluto del determinante di $U$ è sempre $1$, allora è matematicamente impossibile che possa essere zero, è quindi $U$ invertibile.
+	
+\end{myapprf}
+
+	allora mettendo insieme le due cose si ottiene che:
+	
+\begin{align*}
+	U^{\dagger} = U^{-1} 
+\end{align*}
+
+	ovvero sia, abbiamo ottenuto  che $U$ sarebbe una matrice \textbf{unitaria}. 
+
+\begin{myapprf}
+	Una matrice unitaria è per definizione, in algebra, è una matrice quadrata a valori complessi (cioè con elementi in $\mathbb{C}$) che soddisfa la condizione:
+\begin{align*}
+	UU^{\dagger} = UU^{-1} = \mathbb{I}
+\end{align*}
+	Analogamente a come le matrici ortogonali (nel caso reale) preservano i prodotti scalari in $\mathbb{R}^{n}$ le matrici unitarie sono le trasformazioni lineari su $\mathbb{C}^n$ che preservano la lunghezza (o norma) dei vettori (in MQ equivalgono alle probabilità) e il prodotto scalare complesso, ovvero sia preserva la metrica del prodotto scalare in uno spazio vettoriale complesso.
+\end{myapprf}
+	
+	Diamo la seguente definizione:
+	
+\begin{mydef}
+	Definisco matrice \textbf{unitaria} la seguente:
+\begin{align*}
+	U \, \equiv \, \{ \braket{\alpha}{\beta} \}
+\end{align*}
+	ne segue che, essendo la matrice di trasformazione da una rappresentazione all'altra, si dice che la \textbf{trasformazione è unitaria}.
+\end{mydef}
+
+	Inoltre possiamo anche dare la seguente definizione:
+	
+\begin{mydef}
+	Le rappresentazioni connesse da un operatore unitario sono dette \textbf{equivalenti}.
+\end{mydef}
+
+\subsection{Esempio}
+
+	Siano ora $\qty{O}$ ed $\qty{\tilde{O}}$ due differenti rappresentazioni matriciali dello stesso operatore $\hat{O}$. Come si passa da $O$ ad $\tilde{O}$ cambiando quindi la base in cui mi trovo?
+	\\
+	\\
+	I rappresentativi dei due operatori saranno:
+	
+\begin{align*}
+	O \to \mel{v_{\alpha}}{O}{v_{\beta}} \, \equiv \, O_{\alpha \beta} \quad ; \quad \tilde{O} \to \mel{\tilde{v}_{\alpha}}{O}{\tilde{v}_{\beta}} \, \equiv \, \tilde{O}_{\alpha \beta} 
+\end{align*}
+
+	poiché vale:
+	
+\begin{align*}
+	\ket{\tilde{v}_{\alpha}} = \sum_{\gamma} \ket{v_{\gamma}} \braket{v_{\gamma}}{\tilde{v}_{\alpha}}
+\end{align*}
+
+	allora posso scrivere, ricordando che $\tilde{O}_{\alpha, \beta} = \mel{\tilde{v}_{\alpha}}{O}{\tilde{v}_{\beta}}$ e $U_{\delta, \beta} = \braket{v_{\delta}}{\tilde{v}_{\beta}}$ :
+	
+\begin{align*}
+	\tilde{O}_{\alpha \beta} = \sum_{\gamma} \braket{\tilde{v}_{\alpha}}{v_{\gamma}} \mel{v_{\gamma}}{O}{\tilde{v}_{\beta}} &=  \sum_{\gamma} \sum_{\delta} \braket{\tilde{v}_{\alpha}}{v_{\gamma}} \mel{v_{\gamma}}{O}{v_{\delta}}     \braket{v_{\delta}}{\tilde{v}_{\beta}}  \\
+	&= \sum_{\gamma} \sum_{\delta}  \braket{\tilde{v}_{\alpha}}{v_{\gamma}}  O_{\gamma \delta}   \braket{v_{\delta}}{\tilde{v}_{\beta}} \\
+	&= \sum_{\gamma} \sum_{\delta}  U^*_{\gamma \alpha} O_{\gamma \delta} U_{\delta \beta} \\
+	&= \sum_{\gamma} \sum_{\delta} U^{\dagger}_{\alpha \gamma} O_{\gamma \delta} U_{\delta \beta} \, \equiv \, \qty(U^{\dagger} O U)_{\alpha \beta}
+\end{align*}
+	
+	Ossia infatti che:
+	
+\begin{align*}
+	\sum_{\gamma} \sum_{\delta} U^{\dagger}_{\alpha \gamma} O_{\gamma \delta} U_{\delta \beta} = \sum_{\gamma} \sum_{\delta} \braket{\tilde{v}_{\alpha}}{v_{\gamma}} \mel{v_{\gamma}}{O}{v_{\delta}} \braket{v_{\delta}}{\tilde{v}_{\beta}} =  \bra{\tilde{v}_{\alpha}}\sum_{\gamma} \ket{v_{\gamma}} \mel{ v_{\gamma}}{O \sum_{\delta} }{v_{\delta}} \braket{v_{\delta}}{\tilde{v}_{\beta}} 
+\end{align*}
+
+	e siccome dalle due somme otteniamo l'identità:
+	
+\begin{align*}
+	\bra{\tilde{v}_{\alpha}}\sum_{\gamma} \ket{v_{\gamma}} \mel{ v_{\gamma}}{O \sum_{\delta} }{v_{\delta}} \braket{v_{\delta}}{\tilde{v}_{\beta}} = \mel{\tilde{v}_{\alpha}}{O}{\tilde{v}_{\beta}} = \tilde{O}_{\alpha \beta}
+\end{align*}
+
+	come volevasi dimostrare. Si può passare in questo modo da una matrice all'altra attraverso dunque l'uguaglianza:
+
+\begin{nb}
+\begin{align*}
+	\tilde{O}_{\alpha \beta} =  \qty(U^{\dagger} O U)_{\alpha \beta}
+\end{align*}
+\end{nb}
+
+	 Agli autovalori cosa succede? L'operatore $\hat{O}$ soddisfa l'equazione agli autovalori:
+	
+\begin{align*}
+	O \ket{v} = \lambda \ket{v}
+\end{align*}
+
+	siccome: $U U^{\dagger} = \mathbb{I}$, possiamo scrivere:
+	
+\begin{align*}
+	O \qty(U U^{\dagger} ) \ket{v} = \lambda \ket{v}
+\end{align*}
+	
+	perché non cambia il risultato. Allora moltiplichiamo l'intera equazione per $U^{\dagger}$ a sinistra ed otteniamo:
+
+\begin{align*}
+	U^{\dagger} O \qty(U U^{\dagger} ) \ket{v} = U^{\dagger} \lambda \ket{v}
+\end{align*}
+	
+	allora:
+	
+\begin{align*}
+	\textcolor{red}{U^{\dagger} O U} \textcolor{blue}{U^{\dagger} \ket{v}} =  \lambda U^{\dagger}  \ket{v}
+\end{align*}
+
+	e quindi:
+	
+\begin{align*}
+	\textcolor{red}{\tilde{O}}  \textcolor{blue}{\ket{\tilde{v}}} = \lambda \ket{\tilde{v}}
+\end{align*}
+
+	ossia gli autovalori non cambiano: 
+
+\begin{nb}
+	\textbf{Lo spettro di un operatore è indipendente dalla base.} 
+\end{nb}
+
+\section{Rappresentazione di Schrodinger o delle Coordinate}	
+
+	Secondo quella che chiamiamo \textit{algebra di Heisenberg} abbiamo che, per la posizione $x$ di una particella e per il suo impulso $p$:
+	
+\begin{align*}
+	\qty[\hat{x}, \hat{p}] = i \hbar \,  \hat{\mathbb{I}}
+\end{align*}
+
+	Vediamo ora, una nuova rappresentazione, che chiamiamo: \textbf{rappresentazione di Schrodinger} (RS). In questa nuova rappresentazione si cerca un'altra interpretazione dell'algebra di Heisenberg. Vi sono dei problemi però, in particolare modo 2:
+	
+\begin{enumerate}[label=\arabic*)]
+	\item Abbiamo visto che per gli operatori che rispettano le \textit{condizioni di quantizzazione}, lo spazio $\mathcal{H}_{\mathbb{C}}$ ha necessariamente dimensione infinita. Ciò rappresenta un elemento di difficoltà e che va in qualche modo tenuto presente. La cosa che ci aiuta è che, nonostante le dimensione infinite, $\mathcal{H}$ ha una base \textit{numerabile} (ovvero che sia in corrispondenza biunivoca con $\mathbb{N}$).
+	\item L'idea sarà quella di cercare una base di vettori che siano autostati di $\hat{x}$. Dove $x$ è l'osservabile che misura la posizione nello spazio di una generica particella, mentre i suoi autostati sono gli stati in cui la particella si trova in un determinato punto $x$, ovvero tale che:
+\begin{align*}
+	\hat{x} \ket{x} = x \ket{x}
+\end{align*}
+	Dove sta il problema allora? Il problema è che se $x$, come abbiamo ipotizzato, indica la posizione, allora appartiene ad $\mathbb{R}$. Ne segue che l'osservabile ha spettro \textit{continuo} e pertanto saremmo portati a dire che le osservabili $x$, e di conseguenza $p$ associata, non esistano!
+\end{enumerate}
+
+	Vedremo poco più avanti come affrontare il fatto che lo spazio di Hilbert sia di dimensioni infinite. Occupiamoci per prima cosa di $x$ e $p$:
+
+\subsection{Osservabili Improprie}
+
+	Diamo la seguente definizione:
+	
+\begin{mydef}
+	Chiamiamo $x$ e $p$, \textbf{osservabili improprie}. Ovvero sia: le definiamo come limite di una successione di osservabili dette \textit{proprie}.
+\end{mydef}
+
+	Tale definizione è un fatto fisico-matematico. Sappiamo infatti che non esistono strumenti di misura che possano misurare osservabili con spettri nei numeri reali, però per necessità di descrizione della teoria fisica facciamo questa "forzatura".
+
+\subsection{Funzioni d'Onda}
+
+	Supponiamo dunque esista l'osservabile $x$. Uno stato $\ket{v}$ può essere dunque descritto da:
+	
+\begin{align*}	
+	\ket{v} = \sum_i \ket{\lambda_i} \braket{\lambda_i}{v}
+\end{align*}
+
+	siccome lo spettro è continuo, possiamo dire che la somma tende ad un integrale di Riemann, poiché i $\lambda_i$ sono molto "fitti". Allora possiamo riscrivere lo stato $\ket{v}$ come:
+	
+\begin{align*}
+	\ket{v} = \int \dd x \ket{x} \braket{x}{v}
+\end{align*}
+
+	arrivati a questa descrizione possiamo spingerci nella seguente definizione:
+
+\begin{mydef}
+	Definisco:
+\begin{align*}
+	\braket{x}{v}
+\end{align*}
+	ossia i \textit{rappresentativi} di ogni vettore $\ket{v}$ nella \textit{base impropria} $\ket{x}$, con $x \in \mathbb{R}$, come delle funzioni di $x$:
+\begin{align*}
+	\braket{x}{v} \, \equiv \, v\qty(x) : \mathbb{R} \to \mathbb{C}
+\end{align*}
+	tali funzioni $v\qty(x)$ le chiamiamo \textbf{funzioni d'onda} degli stati rappresentati dai vettori in esame.
+\end{mydef}
+
+	si noti che, come sappiamo, gli autostati "impropri" $\ket{x}$ e l'osservabile "impropria" $x$ non esistono realmente, ma la loro introduzione è necessaria ai fini di una descrizione teorica. Possiamo dire di esser passati dal rappresentare $\ket{v}$ come una colonna di numeri, al rappresentare $\ket{v}$ come una funzione da $\mathbb{R}$ in $\mathbb{C}$.
+
+\subsection{Spazio delle Funzioni a Quadrato Sommabile e Prodotto Scalare}
+	
+	Per arrivare alla definizione di spazio in questa rappresentazione, prima dobbiamo passare dal definire il prodotto scalare. Infatti, voglio uno spazio vettoriale tale che $v(x) \in \mathcal{H}_{\mathbb{C}}$ munito di un prodotto scalare che vada a definirne le operazioni interne. 
+	\\
+	\\
+	Allora, detto $\ket{w}$ il seguente vettore:
+	
+\begin{align*}
+	\ket{w} = \sum_i \ket{\lambda_i} \braket{\lambda_i}{w}
+\end{align*}
+
+	definisco per costruzione:
+	
+\begin{mydef}
+	Il \textbf{prodotto scalare} tra $\ket{v}$ e $\ket{w}$ nella RS é:
+\begin{align*}
+	\braket{w}{v} = \sum_i \braket{w}{\lambda_i} \braket{\lambda_i}{v} = \sum_i \textcolor{red}{\braket{\lambda_i}{w}^*} \textcolor{blue}{\braket{\lambda_i}{v} }= \int_{-\infty}^{\, +\infty} \dd x \, \textcolor{red}{w^*(x)} \, \textcolor{blue}{v(x)}
+\end{align*}
+\end{mydef}
+
+	avendo definito il prodotto scalare possiamo tranquillamente definire la norma di $\ket{v}$, ovvero:
+	
+\begin{align*}
+	\braket{v} = \int_{-\infty}^{\, +\infty} \dd x \, |v(x)|^2
+\end{align*}
+
+	tale integrale converge se $v(x)$ appartiene ad uno spazio di funzioni $L_2(\mathbb{R})$, ovvero che convergono a zero più velocemente di qualsiasi potenza inversa di $x$. Dato che abbiamo bisogno che la norma di un vettore converga, ne segue che abbiamo la seguente definizione:
+	
+\begin{mydef}
+	Definiamo lo \textbf{spazio delle funzioni a quadrato sommabile} lo spazio di funzioni da $\mathbb{R}$ in $\mathbb{C}$ tale che valga:
+\begin{align*}
+	v(x) \in \mathcal{H}_{\mathbb{C}} = \qty{v : \mathbb{R} \to \mathbb{C}, \int_{-\infty}^{\, +\infty} \dd x \, |v(x)|^2 < \infty } \, \equiv \, L_2(\mathbb{R})
+\end{align*}
+\end{mydef}
+
+	tale spazio ha dimensione \textit{infinita}, come ci serviva, e le altre buone proprietà di cui abbiamo bisogno.
+	\\
+	\\
+	In generale possiamo dire che:
+	
+\begin{itemize}
+	\item Se $\text{dim}\mathcal{H}_{\mathbb{C}} = n \, \Rightarrow \, $ allora ogni operatore è associato ad un'osservabile e vale che $\hat{O} = \hat{O}^{\dagger}$, l'operatore è autoaggiunto o hermitiano (equivalgono poiché la dimensione di $\mathcal{H}_{\mathbb{C}}$ è finita). Allora possiamo riassumere con la seguente equazione:
+	\begin{align*}
+		\{ O \} = \{ \hat{O} : \hat{O} = \hat{O}^{\dagger} \}
+	\end{align*}
+		ovvero che l'insieme delle osservabile equivale all'insieme degli operatori autoaggiunti.
+	\item Se $\text{dim}\mathcal{H}_{\mathbb{C}} = \infty \, \Rightarrow \, $ non è garantito che ogni operatore hermitiano corrisponda realmente ad una grandezza fisica misurabile. Infatti, in dimensione infinita, esistono operatori autoaggiunti privi di interpretazione fisica (ad esempio, operatori che non corrispondono a quantità osservabili in un reale laboratorio). E dunque possiamo dire che:
+	\begin{align*}
+		\{ O \} \subset \{ \hat{O} : \hat{O} = \hat{O}^{\dagger} \}
+	\end{align*}
+		ovvero che l'insieme delle osservabili fisiche è soltanto un sottoinsieme (stretto) degli operatori autoaggiunti.
+\end{itemize}
+
+\subsection{Come Rappresentare $\hat{x}$}
+
+	Nella base degli autostati l'operatore $\hat{O}$ è rappresentato da una \textit{matrice diagonale} tale che:
+	
+\begin{align*}
+	\hat{O} \ket{\lambda_i} = \lambda_i \ket{\lambda_i}
+\end{align*}
+
+	dove quindi:
+	
+\begin{align*}
+	\hat{O} = \mqty( \lambda_1 &  & &  \\  & \lambda_2 &  &  \\  &  & \ddots &  \\  &  &  & \lambda_n)
+\end{align*}
+
+	Poiché nella base $\ket{\lambda_i}$ rappresento un vettore $\ket{v}$ come:
+	
+\begin{align*}
+	\ket{v} \to \{ \braket{\lambda_i}{v} \}
+\end{align*}
+
+	e allora rappresento anche un operatore che agisce su tale vettore come:
+	
+\begin{align*}
+	\hat{O} \ket{v} \to \{\lambda_i \braket{\lambda_i}{v} \}
+\end{align*}
+
+	(avevamo già visto questa scrittura). Possiamo passare allora alla rappresentazione di $\hat{x}$ sulla falsa riga della rappresentazione dell'applicazione di $\hat{O}$:
+
+\begin{align*}
+	\hat{x} \ket{v} \to x \braket{x}{v}  =  x \, v(x)  
+\end{align*}
+
+	allora ne segue che:
+	
+\begin{mydef}
+	Rappresento $\hat{x}$ come:
+	
+\begin{align*}
+	\hat{x} : \mathcal{H}_{\mathbb{C}} \to \mathcal{H}_{\mathbb{C}}
+\end{align*}
+
+	tale che:
+	
+\begin{align*}
+	(\hat{x}v)(x) = xv(x) \,\,\, \text{con gli elementi che vanno da } \,\, v(x) \mapsto xv(x)
+\end{align*}
+\end{mydef}
+
+	questa descrizione è l'analogo continuo della rappresentazione diagonale con autostati discreti. In un certo senso, si può dire informalmente che $\hat{x}$ è "diagonale" nella base continua $\ket{x}$. Si noti che, comunque, non è affatto una rappresentazione inesatta, bensì una rappresentazione standard, formalmente corretta e utilizzata comunemente in meccanica quantistica.
+
+\subsection{Hermitianità di $\hat{x}$ }
+
+	Ora mi chiedo: $\hat{x}$ è un operatore hermitiano?
+
+\begin{nb}
+	Ovvero sia, mi sto chiedendo se vale $\forall v_1(x), v_2(x) \in \mathcal{H}_{\mathbb{C}}$:
+	
+\begin{align*}
+	\mean{v_1(x), \hat{x}v_2(x)} = \mean{\hat{x}v_1(x), v_2(x)}
+\end{align*}
+
+\end{nb}
+
+\begin{myapprf}
+
+	Perché è quella l'espressione di hermitianità? eravamo abituati ad un'altra... 
+	\\
+	\\
+	Se $\hat{x}$ è hermitiano (la differenza con il significato di "aggiunto" sta nelle condizioni di dominio, qui ci prendiamo la libertà di usarli come sinonimi) allora vale che:
+	
+\begin{align*}
+	\mean{v_1(x), \hat{x}v_2(x)} = \mean{\hat{x}^{\dagger} v_1(x), v_2(x)}
+\end{align*}
+	
+	sempre, a prescindere dal fatto che se $\hat{x}$ è hermitiano o no, è infatti la definizione dell'operazione che \textcolor{red}{era} in notazione di Dirac:
+	
+\begin{align*}
+	\textcolor{blue}{\mean{B, \hat{O} A} }= \textcolor{red}{ \mel{B}{\hat{O}}{A} = \mel{A}{\hat{O}^{\dagger}}{B}^*} = \mean{A, \hat{O}^{\dagger}B}^* = \textcolor{blue}{\mean{\hat{O}^{\dagger}B, A}^*}
+\end{align*}
+
+	in \textcolor{blue}{blu} ritroviamo allora la nostra equazione. In particolare possiamo inoltre dire che, se $\hat{x}$ è hermitiano allora:
+
+\begin{align*}
+	\hat{x} = \hat{x}^{\dagger}
+\end{align*}
+
+	e dunque l'equazione si riduce alla già citata:
+	
+\begin{align*}
+	\mean{v_1(x), \hat{x}v_2(x)} = \mean{\hat{x}v_1(x), v_2(x)}
+\end{align*}
+
+\end{myapprf}
+
+	per verificarne allora l'effettiva hermitianità, guardiamo i membri dell'equazione:
+	
+\begin{align*}
+	\textcolor{cyan}{\mean{v_1(x), \hat{x}v_2(x)}} = \textcolor{orange}{\mean{\hat{x} v_1(x), v_2(x)} }
+\end{align*}
+
+	svolgendo i calcoli:
+	
+\begin{align*}
+	& \mean{v_1(x), \hat{x}v_2(x)} =  \textcolor{cyan}{ \int_{\mathbb{R}} \dd x \, v^*_1(x) \, xv_2(x) } \\
+	& \mean{\hat{x} v_1(x), v_2(x)} = \int_{\mathbb{R}} \dd x \, x^* \, v^*_1(x) \, v_2(x) = \textcolor{orange}{ \int_{\mathbb{R}} \dd x \, x \, v^*_1(x) \, v_2(x) }
+\end{align*}
+
+	poiché ricordiamo che $x$ è reale. È evidente che, le due scritture sono identiche, allora vale che:
+
+\begin{align*}
+	\textcolor{cyan}{ \int_{\mathbb{R}} \dd x \, v^*_1(x) \, xv_2(x) }  = \textcolor{orange}{ \int_{\mathbb{R}} \dd x \, x \, v^*_1(x) \, v_2(x) } \, \Rightarrow \, \mean{v_1(x), \hat{x}v_2(x)} = \mean{\hat{x}v_1(x), v_2(x)} 
+\end{align*}
+	
+	allora $\hat{x}$ è hermitiano.
+
+\begin{myapprf}
+
+	Facciamo un'osservazione. Quando $|x| \to \infty$, deve valere necessariamente che $|v(x)|^2 \to 0$. In caso contrario l'integrale non convergerà. Tuttavia abbiamo detto che:
+	
+\begin{align*}
+	(\hat{x}v)(x) = xv(x) \,\,\, \text{con gli elementi che vanno da } \,\, v(x) \mapsto xv(x)
+\end{align*}
+
+	allora serve la condizione più forte che:
+
+\begin{align*}
+	|x\, v(x)|^2 = x^2 \, |v(x)|^2
+\end{align*}
+
+	converga. Ma $x^2 \, |v(x)|^2$ decresce più lentamente di $|v(x)|^2$. Allora può succedere di avere $|v(x)|^2$ (definizione di $L_2(\mathbb{R})$) integrabile ma non $x^2 \, |v(x)|^2$. Perciò diciamo che, il dominio di $\hat{x}$ è:
+	
+\begin{align*}
+	D_{\hat{x}} \,\,\, \text{t.c} \,\, \, D_{\hat{x}} \subset L_2(\mathbb{R})
+\end{align*}
+
+	dunque vale che il dominio di $D_{\hat{x}}$ è contenuto in $L_2(\mathbb{R})$, ma si dice che è \textbf{denso}. Ovvero che è sufficientemente ampio da permettere ai punti di $L_2(\mathbb{R})$ che non sono compresi in $D_{\hat{x}}$, di essere approssimati quanto bene si vuole tramite successioni di funzioni. È in questo senso, più matematico, che possiamo "accettare" $\hat{x}$ come osservabile.
+\end{myapprf}
+
+\subsection{Operatore Impulso}
+
+	Adesso, sempre nell'ottica di trattare l'algebra di Heisenberg, voglio definire un certo operatore, $\hat{p}$ tale che valga:
+	
+\begin{align*}
+	\qty[\hat{p}, \hat{x}] = - \qty[\hat{x}, \hat{p}] = - i\hbar \, \hat{\mathbb{I}}
+\end{align*}
+
+	Presa una funzione qualunque in $L_2(\mathbb{R})$, allora vale:
+	
+\begin{align*}
+	\textcolor{cyan}{\qty[\hat{p}, \hat{x}]} \, v(x) =\textcolor{cyan}{ \qty(\hat{p}\hat{x} - \hat{x}\hat{p}) } \,  v(x) = \hat{p}\qty(\hat{x}v(x)) - \hat{x}\qty(\hat{p}v(x)) = -i \hbar \, v(x)
+\end{align*}
+
+	dunque $\hat{p}$ si può dire debba essere tale che:
+	
+\begin{align*}
+	\hat{p}\qty(\hat{x}v(x)) - \hat{x}\qty(\hat{p}v(x)) = -i \hbar \, v(x) \, \Rightarrow \, \hat{p}\qty(\hat{x}v(x)) =  \hat{x}\qty(\hat{p}v(x)) - i \hbar \, v(x)
+\end{align*}
+	
+	dunque sappiamo che $\hat{p}$ deve essere lineare (deriva dalla teoria e definizione di osservabile ed operatori associati in MQ) e deve soddisfare l'equazione soprastante. Per trovare allora l'\textit{operatore impulso} $\hat{p}$ facciamo un magheggio, notiamo subito che essendo $\mathcal{H}_{\mathbb{C}}$ uno spazio di funzioni, valgono le regole delle funzioni tra cui la regola di Leibniz, ovvero:
+
+\begin{align*}
+	D\qty[f(x)\,g(x)] = f(x) \, Dg(x) + g(x) \,Df(x) 
+\end{align*}
+
+	allora con una buona definizione di $\hat{p}$, tale espressione è sovrapponibile a quella che $\hat{p}$ deve soddisfare:
+	
+\begin{mydef}
+	Definisco l'\textbf{operatore impulso} come:
+\begin{align*}
+	\hat{p} = -i\hbar \, \dv{x}
+\end{align*}
+\end{mydef}
+
+\begin{myprf}
+	È davvero lui l'operatore giusto?
+	\\
+	\\
+	Andiamo a verificarlo sostituendolo nell'espressione che deve soddisfare. Prima di tutto notiamo che l'applicazione dell'operatore $\hat{x}$ su di una funzione ($w(x)$ generica) è:
+\begin{align*}
+	\hat{x} w(x) = x \, w(x)
+\end{align*}
+	come abbiamo definito già prima. Allora l'espressione diventa:
+	
+\begin{align*}
+	\hat{p}\qty(\hat{x}v(x)) =  \hat{x}\qty(\hat{p}v(x)) - i \hbar \, v(x) \, \Rightarrow \, \hat{p}\qty(x \, v(x)) = x \, \qty(\hat{p}v(x)) - i \hbar \, v(x)
+\end{align*}
+	
+	in questo modo ha senso la derivata in $x$. Tale equazione è dunque quella che vogliamo dimostrare partendo dalla regola di Leibniz.
+	\\
+	\\
+	Ricordiamo allora che
+
+\begin{align*}
+	D\qty[f(x)\,g(x)] = f(x) \, Dg(x) + g(x)\, Df(x)
+\end{align*}
+	
+	e fissiamo:
+
+\begin{itemize}
+	\item $f(x) = x $
+	\item $g(x) = v(x) $
+	\item $D \, \equiv \, - i \hbar \, \dd/\dd x$
+\end{itemize}
+
+	allora:
+	
+\begin{align*}
+	D\qty[f(x)\,g(x)] = f(x) \, Dg(x) + g(x) \, Df(x) \, \Rightarrow \, - i \hbar \, \dv{x} \qty[x \, v(x)] = x\qty(- i \hbar \, \dv{x} v(x)) - i \hbar  v(x)  \dv{x} x 
+\end{align*}
+
+	e allora si ottiene:
+	
+\begin{align*}
+	- i \hbar \, \dv{x} \qty[x \, v(x)] = x\, \qty(- i \hbar \, \dv{x} v(x)) - i \hbar \,  v(x) = x \, \qty(\hat{p}v(x)) - i \hbar \, v(x)
+\end{align*}
+	
+	ottenendo dunque esattamente l'espressione che $\hat{p}$ doveva soddisfare.
+
+\end{myprf}
+
+\subsubsection{L'operatore impulso è hermitiano?}
+	
+	Se mi chiedo se l'operatore impulso sia hermitiano o meno, mi sto chiedendo se vale che:
+	
+\begin{align*}
+	\forall v_1(x), v_2(x) \in \mathcal{H}_{\mathbb{C}} \qquad \textcolor{cyan}{\mean{v_1(x), \hat{p}v_2(x)} } = \textcolor{orange}{ \mean{\hat{p}v_1(x), v_2(x)}}
+\end{align*}
+	
+	allora come già abbiamo fatto guardiamo i due membri dell'equazione:
+	
+\begin{align*}
+	& \mean{v_1(x), \hat{p}v_2(x)} = \textcolor{cyan}{\int_{\mathbb{R}} \dd x v^*_1(x) \, \qty(-i\hbar \, \dv{v_2(x)}{x})} \\
+	& \mean{\hat{p}v_1(x), v_2(x)} =  \int_{\mathbb{R}} \dd x \, \qty(-i\hbar \, \dv{v_1(x)}{x})^*  v_2(x) = \textcolor{orange}{  \int_{\mathbb{R}} \dd x \, i\hbar \, \dv{v^*_1(x)}{x} \, v_2(x)}
+\end{align*}
+
+	è chiaro dunque che i due membri sono diversi. Cerco ora di trovare dunque quello condizioni tali per cui gli integrali si equivalgono, impongo allora:
+	
+\begin{align*}
+	\int_{\mathbb{R}} \dd x v^*_1(x) \, \qty(-i\hbar \, \dv{v_2(x)}{x})= \int_{\mathbb{R}} \dd x \, i\hbar \, \dv{v^*_1(x)}{x} \, v_2(x)
+\end{align*}
+
+	ottengo:
+	
+\begin{align*}
+	-i\hbar \int_{\mathbb{R}} \dd x v^*_1(x) \, \dv{v_2(x)}{x}=  i\hbar  \int_{\mathbb{R}} \dd x \, \dv{v^*_1(x)}{x} \, v_2(x)
+\end{align*}
+
+	li metto dalla stessa parte dell'uguale ora, ovvero:
+	
+\begin{align*}
+ 	i\hbar  \int_{\mathbb{R}} \dd x \, \dv{v^*_1(x)}{x} \, v_2(x) + i\hbar \int_{\mathbb{R}} \dd x \, v^*_1(x) \, \dv{v_2(x)}{x} = 0
+\end{align*}
+	
+	raccolgo allora $i\hbar$ e l'integrale ottenendo:
+
+\begin{align*}
+	i\hbar  \int_{\mathbb{R}} \dd x \, \qty( v^*_1(x) \, \dv{v_2(x)}{x}   +    \dv{v^*_1(x)}{x} \, v_2(x) ) = 0
+\end{align*}
+
+	possiamo riscrivere l'integrale come:
+	
+\begin{align*}
+	i\hbar  \int_{\mathbb{R}} \dd x \, \qty( v^*_1(x) \, \dv{v_2(x)}{x}   +    \dv{v^*_1(x)}{x} \, v_2(x) ) = i\hbar  \int_{\mathbb{R}} \dd x \, \dv{x} \qty\Big[ v_1^*(x)   \, v_2(x)  ]
+\end{align*}
+
+	calcolo ora l'integrale, integrare su tutta la retta reale significa integrare da $-\infty$ a $+\infty$ mentre il risultato sarà semplicemente quella funzione che derivata mi ridà l'integranda, ovvero:
+
+\begin{align*}
+	i\hbar  \int_{\mathbb{R}} \dd x \, \dv{x} \qty[ v_1^*(x)   \, v_2(x)  ] = i\hbar  \int_{-\infty}^{\, +\infty} \dd x \, \dv{x} \qty\Big[ v_1^*(x)   \, v_2(x)  ] = i\hbar \, \qty\Big[v_1^*(x)   \, v_2(x)]_{-\infty}^{\, +\infty}
+\end{align*}
+
+	ovvero sia:
+	
+\begin{align*}
+	i\hbar \, \qty\Big[v_1^*(x)   \, v_2(x)]_{-\infty}^{\, +\infty} = i\hbar \,  \qty\Big[ \lim_{x\to+\infty} v_1^*(x) v_2(x)   -   \lim_{x\to-\infty}  v_1^*(x) v_2(x) ]
+\end{align*}
+
+	essendo che deve essere uguale a zero per essere hermitiano $\hat{p}$, deve valere:
+	
+\begin{align*}
+	 \lim_{x\to+\infty} v_1^*(x) v_2(x) = \lim_{x\to-\infty}  v_1^*(x) v_2(x)
+\end{align*}
+
+	quando questo è vero?
+	\\
+	\\
+	Quando $v_1(x), v_2(x) \in L_2(\mathbb{R})$, ovvero quando tendono a zero abbastanza velocemente. Ne segue che anche in questo caso:
+	
+\begin{align*}
+	D_{\hat{p}} \subset L_2(\mathbb{R})
+\end{align*}
+
+	quindi, al contrario di $\hat{x}$, $\hat{p}$ non è sempre hermitiano ma deve valere la condizione sulle funzioni. Il dominio di esistenza dei due operatori è però contenuto nello stesso insieme $L_2(\mathbb{R})$ ed entrambi sono densi in esso.
+
+\subsubsection{Piccolo riassunto di quanto fatto in questi paragrafi:}
+
+	Riassumendo:
+	
+\begin{itemize}
+	\item $\mathcal{H}_{\mathbb{C}} = L_2(\mathbb{R})$ con prodotto scalare $\mean{ \,\, , \,\, }$
+	\item Gli operatori $\hat{x}$ ed $\hat{p}$ agiscono sugli stati $v(x)$ come:
+\begin{empheq}[left=\empheqlbrace]{align*}
+	&\hat{x}v(x) = x \, v(x) \\
+  	&\hat{p}v(x) = -i\hbar \, \dv{x} v(x)
+\end{empheq}
+	e vale che:
+\begin{align*}
+	\qty[\hat{x}, \hat{p}] = i\hbar \, \hat{\mathbb{I}}
+\end{align*}
+\end{itemize}
+
+	L’algebra sviluppata fino ad ora è un modo di rappresentare gli stati di particelle quantistiche sull’asse reale.
+
+\subsection{Interpretazione di Bohr}
+
+	Ci chiediamo ora quale sia il significato fisico della rappresentazione di Schrodinger. Ovvero, quale siano i significati fisici di $\hat{x}$ e di $\hat{p}$.
+	\\
+	\\
+	La rappresentazione di Schrodinger è la rappresentazione degli autostati di $\hat{x}$, ovvero, è la rappresentazione in cui $\hat{x}$ è diagonale. Nella situazione standard i $\ket{\lambda_i}$ sono autostati di $\hat{O}$ e $\ket{v}$ si rappresenta come: $\{ \braket{\lambda_i}{v} \}$. Allora possiamo dire che la probabilità di ottenere $\lambda_i$ nella misura dell'osservabile $O$ sullo stato $v$ è:
+	
+\begin{align*}
+	P_{\hat{O} \to \lambda_i}(\ket{v}) = \frac{|\braket{\lambda_i}{v}|^2}{\braket{v}}
+\end{align*}
+	
+	se cerco invece la probabilità che $\lambda$ sia compreso in un certo intervallo questa è:
+	
+\begin{align*}
+	P_{\hat{O} \to \lambda \in \{\lambda_i, \ldots, \lambda_{i+n} \}}(\ket{v}) = \sum_{k \in [i, i+n] } \frac{|\braket{\lambda_k}{v}|^2}{\braket{v}}
+\end{align*}
+
+	ovvero che, la probabilità di ottenere una serie di autovalori equivale alla somma delle probabilità si ottenere il singolo autovalore.
+	\\
+	\\
+	Spostiamoci ora su cosa significhi per $x$, dove essa è una variabile continua, vediamo quanto vale il rapporto:
+
+\begin{align*}
+	 \frac{|\braket{x}{v}|^2}{\braket{v}}
+\end{align*}
+	
+	ricordiamo che per definizione:
+	
+\begin{align*}
+	&\braket{x}{v} = v(x)
+	&\braket{v} = \int_{\mathbb{R}} \dd x \, |v(x)|^2
+\end{align*}
+	
+	allora sostituendo otteniamo che:
+	
+\begin{align*}
+	 \frac{|\braket{x}{v}|^2}{\braket{v}} = \frac{|v(x)|^2}{\int_{\mathbb{R}} \dd x \, |v(x)|^2}
+\end{align*}
+
+	allora possiamo definire:
+	
+\begin{mydef}
+	Definisco la \textbf{probabilità che la misura di $x$ mi dia un certo risultato in un intervallo} come:
+	
+\begin{align*}
+	P_{\hat{x} \to x \, \in \, \qty[\, \overline{x} - \Delta, \, \overline{x} + \Delta \, ]} = \int_{\overline{x} - \Delta}^{\overline{x} + \Delta } \dd x \,\frac{|\braket{x}{v}|^2}{\braket{v}} = \frac{1}{\braket{v}}\int_{\overline{x} - \Delta}^{\overline{x} + \Delta } \dd x \, |\braket{x}{v}|^2 = \frac{  \int_{\overline{x} - \Delta}^{\overline{x} + \Delta } \dd x \, |v(x)|^2  }{  \int_{\mathbb{R}} \dd x \, |v(x)|^2    }
+\end{align*}
+\end{mydef}
+	
+	Do inoltre anche la seguente definizione:
+	
+\begin{mydef}
+	Si definisce
+\begin{align*}
+	|v(x)|^2 \, \equiv \, \text{\textbf{densità di probabilità}}
+\end{align*}
+	di trovare la particella nella regione: $\qty[x-\dd x/2, x + \dd x/2]$, ossia possiamo dire che $|v(x)|^2$ è proporzionale alla densità di probabilità di trovare la particella in $x$.
+\end{mydef}	
+
+	in conclusione possiamo dire:
+	
+\begin{mydef}
+	Definisco la \textbf{probabilità} che la particella si trovi in una regione di spazio compresa tra $x = a$ e $ x= b$ come:
+\begin{align*}
+	P(a<x<b) = \frac{  \int_{a}^{b} \dd x \, |v(x)|^2  }{  \int_{\mathbb{R}} \dd x \, |v(x)|^2    } \leq 1
+\end{align*}
+	con:
+\begin{align*}
+	\sum_i P_{\lambda_i} = 1 \quad ; \quad P(-\infty < x < \infty) = 1
+\end{align*}
+\end{mydef}
+	
+\subsection{Autofunzioni dell'Impulso}	
+
+	Discutiamo ora degli autovettori dell'operatore impulso, $\hat{p}$.
+
+\begin{nb}
+	In generale vale che, se $v(x) = v_p(x)$ è un autofunzione di $\hat{p}$ allora:
+\begin{align*}
+	\hat{p}v_p(x) = p \, v_p(x) \qquad p \in \mathbb{R}
+\end{align*}
+\end{nb}
+
+	Nella RS abbiamo trovato che:
+	
+\begin{align*}
+	\hat{p} = - i\hbar \, \dv{x}
+\end{align*}
+
+	se sostituisco allora:
+
+\begin{align*}
+	\textcolor{blue}{\hat{p}}v_p(x) = p \, v_p(x) \, \Rightarrow \, \textcolor{blue}{- i\hbar \, \dv{x}}v_p(x) = p \, v_p(x) \, \Rightarrow \,  - i\hbar \, \dv{v_p(x)}{x} = p \, v_p(x)
+\end{align*}
+	
+	considero ora l'equazione per quello che è, ovvero un'equazione differenziale a variabili separabili, proseguo allora alla ricerca di $v_p$:
+	
+\begin{align*}
+	- i\hbar \, \dv{v_p(x)}{x} = p \, v_p(x) \, \Rightarrow \, - \frac{\dd v_p(x)}{v_p(x)} = \frac{p}{i\hbar} \, \dd x \, \Rightarrow \, \frac{\dd v_p(x)}{v_p(x)} = \frac{i\, p}{\hbar} \, \dd x
+\end{align*}
+
+	allora integro:
+	
+\begin{align*}
+	\frac{\dd v_p(x)}{v_p(x)} = \frac{i\, p}{\hbar} \, \dd x \, \Rightarrow \, \int \frac{\dd v_p(x)}{v_p(x)} = \int \frac{i\, p}{\hbar} \, \dd x \, \Rightarrow \, \log v_p(x) = \frac{i\, p}{\hbar}\, x + C_p
+\end{align*}
+
+	allora:
+	
+\begin{align*}
+	\log v_p(x) = \frac{i\, p}{\hbar}\, x + C_p \, \Rightarrow \, e^{\log v_p(x)} = e^{\frac{i\, p}{\hbar}\, x + C_p} = e^{\frac{i\, p}{\hbar}\, x} \, e^{C_p}
+\end{align*}
+
+	ridefinisco: $e^{C_p}\, \equiv \, C_p$, allora:
+	
+\begin{align*}
+	e^{\log v_p(x)} = e^{\frac{i\, p}{\hbar}\, x} \, e^{C_p} \, \Rightarrow \, v_p(x) = C_p \, e^{\frac{i\, p}{\hbar}\, x} = C_p \, e^{\frac{2 \pi i\, p}{h}\, x}
+\end{align*}
+
+	ovvero:
+	
+\begin{nb}
+\begin{align*}
+	v_p(x) = C_p \, e^{2 \pi i\, px / h}
+\end{align*}
+\end{nb}
+
+	dunque le autofunzioni sono funzioni esponenziali complesse che si possono vedere anche come di seni e coseni.
+	
+\begin{myapprf}
+	Facciamo ora due piccole osservazioni:
+	
+\begin{enumerate}[label=\arabic*)]
+	\item All'esponente compare il termine: $p/h$. Possiamo fare un collegamento ora con i primi capitoli. Ricordiamo infatti che nell'\textbf{ipotesi di De Broglie} si aveva: 
+	\begin{align*}
+		\lambda_{DB} = \frac{h}{p}
+	\end{align*}
+		dunque possiamo sostituire nell'autofunzione:
+	\begin{align*}
+		v_p(x) = C_p \, e^{2\pi \, i \, x / \lambda_{DB}}
+	\end{align*}
+		ossia, \textit{gli autostati dell'impulso sono descritti da funzioni d'onda e ad ogni particella di impulso $p$, nella RS, è associata un'onda di lunghezza d'onda $\lambda = h/p$.}
+	
+	\item La densità di probabilità in questo caso è:
+	\begin{align*}
+		|v_p(x)|^2 = |c|^2 \, \equiv \, \text{costante}
+	\end{align*}
+		cosa significa?
+		\\
+		\\
+		Significa che in ogni punto dello spazio ho la stessa probabilità di trovare una particella. Di conseguenza l'integrale diverge ($v(x)$ non tende a $0$):
+	\begin{align*}
+		\int_{\mathbb{R}} |v_p(x)|^2 \, \dd x = + \infty	
+	\end{align*}
+		dunque vale che:
+	\begin{align*}
+		v_p(x) \notin L_2(\mathbb{R})
+	\end{align*}
+		Una funzione d'onda $v_p(x)$ con densità di probabilità uniforme e non normalizzabile non può descrivere uno stato fisico reale. Questo perché per rappresentare uno stato fisico deve essere necessariamente normalizzabile, cioè l'integrale della densità di probabilità deve essere finito e uguale a $1$. La conseguenza sugli operatori è che gli operatori di posizione $\hat{x}$ e impulso $\hat{p}$ non hanno autovettori normalizzabili all'interno di $L_2(\mathbb{R})$. I loro autovettori (come ad esempio la funzione d'onda di impulso definito, $v_p(x)$) sono infatti distribuzioni non normalizzabili, come abbiamo già detto. Questo implica che \textit{l'impulso esattamente definito, così come la posizione esattamente definita, non sono osservabili fisicamente realizzabili, cioè non esistono stati fisici reali con impulso (o posizione) perfettamente definito.}
+\end{enumerate}
+\end{myapprf}
+
+\section{Rappresentazione degli Impulsi}
+
+	La rappresentazione di Schrodinger (RS) non è l'unica a rappresentare l'algebra di Heisenberg:
+
+\begin{align*}
+	\qty[\hat{x}, \hat{p}] = i \, \hbar \,  \hat{ \mathbb{I} }
+\end{align*}
+
+	Nella RS ho scelto una rappresentazione in cui $\hat{x}$ è diagonale. Ma non è obbligatorio, infatti possiamo scegliere anche una rappresentazione in cui è $\hat{p}$ ad essere diagonale.
+	
+\begin{mydef}
+	Chiamiamo la nuova rappresentazione: \textbf{rappresentazione degli impulsi} (RI), allora vale che:
+\begin{align*}
+	\hat{p} \ket{p} = p \ket{p}
+\end{align*}
+\end{mydef}
+	
+	In questo caso, seguendo la stessa logica di prima:
+	
+\begin{mydef}
+
+	Il vettore $\ket{v}$ è rappresentato nella "base" $\ket{p}$ come:
+	
+\begin{align*}
+	\braket{p}{v} \,\equiv \, \tilde{v}(p) : \mathbb{R} \to \mathbb{C}
+\end{align*}
+
+	dove $\tilde{v}(p)$ è la \textbf{funzione d'onda nella rappresentazione degli impulsi}. Inoltre analogamente abbiamo che lo \textbf{spazio di funzioni} è:
+\begin{align*}
+	\tilde{v}(p) \in \mathcal{H}_{\mathbb{C}} = \qty{\tilde{v} : \mathbb{R} \to \mathbb{C}, \int_{-\infty}^{\, +\infty} \dd p \, |\tilde{v}(p)|^2 < \infty } \, \equiv \, L_2(\mathbb{R})
+\end{align*}
+\end{mydef}
+	
+	Inoltre vale che:
+	
+\begin{nb}
+	Il ruolo delle $x$ e delle $p$ si scambia nella rappresentazione RI, infatti:
+\begin{empheq}[left=\empheqlbrace]{align*}
+	&\hat{p}\tilde{v}(p) = p\tilde{v}(p)      \\
+	&\hat{x}\tilde{v}(p) = i\hbar \, \dv{p} \tilde{v}(p) 
+\end{empheq}
+	dove vale dunque che:
+\begin{align*}
+	\hat{x} = i\hbar \, \dv{p}
+\end{align*}
+\end{nb}
+
+	e come al solito la relazione tra i due è:
+
+\begin{align*}
+	\qty[\hat{p}, \hat{x}] = - i \hbar \, \hat{\mathbb{I}}
+\end{align*}
+	
+	Con $\hat{x}$ ed $\hat{p}$ densi in $L_2(\mathbb{R})$: $D_{\hat{x}}, D_{\hat{p}} \in L_2(\mathbb{R})$, diamo ancora la seguente relazione importante:
+	
+\begin{nb}
+	Essendo $|\tilde{v}(p)|^2$ la densità di probabilità relativa all'impulso, \textit{la probabilità che una particella abbia impulso tra $p$ e $p + \dd p$} è:
+\begin{align*}
+	\dd P(p) = \frac{\dd p \, |\tilde{v}(p)|^2}{\braket{\tilde{v}}}
+\end{align*}
+\end{nb}
+
+
+
+
+

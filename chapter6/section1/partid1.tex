@@ -1,0 +1,1616 @@
+\chapter{Sistemi di Particelle Identiche}
+
+	Si consideri un sistema composto del tipo $\mathcal{H}_1 \otimes \mathcal{H}_2$. Esso ha dimensione:
+	
+\begin{align*}
+	\dim \mathcal{H} = n_1 n_2
+\end{align*}
+
+	che sono rispettivamente la dimensione di $\mathcal{H}_1$ e $\mathcal{H}_2$.
+	\\	
+	\\
+	Mi metto nel caso in cui vale: $\mathcal{H}_1 = \mathcal{H}_2$, cioè nel caso in cui gli autospazi sono descritti dalle osservabili. Se ho una soluzione per $\mathcal{H}$, posso allora scambiare i pedici $1$ e $2$ ed avere di nuovo una soluzione per $\mathcal{H}$: si tratta di una \textit{simmetria di scambio.}
+	\\
+	\\
+	In meccanica classica, date $2$ particelle ad esempio, se fisso le condizioni iniziali potrò sempre distinguere l'una dall'altra siccome soddisfano una legge del moto definita e seguono quindi delle traiettorie fisse nello spazio delle fasi. Invece, in meccanica quantistica, esistono \textbf{sistemi di particelle identiche}, ossia \textit{indistinguibili} dal momento che non esistono traiettorie. Non ho dunque modo di distinguere fisicamente la situazione $\qty(1, 2)$ o $\qty(2, 1)$. Si tratta del \textbf{principio di indistinguibilità}. Un esempio di sistema di particelle identiche è un sistema di due elettroni.
+
+\section{Principio di Pauli: bosoni e fermioni}
+
+	Generalizzando ad $N$ particelle, si abbiano $N$ autospazi di dimensione $k$, ovvero tali che:
+
+\begin{align*}	
+	\dim \mathcal{H}_k = k \, \, \Rightarrow \, \, \dim \mathcal{H}_N = \dim \qty(\mathcal{H}_k \otimes \ldots \otimes \mathcal{H}_k)
+\end{align*}
+
+	se siamo nel caso in cui tali sottospazi sono \textit{distinguibili}, allora:
+	
+\begin{align*}
+	\dim \mathcal{H}_k = k^N
+\end{align*}
+
+	altrimenti devo togliere tutti i sottospazi identici ad altri. In altre parole, se una base di $\mathcal{H}_k$ è:
+	
+\begin{align*}
+	\qty{ \ket{\alpha}, \, \alpha = 1, \ldots, k}
+\end{align*}
+
+	una base di $\mathcal{H}_N$ sarà:
+	
+\begin{align*}
+	\qty{\ket{\alpha_1}, \ldots, \ket{\alpha_N}, \, \alpha_i = 1, \ldots, k}
+\end{align*}
+	
+	quindi ad esempio se non distinguo $\ket{\alpha_1}\ket{\alpha_2}$ da $\ket{\alpha_2} \ket{\alpha_1}$, dovrò tenere conto della presenza di questi due stati indistinguibili. Introduco allora il seguente operatore:
+	
+\begin{mydef}	
+	Definiamo l'\textbf{operatore di scambio} $\hat{P}$, ossia una matrice le cui entrate sono:
+	
+\begin{align*}
+	\hat{P}_{ij} : \mathcal{H}_N \to \mathcal{H}_N
+\end{align*}
+
+	tale che:
+	
+\begin{align*}
+	\ket{\alpha_1} \cdots \ket{\alpha_i} \cdots \ket{\alpha_j} \cdots \ket{\alpha_N} \to \ket{\alpha_1} \cdots \ket{\alpha_j} \cdots \ket{\alpha_i} \cdots \ket{\alpha_N}
+\end{align*}
+
+	e che è unitaria. Pertanto vale:
+
+\begin{align*}
+	\hat{P}_{ij}^2 = \mathbb{I} \qquad ; \qquad \hat{P}_{ij}^{\dagger} = \hat{P}_{ij}
+\end{align*}
+
+\end{mydef}
+
+	Enunciamo ora il seguente ed importantissimo principio, il \textbf{principio di Pauli}:
+	
+\begin{myprinc}
+
+	Il \textbf{principio di Pauli} si articola nei seguenti $3$ punti:
+
+\begin{enumerate}[label=\arabic*)]
+
+	\item In un sistema di particelle identiche, le \textbf{osservabili fisiche} sono una sottoalgebra del sistema complessivo: tutte le \textit{osservabili fisiche} sono quelle in cui operatori associati commutano con $\hat{P}_{ij}$:
+	\begin{align*}
+		\hat{O} : \mathcal{H}_N \to \mathcal{H}_N \, \, \Rightarrow \, \, \qty[\hat{O}, \hat{P}_{ij}] = 0
+	\end{align*}
+
+	\item Come agisce $\hat{P}_{ij}$ sullo stato $\psi$? 
+	
+		Ho che:
+	
+	\begin{align*}
+		\hat{P}_{ij} \psi = \lambda \psi \, \, \Rightarrow \, \, \hat{P}_{ij}^2 \psi = \lambda \hat{P}_{ij} \psi \, \, \Rightarrow \, \, \hat{P}^2_{ij} \psi = \lambda^2 \psi 
+	\end{align*}
+	
+		ed essendo che $\hat{P}^2_{ij} = \mathbb{I}$ per ipotesi allora:
+		
+	\begin{align*}
+		\psi = \lambda^2 \psi  \, \, \Rightarrow \, \, \lambda = \pm 1
+	\end{align*}
+
+		pertanto, poiché dal primo punto so che $\mathcal{H}_{\text{fisici}} \subset \mathcal{H}$, in particolare ho che la sottoalgebra è composta da stati simmetrici e stati antisimmetrici:
+		
+	\begin{align*}
+		& \mathcal{H}_+ = \qty{\psi \in \mathcal{H}_N, \, \hat{P}_{ij}\psi = \psi, \, \forall i, j } \, \, \Rightarrow \, \, \textbf{simmetrici} \\
+		& \mathcal{H}_- = \qty{\psi \in \mathcal{H}_N, \, \hat{P}_{ij}\psi = - \psi, \, \forall i, j } \, \, \Rightarrow \, \, \textbf{antisimmetrici}
+	\end{align*}
+	
+	\item Quando $\mathcal{H}_k$ è lo spazio degli stati di una particella non relativistica che si muove in uno spazio tridimensionale con spin $s$, cioè quando:
+	
+	\begin{align*}
+		\mathcal{H}_k = L_2\qty(\mathbb{R}^3) \otimes \mathcal{H}_s	
+	\end{align*}
+		
+		si ha allora:
+	
+	\begin{itemize}
+		\item $\mathcal{H}_k = \mathcal{H}_{+}$ se $s$ è \textbf{intero}: in questo caso la particella segue la \textit{statistica di Bose-Einstein}, per questo si parla di \textbf{bosoni}. La dimensione dello spazio è:
+		\begin{align*}
+			\dim \mathcal{H}_+ = \mqty(N + k -1 \\ k -1)
+		\end{align*}
+		
+		\item $\mathcal{H}_k = \mathcal{H}_{-}$ se $s$ è \textbf{semintero}: in questo caso invece la particella segue la \textit{statistica di Fermi-Dirac}, per questo si parla di \textbf{fermioni}. La dimensione dello spazio è:
+		\begin{align*}
+			\dim \mathcal{H}_- = \mqty(k \\ N) \quad \text{se} \, \, \, N \leq k
+		\end{align*}
+			altrimenti se $ N \geq k$, la dimensione è nulla.
+	\end{itemize}
+	
+	tutto ciò va sotto al nome: \textbf{Connessione Spin - Statistica} che in meccanica quantistica non relativistica è un assioma, mentre in meccanica quantistica relativistica è un teorema vero e proprio.
+
+\end{enumerate}
+\end{myprinc}
+
+	Consideriamo ora anche lo spin. 
+	\\
+	\\
+	Ad esempio, per $N = 2$, nel caso dei bosoni si ha che:
+	
+\begin{align*}
+	\Psi_+ \qty(\vb{r}_1, \vb{r}_2, \sigma_1, \sigma_2) = \frac{1}{\sqrt{2}} \, \qty\Big( \psi_a\qty(\vb{r}_1, \sigma_1) \, \psi_b\qty(\vb{r}_2, \sigma_2) + \,  \psi_a\qty(\vb{r}_2, \sigma_2) \, \psi_b \qty(\vb{r}_1, \sigma_1)     )
+\end{align*}
+
+	mentre nel caso di fermioni:
+
+\begin{align*}
+	\Psi_- \qty(\vb{r}_1, \vb{r}_2, \sigma_1, \sigma_2) = \frac{1}{\sqrt{2}} \, \qty\Big( \psi_a\qty(\vb{r}_1, \sigma_1) \, \psi_b\qty(\vb{r}_2, \sigma_2) - \,  \psi_a\qty(\vb{r}_2, \sigma_2) \, \psi_b \qty(\vb{r}_1, \sigma_1)     )
+\end{align*}
+
+	dove $a$ e $b$ etichettano le due particelle: dal principio di indistinguibilità non posso sapere chi è uno e chi sia l'altro, pertanto la funzione d'onda sarà una combinazione lineare dei due possibili casi (particella $a$ in $\qty(\vb{r}_1, \sigma_1)$ e particella $b$ in $\qty(\vb{r}_2, \sigma_2)$ e viceversa), la cui simmetria sarà dettata dall'algebra del sottospazio fisico a cui appartengono (pari per i bosoni e dispari per i fermioni). 
+	\\
+	\\
+	Da ciò deriva il più noto, anche se è conseguenza diretta del principio generale, \textbf{principio di esclusione}:
+	
+\begin{myprinc}
+	\textit{Due fermioni identici non possono occupare simultaneamente lo stesso stato.}
+\end{myprinc}
+
+	La simmetria della funzione d'onda è dettata dall'algebra del sottospazio a cui le particelle appartengono: per i fermioni, la funzione d'onda deve essere dispari (antisimmetrica) rispetto allo scambio di due particelle. Questo significa che se scambi due fermioni identici, la funzione d'onda cambia segno:
+	
+\begin{align*}
+	\Psi\qty(2, 1) = - \Psi\qty(1, 2)
+\end{align*}
+
+	Per soddisfare questa proprietà antisimmetrica, la funzione d'onda totale $\Psi_-$ si costruisce sottraendo le due possibili configurazioni:
+	
+\begin{align*}
+	\Psi_- \sim \psi_a\qty(1)\psi_b\qty(2) - \psi_a\qty(2)\psi_b\qty(1)
+\end{align*}
+
+	 Se facessimo finta che non valga il \textit{principio di Pauli}, potremmo avere che nell'esempio di prima $\Psi_-\qty(\vb{r}_1, \vb{r}_2) = 0$, poiché ho il termine $\psi_a\qty(\vb{r}_1, \sigma_1) \psi_b\qty(\vb{r}_1, \sigma_1)$ meno se stesso, che è impossibile. Infatti se la funzione d'onda $\Psi$ è identicamente zero, significa che la probabilità di trovare il sistema in quella configurazione è nulla (la particella non esiste). Quindi, fisicamente, quello stato non può realizzarsi.
+	\\
+	\\
+	In generale, per $n$ particelle identiche, posso fattorizzare la funzione d'onda in una parte spaziale ed una di spin (\textbf{spinore}):
+	
+\begin{align*}
+	\Psi\qty(\vb{r}_1, \ldots, \vb{r}_n, \sigma_1, \ldots, \sigma_n) = \phi\qty(\vb{r}_1, \ldots, \vb{r}_n) \, \chi\qty(\sigma_1, \ldots, \sigma_n)
+\end{align*}
+
+	Prendiamo per esempio il caso di $n  = 2$ fermioni identici. Poiché l'operatore di scambio agisce simultaneamente sulle due funzioni, per garantire l'antisimmetria complessiva della funzione, ho che:
+
+\begin{itemize}
+	\item Se la parte spaziale è simmetrica, la parte di spin deve essere antisimmetrica allora:
+	\begin{align*}
+		\psi\qty(\vb{r}_1, \vb{r}_2) = \psi\qty(\vb{r}_2, \vb{r}_1) \qquad ; \qquad \chi\qty(\sigma_1, \sigma_2) = - \chi\qty(\sigma_2, \sigma_1)
+	\end{align*}
+
+	\item Se la parte spaziale invece è antisimmetrica, la parte di spin deve essere simmetrica:
+	\begin{align*}
+		\psi\qty(\vb{r}_1, \vb{r}_2) = - \psi\qty(\vb{r}_2, \vb{r}_1) \qquad ; \qquad \chi\qty(\sigma_1, \sigma_2) = \chi\qty(\sigma_2, \sigma_1)
+	\end{align*}
+	
+\end{itemize}
+		
+	Discorso analogo vale per $n = 2$ bosoni identici. Poiché l'operatore di scambio agisce simultaneamente sulle due funzioni, per garantire la simmetria complessiva della funzione ho che:
+	
+\begin{itemize}
+	
+	\item Se la parte spaziale è simmetrica, la parte di spin deve essere simmetrica:
+	\begin{align*}
+		\psi\qty(\vb{r}_1, \vb{r}_2) =  \psi\qty(\vb{r}_2, \vb{r}_1) \qquad ; \qquad \chi\qty(\sigma_1, \sigma_2) = \chi\qty(\sigma_2, \sigma_1)
+	\end{align*}
+	
+	\item Se la parte spaziale è antisimmetrica, la parte di spin deve essere antisimmetrica:
+	\begin{align*}
+		\psi\qty(\vb{r}_1, \vb{r}_2) =  -\psi\qty(\vb{r}_2, \vb{r}_1) \qquad ; \qquad \chi\qty(\sigma_1, \sigma_2) = -\chi\qty(\sigma_2, \sigma_1)
+	\end{align*}
+	
+\end{itemize}
+
+	Prima di andare avanti, è opportuno fare alcune considerazioni molto delicate, che avranno però importanti conseguenze. 
+	\\
+	\\
+	Consideriamo due particelle in moto in un potenziale centrale, che dipende soltanto dalla distanza relativa tra di esse. L'Hamiltoniana che descrive il sistema è:
+	
+\begin{align*}
+	\hat{H} = \frac{\hat{\vb{p}}^2_1}{2m_1} + \frac{\hat{\vb{p}}^2_2}{2m_2} + V\qty(r)
+\end{align*}
+
+	dove $r = |\vb{r}_1 - \vb{r}_2|$ è la coordinata relativa tra le due particelle. Definisco ora la coordinata del \textit{centro di massa} come:
+	
+\begin{align*}
+	\vb{R}_{\text{CM}} = \frac{m_1 \vb{r}_1 + m_2 \vb{r}_2}{m_1 + m_2}
+\end{align*}
+
+	da cui ho:
+	
+\begin{align*}
+	\vb{V}_{\text{CM}} = \frac{m_1 \vb{v}_1 + m_2 \vb{v}_2}{m_1 + m_2}
+\end{align*}
+
+	e allora posso scrivere la quantità di moto rispetto al centro di massa come:
+	
+\begin{align*}
+	\vb{P}_{\text{CM}} = \qty(m_1 + m_2) \, \vb{V}_{\text{CM}} = \vb{p}_1 + \vb{p}_2
+\end{align*}
+
+	Ricordiamo ora del problema a due corpi, le singole quantità di moto sono espresse in termini di quantità di moto relativa, ovvero:
+	
+\begin{align*}
+	\vb{p}_{\text{rel}} = \mu \, \vb{V}_{\text{rel}}
+\end{align*}
+
+	dove $\mu$ è la \textit{massa ridotta} e allora possiamo scrivere:
+
+\begin{align*}
+	\vb{p}_{\text{rel}} = \mu \, \vb{V}_{\text{rel}} = \frac{m_1 m_2}{m_1 + m_2} \, \vb{V}_{\text{rel}} = \frac{m_1 m_2}{m_1 + m_2} \, |\vb{v}_1 - \vb{v}_2| = \frac{m_2 \vb{p}_1 - m_1 \vb{p}_2}{ m_1 + m_2 } 
+\end{align*}
+
+	dove infatti:
+	
+\begin{align*}
+	& \vb{p}_1 = m_1 \vb{v}_1 \, \Rightarrow \, \vb{v}_1 = \frac{\vb{p}_1}{m_1} \\
+	& \vb{p}_2 = m_2 \vb{v}_2 \, \Rightarrow \, \vb{v}_2 = \frac{\vb{p}_2}{m_2}
+\end{align*}
+
+	allora possiamo trovare:
+	
+\begin{align*}
+	\vb{p}_1 = \frac{m_1}{m_1 + m_2} \, \vb{P}_{\text{CM}} + \vb{p}_{\text{rel}} \qquad ; \qquad \vb{p}_2 = \frac{m_2}{m_1 + m_2} \, \vb{P}_{\text{CM}} - \vb{p}_{\text{rel}}
+\end{align*}
+
+	Se adesso si vanno a sostituire i due termini nell'Hamiltoniana di partenza, si trova che:
+	
+\begin{align*}
+	\hat{H} = \frac{\vb*{\hat{P}}^2_{\text{CM}} }{2M} + \frac{\vb*{\hat{p}}^2_{\text{rel}} }{2\mu} + V\qty(r)
+\end{align*}
+
+	Questa è l'Hamiltoniana \textit{separata} nelle coordinate del centro di massa e relative. La prima parte:
+	
+\begin{align*}
+	\frac{\vb*{\hat{P}}^2_{\text{CM}}}{2M}
+\end{align*}
+
+	descrive il moto del centro di massa, mentre la seconda parte:
+	
+\begin{align*}
+	\frac{\vb*{\hat{p}}^2_{\text{rel}}}{2\mu} + V\qty(r)
+\end{align*}
+	
+	descrive il moto relativo delle due particelle nel potenziale scelto.
+	\\
+	\\
+	Che conseguenze ha tutto ciò?
+	\\
+	\\
+	L'aver separato la coordinata relativa da quella del centro di massa permette di fattorizzare la funzione d'onda spaziale come:
+	
+\begin{align*}
+	\Phi\qty(\vb{R}, \vb{r}) = \phi_{\text{CM}}\qty(R) \, \phi_{\text{rel}}\qty(r)
+\end{align*}
+	
+	dove la funzione d'onda spaziale relativa è formalmente identica alla funzione d'onda dell'atomo di Idrogeno, perciò è possibile scrivere:
+	
+\begin{align*}
+	\phi_{\text{rel}}\qty(r) = R_{nl}\qty(r) \, Y_l^m\qty(\theta, \phi)
+\end{align*}
+	
+	Consideriamo adesso il caso di \textbf{particelle identiche}: cosa succede se applico la simmetria di scambio alla funzione d'onda?
+	\\
+	\\
+	La parte dipendente dal centro di massa non subirà cambiamenti, ma la parte dipendente dalla coordinata relativa si. Infatti per scambio da $1$ a $2$ e viceversa, ho che: $r = \vb{r}_1 - \vb{r}_2 \to \vb{r}_2 - \vb{r}_1 = -r$, che non apporta cambiamenti alla funzione, e $\qty(\theta, \phi) \to \qty(\pi - \theta, \phi + \pi)$ che invece secondo la parità delle armoniche sferiche sotto inversione spaziale:
+	
+\begin{align*}
+	\Pi Y_l^m \qty(\theta, \phi) = Y_l^m \qty(\pi - \theta, \phi + \pi) = \qty(-1)^l \, Y_l^m\qty(\theta, \phi)
+\end{align*}
+	
+	che si porta dietro un fattore $\qty(-1)^l$, che determina in conclusione la \textbf{simmetria della funzione d'onda spaziale}.
+	\\
+	\\
+	Si consideri un elettrone (\textit{fermione}) e si indichi con $\hat{H}^{\qty(1)}$ il suo spazio di singola particella. Lo spazio $\hat{H}^{\qty(1)}$ è un prodotto tensore tra il suo spazio orbitale ed il suo spazio di spin, ovvero:
+	
+\begin{align*}
+	\hat{H}^{\qty(1)} = \mathcal{H}_{\text{orb}} \otimes \mathcal{H}_s
+\end{align*}
+
+	Sia $\qty{\ket{n}, \, n = 0, 1, 2, \ldots }$ una base discreta dell'autospazio $\mathcal{H}_{\text{orb}}$. Si abbiamo ora $N = 2$ elettroni, di cui consideriamo solo lo spin. 
+	\\
+	\\
+	Quanti sono gli stati del sistema di due fermioni $\mathcal{H}^{\qty(1)} \otimes \mathcal{H}^{\qty(1)}$?
+	\\
+	\\
+	Per rispondere a questa domanda dobbiamo conoscere la dimensione dello spazio orbitale: in genere essa è infinita, poiché i numeri quantici possono assumere infiniti valori, tuttavia scelgo di studiare cosa succede a $2$ elettroni su $2$ livelli energetici. Ovvero scelgo: $\dim \mathcal{H}_{\text{orb}} = 2$. Che dimensione ha lo spazio fermionico associato a $\mathcal{H}_-$? Poiché:
+	
+\begin{align*}
+	\dim \mathcal{H}^{\qty(1)} = \dim \mathcal{H}_{\text{orb}} \cdot \dim \mathcal{H}_{s} = 2 \, \qty(2 s + 1) \, \equiv \, k
+\end{align*}
+
+	si ha, per $N = 2$ (prendiamo infatti in esame $2$ elettroni) che vale :
+	
+\begin{align*}
+	\dim \mathcal{H}_- = \mqty(k \\ N) = \mqty(2\qty(2s + 1) \\ 2) 
+\end{align*}
+
+	ricordando che:
+	
+\begin{align*}
+	\mqty(k \\ N) = \frac{k!}{N!\, \qty(k - N)!} 
+\end{align*}
+
+	allora:
+
+\begin{align*}
+	 \mqty(2\qty(2s + 1) \\ 2)  = \qty(2s + 1)\, \qty(4s + 1)
+\end{align*}
+
+	Adesso \textit{costruisco due operatori che commutano con $\hat{P}$, l'\textcolor{cyan}{energia totale del sistema} e lo \textcolor{orange}{spin totale del sistema}:}
+	
+\begin{align*}
+	& \textcolor{cyan}{\hat{H} } = \hat{H}^{\qty(1)} \otimes \mathbb{I} + \mathbb{I} \otimes \hat{H}^{\qty(1)} \\
+	& \textcolor{orange}{ \hat{S}_z }= \hat{S}_z^{\qty(1)} \otimes \mathbb{I} + \mathbb{I} \otimes \hat{S}_z^{\qty(1)}
+\end{align*}
+
+	tali che, detta la base di $\mathcal{H}_N = \mathcal{H}^{\qty(1)} \otimes \mathcal{H}^{\qty(1)}$ la seguente:
+	
+\begin{align*}
+	\qty{ \ket{n_1}\ket{\sigma_1}, \, \ket{n_2} \ket{\sigma_2} ; \, n_i = 1, 2 \, ;  \, \sigma = -s, \ldots, + s  }
+\end{align*}
+
+	allora si ha:
+	
+\begin{align*}
+	& \hat{H}\ket{n_1, \sigma_1; \, n_2, \sigma_2} = \qty(E_{n_1} + E_{n_2}) \ket{n_1, \sigma_1; \, n_2, \sigma_2} \\
+	& \hat{S}_z\ket{n_1, \sigma_1; \, n_2, \sigma_2} = \qty(\sigma_{n_1} + \sigma_{n_2}) \ket{n_1, \sigma_1; \, n_2, \sigma_2}
+\end{align*}
+
+	quindi uno stato del sistema composto è assegnato se ho $n_1, n_2$ e $\sigma_1, \sigma_2$. In generale ho $3$ livelli energetici distinti: per un generico valore di $s$, come si distribuiscono quindi i $\qty(2s + 1) \qty(4s + 1)$ stati sui vali livelli?
+
+
+\begin{itemize}
+	\item $E = 2 E_1$
+		
+		Entrambi gli elettroni sono sul livello $E_1$. Ho quindi $n_1 = n_2 = 1$, quindi una base è $\qty{\ket{1, \sigma_1}, \ket{1, \sigma_2}}$. Questo significa che entrambi gli elettroni si trovano sul livello energetico fondamentale $E_1$ (quindi $n_1=1$ e $n_2=1$). La parte spaziale della funzione d'onda è quindi il prodotto dello stato $1$ con se stesso:
+		
+	\begin{align*}
+		\psi_{\text{spazio}} = \ket{1}\ket{1}
+	\end{align*}
+	
+		se scambi le due particelle ottieni ancora $\ket{1}\ket{1}$, quindi la parte spaziale è \textit{simmetrica}. I fermioni devono avere una funzione d'onda totale \textit{antisimmetrica} (devono cambiare segno se li scambi).
+La funzione totale è il prodotto di Spazio $\times$ Spin. Ossia:
+
+	\begin{align*}
+		\Psi_{\text{tot}} = \psi_{\text{spazio}} \otimes \chi_{\text{spin}}
+	\end{align*}
+
+		Affinché il totale sia antisimmetrico, poiché sistema di fermioni, dato che lo spazio è simmetrico, la parte di spin deve essere obbligatoriamente \textit{antisimmetrica}. La funzione d'onda relativa a questa configurazione energetica è allora:
+	
+	\begin{align*}
+		\Psi_{\sigma_1, \sigma_2}^{\qty(2E_1)} = \frac{1}{\sqrt{2}} \, \qty(\ket{1, \sigma_1} \ket{1, \sigma_2} - \ket{1, \sigma_2} \ket{1, \sigma_1})
+	\end{align*}
+	
+		quanti sono questi stati?
+		\\
+		\\
+		Ora il problema diventa puramente combinatorio: quanti stati di spin antisimmetrici esistono per due particelle con spin $s$?
+		\\
+		\\
+		Il numero di spin per una singola particella: $N_s = 2s + 1$ e dobbiamo scegliere $2$ stati di spin diversi ($\sigma_1 \neq \sigma_2$) tra gli $N_s$ disponibili per formare una combinazione antisimmetrica del tipo $(\sigma_1 \sigma_2 - \sigma_2 \sigma_1)$. Non possono essere uguali altrimenti la differenza fa zero (Principio di Pauli), allora vale la formula?
+		
+	\begin{align*}
+		\text{numero di conteggi} & = \mqty(2s + 1 \\ 2) = \frac{\qty(2s + 1)!}{2! \, \qty(\qty(2s + 1) - 2)!} = \frac{\qty(2s + 1) \qty(2s) \qty(2s - 1)!}{ 2! \qty( 2s - 1)!} \\
+		& = \frac{\qty(2s + 1) \qty(2s)}{2} = s  \qty(2 s + 1)
+	\end{align*}
+	
+		Ho quindi $s \qty(2s + 1)$ stati possibili su questo livello energetico.
+	
+	\begin{myapprf}
+		\textbf{Esempio:}
+		\\
+		\\
+		Per 2 fermioni identici, per esempio $2$ elettroni, otteniamo: $s = 1/2$. Allora abbiamo:
+		\begin{align*}
+			s\qty(2s + 1) = 1
+		\end{align*}
+		È corretto? Sì. Se due elettroni sono nello stesso orbitale spaziale (simmetrico), devono essere nel singoletto di spin (antisimmetrico):
+		\begin{align*}
+			\frac{1}{\sqrt{2}} \, \qty(\ket{+} \ket{-} - \ket{-} \ket{+})
+		\end{align*}
+		C'è un solo stato possibile. Se provassero a stare in uno stato di spin simmetrico (i 3 stati del tripletto), la funzione totale diventerebbe simmetrica, il che è vietato per i fermioni (Pauli).
+
+	\end{myapprf}
+		
+	\item $E = E_1 + E_2$
+	
+		Un elettrone è sul livello $E_1$ mentre l'altro elettrone è sul livello $E_2$. Quindi in questo caso abbiamo un elettrone sul livello energetico fondamentale $E_1$ (chiamiamolo stato orbitale 1) e l'altro sul livello eccitato $E_2$ (stato orbitale 2).
+Poiché le energie sono diverse, le due particelle occupano zone spaziali diverse (o meglio, orbitali diversi).
+	\\
+	\\
+		\textit{Il Principio di Esclusione di Pauli dice che due fermioni non possono avere tutti i numeri quantici uguali.} Nel caso precedente ($E=2E_1$), entrambi erano nello spaziale $1$, quindi dovevano avere spin diversi per non essere identici. In questo caso, invece, i fermioni sono già distinti dalla loro posizione (uno è in $1$, l'altro è in $2$).
+	\begin{itemize}
+		\item L'elettrone sul livello $1$ ha numeri quantici $(n=1, \sigma_1)$.
+		\item L'elettrone sul livello $2$ ha numeri quantici $(n=2, \sigma_2)$.
+	\end{itemize}
+	
+		Dato che $n=1$ è diverso da $n=2$, i due stati completi sono sempre diversi, indipendentemente dallo spin!
+Anche se gli spin fossero identici ($\sigma_1 = \sigma_2$), le particelle non sarebbero nello stesso stato perché una è al "piano terra" e l'altra al "primo piano". Poiché non c'è nessun vincolo che lega lo spin del primo a quello del secondo, abbiamo la massima libertà di scelta:
+	\begin{itemize}
+		\item Scelta per l'elettrone su $E_1$: Può avere qualsiasi orientazione di spin. Quante opzioni ci sono? $2s+1$.
+		\item Scelta per l'elettrone su $E_2$: Può avere, indipendentemente dall'altro, qualsiasi spin. Quante opzioni ci sono? $2s+1$.
+	\end{itemize}
+	
+		Il numero totale di combinazioni è semplicemente il prodotto delle possibilità:
+	\begin{align*}
+		\text{numero di conteggi} = \qty(2s + 1)\qty(2s + 1) = \qty(2s + 1)^2
+	\end{align*}
+	
+		La funzione d'onda infine è:
+	\begin{align*}
+		\Psi_{\sigma_1, \sigma_2}^{\qty(E_1 + E_2)} = \frac{1}{\sqrt{2}} \, \qty(\ket{1, \sigma_1} \ket{2, \sigma_2} - \ket{2, \sigma_2} \ket{1, \sigma_1})
+	\end{align*}
+	
+		Questa formula costruisce automaticamente uno stato antisimmetrico valido per qualsiasi coppia di valori $\sigma_1$ e $\sigma_2$, proprio perché i ket $\ket{1}$ e $\ket{2}$ sono diversi.
+
+	\item $E = 2 E_2$
+	\\
+	\\
+		Entrambi gli elettroni sono sul livello $E_2$. In maniera del tutto analoga al primo caso allora si ottiene che la funzione totale è:
+		
+	\begin{align*}
+		\Psi_{\sigma_1, \sigma_2}^{\qty(2E_2)} = \frac{1}{\sqrt{2}} \, \qty(\ket{2, \sigma_1} \ket{2, \sigma_2} - \ket{2, \sigma_2} \ket{2, \sigma_1})
+	\end{align*}
+	
+		ed ho come il primo caso il numero di stati pari a:
+		
+	\begin{align*}
+		\text{numero di conteggi} = s \qty(2s +1 )
+	\end{align*}
+	
+\end{itemize}
+
+	La somma delle tre degenerazioni è:
+	
+\begin{align*}
+	2s \qty(2s + 1) + \qty(2s + 1)^2 = \qty(2s + 1) \qty(2s + 2s +1 ) = \qty(2s + 1) \qty(4s +1) = \text{dim} \, \mathcal{H}_-
+\end{align*}
+
+	Vediamo ora molto brevemente le due statistiche citate prima. Esse costituiscono un "aggiornamento" quantistico della statistica classica di Maxwell-Boltzmann.
+	
+\subsection{Statistica di Bose-Einstein}
+
+	In questo caso in un qualsiasi stato può stare un numero arbitrario di particelle. Il numero medio di particelle che occupano lo stato $k$ è dato dalla statistica di Bose-Einstein e vale:
+	
+\begin{align*}
+	\mean{n_k} = \frac{1}{e^{\qty(\varepsilon_k - \mu)/k_B T} - 1}
+\end{align*}
+	
+	con energia media che vale:
+	
+\begin{align*}
+	\mean{E_k} = \mean{n_k} \varepsilon_k = \frac{\varepsilon_k}{e^{\qty(\varepsilon_k - \mu)/k_B T} - 1}
+\end{align*}
+
+	diove $\varepsilon_k$ è il $k-$esimo stato e $\mu$ è il potenziale chimico.
+
+\subsection{Statistica di Fermi-Dirac}
+
+	In questo la forma della funzione d'onda è:
+	
+\begin{align*}
+	\Psi\qty(\vb{r}_1, \dots, \vb{r}_N, \sigma_1, \dots, \sigma_N) = \frac{1}{\sqrt{N!}} \sum_P \qty(-1)^p P\qty{\psi_1\qty(\vb{r}_1, \sigma_1), \dots, \psi_N\qty(\vb{r}_N, \sigma_N)}
+\end{align*}
+
+	dove la somma è estesa a tutte le permutazioni $P$ delle variabili e $p$ è la parità della permutazione. Il membro di destra dell’equazione equivale allo sviluppo del \textbf{determinante di Slater}. In cui $N$ è il numero dei fermioni nel sistema. Da ciò segue subito che se due funzioni $\psi_i$ e $\psi_j$ sono uguali fra loro, ci saranno due righe uguali nel determinante che quindi si annullerà. In un sistema di fermioni identici, come già detto, non posso assegnare la stessa $\psi$ a due fermioni. Il formalismo del determinante di Slater è valido per un sistema di fermioni non interagenti in un qualsiasi tipo di potenziale e per ogni livello energetico, a patto di fare attenzione alla sua impostazione. Il numero medio delle particelle che occupano lo stato $k$ è la statistica di Fermi-Dirac.
+
+\begin{align*}
+	\mean{n_k} = \frac{1}{e^{\qty(\varepsilon_k - \mu)/k_B T} + 1}
+\end{align*}
+	
+	con energia media che vale:
+	
+\begin{align*}
+	\mean{E_k} = \mean{n_k} \varepsilon_k = \frac{\varepsilon_k}{e^{\qty(\varepsilon_k - \mu)/k_B T} + 1}
+\end{align*}
+
+\section{Particelle Identiche nel Potenziale Coulombiano}
+
+	In questa sezione vediamo degli esempi di sistemi di particelle identiche nel potenziale Coulombiano, studiandone a grandi linee il comportamento.
+	
+\subsection{L'Atomo di Elio non Interagente}
+
+	Consideriamo un sistema composto da $2$ elettroni (si tratta di $2$ fermioni identici) che interagiscono con un nucleo $Z = 2$. L'Hamiltoniana del sistema è data da:
+	
+\begin{align*}
+	\hat{H} =  \textcolor{blue}{ \frac{\vb*{\hat{p}}^2_1}{2m} - \frac{2e^2}{4\pi \varepsilon_0 r_1} } + \textcolor{ForestGreen}{ \frac{ \vb*{\hat{p}_2^2}}{2m} - \frac{2e^2}{4\pi \varepsilon_0 r_2} } + \textcolor{orange}{  \frac{e^2}{4\pi\varepsilon_0} \, \frac{1}{| \vb{r}_1 - \vb{r}_2 |} }  \, \equiv \, \textcolor{blue}{ \hat{H}_1 } +  \textcolor{ForestGreen}{ \hat{H}_2 } + \textcolor{orange}{\hat{H}_{12}}
+\end{align*}	
+
+	per il momento trascuriamo l'interazione fra i due elettroni e poniamo quindi:
+	
+\begin{align*}
+	\hat{H} = \hat{H}_1 + \hat{H}_2
+\end{align*}
+
+	Voglio descriverne lo spettro tenendo conto del \textit{Principio di Pauli:} per fare ciò scrivo il sistema di singola particella tenendo conto anche dello spin.
+	
+\begin{itemize}
+	\item \textbf{Livello Fondamentale} $\qty(n_1 = n_2 = 1)$
+	
+		Il livello fondamentale dell'elio è composto da due elettroni in $n = 1$. L'energia del livello, in unità di Bohr, è quindi:
+	\begin{align*}
+		E^{\qty(1, 1)} = E_1^{\qty(1)} + E_2^{\qty(1)}
+	\end{align*}
+
+		Il calcolo deriva dall'applicazione della formula sopra all'atomo di Elio, considerando l'approssimazione "non interagente".
+	\\
+	\\
+		L'atomo è di Elio e quindi $Z = 2$ (due protoni nel nucleo). Entrambi gli elettroni sono nel livello più basso possibile, quindi $n_1 = 1$ e $n_2 = 1$. Allora possiamo usare la formula:
+	\begin{align*}
+		& E_1^{\qty(1)} = - \frac{Z^2}{n_1^2} = - 4 \\
+		& E_2^{\qty(1)} = - \frac{Z^2}{n_2^2} = - 4
+	\end{align*}
+
+		e quindi:
+	
+	\begin{align*}
+		E^{\qty(1, 1)} = E_1^{\qty(1)} +  E_2^{\qty(1)} = - 8
+	\end{align*}
+	
+		dire che l'energia è $-8$ significa dire che l'energia totale dello stato fondamentale dell'Elio (senza repulsione tra elettroni) è pari a 8 volte l'energia di legame dell'atomo di Idrogeno ($8 \cdot 13.6 \, \text{eV} \approx 108.8 \, \text{eV}$).
+		\\
+		\\
+		Per il principio di Pauli, poiché sto considerando due fermioni, lo stato del livello è descritto dalla funzione d'onda:
+	\begin{align*}
+		\Psi^{\qty(1, 1)} = \frac{1}{\sqrt{2}} \qty(\ket{1, 0, 0, +}_1 \ket{1, 0, 0, 0, -}_2 - \ket{1, 0, 0, -}_1 \ket{1, 0, 0, +}_2)
+	\end{align*}
+	
+		ed è l'unico modo possibile. Da un semplice calcolo si trova allora che il momento angolare orbitale dello stato fondamentale è: $L = 0$. Essa infatti è diretta conseguenza della regola della \textit{somma dei momenti angolari}. Ecco i passaggi logici:
+		
+		\begin{enumerate}
+			\item Siccome siamo nello stato fondamentale, vale che entrambi gli elettroni si trovano sul livello energetico più basso possibile in cui: $n_1 = 1$ e $n_2 = 1$. Il momento angolare orbitale $l$ può allora assumere solo valori interi da $0$, fino ad $n-1$. Poiché $n = 1$ allora l'unica scelta possibile per $l$ è $0$. Quindi ne segue che il primo elettrone ha momento angolare orbitale pari a $l_1 = 0$ mentre il secondo ha momento angolare orbitale pari a $l_2 = 0$.
+		
+			\item Per trovare $L$ dobbiamo fare la somma vettoriale dei momenti angolari, ossia:
+			\begin{align*}
+				\vb{L} = \vb{l}_1 + \vb{l}_2
+			\end{align*}
+			
+				$L$ quindi può variare tra la differenza e la somma dei singoli moduli:
+			\begin{align*}
+				|l_1 - l_2| \leq L \leq l_1 + l_2
+			\end{align*}
+				
+				separati di $1$, siccome $l_1 = l_2 = 0$ in questo caso, si ottiene che l'unica soluzione possibile è proprio:
+			\begin{align*}
+				L = 0
+			\end{align*}
+
+		\end{enumerate}
+
+			Quindi $L = 0$ abbiamo detto, allora per garantire l'antisimmetria complessiva della funzione d'onda, gli elettroni saranno in singoletto di spin: con $S = 0$. Infatti:
+		
+		\begin{align*}
+			\vb{\frac{1}{2}} \otimes \vb{\frac{1}{2}} = \vb{1} \oplus \vb {0}
+		\end{align*}
+		
+			dove infatti il prodotto tensore indica che sto combinando due sistemi indipendenti con spin $1/2$. La somma diretta risultante indica che il risultato si scompone (si disaccoppia) in due sottospazi distinti e indipendenti. Tuttavia, in fisica dobbiamo scartare $S=1$ a causa del \textit{Principio di Pauli.} Questo perché siccome la parte spaziale è simmetrica per scambio di elettrone, la parte di spin deve essere antisimmetrica, la decomposizione ci dice che, per particelle identiche, il primo spazio di spin è simmetrico e poi seguono gli altri alternandosi, allora necessariamente scelgo solo $S=0$. Non perché $S=1$ non esista matematicamente, ma perché è proibito dalla configurazione spaziale in cui mi trovo. Se gli elettroni fossero in orbitali diversi (spazio antisimmetrico), allora avresti dovuto scegliere $S=1$. Ma stando "nella stessa stanza" (livello fondamentale), devono per forza avere spin opposti in configurazione di singoletto per non violare il principio di esclusione. Quindi, siccome sia $L$ che $S$ sono zero, allora lo stato fondamentale ha $\qty(L, S, J) = \qty(0, 0, 0)$, ricordando infatti che $J = L + S$.
+
+	\item \textbf{Primo livello eccitato} $\qty(n_1 = 1, n_2 = 2)$
+	
+		Passiamo ora al primo livello eccitato, in cui un elettrone è in $n = 1$ mentre l'altro è in $n = 2$. L'energia in questo caso è:
+		
+	\begin{align*}
+		E^{\qty(1, 2)} = E_1^{\qty(1)} + E_2^{\qty(2)}
+	\end{align*}
+	
+		dove:
+		
+	\begin{align*}
+		& E_1^{\qty(1)} = - \frac{Z^2}{n_1^2} = -\frac{4}{1} = - 4 \\
+		& E_2^{\qty(2)} = - \frac{Z^2}{n_2^2} = - \frac{4}{4} = -1
+	\end{align*}
+	
+		allora:
+		
+	\begin{align*}
+		E^{\qty(1, 2)} = - 5
+	\end{align*}
+
+		la funzione d'onda che descrive il livello è invece:
+		
+	\begin{align*}
+		\Psi^{\qty(1, 2)} = \frac{1}{\sqrt{2}} \, \qty(\ket{1, 0, 0, \sigma}_1 \ket{2, l', m', \sigma'}_2 - \ket{2, l', m', \sigma'}_1 \ket{1, 0, 0, \sigma}_2)
+	\end{align*}
+
+		con quindi: $ n = 1$, allora: $l = m = 0$, con $\sigma = - s, -s +1, \dots, + s$ e siccome $s = 1/2$, allora: $\sigma = -1/2, 1/2$, infatti per $s  =1/2 $, ho $2s +1$ stati, ossia in questo caso, $2$. Invece, per $ n' = 2$, $ l' = 0, 1$, $m' = 0$ per $l' = 0$ mentre $m' = -1, 0, 1$ per $l' = 1$, invece $\sigma' = -1/2, 1/2$ come prima.
+		\\
+		\\
+		Questa funzione d'onda deve essere totalmente antisimmetrica per scambio da $1$ a $2$ e viceversa, ossia per $l', m', \sigma, \sigma'$, fissati la funzione deve essere antisimmetrica. 
+		\\
+		\\
+		Qual è la degenerazione di questo livello? L'elettrone nello stato fondamentale ha degenerazione $2$ poiché ha solo una doppia degenerazione di spin, invece l'elettrone nel primo livello ha degenerazione $8$ poiché ha due possibili stati di spin e due possibili valori di $l'$ e quindi ha anche $4$ possibili valori di $m'$ ed in totale $8$, perciò la degenerazione totale del livello è $16$. In generale si può dire subito la degenerazione del livello tenendo conto che la degenerazione di un singolo livello è pari a $2n^2$. Più nello specifico, questi $16$ stati che $L$ e $S$ avranno?
+		\\
+		\\
+		Si ha che:
+	
+	\begin{align*}
+		l = 0, \,\,\, l' = 0, 1 \,\, \Rightarrow \,\, L = l \otimes l' = 0 \otimes \qty( 0 \oplus 1) = 0 \oplus 1 
+	\end{align*}
+		
+		e vale che:
+
+	\begin{align*}
+		s = \frac{1}{2}, \,\,\, s' = \frac{1}{2} \,\, \Rightarrow \,\, S = s \otimes s' = \frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1 
+	\end{align*}
+
+		allora in questo caso, essendo su due livelli distinti gli elettroni non hanno restrizioni e non dobbiamo cancellare nessun valore. Le terne di $\qty(L, S, J)$ possibili sono:
+		
+	\begin{align*}
+		\qty(L, S, J) & = \qty(0, 0, 0) \, \Rightarrow \, \text{deg} = 1 \\
+		& = \qty(0, 1, 1) \, \Rightarrow \, \text{deg} = 3 \\
+		& = \qty(1, 0, 1) \, \Rightarrow \, \text{deg} = 3 \\
+		& = \qty(1, 1, 0) \, \Rightarrow \, \text{deg} = 1 \\
+		& = \qty(1, 1, 1) \, \Rightarrow \, \text{deg} = 3 \\
+		& = \qty(1, 1, 2) \, \Rightarrow \, \text{deg} = 5 \\
+	\end{align*}
+	
+		le cui singole degenerazioni sono calcolate a partire da $2j + 1 $ applicato a $L$ e $S$, moltiplicate fra loro e sommate in totale, oppure al valore di $J$ e sommate in totale: si ritrova una \textit{degenerazione totale} di $16$. Lo spazio totale in cui vive $J$ è generato dal prodotto dello spazio di $L$ e dello spazio di $S$ e vale:
+		
+	\begin{align*}
+		\mathcal{D}_L \otimes \mathcal{D}_S = \bigoplus_{J = |L - S|}^{L + S} \mathcal{D}_J
+	\end{align*}
+
+\end{itemize}
+
+\subsection{L'atomo di Litio non Interagente}
+	
+	Consideriamo un sistema di $3$ elettroni ($3$ fermioni identici) che interagiscono con un nucleo con $Z = 3$. L'Hamiltoniana del sistema è data in maniera analoga da:
+	
+\begin{align*}
+	\hat{H} = \hat{H}_1 + \hat{H}_2 + \hat{H}_3 + \hat{H}_{12} + \hat{H}_{13} + \hat{H}_{23}
+\end{align*}
+
+	per il momento trascuriamo le interazioni reciproche fra gli elettroni e poniamo quindi:
+
+\begin{align*}
+	\hat{H} = \hat{H}_1 + \hat{H}_2 + \hat{H}_3
+\end{align*}
+
+	Voglio descrivere lo spettro tenendo conto del principio di Pauli: per fare questo scrivo i sistemi di singola particella tenendo conte anche dello spin.
+
+\begin{itemize}
+	\item \textbf{Livello fondamentale} ($n_1 = n_2 = 1$ e $n_3 = 2$)
+	
+		Al livello fondamentale l'atomo di Litio è costituito da due elettroni in $n = 1$ ed un elettrone in $n = 2$, in modo da rispettare il principio di Pauli. L'energia del livello quindi è:
+		
+	\begin{align*}
+		E^{\qty(1, 2, 3)} = E_1^{\qty(1)} + E_2^{\qty(1)} + E_3^{\qty(2)}
+	\end{align*}
+	
+		e dato che non sono interagenti vale che:
+		
+	\begin{align*}
+		& E_1^{\qty(1)} = - \frac{Z^2}{n_1^2 } = - \frac{9}{1} = - 9 \\
+		& E_2^{\qty(1)} = - \frac{Z^2}{n_2^2 } = - \frac{9}{1} = - 9 \\
+		& E_3^{\qty(2)} = - \frac{Z^2}{n_3^2 } = - \frac{9}{4} 
+	\end{align*}
+	
+		e quindi:
+	
+	\begin{align*}
+		E^{\qty(1, 1, 2 )} = E_1^{\qty(1)} + E_2^{\qty(1)} + E_3^{\qty(2)} = - 9 - 9 - \frac{9}{4} = - \frac{81}{4} = -20.25
+	\end{align*}
+	
+		ciò significa che l’energia totale dello stato fondamentale del Litio (senza repulsione tra elettroni) è pari a $81/4$ volte l’energia di legame dell’atomo di Idrogeno.
+		\\
+		\\
+		Che degenerazione ha questo livello? 
+		\\
+		\\
+		A livello pratico possiamo calcolare le dimensioni dei sottospazi di singola particella antisimmetrizzati e poi moltiplicarle tra loro. In generale, \textit{al livello $n$ avrò che la dimensione del sottospazio antisimmettrizzato di $N$ fermioni è dato da:}
+	
+	\begin{nb}
+	\begin{align*}
+		\text{dim} \, \mathcal{H}_- = \mqty(n^2\qty(2s + 1) \\ N )
+	\end{align*}
+	\end{nb}
+
+		quindi nel nostro caso abbiamo che:
+	
+	\begin{align*}
+		& \text{dim} \, \mathcal{H}_-^{\qty(1, 2)} = \mqty(2 \\ 2) = 1 \\
+		& \text{dim} \, \mathcal{H}_-^{\qty(3)} = \mqty(8 \\ 1) = \frac{8!}{1! \, 7!} = 8
+	\end{align*}
+	
+		allora:
+	
+	\begin{align*}
+		\text{dim} \, \mathcal{H}_- = 1 \cdot 8 = 8
+	\end{align*}
+
+		Per ritrovare gli stessi risultati a livello concettuale, sappiamo che a $n = 1$ ho sicuramente $S = L = 0$, l'unica $ J $ possibile è allora $0$ e quindi la degenerazione totale del livello $n = 1$ è $1$. Ad $n = 2$ invece ho solo un elettrone, allora $S = s = 1/2$ (degenerazione $2$), inoltre, essendo che siamo a $n = 2$, allora $l = 0, 1$ in questo livello ed essendo da solo l'elettrone vale che: $L = 0, 1$ (degenerazione $1$ e $3$), quindi la degenerazione totale del livello $n = 2$, vale: $\text{deg} = 2 \cdot 1 + 2 \cdot 3  = 8$. Pertanto ritroviamo che la degenerazione totale del livello fondamentale di Litio è: $1 \cdot 8 = 8$.
+		\\
+		\\
+		Chi sono questi stati?
+		\\
+		\\
+		Ragionando per livelli ho che:
+	\begin{align*}
+		& \qty(L, S)_{n = 1} = \qty(0, 0) \\
+		& \qty(L, S)_{n = 2} = \qty(0, \frac{1}{2}) \oplus \qty(1, \frac{1}{2}) 
+	\end{align*}
+	
+		allora:
+		
+	\begin{align*}
+		\qty(L, S) = \qty(0, \frac{1}{2}) \oplus \qty(1, \frac{1}{2}) 
+	\end{align*}
+	
+		pertanto le terne$\qty(L, S, J)$ possibili sono:
+		
+	\begin{align*}
+		\qty(L, S, J) & = \qty(0, \frac{1}{2}, \frac{1}{2}) \, \Rightarrow \, \text{deg} = 2 \\
+		& = \qty(1, \frac{1}{2}, \frac{1}{2}) \, \Rightarrow \, \text{deg} = 2 \\
+		& = \qty(1, \frac{1}{2}, \frac{3}{2}) \, \Rightarrow \, \text{deg} = 4 
+	\end{align*}
+	
+		la cui somma è $8$ come riprova del fatto.
+		\\
+		\\
+		Qual è una base di autostati dello stato fondamentale? in termini della base singola di particella: $\ket{n, l, m, \sigma}$ ? Facciamo un primo tentativo grossolano:
+		
+	\begin{align*}
+		\psi = \frac{1}{\sqrt{2}} \, \qty(\ket{1, 0, 0, +}_1 \ket{1, 0, 0, -}_2 - \ket{1, 0, 0, -}_1 \ket{1, 0, 0, +}_2 ) \otimes \ket{2, l, m, \pm}_3
+	\end{align*}
+	
+		in questo modo stiamo prendendo il "nocciolo" dell'atomo (i due elettroni $1s$ che formano un singoletto, come nell'Elio) e stiamo "incollando" accanto il terzo elettrone nel livello 2. Perché questa configurazione è grossolana? Possiamo dire che questa configurazione sia non fisica perché se scambiamo l'elettrone $1$ con il $3$, la formula non ha una simmetria definita. In natura tutti gli elettroni devono essere scambiabili tra loro, questo è il significato di \textit{fermioni identici}. Quindi non possiamo semplicemente aggiungere il terzo elettrone al risultato dell'Elio. Come si fa allora? Dobbiamo prendere tutti e tre gli elettroni, metterli in un mixer matematico (il determinante di Slater) e mescolarli finché non è impossibile dire chi è chi. Allora:
+		
+	\begin{align*}
+		\Psi_0 = \frac{1}{\sqrt{3!}} \mqty| A(1) & B(1) & C(1) \\  A(2) & B(2) & C(2) \\ A(3) & B(3) & C(3)   |
+	\end{align*}
+		
+		dove nel nostro caso:
+		
+	\begin{itemize}
+		\item $A = \ket{1, 0, 0, +}$ (stato $1s$ spin su)
+		\item $B = \ket{1, 0, 0, -}$ (stato $1s$ spin giù)
+		\item $C = \ket{2, l, m, \pm}$ (stato eccitato $n  =2$)
+	\end{itemize}
+	
+		la matrice si legge nel seguente modo: le \textit{righe} rappresentano le particelle (elettrone $1, 2, 3$) mentre le \textit{colonne} rappresentano gli stati disponibili. Se provassimo a scambiare due particelle (es. riga 1 con riga 2), per le proprietà dei determinanti, il risultato cambia segno. Questo soddisfa perfettamente il Principio di Pauli per tutti e tre gli elettroni contemporaneamente. Allora possiamo scrivere direttamente:
+		
+	\begin{align*}
+		\Psi_0 = \frac{1}{\sqrt{3!}} \mqty| \ket{1, 0, 0, +}_1 & \ket{1, 0, 0, -}_1 & \ket{2, l, m, \pm}_1 \\ \ket{1, 0, 0, +}_2 & \ket{1, 0, 0, -}_2 & \ket{2, l, m, \pm}_2 \\  \ket{1, 0, 0, +}_3 & \ket{1, 0, 0, -}_3 & \ket{2, l, m, \pm}_3   |
+	\end{align*}
+
+		Il determinante di Slater può anche essere scritto come:
+		
+	\begin{align*}
+		\Psi_0 = \frac{1}{\sqrt{3!}} \sum_{ijk} \varepsilon_{ijk} \qty(\ket{1, 0, 0, +}_i \ket{1, 0, 0, -}_j - \ket{1, 0, 0, -}_i \ket{1, 0, 0, +}_j) \otimes \ket{2, l, m, \pm}_k
+	\end{align*}	
+	
+		dove si ricorda che $\varepsilon_{ijk}$ è un operatore che vale:
+	
+	\begin{itemize}
+		\item $+1$, se la permutazione è pari ($1,2,3$ e cicliche),
+		\item $0$, se due indici sono uguali,
+		\item $-1$,  se la permutazione è dispari ($2, 1, 3$ e cicliche).
+	\end{itemize}
+
+	\item \textbf{Primo livello eccitato} ($n_1 = n_2 = 1$ e $n_3 = 3$)
+		
+		Il primo livello eccitato è quella in cui $2$ elettroni sono in $n = 1$ ed il terzo in $n = 3$, poiché la configurazione in cui un altro elettrone passa dal livello $n = 1$ al livello $ n = 2$ ha energia più alta.
+		\\
+		\\
+		L'energia del livello è: 
+		
+	\begin{align*}
+		E^{\qty(1, 1, 3)} = E_1^{\qty(1)} + E_2^{\qty(1)} + E_3^{\qty(3)} = \qty(-1-1-\frac{1}{9}) Z^2 = -19
+	\end{align*}
+	
+		infatti il primo livello eccitato non potrebbe essere un elettrone in $n = 1$ e due in $n= 2$, poiché l'energia sarebbe più alta ossia:
+		
+	\begin{align*}
+		E^{\qty(1, 2, 2)} = E_1^{\qty(1)} + E_2^{\qty(2)} + E_3^{\qty(2)} = \qty(-1-\frac{1}{4}-\frac{1}{4}) Z^2 = -13.5
+	\end{align*}
+	
+		Analizziamo ora la degenerazione del livello, otteniamo che:
+ 
+ 	\begin{align*}
+		\text{dim} \, \mathcal{H}_- = \mqty(2 \\ 2) \, \mqty(18 \\ 1) = 18
+	\end{align*}
+	
+		Ragionando per livelli ho che:
+		
+	\begin{align*}
+		& \qty(L, S)_{n = 1} = \qty(0, 0) \\
+		& \qty(L, S)_{n=3} = \qty(0, \frac{1}{2}) \oplus \qty(1, \frac{1}{2}) \oplus \qty(2, \frac{1}{2}) 
+	\end{align*}
+
+		allora:
+		
+	\begin{align*}
+		\qty(L, S) & = \qty(L, S)_{n = 1} \otimes \qty(L, S)_{n = 2} \\
+		& = \qty(0, 0) \otimes \qty( \qty(0, \frac{1}{2}) \oplus \qty(1, \frac{1}{2}) \oplus \qty(2, \frac{1}{2}) ) = \qty(0, \frac{1}{2}) \oplus \qty(1, \frac{1}{2}) \oplus \qty(2, \frac{1}{2}) 
+	\end{align*}
+
+		pertanto le terne $\qty(L, S, J)$ possibili sono:
+		
+	\begin{align*}
+		\qty(L, S, J) & = \qty(0, \frac{1}{2}, \frac{1}{2}) \, \Rightarrow \,  \text{deg} = 2 \\
+		& = \qty(1, \frac{1}{2}, \frac{1}{2}) \, \Rightarrow \,  \text{deg} = 2 \\
+		& = \qty(1, \frac{1}{2}, \frac{3}{2}) \, \Rightarrow \,  \text{deg} = 4 \\
+		& = \qty(2, \frac{1}{2}, \frac{3}{2}) \, \Rightarrow \,  \text{deg} = 4 \\
+		& = \qty(2, \frac{1}{2}, \frac{5}{2}) \, \Rightarrow \,  \text{deg} = 6
+	\end{align*}
+	
+		la degenerazione totale è $18$ com'è giusto che sia.
+			
+\end{itemize}
+
+\subsection{L'atomo di Berillio non Interagente}
+
+	Consideriamo, infine, un sistema di $4$ elettroni (4 fermioni identici) che interagiscono con un nucleo con $Z = 4$. L'Hamiltoniana del sistema è data in maniera analoga da:
+	
+\begin{align*}
+	\hat{H} = \hat{H}_1 + \hat{H}_2 + \hat{H}_3 + \hat{H}_4 + \hat{H}_{\text{int}}
+\end{align*}
+	
+	per il momento trascuriamo le interazioni reciproche fra gli elettroni e poniamo: $\hat{H} = \hat{H}_1 + \hat{H}_2 + \hat{H}_3 + \hat{H}_4$. Voglio descrivere lo spettro tenendo conto del principio di Pauli. Per fare ciò scrivo i sistemi di singola particella tenendo conto dello spin.
+	
+\begin{itemize}
+	\item \textbf{Livello fondamentale} ($n_1 = n_2 = 1$ e $n_3 = n_4 = 2$)
+	
+		Al livello fondamentale l'atomo di Berillio è costituito da due elettroni in $n = 1$ e da due elettroni in $n = 2$, in modo da rispettare il principio di Pauli. L'energia del livello quindi, in unità di Bohr, è:
+
+\begin{align*}
+	E^{\qty(1, 1, 2, 2)} = E_1^{\qty(1)} + E_2^{\qty(1)} + E_3^{\qty(2)} + E_4^{\qty(2)} = \qty(-1-1-1/4-1/4) Z^2 = -40
+\end{align*}
+	
+		che degenerazione ha questo livello? 
+		\\
+		\\
+		A livello pratico possiamo calcolare le dimensioni dei sottospazi di singola particella antisimmetrizzati e poi moltiplicarle tra loro. La degenerazione è:
+		
+	\begin{align*}
+		\text{dim} \, \mathcal{H}_- = \mqty(2 \\ 2) \, \mqty(8 \\ 2 ) = 28
+	\end{align*}
+	
+		Chi sono questi stati?
+		\\
+		\\
+		Ragioniamo: i due elettroni sul livello $n = 1$, sicuramente devono rispondere al principio di Pauli, poiché l'unico valore possibile del momento angolare orbitale è $l = 0$ di conseguenza:
+		
+	\begin{align*}
+		\qty(L, S)_{n = 1} = \qty(0, 0)
+	\end{align*}
+
+		Siccome i primi due elettroni riempiono il core, ci concentriamo sui due di valenza (come visto nel caso del Litio). Dunque guardiamo il secondo livello. per quanto riguarda gli elettroni sul livello $n = 2$ il discorso è diverso infatti: i valori possibili del momento angolare orbitale sono $l = 0, 1$ (poiché $n = 2$) e di conseguenza ho:
+		
+	\begin{align*}
+		L = \qty(1 \oplus 0) \otimes \qty(1 \oplus 0) = \textcolor{red}{(0)} \oplus \textcolor{blue}{(1)} \oplus \textcolor{magenta}{(1)} \oplus \textcolor{orange}{\qty( 0 \oplus 1 \oplus 2)}
+	\end{align*}
+
+		dove:
+		
+	\begin{itemize}
+		\item $\textcolor{red}{(0)} \, \Rightarrow \,$ viene da: $l_1 = 0$ e $l_2 = 0$;
+		\item $\textcolor{blue}{(1)} \, \Rightarrow \,$ viene da: $l_1 = 0$ e $l_2 = 1$;
+		\item $\textcolor{magenta}{(1)} \, \Rightarrow \,$ viene da: $l_1 = 1$ e $l_2 = 0$;
+		\item $\textcolor{orange}{\qty( 0 \oplus 1 \oplus 2)} \, \Rightarrow \,$ viene da: $l_1 = 1$ e $l_2 = 1$.
+	\end{itemize}
+
+		quindi dobbiamo stare attenti ed applicare il \textit{principio di Pauli} solo a quei valori di $L$ che sono dati da valori uguali di $l_1$ ed $l_2$. 
+		\\
+		\\
+		Poiché $s_1 = s_2 = 1/2$, allora abbiamo che:
+		
+	\begin{align*}
+		S = 0 \oplus 1
+	\end{align*}
+	
+		e quindi seguendo la parità spaziale $\qty(-1)^l$ ho che i $28$ stati sono dati dalle coppie che seguono il principio di Pauli ($\qty(1s)^2$ e $\qty(2p)^2$) e dalle coppie prese come combinazione dei valori di $L$ ed $S$ (orbitale $\qty(1s)^1 \qty(2p)^1$)).
+		\\
+		\\
+		Quindi ho che, quando gli $l$ sono diversi, gli elettroni occupano orbitali diversi, ovvero sono elettroni non equivalenti e quindi vanno presi tutti, come possiamo notare dai valori possibili di $L$, per $l$ diversi, si ottiene sempre $L = 1$, $S$ invece sarà $S = 1/2 \otimes 1/2 = 1, 0$, allora ($J = L \otimes S$):
+		
+	\begin{align*}
+		\qty(L, S, J) & = \qty(1, 0, 1) \, \Rightarrow \, \text{deg} = 3 \\ 
+		& = \qty(1, 1, 0) \, \Rightarrow \, \text{deg} = 1 \\
+		& = \qty(1, 1, 1) \, \Rightarrow \, \text{deg} = 3 \\
+		& = \qty(1, 1, 2) \, \Rightarrow \, \text{deg} = 5 
+	\end{align*}
+	
+		la degenerazione quando gli orbitali sono diversi è la somma delle degenerazioni appena trovate, quindi $12$. Controlliamo ora quelli in cui $l$ sono uguali, quindi quando: $l_1 = l_2  = 0$ e quindi un solo $L = 0$, $S = 0,1$ ma siccome sta volta gli elettroni sono equivalenti, ne segue che devo controllare la simmetria, siccome $L = 0$ è simmetrico, lo spin deve essere antisimmetrico, quindi butto la soluzione con $S = 1$, antisimmetrica, e tengo solo quella simmetrica ($S = 0$):
+		
+	\begin{align*}
+		\qty(L, S, J) = \qty(0, 0, 0) \, \Rightarrow \, \text{deg} = 1
+	\end{align*}
+
+		per invece $l_1 = l_2 = 1$ si ottiene $L = 0, 1, 2$ e $S = 0, 1$, Pauli seleziona solo:
+	
+	\begin{align*}
+		\qty(L, S, J) & = \qty(0, 0, 0) \, \Rightarrow \, \text{deg} = 1 \\ 
+		& = \qty(2, 0, 2) \, \Rightarrow \, \text{deg} = 5 \\ 
+		& = \qty(1, 1, 0) \, \Rightarrow \, \text{deg} = 1 \\
+		& = \qty(1, 1, 1) \, \Rightarrow \, \text{deg} = 3 \\
+		& = \qty(1, 1, 2) \, \Rightarrow \, \text{deg} = 5 \\
+	\end{align*}
+		
+		quindi quando gli $l$ sono diversi, si ottengono $16$ stati. 
+		\\
+		\\
+		La somma totale è quindi $28$ proprio come volevamo.
+		\\
+		\\
+		Cerchiamo ora una base di autostati dello stato fondamentale in termini della base di singola particella $\ket{n, l, m, \sigma}$. L'idea è quella di trovare la funzione $\psi_{n = 1}$ relativa ad $n = 1$ e la funzione $\psi_{n = 2}$ relativa a $n = 2$ e metterle successivamente in un prodotto tensore come funzione d'onda del \textit{ground state} del berillio:
+		
+	\begin{align*}
+		\Psi_{\text{G.S}} = \psi_{n = 1} \otimes \psi_{n = 2}
+	\end{align*}
+	
+		Andando per livelli:
+		
+	\begin{itemize}
+		\item $n = 1$
+		
+			In questo livello come abbiamo già dimostrato altre volte, l'unica configurazione possibile è un singoletto di spin e pertanto:
+			
+		\begin{align*}
+			\psi_{n = 1} = \frac{1}{\sqrt{2}} \qty( \ket{1, 0, 0, +}_1 \ket{1, 0, 0, -}_2 - \ket{1, 0, 0, -}_1 \ket{1, 0, 0, +}_2)
+		\end{align*}
+
+		\item $n = 2$
+		
+			In questo livello abbiamo detto che tutte le configurazioni possibili sono: $\qty(L, S) = \qty(0, 0) \qty(1, 0) \qty(1, 1) \qty(2, 0)$, pertanto a seconda del fatto se mi trovo nello stato di singoletto o di tripletto la funzione d'onda spaziale deve essere rispettivamente simmetrica o antisimmetrica. Consideriamo gli stati non fisici per $n = 2$ per lo stato di singoletto $\qty(S)$ e di tripletto $\qty(T)$:
+			
+		\begin{align*}
+			\psi_2^{S} = \frac{1}{\sqrt{4}} \qty(\ket{+}_3\ket{-}_4 - \ket{-}_3 \ket{+}_4) \otimes \qty( \ket{2, l', m'}_3 \ket{2, l'', m''}_4 + \ket{2, l'', m''}_3 \ket{2, l', m'}_4 )
+		\end{align*}
+
+			dunque:
+			
+		\begin{align*}
+			\psi_2^{T} = \begin{cases}
+    \frac{1}{\sqrt{4}} (\qty(\ket{+}_3\ket{-}_4 + \ket{-}_3 \ket{+}_4) \otimes \qty( \ket{2, l', m'}_3 \ket{2, l'', m''}_4 - \ket{2, l'', m''}_3 \ket{2, l', m'}_4 )) \\
+    \frac{1}{\sqrt{6}} \ket{\pm}_3 \ket{\pm}_4 \otimes \qty( \ket{2, l', m'}_3 \ket{2, l'', m''}_4 + \ket{2, l'', m''}_3 \ket{2, l', m'}_4 ))
+\end{cases}
+		\end{align*}
+			
+	\end{itemize}
+
+		Lo stato complessivo è:
+	
+	\begin{align*}
+		\Psi_{\text{G.S}} = \psi_{n = 1} \otimes \psi_{n = 2}
+	\end{align*}
+
+		dovrà essere totalmente antisimmetrico per scambi di $1, 2, 3, 4$. In forma compatta la funzione d'onda relativa allora stato fondamentale dell'atomo di Berilio si scrive con il determinante di Slater nel seguente modo:	
+		
+	\begin{align*}
+		\Psi_0 = \frac{1}{\sqrt{4!}} \mqty|  \ket{1, 0, 0, +}_1  &  \ket{1, 0, 0, -}_1 &  \ket{2, l', m', \sigma'}_1   &  \ket{2, l'', m'', \sigma''}_1   \\   \ket{1, 0, 0, +}_2  &  \ket{1, 0, 0, -}_2 &  \ket{2, l', m', \sigma'}_2   &  \ket{2, l'', m'', \sigma''}_2   \\  \ket{1, 0, 0, +}_3  &  \ket{1, 0, 0, -}_3 &  \ket{2, l', m', \sigma'}_3   &  \ket{2, l'', m'', \sigma''}_3   \\    \ket{1, 0, 0, +}_4  &  \ket{1, 0, 0, -}_4 &  \ket{2, l', m', \sigma'}_4   &  \ket{2, l'', m'', \sigma''}_4  |
+	\end{align*}
+	
+	\item \textbf{Primo livello eccitato} ($n_1 = n_2 = 1$ e $n _3 = 2$ e $n_4 = 3$)
+	
+		Al primo livello eccitato l'atomo di Berilio è costituito da due elettroni in $n = 1$, un elettrone in $n = 2$ ed un altro in $n = 3$. L'energia del livello quindi, in unità di Bohr, è:
+		
+	\begin{align*}
+		E^{\qty(1, 1, 2, 3)} = E_1^{\qty(1)} + E_2^{\qty(1)} + E_3^{\qty(2)} + E_4^{\qty(3)} = \qty(-1-1-\frac{1}{4}-\frac{1}{9}) Z^2 = - \frac{340}{9}
+	\end{align*}
+
+		Che degenerazione ha questo livello?
+		\\
+		\\
+		A livello pratico possiamo calcolare le dimensioni dei sottospazi di singola particella antisimmetrizzati e poi moltiplicarle e poi moltiplicarle tra loro. La degenerazione è:
+	
+	\begin{align*}
+		\text{dim} \, \mathcal{H}_- = \mqty(2 \\ 2) \, \mqty( 8 \\ 1) \, \mqty(18 \\ 1) = 144
+	\end{align*}
+
+	Chi sono questi stati? Ragioniamo: i due elettroni sul livello $n = 1$ sicuramente devono rispondere al principio di Pauli, poiché l’unico valore possibile del momento angolare orbitale è $l = 0$ e, di conseguenza, proprio come prima vale che:
+	
+	\begin{align*}
+		\qty(L, S)_{n = 1} = \qty(0, 0)
+	\end{align*}
+	
+		per i livelli sucessivi allora si ottiene:
+		
+	\begin{itemize}
+		\item $n = 2$
+		
+		\begin{align*}
+			\qty(L, S)_{n = 2} = \qty(0, \frac{1}{2}) \oplus \qty(1, \frac{1}{2})
+		\end{align*}
+
+		\item $n = 3$
+			
+		\begin{align*}
+			\qty(L, S)_{n = 3} = \qty(0, \frac{1}{2} ) \oplus \qty(1, \frac{1}{2} ) \oplus \qty(2, \frac{1}{2})
+		\end{align*}
+	\end{itemize}
+
+		Allora si ottiene che:
+	
+	\begin{align*}
+		\qty(L, S) & =  \qty(0, 0) \otimes \qty(\qty(0, \frac{1}{2} ) \oplus \qty(1, \frac{1}{2} )) \otimes \qty( \qty(0, \frac{1}{2} ) \oplus \qty(1, \frac{1}{2} ) \oplus \qty(2, \frac{1}{2})) \\
+		& = \qty(\qty(0, \frac{1}{2} ) \oplus \qty(1, \frac{1}{2} )) \otimes \qty( \qty(0, \frac{1}{2} ) \oplus \qty(1, \frac{1}{2} ) \oplus \qty(2, \frac{1}{2})) \\
+		& = \qty(0, 0) \oplus \qty(0, 1) \oplus \qty(1, 0) \oplus \qty(1, 1) \dots
+	\end{align*}
+\end{itemize}
+
+		si trovano tutti calcolandoli in questo modo (per esempio):
+	
+	\begin{align*}
+		\qty(1, \frac{1}{2} ) \otimes \qty(1, \frac{1}{2}) = \qty(0, 0) \oplus \qty(0, 1) \oplus \qty(1, 0) \oplus \qty(1, 1) \oplus \qty(2, 0) \oplus \qty(2, 1)
+	\end{align*}
+ 
+ 		possiamo fare tutti i calcoli, come vedi sono molti, più di $40$ in tutto e se calcoli rispetti $J$ con degenerazione il conto alla fine torna perfettamente.
+		
+\section{Particelle Identiche nel Potenziale Armonico}
+
+	In questa sezione ora vediamo degli esempi di particelle identiche in un potenziale armonico tridimensionale, studiandone a grandi linee il comportamento.
+
+\subsection{Sistema di $2$ Fermioni Identici nel Potenziale Armonico}
+
+	Consideriamo ora due elettroni nel potenziale armonico:
+	
+\begin{align*}
+	\hat{H}_0 = \hat{H}^{\qty(1)} + \hat{H}^{\qty(2)}
+\end{align*}
+	
+	con:
+	
+\begin{align*}
+	\hat{H}^{\qty(i)} = \frac{\hat{p}^2_i}{2m} + \frac{1}{2} m \omega^2 r_i^2
+\end{align*}
+	
+	dove $\hat{H}^{\qty(i)}$ è l'Hamiltoniana di singola particella. Sia la base di singola particella: $\qty{\ket{n, l, m, \sigma}}$.
+	
+\begin{itemize}
+	
+	\item \textbf{Livello fondamentale} ($n_1 = 0, n_2 = 0$ e $l_1 = 0, l_2 = 0$)
+	
+		Al livello fondamentale ho due elettroni in $n = 0$, quindi l'energia del livello sarà:
+		
+	\begin{align*}
+		E_0 = E_{0}^{\qty(1)} + E_0^{\qty(2)}  
+	\end{align*}
+	
+		ricorda che l'Hamiltoniana di un oscillatore armonico 3D isotropo (stessa frequenza $\omega$ in tutte le direzioni) è la somma di tre oscillatori 1D indipendenti lungo gli assi $x, y, z$, allora vale che:
+	
+	\begin{align*}
+		E = \qty(n + \frac{3}{2}) \hbar \omega
+	\end{align*}
+		
+		allora allo stato fondamentale:
+
+	\begin{align*}
+		E_0 = E_{0}^{\qty(1)} + E_0^{\qty(2)}  = \qty(0 + \frac{3}{2}) \hbar \omega + \qty(0 + \frac{3}{2}) \hbar \omega = 3 \hbar \omega
+	\end{align*}
+
+		calcoliamo ora la degenerazione, in questo caso armonico, per trovare la dimensione dello spazio antisimmetrico $\mathcal{H}_-$, si usa la solita regola generale combinatoria per i fermioni:
+		
+	\begin{align*}
+		\text{dim} \, \mathcal{H}_- = \mqty(\text{stati totali disponibili} \\ \text{numero di particelle}) = \mqty(k \\ N)
+	\end{align*}
+
+		come facciamo a capire $k$ quanto vale? Sappiamo infatti che $N = 2$, ma $k$?
+		\\
+		\\
+		In generale vale che:
+		
+	\begin{align*}
+		k = g_n \, g_s
+	\end{align*}
+	
+		dove $g_n$ è la degenerazione spaziale, mentre $g_s$ è la degenerazione di spin. Per un oscillatore armonico $3D$ isotropo la degenerazione del livello $n$ è data da:
+		
+	\begin{align*}
+		g_n = \frac{\qty(n+1)\qty(n+2)}{2}
+	\end{align*}
+	
+		quindi per $n = 0$, $g_n = 1$. Mentre la degenerazione di spin, per un elettrone vale, siccome $s = 1/2$:
+		
+	\begin{align*}
+		g_s = 2s + 1 = 2
+	\end{align*}
+	
+		allora:
+		
+	\begin{align*}
+		k = 2
+	\end{align*}
+
+		e quindi:
+	
+	\begin{align*}
+		\text{dim} \, \mathcal{H}_- =\mqty(k \\ N) = \mqty(2 \\ 2) = 1
+	\end{align*}
+	
+		Il risultato "$1$" significa che c'è un solo modo possibile di costruire lo stato fondamentale: dobbiamo mettere entrambi gli elettroni nell'unico orbitale spaziale disponibile, e per il principio di Pauli devono avere obbligatoriamente spin opposti (Singoletto). Quindi come ci aspettavamo il livello fondamentale è non degenere.
+		\\
+		\\
+		Qual è una base ortonormale di questo livello in termini di basi di singola particella?
+		\\
+		\\
+		Componendo i momenti angolari abbiamo che:
+		
+	\begin{align*}
+		& L = l_1 \otimes l_2 = 0 \otimes 0 = 0 \\
+		& S = s_1 \otimes s_2 = \frac{1}{2} \otimes \frac{1}{2} = 1 \oplus 0
+	\end{align*}
+	
+		poiché ho un sistema di due fermioni identici, la funzione d'onda complessiva del livello deve essere antisimmetrica per scambio, perciò, seguendo la parità $\qty(-1)^l$ per il momento angolare orbitale (quindi $\psi_{\text{orb}}$ è simmetrica) e considerato che $S = 0$ (singoletto) è antisimmetrico e $S = 1$ (tripletto) è simmetrico, l'unica coppia antisimmetrica possibile è $(L,S) = (0,0)$, da cui segue immediatamente che:
+		
+	\begin{align*}
+		\qty(L, S, J) = \qty(0, 0, 0) \, \Rightarrow \, \text{non degenere}
+	\end{align*}
+	
+		e pertanto vale che
+		
+	\begin{align*}
+		\Psi_0 = \psi_{\text{orb}} \otimes \psi_{\text{spin}} & = \ket{0, 0, 0} \otimes \frac{1}{\sqrt{2}} \qty( \ket{0, 0, 0, +}_1 \ket{0, 0, 0, -}_2 -  \ket{0, 0, 0, -}_1  \ket{0, 0, 0, +}_2) \\
+		& = \frac{1}{\sqrt{2}} \qty( \ket{0, 0, 0, +}_1 \ket{0, 0, 0, -}_2 -  \ket{0, 0, 0, -}_1  \ket{0, 0, 0, +}_2) 
+ 	\end{align*}
+
+	\item \textbf{Primo livello eccitato} ($n_1 = 0$, $n_2 = 1$ e $l_1 = 0$, $l_2 = 1$)
+	
+		Al primo livello eccitato un elettrone si trova in $n = 0$ e l'altro in $n = 1$, quindi l'energia del livello sarà:
+		
+	\begin{align*}
+		E = \hbar \omega \qty(\frac{3}{2} + \frac{5}{2} ) = 4 \hbar \omega
+	\end{align*}
+	
+		con degenerazione pari a:
+		
+	\begin{align*}
+		\text{dim} \, \mathcal{H}_- = \mqty(2 \\ 1) \, \mqty(6 \\ 1) = 12
+	\end{align*}
+
+		quindi il primo livello eccitato è $12$ volte degenere.
+		\\
+		\\
+		Qual è la base ortonormale di questo livello in termini di basi di singola particella?
+		\\
+		\\
+		Componendo i momenti angolari ho:
+		
+	\begin{align*}
+		& L = l_1 \otimes l_2 = 0 \otimes 1 = 1\\
+		& S = s_1 \otimes s_2 = \frac{1}{2} \otimes \frac{1}{2} = 1 \oplus 0
+	\end{align*}
+	
+		allora:
+	
+	\begin{align*}
+		J = 1 \otimes \qty( 1 \oplus 0) = \qty( 2 \oplus 1 \oplus 0) \oplus \qty(1)
+	\end{align*}
+	
+		In questo caso la funzione d'onda spaziale può essere sia simmetrica che antisimmetrica, perciò ho diverse espressioni della funzione d'onda complessiva a seconda del fatto se mi trovo in uno stato di singoletto o in uno stato di tripletto di spin. In generale la funzione d’onda sarà antisimmetrica per scambio:
+	
+	\begin{align*}
+		\psi = \frac{1}{\sqrt{2}} \qty( \ket{0, 0, 0, \sigma}_1 \ket{1, 1, m', \sigma'}_2 -  \ket{1, 1, m', \sigma'}_1 \ket{0, 0, 0, \sigma}_2 )
+	\end{align*}
+	
+		Più esplicitamente:
+		
+	\begin{itemize}
+	
+		\item $S = 0$ (stato di singoletto): in questo caso la funzione d'onda spaziale deve essere simmetrica, poiché quella di spin è antisimmetrica:
+		
+		\begin{align*}
+			\Psi_{S = 0} = \frac{1}{\sqrt{2}} \qty(\ket{0, 0, 0}_1 \ket{1, 1, m'}_2 + \ket{1, 1, m'}_1 \ket{0, 0, 0}_2) \otimes \frac{1}{\sqrt{2}} \qty(\ket{+}_1 \ket{-}_2 - \ket{-}_1 \ket{+}_2)
+		\end{align*}
+		
+		\item $S = 1$ (stato di tripletto): in questo caso la funzione d'onda spaziale deve essere antisimmetrica poiché quella di spin è simmetrica. Siccome ho tre stati di spin, distinguo in base al valore di $\hat{S}_z$:
+		
+		\begin{align*}
+			\Psi_{S = 1}^{S_z = \pm 1} = \frac{1}{\sqrt{2}} \qty(\ket{0, 0, 0}_1 \ket{1, 1, m'}_2 - \ket{1, 1, m'}_1 \ket{0, 0, 0}_2) \otimes \ket{\pm}_1 \ket{\pm}_2
+		\end{align*}
+		
+			e
+		\begin{align*}
+			\Psi_{S = 1}^{S_z = 0} = \frac{1}{\sqrt{2}} \qty(\ket{0, 0, 0}_1 \ket{1, 1, m'}_2 - \ket{1, 1, m'}_1 \ket{0, 0, 0}_2) \otimes  \frac{1}{\sqrt{2}} \qty(\ket{+}_1 \ket{-}_2 + \ket{-}_1 \ket{+}_2)
+		\end{align*}
+	\end{itemize}
+\end{itemize}
+
+\subsection{Sistema di $3$ Fermioni Identici nel Potenziale Armonico}
+	
+	Considero $3$ elettroni nel potenziale armonico:
+	
+\begin{align*}	
+	\hat{H}_0 = \hat{H}^{\qty(1)} + \hat{H}^{\qty(2)} + \hat{H}^{\qty(3)}
+\end{align*}
+
+	con, come sappiamo:
+	
+\begin{align*}
+	\hat{H}^{\qty(i)} = \frac{\hat{p}^2_i}{2m} + \frac{1}{2} m \omega^2 r^2_i
+\end{align*}
+
+	dove $\hat{H}^{\qty(i)}$ è l'Hamiltoniana di singola particella. Sia la base di singola particella $\qty{\ket{n, l, m, \sigma}}$.
+	\\
+	\\
+	Analizziamo allora:
+	
+\begin{itemize}
+
+	\item \textbf{Livello fondamentale} ($n_1 = n_2 = 0, n_3 = 1$ e $l_1 = l_2 = 0, l_3 = 1$)
+	
+	\begin{myapprf}
+		\textit{Nel caso di potenziale armonico} se dato un certo valore di $n$, controlla se esso è pari: $\qty(0, 2, 4, \dots)$ o dispari: $\qty(1, 3, 5, \dots)$. Se $n$ è pari, $l$ assume tutti i valori pari fino ad $n$ stesso. Se $n$ è dispari invece, $l$ assume tutti i valori dispari fino ad $l$ stesso. Facciamo un esempio: se $n$ fosse uguale a $3$, allora $l = 1, 3$, se invece fosse uguale ad $n = 1$, allora l'unico $l$ possibile è $1$ stesso. Per quanto riguarda $m$ invece valgono le stesse regole dell'atomo di idrogeno e quindi $-l \leq m \leq l$
+	\end{myapprf}
+
+	
+		Al livello fondamentale ho $2$ elettroni in $n = 0$ ed uno in $n = 1$, quindi l'energia del livello sarà:
+		
+	\begin{align*}
+		E_0 = E_0^{\qty(1)} + E_0^{\qty(2)} + E_1^{\qty(3)} = 2 \hbar \omega \qty(0 + \frac{3}{2}) + \hbar \omega \qty( 1 + \frac{3}{2}) = \frac{11}{2} \hbar \omega
+	\end{align*}
+
+		con degenerazione pari a:
+		
+	\begin{align*}
+		\text{dim} \, \mathcal{H}_- = \mqty(2 \\ 2) \, \mqty(6 \\ 1) = 6
+	\end{align*}
+
+		il livello fondamentale ha degenerazione $6$.
+		\\
+		\\
+		Qual è una base ortonormale di questo livello in termini di basi di singola particella? Componendo i momenti angolari, distinguo per livelli. Ho allora che:
+		
+	\begin{itemize}
+		\item $n = 0$:
+		
+		\begin{align*}
+			& L_{12} = l_1 \otimes l_2 = 0 \otimes 0 = 0 \\
+			& S_{12} = s_1 \otimes s_2 = \frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1
+		\end{align*}
+		
+			$S_{12}$ va scartato poiché $L_{12} = 0$ genera uno spazio simmetrico e lo spazio totale lo vogliamo antisimmetrica, allora:
+			
+		\begin{align*}
+			\qty(L, S, J)_{12} = \qty(0, 0, 0)
+		\end{align*}
+
+		\item $n = 1$
+			
+		\begin{align*}
+			& L_3 = l_3 = 1\\
+			& S_3 = s_3 = \frac{1}{2} 
+		\end{align*}
+			
+			allora:
+			
+		\begin{align*}
+			\qty(L, S, J)_3 = \qty(1, \frac{1}{2}, \frac{1}{2}) \oplus \qty(1, \frac{1}{2}, \frac{3}{2})
+		\end{align*}
+	\end{itemize}
+	
+		Da cui allora otteniamo che:
+		
+	\begin{align*}
+		\qty(L, S, J) = \qty(1, \frac{1}{2}, \frac{1}{2}) \oplus \qty(1, \frac{1}{2}, \frac{3}{2})
+	\end{align*}
+	
+		Poiché ho un sistema di $3$ fermioni identici, la funzione d'onda complessiva del livello deve essere antisimmetrica per scambio, perciò, considero lo stato (non fisico):
+		
+	\begin{align*}
+		\frac{1}{\sqrt{2}} \, \qty(\ket{0, 0, 0, +}_1 \ket{0, 0, 0, -}_2 - \ket{0, 0, 0, -}_1 \ket{0, 0, 0, +}_2) \otimes \ket{1, 1, m, \sigma}_3
+	\end{align*}
+
+		Gli stati permessi dal principio di Pauli sono quelli antisimmetrici per scambio di $1, 2, 3$, in forma compatta:
+		
+	\begin{align*}
+		\psi = \frac{1}{\sqrt{3!}} \sum_{ijk} \qty(\ket{0, 0, 0, +}_i \ket{0, 0, 0, -}_j - \ket{0, 0, 0, -}_i \ket{0, 0, 0, +}_j) \otimes \ket{1, 1, m, \pm}_k
+	\end{align*}
+
+	\item \textbf{Primo livello eccitato} 
+	
+		Al primo livello eccitato ho $3$ possibili configurazioni:
+		
+	\begin{enumerate}
+		\item \textit{Configurazione orbitale} $\qty(1s)\qty(2p)^2$: 
+		
+			In questa configurazione ho un elettrone in $n = 0$ e due elettroni in $n = 1$. In questo caso allora ho che vale:
+			
+		\begin{align*}
+			E_1 = \frac{13}{2} \hbar \omega
+		\end{align*}
+		
+			per comporre allora i momenti angolari distinguo in base ai livelli $n$:
+		
+		\begin{itemize}
+			\item $n= 0$
+			\begin{align*}
+				\qty(L, S)_1 = \qty(0, \frac{1}{2})
+			\end{align*}
+			
+			\item $n = 1$
+			\begin{align*}
+				& L_{23} = l_2 \otimes l_3 = 1 \otimes 1 = 2 \oplus 1 \oplus 0 \\
+				& S_{23} = s_2 \otimes s_3 = \frac{1}{2} \otimes \frac{1}{2} = 1 \oplus 0
+			\end{align*}
+			
+				allora, per antisimmetria:
+			\begin{align*}
+				\qty(L, S)_{23} = \qty(0, 0) \oplus \qty(1, 1) \oplus \qty(2, 0)
+			\end{align*}
+
+		\end{itemize}
+
+			Quindi in questa configurazione:
+			
+		\begin{align*}
+			\qty(L, S) & = \qty(0, \frac{1}{2}) \otimes \qty(\qty(0, 0) \oplus \qty(1, 1) \oplus \qty(2, 0)) \\
+			& = \qty(0, \frac{1}{2}) \oplus \qty(1, \frac{1}{2}) \oplus \qty(1, \frac{3}{2}) \oplus \qty(2, \frac{1}{2})
+		\end{align*}
+		
+			in questo modo ho che:
+			
+		\begin{align*}
+			J = \frac{1}{2} \oplus \frac{1}{2} \oplus \frac{3}{2} \oplus \frac{1}{2} \oplus \frac{3}{2} \oplus \frac{5}{2} \oplus \frac{3}{2} \oplus \frac{5}{2} \, \Rightarrow \, \text{Avrò degenerazione totale pari a:} \, 30
+		\end{align*}
+
+		\item \textit{Configurazione orbitale} $\qty(1s)^2\qty(3s)$
+		
+			In questa configurazione ho due elettrone in $n = 0$ ed un elettrone in $n = 2$, con $l_3 = 0$:
+		
+			Come prima:
+			
+		\begin{align*}
+			E_1 = \frac{13}{2} \hbar \omega
+		\end{align*}
+		
+			per comporre i momenti angolari distinguo in base al livello $n$, come sempre, allora:
+			
+		\begin{itemize}
+			\item $n = 0$
+				
+				Per antisimmetria:
+				
+			\begin{align*}
+				\qty(L, S)_{12} = \qty(0, 0)
+			\end{align*}
+			
+			\item $n = 2$
+			
+			\begin{align*}
+				\qty(L, S)_3 = \qty(0, \frac{1}{2})
+			\end{align*}
+
+		\end{itemize}
+
+			Quindi in questa configurazione ho:
+			
+		\begin{align*}
+			\qty(L, S) = \qty(0, 0) \otimes \qty(0, \frac{1}{2}) = \qty(0, \frac{1}{2})
+		\end{align*}
+
+			in questo modo allora abbiamo che, siccome $J = 1/2$, abbiamo degenerazione $2$.
+
+		\item \textit{Configurazione orbitale} $\qty(1s)^2\qty(3d)$: 
+		
+			Ho due elettrone in $n = 0$ ed un elettrone in $n = 2$. Questa configurazione differisce dalla precedente per il valore di $l_3 = 2$. Allora:
+			
+		\begin{align*}
+			E_1 = \frac{13}{2} \hbar \omega
+		\end{align*}
+		
+			come al solito per comporre i momenti angoli distinguono in base al livello $n$:
+		
+		\begin{itemize}
+			\item $n = 0$
+			
+				Per antisimmetria vale che:
+				
+			\begin{align*}
+				\qty(L, S)_{12} = \qty(0, 0)
+			\end{align*}
+
+			\item $n = 2$
+			
+			\begin{align*}
+				\qty(L, S) = \qty(0, 0) \otimes \qty(2, \frac{1}{2}) = \qty(2, \frac{1}{2})
+			\end{align*}
+				
+		\end{itemize}
+		
+			In questo modo otteniamo che:
+			
+		\begin{align*}
+			\qty(L, S) = \qty(0, 0) \otimes \qty(2, \frac{1}{2}) = \qty(2, \frac{1}{2})
+		\end{align*}
+		
+			allora otteniamo:
+				
+		\begin{align*}
+			J = \frac{3}{2} \oplus \frac{5}{2}
+		\end{align*}
+			
+			con degenerazione $10$.
+
+	\end{enumerate}
+
+		In conclusione, la degenerazione complessiva nel primo livello eccitato è $30 + 10 + 2 = 42.$ 
+	
+\end{itemize}
+
+\subsection{Sistema di $4$ Fermioni Identici nel Potenziale Armonico}
+	
+	Considero $4$ elettroni nel potenziale armonico:
+	
+\begin{align*}	
+	\hat{H}_0 = \hat{H}^{\qty(1)} + \hat{H}^{\qty(2)} + \hat{H}^{\qty(3)} + \hat{H}^{\qty(4)}
+\end{align*}
+
+	con, come sappiamo:
+	
+\begin{align*}
+	\hat{H}^{\qty(i)} = \frac{\hat{p}^2_i}{2m} + \frac{1}{2} m \omega^2 r^2_i
+\end{align*}
+
+	dove $\hat{H}^{\qty(i)}$ è l'Hamiltoniana di singola particella. Sia la base di singola particella $\qty{\ket{n, l, m, \sigma}}$.
+	\\
+	\\
+	Analizziamo allora:
+	
+\begin{itemize}
+
+	\item \textbf{Livello fondamentale} ($n_1 = n_2 = 0, n_3 = n_4 = 1$ e $l_1 = l_2 = 0, l_3 = l_4 = 1$)
+	
+		Al livello fondamentale ho due elettroni in $n = 0$ e due in $n = 1$. Quindi l'energia del livello sarà:
+		
+	\begin{align*}	
+		E_0 = 8 \hbar \omega
+	\end{align*}
+	
+		con degenerazione pari a:
+		
+	\begin{align*}
+		\text{dim} \mathcal{H}_- = \mqty(2 \\ 2) \, \mqty(6 \\ 2) = 15
+	\end{align*}
+	
+		il livello fondamentale ha allora degenerazione $15$.
+		\\
+		\\
+		Componendo i momenti angolari, distinguo per livelli, ho che:
+		
+	\begin{itemize}
+		\item $n = 0$
+		
+			Per antisimmetria si ottiene:
+		\begin{align*}
+			\qty(L, S, J)_{12} = \qty(0, 0, 0)
+		\end{align*}
+
+		\item $n = 1$
+		\begin{align*}
+			& L_{34} = l_3 \otimes l_4 = 1 \otimes 1 = 2 \oplus 1 \oplus 0 \\
+			& S_{34} = s_3 \otimes s_4 = \frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1
+		\end{align*}
+		
+			Allora vale che:
+			
+		\begin{align*}
+			\qty(L, S)_{34} = \qty(0, 0) \oplus \qty(1, 1) \oplus \qty(2, 0)
+		\end{align*}
+
+	\end{itemize}
+
+		da cui allora si ottiene che
+		
+	\begin{align*}
+		J = 0 \oplus 0 \oplus 1 \oplus 2 \oplus 2
+	\end{align*}
+	
+		con degenerazione $15$.
+
+	\item \textbf{Primo livello eccitato}
+	
+		Al primo livello eccitato ho $3$ possibili configurazioni. Le prime $2$, differendo per un diverso valore di $l$ in $n = 2$, le faremo insieme:
+		
+	\begin{enumerate}
+		\item \textit{Configurazioni orbitali} $\qty(1s)^2\qty(2p)\qty(3s)$ \textit{e} $\qty(1s)^2\qty(2p)\qty(3d)$
+			
+			In questo modo ho così due elettroni in $n = 0$, uno in $n  =1$ ed un elettrone in $n = 2$ (che può avere $l = 0$ oppure $l = 2$). In questo caso l'energia è:
+			
+		\begin{align*}
+			E_1 = 9 \hbar \omega
+		\end{align*}
+		
+			per quanto visto nei due esempi precedenti, possiamo già dire che in questa configurazione:
+			
+		\begin{align*}
+			\qty(L, S) & = \qty(0, 0) \otimes \qty(1, \frac{1}{2}) \otimes \qty(\qty(0, \frac{1}{2}) \oplus \qty(2, \frac{1}{2}) ) \\
+			& = \qty(1, 0) \oplus \qty(1, 1) \oplus \qty(1, 0) \oplus \qty(2, 0) \oplus \qty(3, 0) \oplus \qty(1, 1) \oplus \qty(2, 1) \oplus \qty(3, 1)
+		\end{align*}
+		
+			da cui si ottiene:
+			
+		\begin{align*}
+			J = 1 \oplus 0 \oplus 1 \oplus 2 \oplus 1 \oplus 2 \oplus 3 \oplus 0 \oplus 1 \oplus 2 \oplus 1 \oplus 2 \oplus 3 \oplus 2 \oplus 3 \oplus 4 \, \Rightarrow \, \text{degenerazione} = 72
+		\end{align*}
+	
+		\item \textit{Configurazione orbitale} $\qty(1s)\qty(2p)^3$
+		
+			In questa configurazione abbiamo invece un elettrone in $n = 0$ e tre elettroni in $n = 1$, con rispettivamente $ l =1$ ed $m = -1, 0, +1$. 
+			\\
+			\\
+			Anche in questo caso ho che:
+			
+		\begin{align*}
+			E_1 = 9 \hbar \omega
+		\end{align*}
+
+			la degenerazione della configurazione è:
+			
+		\begin{align*}
+			\text{dim} \, \mathcal{H}_- = \mqty(2 \\ 1) \, \mqty(6 \\ 3) = 2 \cdot 20 =  40
+		\end{align*}
+
+			Per comporre i momenti angolari distinguo in base al livello $n$:
+			
+		\begin{itemize}
+			\item $n = 0$
+			
+				Ho un solo elettrone e quindi:
+				
+			\begin{align*}
+				\qty(L, S)_{n = 0} = \qty(0, \frac{1}{2}) \, \Rightarrow \, J_1 = \frac{1}{2}
+			\end{align*}
+			
+				che appunto ha degenerazione $2$.	
+			
+			\item $n = 1$
+			
+				Qui so che la generazione totale del livello è $20$, ma notiamo che:
+			
+			\begin{align*}
+				& L_{234} = l_2 \otimes l_3 \otimes l_4 = 1 \otimes 1 \otimes 1 = 1 \oplus 0 \oplus 1 \oplus 2 \oplus 1 \oplus 1 \oplus 2 \oplus 3 \\
+				& S_{234} = s_2 \otimes s_3 \otimes s_4 = \frac{1}{2} \otimes \frac{1}{2} \otimes \frac{1}{2} = \qty(0 \oplus 1) \otimes \frac{1}{2} = \frac{1}{2} \oplus \frac{1}{2} \oplus \frac{3}{2}
+			\end{align*}
+			
+				ne segue che sicuramente una coppia antisimmetrica è:
+				
+			\begin{align*}
+				\qty(0, \frac{3}{2})
+			\end{align*}
+
+				con degenerazione $4$. 
+			\\
+			\\
+			Gli altri $16$ stati di questa configurazione hanno $S = \frac{1}{2}$ poiché certamente $S = \frac{3}{2}$ si esaurisce con $L = 0$, poiché totalmente simmetrico (il più alto) va con totalmente antisimmetrico (il più basso). Inoltre $L = 3$ va scartato, poiché l'unico stato totalmente simmetrico di $L$, gli altri sono misti o $0$ (unico antisimmetrico), poiché non può legarsi né allo stato totalmente simmetrico $S = 3/2$ né a quelli con simmetria mista con $S = 1/2$. In conclusione si ottiene allora:
+			
+		\begin{align*}
+			\qty(L, S)_{n = 1} = \qty(0, \frac{3}{2}) \oplus \qty(1, \frac{1}{2}) \oplus \qty(2, \frac{1}{2})
+		\end{align*}
+		
+			allora:
+			
+		\begin{align*}
+			J_{n = 1} = \frac{3}{2} \oplus \frac{1}{2} \oplus \frac{3}{2} \oplus \frac{3}{2} \oplus \frac{5}{2}
+		\end{align*}
+
+		\end{itemize}
+	
+		In questo modo si ha che:
+		
+	\begin{align*}
+		\qty(L, S) = \qty(0, 1) \oplus \qty(0, 2) \oplus \qty(1, 0) \oplus \qty(1, 1) \oplus \qty(2, 0) \oplus \qty(2, 1)
+	\end{align*}
+	
+	
+		da cui:
+		
+	\begin{align*}
+		J = 1 \oplus 2 \oplus 1 \oplus 1 \oplus 0 \oplus 1 \oplus 2 \oplus 2 \oplus 1 \oplus 2 \oplus 3
+	\end{align*}
+		
+	\end{enumerate}
+
+\end{itemize}
+	
+	In conclusione, la degenerazione complessiva del primo livello eccitato è $40 + 72 = 112$.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
