@@ -1,0 +1,13 @@
+cat > .gitignore << 'EOF'
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.gnuplot
+*.table
+*.pdf
+.DS_Store
+EOF
