@@ -39,6 +39,8 @@ Distribuito con licenza [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/b
 puoi condividere e modificare il materiale citando l'autore, non a scopo commerciale
 e mantenendo la stessa licenza.
 
+© 2026 Gioele Cesarini. Distribuito con licenza CC BY-NC-SA 4.0 (vedi [LICENSE](LICENSE)).
+
 ## Autore
 
 Gioele Cesarini: [gioelecesarini01@gmail.com]
