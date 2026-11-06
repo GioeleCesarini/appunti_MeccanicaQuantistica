@@ -9,15 +9,20 @@ all'Università di Genova (a.a. [2024/2025]).
 
 ## Contenuti
 
-1. [Capitolo 1]
-2. [Capitolo 2]
-3. [Capitolo 3]
-4. [...]
+1. [La crisi della fisica classica]
+2. [La vecchia teoria quantistica]
+3. [Il formalismo della meccanica quantistica]
+4. [Teoria delle rappresentazioni]
+5. [Equazione di Schrodinger per sistemi unidimensionali]
+6. [Evoluzione temporale]
+7. [Teoria del momento angolare]
+8. [Sistemi di particelle identiche]
+9. [Pillole: brevi consigli o nozioni condensate]
 
 ## Fonti
 
 - Lezioni del Prof. Camillo Imbimbo, Università di Genova
-- Appunti di [Filippo Teramo]()
+- Appunti di [Filippo Teramo]
 - L. E. Picasso, *Lezioni di Meccanica Quantistica*, Edizioni ETS
 
 ## Avvertenza
